@@ -1,0 +1,1 @@
+//Este archivo maneja la loguica de las validaciones, almacenamiento local y formateo de datos.

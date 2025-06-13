@@ -1,0 +1,1 @@
+// Lógica de la página "Sobre nosotros"

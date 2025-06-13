@@ -1,0 +1,1 @@
+// app.js - Punto de entrada de la aplicación

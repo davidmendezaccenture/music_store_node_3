@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "name": "Guitarra Acústica",
+        "price": 180,
+        "offerPrice": 150,
+        "image": "../assets/images/guitar7.png",
+        "description": "Guitarra acústica de alta calidad.",
+        "category": "acoustic-guitars"
+    },
+    {
+        "id": 2,
+        "name": "Guitarra Eléctrica",
+        "price": 350,
+        "offerPrice": 300,
+        "image": "../assets/images/guitar3.png",
+        "description": "Guitarra eléctrica para músicos avanzados.",
+        "category": "electric-guitars"
+    },
+    {
+        "id": 3,
+        "name": "Bajo Eléctrico",
+        "price": 300,
+        "offerPrice": 250,
+        "image": "../assets/images/bass5.png",
+        "description": "Bajo eléctrico con diseño ergonómico.",
+        "category": "basses"
+    },
+    {
+        "id": 4,
+        "name": "Guitarra Flamenca",
+        "price": 200,
+        "offerPrice": 180,
+        "image": "../assets/images/guitar12.png",
+        "description": "Guitarra flamenca con un diseño tradicional.",
+        "category": "classical-guitars"
+    },
+    {
+        "id": 5,
+        "name": "Guitarra Stratocaster",
+        "price": 600,
+        "offerPrice": 550,
+        "image": "../assets/images/guitar2.png",
+        "description": "Guitarra eléctrica estilo Stratocaster.",
+        "category": "electric-guitars"
+    },
+    {
+        "id": 6,
+        "name": "Bajo Jazz",
+        "price": 500,
+        "offerPrice": 450,
+        "image": "../assets/images/bass3.png",
+        "description": "Bajo eléctrico ideal para jazz y funk.",
+        "category": "basses"
+    },
+    {
+        "id": 7,
+        "name": "Guitarra Acústica Premium",
+        "price": 800,
+        "offerPrice": 750,
+        "image": "../assets/images/guitar7.png",
+        "description": "Guitarra acústica con acabados de lujo.",
+        "category": "acoustic-guitars"
+    },
+    {
+        "id": 8,
+        "name": "Guitarra Les Paul",
+        "price": 700,
+        "offerPrice": 650,
+        "image": "../assets/images/guitar1.png",
+        "description": "Guitarra eléctrica estilo Les Paul.",
+        "category": "electric-guitars"
+    },
+    {
+        "id": 9,
+        "name": "Guitarra Clásica Premium",
+        "price": 900,
+        "offerPrice": 850,
+        "image": "../assets/images/guitar6.png",
+        "description": "Guitarra clásica con acabados de lujo.",
+        "category": "classical-guitars"
+    },
+    {
+        "id": 10,
+        "name": "Guitarra Heavy Flying",
+        "price": 900,
+        "offerPrice": 850,
+        "image": "../assets/images/guitar13.jpg",
+        "description": "Guitarra clásica con acabados de lujo.",
+        "category": "electric-guitars"
+    },
+    {
+        "id": 11,
+        "name": "Amplificador Marshall",
+        "price": 500,
+        "offerPrice": 450,
+        "image": "../assets/images/amp2.png",
+        "description": "Amplificador de guitarra con sonido clásico.",
+        "category": "amplifiers"
+    },
+    {
+        "id": 12,
+        "name": "Amplificador Fender",
+        "price": 600,
+        "offerPrice": 550,
+        "image": "../assets/images/amp6.png",
+        "description": "Amplificador versátil para todos los estilos.",
+        "category": "amplifiers"
+    },
+    {
+        "id": 13,
+        "name": "Pedal de Distorsión",
+        "price": 120,
+        "offerPrice": 100,
+        "image": "../assets/images/pedal1.png",
+        "description": "Pedal de efectos para un sonido potente.",
+        "category": "effect-pedals"
+    },
+    {
+        "id": 14,
+        "name": "Pedal de Reverb",
+        "price": 150,
+        "offerPrice": 130,
+        "image": "../assets/images/pedal2.png",
+        "description": "Pedal de efectos para un sonido ambiental.",
+        "category": "effect-pedals"
+    },
+    {
+        "id": 15,
+        "name": "Batería Acústica",
+        "price": 800,
+        "offerPrice": 750,
+        "image": "../assets/images/drum1.png",
+        "description": "Batería acústica de alta calidad.",
+        "category": "drums"
+    },
+    {
+        "id": 16,
+        "name": "Batería Electrónica",
+        "price": 600,
+        "offerPrice": 550,
+        "image": "../assets/images/drum5.png",
+        "description": "Batería electrónica compacta y versátil.",
+        "category": "drums"
+    },
+    {
+        "id": 17,
+        "name": "Set de Platillos",
+        "price": 400,
+        "offerPrice": 350,
+        "image": "../assets/images/drum3.png",
+        "description": "Set de platillos de alta calidad para bateristas profesionales.",
+        "category": "drums"
+    },
+    {
+        "id": 18,
+        "name": "Caja de Madera",
+        "price": 250,
+        "offerPrice": 200,
+        "image": "../assets/images/drum4.png",
+        "description": "Caja de madera con un sonido cálido y resonante.",
+        "category": "drums"
+    },
+    {
+        "id": 19,
+        "name": "Pedal de Bombo",
+        "price": 150,
+        "offerPrice": 130,
+        "image": "../assets/images/drum5.png",
+        "description": "Pedal de bombo con acción suave y precisa.",
+        "category": "drums"
+    },
+    {
+        "id": 20,
+        "name": "Set de Batería Completo",
+        "price": 1000,
+        "offerPrice": 950,
+        "image": "../assets/images/drum5.png",
+        "description": "Set completo de batería para principiantes y avanzados.",
+        "category": "drums"
+    }
+]
