@@ -4,6 +4,9 @@ reset {
     padding: 0;
     box-sizing: border-box;
 }
+h2 {
+    text-align: center;
+}
 /* Estilo para el header con imagen de fondo */
 
 /* Overlay para mejorar el contraste */
@@ -13,8 +16,59 @@ reset {
 /* Estilo para el logo de RaiRock */
 
 /* Efecto hover con zoom para los íconos de la barra de navegación secundaria */
+a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    background-size: 24px 24px;
+}
+
+a:hover {
+    transform: scale(1.2);
+}
+
+.icono-nav {
+    width: 30px;
+    height: 30px;
+    margin-right: 2px;
+    vertical-align: middle;
+    filter: grayscale(100%) brightness(0.8);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+a:hover .icono-nav {
+    transform: scale(1.1);
+    filter: grayscale(0%) brightness(1.2) contrast(120%) saturate(150%) drop-shadow(0 0 2px #000);
+}
 
 /* Estilo para las flechas del carrusel */
+
+.icono-carrusel {
+    width: 50px;
+    height: auto;
+}
+.icono-carrusel:hover {
+    transform: scale(1.2);
+}
+.icono-carrusel:hover.mirror {
+    transform: scaleX(-1) scale(1.2);
+}
+.mirror{
+    transform: scaleX(-1);
+}
+.carousel-control-prev,
+.carousel-control-next {
+    width: auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+    left: 15%;
+}
+
+.carousel-control-next {
+    right: 15%;
+}
+
 
 /* Estilo para los indicadores del carrusel */
 
@@ -27,3 +81,64 @@ reset {
 /* Ajustar el tamaño del carrusel */
 
 /* Hover redes sociales */
+
+/* Tarjetas de opiniones de usuarios */
+.opiniones {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    display: flex;
+}
+
+.opiniones h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tarjeta-opinion {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.texto {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+}
+
+.foto-usuario {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.info-usuario {
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre {
+    font-weight: bold;
+    margin: 0;
+}
+
+.profesion {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.estrellas {
+    color: #f4c430; /* color dorado para estrellas */
+    font-size: 1.1rem;
+}
