@@ -168,8 +168,8 @@ app.get('/', (req, res) => {
 //           PUERTO DEL SERVIDOR
 // -----------------------------
 
-// Puerto por defecto: 8080 (o el que defina la variable de entorno)
-const PORT = process.env.PORT || 8080;
+// Puerto por defecto: 3000 (o el que defina la variable de entorno)
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
