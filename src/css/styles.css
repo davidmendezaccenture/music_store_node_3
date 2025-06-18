@@ -69,8 +69,49 @@ a:hover .icono-nav {
     right: 15%;
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+#carouselOpiniones .carousel-control-prev {
+    left: 0;
+    transform: translateY(-50%);
+    width: auto;
+}
+
+#carouselOpiniones .carousel-control-prev:hover {
+    transform: translateY(-50%) scale(1.2);
+}
+
+#carouselOpiniones .carousel-control-next {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+}
+#carouselOpiniones .carousel-control-next:hover {
+    transform: translateY(-50%) scale(1.2);
+}
 
 /* Estilo para los indicadores del carrusel */
+.carousel-indicators [data-bs-target] {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ccc;  /* Color gris claro */
+    border: 2px solid #555;  /* Borde gris oscuro */
+    margin: 0 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0.8;
+}
+
+.carousel-indicators .active {
+    background-color: #eee; /* Color azul Bootstrap */
+    border-color: #555;     /* Borde azul más oscuro */
+    opacity: 1;
+    transform: scale(1.3);
+}
+
 
 /* Asegurar que el botón de iniciar sesión esté alineado correctamente */
 
