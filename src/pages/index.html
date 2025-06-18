@@ -19,7 +19,7 @@
         <!-- Encabezado -->
         <h2 class="text-center mt-4">Productos Disponibles</h2>
         <!-- Barra de navegación secundaria -->
-         <!-- Barra responsive. Creamos el menú hamburguesa productos, solo visible para dispositivos pequeños-->
+        <!-- Barra responsive. Creamos el menú hamburguesa productos, solo visible para dispositivos pequeños-->
         <nav class="navbar navbar-expand-lg bg-light py-2 mb-4">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold d-block d-lg-none" href="#">Productos</a>
@@ -27,6 +27,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <!--Barra de navegación-->
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav flex-wrap">
                         <li class="nav-item">
@@ -112,157 +113,161 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-            <!-- Aquí se mostrarán los productos -->
+        <!-- Aquí se mostrarán los productos -->
+        <!-- Creo contenedor vacío para mostrar productos-->
         <div id="products-list"></div>
         
         <!-- opinion clientes -->
+        <!-- Creo un carrusel para opiniones de clientes. Están agrupadas de 3 en 3, y cada grupo de 3 está metido en una slide del carrusel-->
         <h2 class="text-center mt-4">Opiniones de nuestros clientes</h2>
-                    <!-- Carrusel de imágenes -->
-        <div id="carouselOpiniones" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselOpiniones" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <section class="opiniones">
-        <div class="row">
+                        <div class="row">
         <!-- Opiniones de nuestros clientes -->
             <!-- Opinión 1 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="tarjeta-opinion p-3 h-100">
-                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
-                        <div class="usuario d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
-                            <div class="info-usuario">
-                                <p class="nombre mb-0">David Santos</p>
-                                <p class="profesion mb-1">Músico profesional</p>
-                                <div class="estrellas">⭐⭐⭐⭐☆</div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="tarjeta-opinion p-3 h-100">
+                                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
+                                    <div class="usuario d-flex align-items-center">
+                                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
+                                        <div class="info-usuario">
+                                            <p class="nombre mb-0">David Santos</p>
+                                            <p class="profesion mb-1">Músico profesional</p>
+                                            <div class="estrellas">⭐⭐⭐⭐☆</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            <!-- Opinión 2 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="tarjeta-opinion p-3 h-100">
+                                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
+                                    <div class="usuario d-flex align-items-center">
+                                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
+                                        <div class="info-usuario">
+                                            <p class="nombre mb-0">David Santos</p>
+                                            <p class="profesion mb-1">Músico profesional</p>
+                                            <div class="estrellas">⭐⭐⭐⭐☆</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            <!-- Opinión 3 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="tarjeta-opinion p-3 h-100">
+                                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
+                                    <div class="usuario d-flex align-items-center">
+                                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
+                                        <div class="info-usuario">
+                                            <p class="nombre mb-0">David Santos</p>
+                                            <p class="profesion mb-1">Músico profesional</p>
+                                            <div class="estrellas">⭐⭐⭐⭐☆</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                </div>
-            </div>
-            <!-- Opinión 2 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="tarjeta-opinion p-3 h-100">
-                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
-                    <div class="usuario d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
-                        <div class="info-usuario">
-                            <p class="nombre mb-0">David Santos</p>
-                            <p class="profesion mb-1">Músico profesional</p>
-                            <div class="estrellas">⭐⭐⭐⭐☆</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Opinión 3 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="tarjeta-opinion p-3 h-100">
-                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
-                    <div class="usuario d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
-                        <div class="info-usuario">
-                            <p class="nombre mb-0">David Santos</p>
-                            <p class="profesion mb-1">Músico profesional</p>
-                            <div class="estrellas">⭐⭐⭐⭐☆</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </section>
                 </div>
                 <div class="carousel-item">
                     <section class="opiniones">
-        <div class="row">
+                        <div class="row">
         <!-- Opiniones de nuestros clientes -->
             <!-- Opinión 1 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="tarjeta-opinion p-3 h-100">
-                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
-                        <div class="usuario d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
-                            <div class="info-usuario">
-                                <p class="nombre mb-0">David Santos</p>
-                                <p class="profesion mb-1">Músico profesional</p>
-                                <div class="estrellas">⭐⭐⭐⭐☆</div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="tarjeta-opinion p-3 h-100">
+                                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
+                                    <div class="usuario d-flex align-items-center">
+                                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
+                                        <div class="info-usuario">
+                                            <p class="nombre mb-0">David Santos</p>
+                                            <p class="profesion mb-1">Músico profesional</p>
+                                            <div class="estrellas">⭐⭐⭐⭐☆</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            <!-- Opinión 2 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="tarjeta-opinion p-3 h-100">
+                                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
+                                    <div class="usuario d-flex align-items-center">
+                                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
+                                        <div class="info-usuario">
+                                            <p class="nombre mb-0">David Santos</p>
+                                            <p class="profesion mb-1">Músico profesional</p>
+                                            <div class="estrellas">⭐⭐⭐⭐☆</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            <!-- Opinión 3 -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="tarjeta-opinion p-3 h-100">
+                                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
+                                    <div class="usuario d-flex align-items-center">
+                                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
+                                        <div class="info-usuario">
+                                            <p class="nombre mb-0">David Santos</p>
+                                            <p class="profesion mb-1">Músico profesional</p>
+                                            <div class="estrellas">⭐⭐⭐⭐☆</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                </div>
-            </div>
-            <!-- Opinión 2 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="tarjeta-opinion p-3 h-100">
-                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
-                    <div class="usuario d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
-                        <div class="info-usuario">
-                            <p class="nombre mb-0">David Santos</p>
-                            <p class="profesion mb-1">Músico profesional</p>
-                            <div class="estrellas">⭐⭐⭐⭐☆</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Opinión 3 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="tarjeta-opinion p-3 h-100">
-                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
-                    <div class="usuario d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
-                        <div class="info-usuario">
-                            <p class="nombre mb-0">David Santos</p>
-                            <p class="profesion mb-1">Músico profesional</p>
-                            <div class="estrellas">⭐⭐⭐⭐☆</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </section>
                 </div>
                 <div class="carousel-item">
                     <section class="opiniones">
-        <div class="row">
+                        <div class="row">
         <!-- Opiniones de nuestros clientes -->
             <!-- Opinión 1 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="tarjeta-opinion p-3 h-100">
-                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
-                        <div class="usuario d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
-                            <div class="info-usuario">
-                                <p class="nombre mb-0">David Santos</p>
-                                <p class="profesion mb-1">Músico profesional</p>
-                                <div class="estrellas">⭐⭐⭐⭐☆</div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="tarjeta-opinion p-3 h-100">
+                                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
+                                    <div class="usuario d-flex align-items-center">
+                                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
+                                        <div class="info-usuario">
+                                            <p class="nombre mb-0">David Santos</p>
+                                            <p class="profesion mb-1">Músico profesional</p>
+                                            <div class="estrellas">⭐⭐⭐⭐☆</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                </div>
-            </div>
             <!-- Opinión 2 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="tarjeta-opinion p-3 h-100">
-                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
-                    <div class="usuario d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
-                        <div class="info-usuario">
-                            <p class="nombre mb-0">David Santos</p>
-                            <p class="profesion mb-1">Músico profesional</p>
-                            <div class="estrellas">⭐⭐⭐⭐☆</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="tarjeta-opinion p-3 h-100">
+                                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
+                                        <div class="usuario d-flex align-items-center">
+                                            <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
+                                            <div class="info-usuario">
+                                                <p class="nombre mb-0">David Santos</p>
+                                                <p class="profesion mb-1">Músico profesional</p>
+                                                <div class="estrellas">⭐⭐⭐⭐☆</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
             <!-- Opinión 3 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="tarjeta-opinion p-3 h-100">
-                    <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
-                    <div class="usuario d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
-                        <div class="info-usuario">
-                            <p class="nombre mb-0">David Santos</p>
-                            <p class="profesion mb-1">Músico profesional</p>
-                            <div class="estrellas">⭐⭐⭐⭐☆</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <div class="tarjeta-opinion p-3 h-100">
+                                        <p class="texto">"Excelente servicio y productos de alta calidad. Compré una guitarra y estoy encantado con el sonido."</p>
+                                        <div class="usuario d-flex align-items-center">
+                                            <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="Foto de usuario" class="foto-usuario me-3">
+                                            <div class="info-usuario">
+                                                <p class="nombre mb-0">David Santos</p>
+                                                <p class="profesion mb-1">Músico profesional</p>
+                                                <div class="estrellas">⭐⭐⭐⭐☆</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </section>
                 </div>
             </div>
             <!-- Controles del carrusel -->
