@@ -109,9 +109,9 @@ app.post('/api/login', (req, res) => {
 //         GESTIÓN DEL CARRITO
 // -----------------------------
 
-// GET /api/cart?user=username - Devuelve el carrito del usuario (o del guest si no se indica)
-app.get('/api/cart', (req, res) => {
-  const user = req.query.user || 'guest'; // Si no se envía usuario, se usa 'guest'
+// GET /api/cart/:user - Devuelve el carrito del usuario (o del guest si no se indica)
+app.get('/api/cart/:user', (req, res) => {
+  const user = req.params.user || 'guest'; // Obtenemos el usuario desde la ruta
   const cartsPath = path.join(__dirname, 'backend/data/carts.json');
 
   fs.readFile(cartsPath, 'utf8', (err, data) => {
@@ -121,9 +121,10 @@ app.get('/api/cart', (req, res) => {
     }
 
     const carts = JSON.parse(data);
-    res.json(carts[user] || []); // Si no hay carrito para ese usuario, enviamos uno vacío
+    res.json({ cart: carts[user] || [] }); // Enviamos el carrito en una propiedad 'cart'
   });
 });
+
 
 // POST /api/cart - Guarda el carrito de un usuario
 app.post('/api/cart', (req, res) => {

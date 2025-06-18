@@ -1,6 +1,27 @@
 // Este archivo maneja la lógica de la cesta de la compra
+
 // Declaramos un array vacío para almacenar los productos del carrito
 let carrito = [];
+
+//  Al cargar la página, intentamos recuperar el carrito del backend si ya existe
+$(document).ready(function () {
+  const usuario = localStorage.getItem('usuario') || 'guest'; // Obtenemos el usuario (o guest por defecto)
+
+  // Enviamos una petición GET para obtener el carrito del usuario
+  $.ajax({
+    url: `/api/cart/${usuario}`,   // Ruta para obtener el carrito del usuario
+    method: 'GET',
+    success: function (respuesta) {
+      if (respuesta && respuesta.cart) {
+        carrito = respuesta.cart;     // Guardamos el carrito recuperado en la variable local
+        mostrarCarrito();             // Mostramos el carrito en pantalla
+      }
+    },
+    error: function () {
+      console.warn('No se pudo cargar el carrito del servidor.');
+    }
+  });
+});
 
 // Evento: al hacer clic en cualquier botón con clase .agregar-carrito
 // (usamos .on() porque los productos se cargan dinámicamente)
