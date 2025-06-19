@@ -148,7 +148,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            $.getJSON("/assets/data/users.json", function (data) {
+            $.getJSON("/assets/data/clients.json", function (data) {
                 const opinionesAleatorias = data.sort(() => 0.5 - Math.random()).slice(0, 9);
                 const $contenedor = $('#carouselOpiniones .carousel-inner');
                 for (let i = 0; i < 3; i++) {
