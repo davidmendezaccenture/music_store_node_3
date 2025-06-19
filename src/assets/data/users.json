@@ -138,5 +138,27 @@
     "profesion": "Estudiante",
     "estrellas": "⭐⭐⭐⭐⭐",
     "opinion": "Excelente servicio y calidad."
+    },
+    {
+    "urlImagen": "https://hips.hearstapps.com/hmg-prod/images/gettyimages-1026620082.jpg?resize=1200:*",
+    "nombre": "Eric Clapton",
+    "profesion": "Leyenda",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Todo fue perfecto. Me gustó tanto que estoy pensando en jubilar a brownie y a blackie."
+    },
+    {
+    "urlImagen": "https://lastfm.freetls.fastly.net/i/u/ar0/52bd3bdd54a09ecd1617146d6e401b02.jpg",
+    "nombre": "Jimi Hendrix",
+    "profesion": "Guitarrista",
+    "estrellas": "⭐⭐⭐⭐☆",
+    "opinion": "Compré una Stratocaster y llegó con un golpe. Sin embargo, contacté con la tienda y me lo solucionaron rápidamente. Bastante satisfecho."
+    },
+    {
+    "urlImagen": "https://cdn.pixabay.com/photo/2023/04/15/13/05/alien-7927623_640.jpg",
+    "nombre": "Zarnok Virellain",
+    "profesion": "Invasor",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Los precios de esta tienda son de otro planeta!!"
     }
+    
 ]

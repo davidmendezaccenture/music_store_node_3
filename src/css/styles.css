@@ -92,7 +92,6 @@ a:hover .icono-nav {
 #carouselOpiniones .carousel-control-next:hover {
     transform: translateY(-50%) scale(1.2);
 }
-
 /* Estilo para los indicadores del carrusel */
 .carousel-indicators [data-bs-target] {
     width: 15px;
