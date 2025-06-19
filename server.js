@@ -45,7 +45,7 @@ app.post('/api/register', (req, res) => {
     return res.status(400).json({ error: 'Faltan datos obligatorios' });
   }
 
-  const usersPath = path.join(__dirname, 'backend/data/users.json');
+  const usersPath = path.join(__dirname, './backend/data/users.json');
 
   fs.readFile(usersPath, 'utf8', (err, data) => {
     if (err) {
@@ -96,7 +96,7 @@ app.post('/api/login', (req, res) => {
     return res.status(400).json({ error: 'Faltan datos obligatorios' });
   }
 
-  const usersPath = path.join(__dirname, 'backend/data/users.json');
+  const usersPath = path.join(__dirname, './backend/data/users.json');
 
   fs.readFile(usersPath, 'utf8', (err, data) => {
     if (err) {

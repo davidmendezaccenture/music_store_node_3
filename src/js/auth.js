@@ -41,16 +41,20 @@ $(document).ready(function () {
     e.preventDefault(); // Previene envío clásico (con recarga)
 
     const nuevoUsuario = {
-      username: $('#reg-username').val().trim(),
-      email: $('#reg-email').val().trim(),
-      password: $('#reg-password').val()
+      username: $('#username').val().trim(),
+      email: $('#email').val().trim(),
+      password: $('#password').val()
     };
+
+    const confirmPassword = $('#confirmPassword').val();
 
     // Validación básica
     if (!nuevoUsuario.username || !nuevoUsuario.email || !nuevoUsuario.password) {
       alert('Por favor, completa todos los campos');
       return;
     }
+
+    
 
      // Validaciones con funciones de utils.js
 
@@ -73,7 +77,7 @@ $(document).ready(function () {
     }
 
     // Confirmar que ambas contraseñas coinciden
-    if (!compararPasswords(nuevoUsuario.password, nuevoUsuario.password2)) {
+    if (!compararPasswords(nuevoUsuario.password, confirmPassword)) {
       alert('Las contraseñas no coinciden.');
       return;
     }
