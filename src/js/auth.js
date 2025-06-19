@@ -52,11 +52,39 @@ $(document).ready(function () {
       return;
     }
 
+     // Validaciones con funciones de utils.js
+
+    // Validar username
+    if (!validarUsername(nuevoUsuario.username)) {
+      alert('El nombre de usuario debe tener entre 3 y 20 caracteres, y solo letras, números, guiones o guiones bajos.');
+      return;
+    }
+
+    // Validar email
+    if (!validarEmail(nuevoUsuario.email)) {
+      alert('El email no tiene un formato válido.');
+      return;
+    }
+
+    // Validar password
+    if (!validarPassword(nuevoUsuario.password)) {
+      alert('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.');
+      return;
+    }
+
+    // Confirmar que ambas contraseñas coinciden
+    if (!compararPasswords(nuevoUsuario.password, nuevoUsuario.password2)) {
+      alert('Las contraseñas no coinciden.');
+      return;
+    }
+
+
     // Enviamos la solicitud al servidor
     $.ajax({
       url: '/api/register',               // Ruta de registro en el backend
       method: 'POST',
-      contentType: 'application/json',
+  
+    contentType: 'application/json',
       data: JSON.stringify(nuevoUsuario), // Convertimos el objeto a JSON
 
       success: function (res) {
