@@ -53,14 +53,25 @@ app.post('/api/register', (req, res) => {
       return res.status(500).json({ error: 'Error interno del servidor' });
     }
 
-    const users = JSON.parse(data);
+    let users = [];
+    try {
+      users = JSON.parse(data);
+    } catch {
+      users = [];
+    }
+
     const exists = users.find(u => u.username === username || u.email === email);
 
     if (exists) {
       return res.status(409).json({ error: 'Usuario o email ya existe' });
     }
 
-    users.push({ username, email, password }); // Agregamos el nuevo usuario
+    // Generamos un id nuevo (auto-incremental)
+    const newId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+
+    const newUser = { id: newId, username, email, password };
+
+    users.push(newUser); // Agregamos el nuevo usuario
 
     fs.writeFile(usersPath, JSON.stringify(users, null, 2), err => {
       if (err) {
@@ -68,7 +79,7 @@ app.post('/api/register', (req, res) => {
         return res.status(500).json({ error: 'Error interno del servidor' });
       }
 
-      res.json({ message: 'Usuario registrado con éxito' });
+      res.status(201).json({ message: 'Usuario registrado con éxito' });
     });
   });
 });
@@ -93,15 +104,26 @@ app.post('/api/login', (req, res) => {
       return res.status(500).json({ error: 'Error interno del servidor' });
     }
 
-    const users = JSON.parse(data);
+    let users = [];
+    try {
+      users = JSON.parse(data);
+    } catch {
+      users = [];
+    }
+
     const user = users.find(u => u.username === username && u.password === password);
 
     if (!user) {
       return res.status(401).json({ error: 'Credenciales inválidas' });
     }
 
-    // Enviamos una respuesta de éxito si las credenciales son válidas
-    res.json({ message: 'Login correcto', username: user.username });
+    // Enviamos info sin password
+    res.json({ 
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      message: 'Login correcto'
+    });
   });
 });
 
@@ -124,7 +146,6 @@ app.get('/api/cart/:user', (req, res) => {
     res.json({ cart: carts[user] || [] }); // Enviamos el carrito en una propiedad 'cart'
   });
 });
-
 
 // POST /api/cart - Guarda el carrito de un usuario
 app.post('/api/cart', (req, res) => {
