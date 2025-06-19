@@ -49,11 +49,11 @@ a:hover .icono-nav {
     transform: scale(1.2);
 }
 /*Puesto que usamos la misma imagen, debemlos invertir uno de los iconos del carrusel. Le aplicamos también efecto al pasar el ratón por encima */
-.icono-carrusel:hover.mirror {
-    transform: scaleX(-1) scale(1.2);
-}
 .mirror{
     transform: scaleX(-1);
+}
+.icono-carrusel:hover.mirror {
+    transform: scaleX(-1) scale(1.2);
 }
 /*Cambios en los controles para situarlos más cerca de la imagen*/
 .carousel-control-prev,
