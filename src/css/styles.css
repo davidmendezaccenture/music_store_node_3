@@ -6,35 +6,47 @@ reset {
 }
 /* Estilo para el header con imagen de fondo */
 
-.navbar-brand img {
-    transition: transform 0.3s ease;
+.navbar {
+  padding: 0.8rem 0;
 }
 
-.navbar-brand:hover img {
-    transform: scale(1.1);
+.navbar-brand {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.02);
 }
 
 .nav-link {
-    position: relative;
-    padding-bottom: 5px;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin: 0 2px;
+  transition: all 0.2s ease;
 }
 
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #fff;
-    transition: width 0.3s ease;
+.nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 10%;
+.nav-link i {
+  font-size: 0.9rem;
 }
 
+@media (max-width: 992px) {
+  .navbar-collapse {
+    padding-top: 1rem;
+  }
+  .nav-link {
+    margin: 2px 0;
+  }
+  .d-flex {
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+  }
+}
 /* Overlay para mejorar el contraste */
 
 /* Centrar el contenido del header */
