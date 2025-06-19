@@ -50,25 +50,51 @@ $(document).on('click', '.agregar-carrito', function () {
 
 // Función para mostrar los productos del carrito en un contenedor HTML
 function mostrarCarrito() {
-  const $contenedor = $('#contenedor-carrito'); // Contenedor del carrito
-  $contenedor.empty(); // Limpiamos antes de pintar de nuevo
+  const $contenedor = $('#contenedor-carrito');
+  $contenedor.empty();
+
+  let totalCarrito = 0;
 
   carrito.forEach(item => {
-    // Buscamos el producto por ID en la lista de productos disponibles
+    // Buscamos el producto correspondiente
     const productoInfo = productosDisponibles.find(p => p.id === item.id);
-    const nombreProducto = productoInfo ? productoInfo.nombre : `Producto ${item.id}`;
 
-    const itemHTML = `
-      <li data-id="${item.id}">
-        <strong>${nombreProducto}</strong> - Cantidad: ${item.cantidad}
-        <button class="btn-sumar">+</button>
-        <button class="btn-restar">−</button>
-        <button class="btn-eliminar">Eliminar</button>
-      </li>
-    `;
-    $contenedor.append(itemHTML);
+    if (productoInfo) {
+      const { name, offerPrice, image } = productoInfo;
+      const cantidad = item.cantidad;
+      const subtotal = offerPrice * cantidad;
+      totalCarrito += subtotal;
+
+      const itemHTML = `
+        <li class="item-carrito d-flex align-items-center gap-3 mb-3" data-id="${item.id}">
+          <img src="${productoInfo.image}" alt="${name}" style="width: 60px; height: auto;">
+          <div>
+            <strong>${name}</strong><br>
+            Precio unitario: $${offerPrice.toFixed(2)}<br>
+            Cantidad: ${cantidad}<br>
+            Subtotal: $${subtotal.toFixed(2)}
+          </div>
+          <div class="ms-auto">
+            <button class="btn btn-success btn-sm btn-sumar">+</button>
+            <button class="btn btn-warning btn-sm btn-restar">−</button>
+            <button class="btn btn-danger btn-sm btn-eliminar">Eliminar</button>
+          </div>
+        </li>
+      `;
+
+      $contenedor.append(itemHTML);
+    } else {
+      $contenedor.append(`<li><em>Producto con ID ${item.id} no encontrado</em></li>`);
+    }
   });
+
+  // Mostrar el total general del carrito
+  const totalHTML = `
+    <li class="mt-3"><strong>Total del carrito: $${totalCarrito.toFixed(2)}</strong></li>
+  `;
+  $contenedor.append(totalHTML);
 }
+
 
 // Evento para sumar cantidad
 $(document).on('click', '.btn-sumar', function () {
