@@ -1,194 +1,260 @@
-// Importamos los módulos necesarios
-const express = require('express'); // Framework para crear el servidor web
-const path = require('path'); // Módulo para trabajar con rutas de archivos
-const fs = require('fs'); // Módulo para leer y escribir archivos
-const bodyParser = require('body-parser'); // Middleware para leer el cuerpo (body) de las peticiones
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
+const bodyParser = require("body-parser");
 
-const app = express(); // Creamos una instancia de la aplicación Express
-
-// Middleware que permite recibir datos en formato JSON desde el frontend
+const app = express();
 app.use(bodyParser.json());
 
-// Servimos archivos estáticos desde la carpeta 'src'
-// Esto incluye HTML, CSS, JS del frontend
-app.use(express.static(path.join(__dirname, 'src')));
+// Servir archivos estáticos
 
-// -----------------------------
-//         API DE PRODUCTOS
-// -----------------------------
+app.use(express.static(path.join(__dirname, "src")));
 
-// GET /api/products - Devuelve todos los productos desde el archivo products.json
-app.get('/api/products', (req, res) => {
-  const productsPath = path.join(__dirname, 'src/assets/data/products.json');
-
-  fs.readFile(productsPath, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error leyendo products.json', err);
-      return res.status(500).json({ error: 'Error interno del servidor' });
+// API para productos
+// Obtener todos los productos
+app.get("/api/products", (req, res) => {
+  // Leer el archivo de productos (catálogo)
+  fs.readFile(
+    path.join(__dirname, "src/assets/data/products.json"),
+    "utf8",
+    (err, data) => {
+      // Si ocurre un error al leer el archivo, devolver error 500
+      if (err) {
+        console.error("Error al leer el archivo de productos:", err);
+        return res.status(500).json({ error: "Error interno del servidor" });
+      }
+      try {
+        // Intentar parsear el JSON de productos
+        const products = JSON.parse(data);
+        // Devolver el catálogo de productos como respuesta JSON
+        res.json(products);
+      } catch (parseError) {
+        // Si el JSON está corrupto, devolver error
+        console.error("Error al parsear el JSON de productos:", parseError);
+        res
+          .status(500)
+          .json({ error: "Error al procesar los datos de productos" });
+      }
     }
-
-    const products = JSON.parse(data); // Convertimos el contenido del archivo a JSON
-    res.json(products); // Enviamos los productos como respuesta
-  });
+  );
 });
 
-// -----------------------------
-//        REGISTRO DE USUARIOS
-// -----------------------------
+// API para login y registro (usuarios en archivo JSON)
+// Registrar un nuevo usuario
+app.post("/api/register", (req, res) => {
+  // Extraer los datos del body de la petición
+  const { username, password, email } = req.body;
 
-// POST /api/register - Registra un nuevo usuario si no existe previamente
-app.post('/api/register', (req, res) => {
-  const { username, email, password } = req.body;
-
-  // Validamos que todos los campos obligatorios estén presentes
-  if (!username || !email || !password) {
-    return res.status(400).json({ error: 'Faltan datos obligatorios' });
+  // Validar que todos los campos obligatorios estén presentes
+  if (!username || !password || !email) {
+    return res.status(400).json({
+      error: "Los campos username, password y email son obligatorios.",
+    });
   }
 
-  const usersPath = path.join(__dirname, './backend/data/users.json');
+  // Validar formato de email simple
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res
+      .status(400)
+      .json({ error: "El Email no tiene un formato válido." });
+  }
 
-  fs.readFile(usersPath, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error leyendo users.json', err);
-      return res.status(500).json({ error: 'Error interno del servidor' });
+  // Ruta al archivo donde se almacenan los usuarios
+  const usersPath = path.join(__dirname, "backend/data/users.json");
+
+  // Leer el archivo de usuarios
+  fs.readFile(usersPath, "utf8", (err, data) => {
+    // Si ocurre un error distinto a que el archivo no exista, devolver error
+    if (err && err.code !== "ENOENT") {
+      console.error("Error al leer el archivo de usuarios:", err);
+      return res.status(500).json({ error: "Error interno del servidor" });
     }
 
     let users = [];
-    try {
-      users = JSON.parse(data);
-    } catch {
-      users = [];
+    if (data) {
+      try {
+        // Intentar parsear el JSON de usuarios
+        users = JSON.parse(data);
+      } catch (parseError) {
+        // Si el JSON está corrupto, devolver error
+        return res
+          .status(500)
+          .json({ error: "Error al procesar los datos de usuarios" });
+      }
     }
 
-    const exists = users.find(u => u.username === username || u.email === email);
-
+    // Comprobar si el username o email ya existen en la base de datos
+    const exists = users.some(
+      (u) => u.username === username || u.email === email
+    );
     if (exists) {
-      return res.status(409).json({ error: 'Usuario o email ya existe' });
+      return res.status(409).json({ error: "El usuario o email ya existen." });
     }
 
-    // Generamos un id nuevo (auto-incremental)
-    const newId = users.length > 0 ? users[users.length - 1].id + 1 : 1;
-
-    const newUser = { id: newId, username, email, password };
-
-    users.push(newUser); // Agregamos el nuevo usuario
-
-    fs.writeFile(usersPath, JSON.stringify(users, null, 2), err => {
+    // Añadir el nuevo usuario al array
+    users.push({ username, password, email });
+    // Guardar el array actualizado en el archivo
+    fs.writeFile(usersPath, JSON.stringify(users, null, 2), (err) => {
       if (err) {
-        console.error('Error escribiendo users.json', err);
-        return res.status(500).json({ error: 'Error interno del servidor' });
+        return res
+          .status(500)
+          .json({ error: "No se pudo guardar el usuario." });
       }
-
-      res.status(201).json({ message: 'Usuario registrado con éxito' });
+      // Responder con éxito
+      res.status(201).json({ message: "Usuario registrado correctamente." });
     });
   });
 });
 
-// -----------------------------
-//          LOGIN DE USUARIOS
-// -----------------------------
+// Login
+app.post("/api/login", (req, res) => {
+  // Extraer los datos del body de la petición
+  const { email, password } = req.body;
 
-// POST /api/login - Verifica credenciales del usuario
-app.post('/api/login', (req, res) => {
-  const { username, password } = req.body;
-
-  if (!username || !password) {
-    return res.status(400).json({ error: 'Faltan datos obligatorios' });
+  // Validar que los campos obligatorios estén presentes
+  if (!email || !password) {
+    return res.status(400).json({
+      error: "Los campos email y password son obligatorios.",
+    });
   }
 
-  const usersPath = path.join(__dirname, './backend/data/users.json');
+  // Validar formato de email simple
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res
+      .status(400)
+      .json({ error: "El Email no tiene un formato válido." });
+  }
 
-  fs.readFile(usersPath, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error leyendo users.json', err);
-      return res.status(500).json({ error: 'Error interno del servidor' });
+  // Ruta al archivo donde se almacenan los usuarios
+  const usersPath = path.join(__dirname, "backend/data/users.json");
+
+  // Leer el archivo de usuarios
+  fs.readFile(usersPath, "utf8", (err, data) => {
+    // Si ocurre un error distinto a que el archivo no exista, devolver error
+    if (err && err.code !== "ENOENT") {
+      console.error("Error al leer el archivo de usuarios:", err);
+      return res.status(500).json({ error: "Error interno del servidor" });
+    }
+
+    if (!data) {
+      return res.status(404).json({ error: "No hay usuarios registrados." });
     }
 
     let users = [];
     try {
+      // Intentar parsear el JSON de usuarios
       users = JSON.parse(data);
-    } catch {
-      users = [];
+    } catch (parseError) {
+      // Si el JSON está corrupto, devolver error
+      return res
+        .status(500)
+        .json({ error: "Error al procesar los datos de usuarios" });
     }
 
-    const user = users.find(u => u.username === username && u.password === password);
-
+    // Buscar el usuario por email y contraseña
+    const user = users.find(
+      (u) => u.email === email && u.password === password
+    );
     if (!user) {
-      return res.status(401).json({ error: 'Credenciales inválidas' });
+      return res.status(401).json({ error: "Credenciales inválidas." });
     }
-
-    // Enviamos info sin password
-    res.json({ 
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      message: 'Login correcto'
+    // Si las credenciales son correctas, devolver el usuario
+    res.status(200).json({
+      message: "Login exitoso.",
+      user: { username: user.username, email: user.email },
     });
   });
 });
 
-// -----------------------------
-//         GESTIÓN DEL CARRITO
-// -----------------------------
+// --- ENDPOINTS PARA EL CARRITO ---
 
-// GET /api/cart/:user - Devuelve el carrito del usuario (o del guest si no se indica)
-app.get('/api/cart/:user', (req, res) => {
-  const user = req.params.user || 'guest'; // Obtenemos el usuario desde la ruta
-  const cartsPath = path.join(__dirname, 'backend/data/carts.json');
+// Obtener carrito del usuario
+app.get("/api/cart", (req, res) => {
+  const user = req.query.user || "guest"; // Por defecto, usuario invitado
 
-  fs.readFile(cartsPath, 'utf8', (err, data) => {
+  // Ruta al archivo donde se almacenan los carritos
+  const cartsPath = path.join(__dirname, "backend/data/carts.json");
+  // Leer el archivo de carritos
+  fs.readFile(cartsPath, "utf8", (err, data) => {
+    // Si ocurre un error al leer el archivo, devuelve error 500
     if (err) {
-      console.error('Error leyendo carts.json', err);
-      return res.status(500).json({ error: 'Error interno del servidor' });
+      console.error("Error al leer el archivo de carritos:", err);
+      return res.status(500).json({ error: "Error interno del servidor" });
     }
 
-    const carts = JSON.parse(data);
-    res.json({ cart: carts[user] || [] }); // Enviamos el carrito en una propiedad 'cart'
+    let carts = {};
+    if (data) {
+      try {
+        // Intentar parsear el JSON de carritos
+        carts = JSON.parse(data);
+      } catch (parseError) {
+        // Si el JSON está corrupto, devolver error
+        return res
+          .status(500)
+          .json({ error: "Error al procesar los datos del carrito" });
+      }
+    }
+
+    // Obtener el carrito del usuario (o array vacío si no existe)
+    const cart = carts[user] || [];
+    // Devolver el carrito del usuario
+    res.status(200).json(cart);
   });
 });
 
-// POST /api/cart - Guarda el carrito de un usuario
-app.post('/api/cart', (req, res) => {
-  const { user, cart } = req.body;
-
-  if (!user || !cart) {
-    return res.status(400).json({ error: 'Faltan datos obligatorios' });
+// Guardar carrito del usuario
+app.post("/api/cart", (req, res) => {
+  const user = req.body.user || "guest"; // Por defecto, usuario invitado
+  const items = req.body.items || []; // Items del carrito
+  // Validar que los items sean un array
+  if (!Array.isArray(items)) {
+    return res.status(400).json({ error: "Los items deben ser un array." });
   }
 
-  const cartsPath = path.join(__dirname, 'backend/data/carts.json');
-
-  fs.readFile(cartsPath, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error leyendo carts.json', err);
-      return res.status(500).json({ error: 'Error interno del servidor' });
+  // Ruta al archivo donde se almacenan los carritos
+  const cartsPath = path.join(__dirname, "backend/data/carts.json");
+  // Leer el archivo de carritos
+  fs.readFile(cartsPath, "utf8", (err, data) => {
+    if (err && err.code !== "ENOENT") {
+      console.error("Error al leer el archivo de carritos:", err);
+      return res.status(500).json({ error: "Error interno del servidor" });
     }
 
-    const carts = JSON.parse(data);
-    carts[user] = cart; // Guardamos o actualizamos el carrito del usuario
-
-    fs.writeFile(cartsPath, JSON.stringify(carts, null, 2), err => {
-      if (err) {
-        console.error('Error escribiendo carts.json', err);
-        return res.status(500).json({ error: 'Error interno del servidor' });
+    let carts = {};
+    if (data) {
+      try {
+        // Intentar parsear el JSON de carritos
+        carts = JSON.parse(data);
+      } catch (parseError) {
+        // Si el JSON está corrupto, devolver error
+        return res
+          .status(500)
+          .json({ error: "Error al procesar los datos del carrito" });
       }
+    }
 
-      res.json({ message: 'Carrito guardado con éxito' });
+    // Actualizar el carrito del usuario
+    carts[user] = items;
+    // Guardar el carrito actualizado en el archivo
+    fs.writeFile(cartsPath, JSON.stringify(carts, null, 2), (err) => {
+      if (err) {
+        console.error("Error al guardar el carrito:", err);
+        return res
+          .status(500)
+          .json({ error: "No se pudo guardar el carrito." });
+      }
+      // Responder con éxito
+      res.status(200).json({ message: "Carrito guardado correctamente." });
     });
   });
 });
 
-// -----------------------------
-//    SERVIR LA PÁGINA PRINCIPAL
-// -----------------------------
-
-// GET / - Devuelve el archivo index.html al acceder a la raíz del sitio
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'src/pages/index.html'));
+// Redirigir la raíz al index.html de pages
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "src/pages/index.html"));
 });
-
-// -----------------------------
-//           PUERTO DEL SERVIDOR
-// -----------------------------
 
 module.exports = app; // Exportar la app para pruebas
 // Esto permite que se pueda importar en tests u otros módulos si es necesario
