@@ -190,8 +190,13 @@ app.get('/', (req, res) => {
 //           PUERTO DEL SERVIDOR
 // -----------------------------
 
-// Puerto por defecto: 3000 (o el que defina la variable de entorno)
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+module.exports = app; // Exportar la app para pruebas
+// Esto permite que se pueda importar en tests u otros módulos si es necesario
+
+// Para ejecutar el servidor directamente desde este archivo
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  });
+}
