@@ -140,13 +140,22 @@ a:hover .icono-nav {
 .icono-carrusel {
     width: 50px;
     height: auto;
+    transition: transform 0.3s ease;
 }
 .icono-carrusel:hover {
     transform: scale(1.2);
 }
+
+.carousel-control-prev span,
+.carousel-control-next span {
+    display: block;
+    font-size: 14px;
+    pointer-events: none;
+}
 /*Puesto que usamos la misma imagen, debemlos invertir uno de los iconos del carrusel. Le aplicamos también efecto al pasar el ratón por encima */
 .mirror{
     transform: scaleX(-1);
+    transition: transform 0.3s ease;
 }
 .icono-carrusel:hover.mirror {
     transform: scaleX(-1) scale(1.2);
@@ -157,12 +166,30 @@ a:hover .icono-nav {
     width: auto;
     top: 50%;
     transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;                     
+    color: black;               
+    text-decoration: none;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+
 }
 .carousel-control-prev {
     left: 15%;
 }
 .carousel-control-next {
     right: 15%;
+}
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    text-decoration: none;
+    color: black;
+    transform: translateY(-50%);
 }
 /*Cambios para visualizar los controles del carrusel de opiniones y colocarlos en los bordes*/
 .carousel-control-prev-icon,
@@ -188,6 +215,19 @@ a:hover .icono-nav {
 #carouselOpiniones .carousel-control-next:hover {
     transform: translateY(-50%) scale(1.2);
 }
+/*Igualamos el focus de los controles e indicadores del carrusel */
+.carousel-control-prev:focus,
+.carousel-control-next:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); 
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: inherit;
+}
+.carousel-indicators [data-bs-target]:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Estilo Bootstrap */
+}
 /* Estilo para los indicadores del carrusel */
 .carousel-indicators [data-bs-target] {
     width: 15px;
@@ -204,6 +244,22 @@ a:hover .icono-nav {
     background-color: #eee;
     opacity: 1;
     transform: scale(1.3);
+}
+/*Estilo para las tarjetas, para mantener el contenido alineado entre ellas */
+.tarjeta-opinion {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.texto {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+.usuario {
+    flex-shrink: 0;
 }
 
 
