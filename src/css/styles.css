@@ -191,13 +191,14 @@ a:hover .icono-nav {
     color: black;
     transform: translateY(-50%);
 }
+
 /*Cambios para visualizar los controles del carrusel de opiniones y colocarlos en los bordes*/
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: invert(1);
 }
 #carouselOpiniones .carousel-control-prev {
-    left: 0;
+    left: 15px;
     transform: translateY(-50%);
     width: auto;
 }
@@ -207,7 +208,7 @@ a:hover .icono-nav {
 }
 
 #carouselOpiniones .carousel-control-next {
-    right: 0;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
     width: auto;
@@ -216,15 +217,15 @@ a:hover .icono-nav {
     transform: translateY(-50%) scale(1.2);
 }
 /*Igualamos el focus de los controles e indicadores del carrusel */
-.carousel-control-prev:focus,
-.carousel-control-next:focus {
+.carousel-control-prev:focus-visible,
+.carousel-control-next:focus-visible {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); 
     border-radius: 0.5rem;
     background-color: transparent;
     color: inherit;
 }
-.carousel-indicators [data-bs-target]:focus {
+.carousel-indicators [data-bs-target]:focus-visible {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Estilo Bootstrap */
 }
