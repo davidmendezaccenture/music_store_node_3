@@ -1,0 +1,164 @@
+[
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/1.jpg",
+    "nombre": "Carlos Pérez",
+    "profesion": "Diseñador gráfico",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Excelente servicio, muy recomendable."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/2.jpg",
+    "nombre": "Laura Martínez",
+    "profesion": "Marketing Manager",
+    "estrellas": "⭐⭐⭐⭐☆",
+    "opinion": "Muy buen producto, aunque el envío tardó un poco."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/3.jpg",
+    "nombre": "Javier Gómez",
+    "profesion": "Programador",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Perfecto, cumplió todas mis expectativas."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/4.jpg",
+    "nombre": "Marta Sánchez",
+    "profesion": "Abogada",
+    "estrellas": "⭐⭐⭐☆☆",
+    "opinion": "El producto es bueno, pero el soporte podría mejorar."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/5.jpg",
+    "nombre": "David López",
+    "profesion": "Arquitecto",
+    "estrellas": "⭐⭐⭐⭐☆",
+    "opinion": "Muy satisfecho con la calidad."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/6.jpg",
+    "nombre": "Ana Torres",
+    "profesion": "Periodista",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Un servicio impecable, volveré a comprar seguro."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/7.jpg",
+    "nombre": "Luis Fernández",
+    "profesion": "Chef",
+    "estrellas": "⭐⭐⭐⭐☆",
+    "opinion": "Buen producto, cumple con lo prometido."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/8.jpg",
+    "nombre": "Isabel Ruiz",
+    "profesion": "Estilista",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Me encantó, súper recomendable."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/9.jpg",
+    "nombre": "Miguel Díaz",
+    "profesion": "Profesor",
+    "estrellas": "⭐⭐⭐⭐☆",
+    "opinion": "Muy buen producto, aunque algo caro."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/10.jpg",
+    "nombre": "Sofía Castillo",
+    "profesion": "Ingeniera",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Excelente, superó mis expectativas."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/11.jpg",
+    "nombre": "Antonio Morales",
+    "profesion": "Contador",
+    "estrellas": "⭐⭐⭐☆☆",
+    "opinion": "Está bien, pero la entrega fue lenta."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/12.jpg",
+    "nombre": "Elena Navarro",
+    "profesion": "Médica",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Muy contenta con la compra."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/13.jpg",
+    "nombre": "Jorge Herrera",
+    "profesion": "Ingeniero Civil",
+    "estrellas": "⭐⭐⭐⭐☆",
+    "opinion": "Producto bueno y atención rápida."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/14.jpg",
+    "nombre": "Patricia Vargas",
+    "profesion": "Diseñadora de moda",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Me encanta, lo recomiendo a todos."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/15.jpg",
+    "nombre": "Fernando Ruiz",
+    "profesion": "Fotógrafo",
+    "estrellas": "⭐⭐⭐⭐☆",
+    "opinion": "Buen producto, cumple su función."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/16.jpg",
+    "nombre": "Natalia Soto",
+    "profesion": "Psicóloga",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Excelente calidad y atención."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/17.jpg",
+    "nombre": "Ricardo Blanco",
+    "profesion": "Músico",
+    "estrellas": "⭐⭐⭐⭐☆",
+    "opinion": "Muy buen producto, estoy satisfecho."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/18.jpg",
+    "nombre": "Verónica Gil",
+    "profesion": "Chef",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Me encanta, volveré a comprar."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/men/19.jpg",
+    "nombre": "Javier Morales",
+    "profesion": "Abogado",
+    "estrellas": "⭐⭐⭐☆☆",
+    "opinion": "Está bien, pero esperaba más."
+    },
+    {
+    "urlImagen": "https://randomuser.me/api/portraits/women/20.jpg",
+    "nombre": "Carmen Flores",
+    "profesion": "Estudiante",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Excelente servicio y calidad."
+    },
+    {
+    "urlImagen": "https://hips.hearstapps.com/hmg-prod/images/gettyimages-1026620082.jpg?resize=1200:*",
+    "nombre": "Eric Clapton",
+    "profesion": "Leyenda",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Todo fue perfecto. Me gustó tanto que estoy pensando en jubilar a brownie y a blackie."
+    },
+    {
+    "urlImagen": "https://lastfm.freetls.fastly.net/i/u/ar0/52bd3bdd54a09ecd1617146d6e401b02.jpg",
+    "nombre": "Jimi Hendrix",
+    "profesion": "Guitarrista",
+    "estrellas": "⭐⭐⭐⭐☆",
+    "opinion": "Compré una Stratocaster y llegó con un golpe. Sin embargo, contacté con la tienda y me lo solucionaron rápidamente. Bastante satisfecho."
+    },
+    {
+    "urlImagen": "https://cdn.pixabay.com/photo/2023/04/15/13/05/alien-7927623_640.jpg",
+    "nombre": "Zarnok Virellain",
+    "profesion": "Invasor",
+    "estrellas": "⭐⭐⭐⭐⭐",
+    "opinion": "Los precios de esta tienda son de otro planeta!!"
+    }
+    
+]

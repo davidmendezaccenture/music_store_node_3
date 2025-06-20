@@ -6,81 +6,185 @@
     <title>RaiRock Music Store</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <!-- Cabecera de la página -->
+    <!-- Encabezado -->
     <header class="bg-white shadow-sm sticky-top">
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <!-- Logo + Nombre -->
-      <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="30" class="me-2">
-        <span class="fw-bold">RaiRock</span>
-      </a>
-
-      <!-- Menú Hamburguesa (mobile) -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Menú Principal -->
-      <div class="collapse navbar-collapse" id="navbarMain">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              <i class="bi bi-house-door me-1"></i> Inicio
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#services">
-              <i class="bi bi-gear me-1"></i> Servicios
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">
-              <i class="bi bi-people me-1"></i> Sobre Nosotros
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">
-              <i class="bi bi-envelope me-1"></i> Contacto
-            </a>
-          </li>
-        </ul>
-
-        <!-- Carrito + Login -->
-        <div class="d-flex">
-          <a href="cart.html" class="btn btn-outline-dark position-relative me-2">
-            <i class="bi bi-cart3"></i>
-            <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
-          </a>
-          <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
-            <i class="bi bi-person-fill me-1"></i> Login
-          </button>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+              <!-- Logo + Nombre -->
+              <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="30" class="me-2">
+                <span class="fw-bold">RaiRock</span>
+              </a>
+        
+              <!-- Menú Hamburguesa (mobile) -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+        
+              <!-- Menú Principal -->
+              <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                      <i class="bi bi-house-door me-1"></i> Inicio
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#services">
+                      <i class="bi bi-gear me-1"></i> Servicios
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#about">
+                      <i class="bi bi-people me-1"></i> Sobre Nosotros
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#contact">
+                      <i class="bi bi-envelope me-1"></i> Contacto
+                    </a>
+                  </li>
+                </ul>
+        
+                <!-- Carrito + Login -->
+                <div class="d-flex">
+                  <a href="cart.html" class="btn btn-outline-dark position-relative me-2">
+                    <i class="bi bi-cart3"></i>
+                    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
+                  </a>
+                  <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="bi bi-person-fill me-1"></i> Login
+                  </button>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
 
     <!-- Contenido principal de la página -->
-    <main>
+    <main role="main">
         <!-- Encabezado -->
+        <h2 class="text-center mt-4 pb-3">Productos Disponibles</h2>
         <!-- Barra de navegación secundaria -->
+        <!-- Barra responsive. Creamos el menú hamburguesa productos, solo visible para dispositivos pequeños-->
+        <nav class="navbar navbar-expand-sm bg-light py-2 mb-4" role="navigation" aria-label="Menú de categorías de productos">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold d-block d-sm-none" href="#">Productos</a>
+                    <!-- Botón hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!--Barra de navegación-->
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav flex-wrap">
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="/pages/guitar.html">
+                                <img src="/assets/images/guitar-svgrepo-com.svg" alt="Icono guitarra" class="icono-nav">Guit/Bajos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="#">
+                                <img src="/assets/images/drum-set-svgrepo-com.svg" alt="Icono bateria" class="icono-nav">Baterías
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="#">
+                                <img src="/assets/images/piano-svgrepo-com.svg" alt="Icono teclado" class="icono-nav">Teclados
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="#">
+                                <img src="/assets/images/mixing-pad-svgrepo-com.svg" alt="Icono mezclador" class="icono-nav">Estudio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="guitar.html">
+                                <img src="/assets/images/laptop-player-svgrepo-com.svg" alt="Icono ordenador portátil" class="icono-nav">Software
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="#">
+                                <img src="/assets/images/speakers-speaker-svgrepo-com.svg" alt="Icono Sistema de sonido" class="icono-nav">Pa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="#">
+                                <img src="/assets/images/lights-svgrepo-com.svg" alt="Icono foco de luz" class="icono-nav">Luces
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="#">
+                                <img src="/assets/images/dj-dj-svgrepo-com.svg" alt="Icono mano DJ" class="icono-nav">Dj
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="#">
+                                <img src="/assets/images/video-camera-svgrepo-com.svg" alt="Icono cámara de video" class="icono-nav">Video
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold text-dark" href="#">
+                                <img src="/assets/images/microphone-part-2-svgrepo-com.svg" alt="Icono micrófono" class="icono-nav">Micros
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <!-- Sección de productos -->   
             <!-- Carrusel de imágenes -->
+        <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" aria-label="Galería de productos destacados">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <!--La descripción de los productos destacados no puede ser precisa si en el futuro queremos que estos productos se seleccionen al azar-->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/assets/images/imagen1.png" class="d-block mx-auto w-50 w-md-75 w-lg-50" alt="Producto destacado 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="/assets/images/imagen2.png" class="d-block mx-auto w-50 w-md-75 w-lg-50" alt="Producto destacado 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="/assets/images/imagen3.png" class="d-block mx-auto w-50 w-md-75 w-lg-50" alt="Producto destacado 3">
+                </div>
+            </div>
             <!-- Controles del carrusel -->
-            <!-- Aquí se mostrarán los productos -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="prev" aria-label="Imagen anterior">
+                <img src="/assets/images/guitar-instrument-electric-flying-v-svgrepo-com.svg" class="icono-carrusel mirror" alt="Icono producto anterior">
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="next" aria-label="Imagen siguiente">
+                <img src="/assets/images/guitar-instrument-electric-flying-v-svgrepo-com.svg" class="icono-carrusel" alt="Icono producto siguiente">
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- Aquí se mostrarán los productos -->
+        <!-- Creo contenedor vacío para mostrar productos-->
+        <div id="products-list"></div>
         
         <!-- opinion clientes -->
-        <!-- Opiniones de nuestros clientes -->
-            <!-- Opinión 1 -->
-                <!-- Estrellas de puntuación -->
-            <!-- Opinión 2 -->
-                <!-- Estrellas de puntuación -->
-            <!-- Opinión 3 -->
-                <!-- Estrellas de puntuación -->
+        <!-- Creo un carrusel para opiniones de clientes. Están agrupadas de 3 en 3, y cada grupo de 3 está metido en una slide del carrusel-->
+        <h2 class="text-center mt-4">Opiniones de nuestros clientes</h2>
+        <div id="carouselOpiniones" class="carousel slide" aria-label="Opiniones de clientes">
+            <div class="carousel-inner"></div>
+            <!--Contenedor vacío para opiniones. Se cargarán desde el script-->
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselOpiniones" data-bs-slide="prev" aria-label="Opinión anterior">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselOpiniones" data-bs-slide="next" aria-label="Opinión siguiente">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </main>
 
     <!-- Pre-footer -->
@@ -130,55 +234,114 @@
             </div>
         </div>
     </section>
-
+                
     <!-- Footer -->
     <footer class="bg-dark text-white py-3">
         <div class="container text-center">
             <p class="mb-0">&copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.</p>
         </div>
     </footer>
-    
-    <script>
-        // Añadir el año actual automáticamente
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
+
     <!-- Modal de inicio de sesión -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="loginForm">
-                        <div class="mb-3">
-                            <label for="loginEmail" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="loginEmail" required 
-                                   aria-describedby="emailHelp" placeholder="tucorreo@ejemplo.com">
-                        </div>
-                        <div class="mb-3">
-                            <label for="loginPassword" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="loginPassword" required 
-                                   placeholder="Introduce tu contraseña">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Recordar sesión</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-                    </form>
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <p class="mb-0">¿No tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" 
-                       data-bs-dismiss="modal">Regístrate aquí</a></p>
-                </div>
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="loginEmail" required 
+                               aria-describedby="emailHelp" placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="loginPassword" required 
+                               placeholder="Introduce tu contraseña">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Recordar sesión</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <p class="mb-0">¿No tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" 
+                   data-bs-dismiss="modal">Regístrate aquí</a></p>
             </div>
         </div>
     </div>
+</div>
+
+<script>
+    // Añadir el año actual automáticamente
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+    <!--Script jQuery para cargar clientes. Con cada recarga se seleccionan 9 opiniones aleatorias que distribuimos en la estructura del carrusel. Después Lo añadimos al DOM-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/assets/data/clients.json", function (data) {
+                const opinionesAleatorias = data.sort(() => 0.5 - Math.random()).slice(0, 9);
+                const $contenedor = $('#carouselOpiniones .carousel-inner');
+                for (let i = 0; i < 3; i++) {
+                    const slide = $('<div>').addClass('carousel-item');
+                    if (i === 0) slide.addClass('active');
+                    const seccion = $('<section>').addClass('opiniones');
+                    const container = $('<div>').addClass('container');
+                    const fila = $('<div>').addClass('row');
+                    for (let j = 0; j < 3; j++) {
+                        const index = i * 3 + j;
+                        const opinion = opinionesAleatorias[index];
+                        const col = $('<div>').addClass('col-12 col-md-6 col-lg-4');
+                        const tarjeta = $('<div>').addClass('tarjeta-opinion p-3 h-100');
+                        const texto = $('<p>').addClass('texto').text(`"${opinion.opinion}"`);
+                        const usuario = $('<div>').addClass('usuario d-flex align-items-center');
+                        const img = $('<img>').attr('src', opinion.urlImagen)
+                            .attr('alt', 'Foto de usuario')
+                            .addClass('foto-usuario me-3');
+                        const infoUsuario = $('<div>').addClass('info-usuario');
+                        const nombre = $('<p>').addClass('nombre mb-0').text(opinion.nombre);
+                        const profesion = $('<p>').addClass('profesion mb-1').text(opinion.profesion);
+                        const estrellas = $('<div>').addClass('estrellas').text(opinion.estrellas);
+
+                        infoUsuario.append(nombre, profesion, estrellas);
+                        usuario.append(img, infoUsuario);
+                        tarjeta.append(texto, usuario);
+                        col.append(tarjeta);
+                        fila.append(col);
+                    }
+                    container.append(fila);
+                    seccion.append(container);
+                    slide.append(seccion);
+                    $contenedor.append(slide);
+                }
+            });
+        });
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/auth.js"></script>
+    <script src="../js/cart.js"></script>
     <script src="../js/app.js"></script>
+    
+    <script>
+        document.getElementById('categoria').addEventListener('change', function () {
+            const categoria = this.value;
+            document.querySelectorAll('[data-category]').forEach(card => {
+                if (categoria === 'Todas' || card.getAttribute('data-category') === categoria) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
