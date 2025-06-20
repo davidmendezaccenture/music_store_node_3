@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'src/pages')));
+app.use(express.static(path.join(__dirname, 'src')));
 
 // API para productos
 
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // Puerto
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
