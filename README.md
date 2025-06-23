@@ -1,4 +1,4 @@
-# Musical Instrument Store Node
+# Musical Instrument Store
 
 ## Descripción
 Este proyecto es una tienda en línea de instrumentos musicales que permite a los usuarios navegar por una variedad de productos, agregar artículos a una cesta de la compra y gestionar su cuenta a través de un sistema de inicio de sesión.
