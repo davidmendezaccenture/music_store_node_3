@@ -7,6 +7,7 @@ let productosDisponibles = []; // Aquí guardaremos todos los productos del cat�
 
 // Al cargar la página, primero cargamos los productos y luego el carrito
 $(document).ready(function () {
+
   const usuario = localStorage.getItem('usuario') || 'guest'; // Obtenemos el usuario (o guest por defecto)
 
   // Paso 1: Cargar productos disponibles
@@ -20,6 +21,8 @@ $(document).ready(function () {
       success: function (respuesta) {
         if (respuesta && respuesta.cart) {
           carrito = respuesta.cart;     // Guardamos el carrito recuperado en la variable local
+          let cantidadProductos = calcularTotalItems(carrito); //Cargamos el total de productos
+          $('#cartCounter').text(cantidadProductos);
           mostrarCarrito();             // Mostramos el carrito en pantalla
         }
       },
@@ -28,11 +31,17 @@ $(document).ready(function () {
       }
     });
   });
+
 });
 
 // Evento: al hacer clic en cualquier botón con clase .agregar-carrito
 // (usamos .on() porque los productos se cargan dinámicamente)
 $(document).on('click', '.agregar-carrito', function () {
+  //Sumamos 1 al contador
+  let cantidadProductos = parseInt($('#cartCounter').text());
+  cantidadProductos+=1;
+  $('#cartCounter').text(cantidadProductos);
+
   const id = $(this).data('id');  // Obtenemos el ID del producto desde el atributo data-id
 
   // Buscamos si el producto ya está en el carrito
@@ -65,22 +74,38 @@ function mostrarCarrito() {
       const subtotal = offerPrice * cantidad;
       totalCarrito += subtotal;
 
-      const itemHTML = `
-        <li class="item-carrito d-flex align-items-center gap-3 mb-3" data-id="${item.id}">
-          <img src="${productoInfo.image}" alt="${name}" style="width: 60px; height: auto;">
-          <div>
-            <strong>${name}</strong><br>
-            Precio unitario: $${offerPrice.toFixed(2)}<br>
-            Cantidad: ${cantidad}<br>
-            Subtotal: $${subtotal.toFixed(2)}
-          </div>
-          <div class="ms-auto">
-            <button class="btn btn-success btn-sm btn-sumar">+</button>
-            <button class="btn btn-warning btn-sm btn-restar">−</button>
-            <button class="btn btn-danger btn-sm btn-eliminar">Eliminar</button>
-          </div>
-        </li>
-      `;
+const itemHTML = `
+  <li class="item-carrito list-group-item border rounded-3 shadow-sm p-3 mb-3 w-100 d-flex align-items-center gap-5" data-id="${item.id}">
+    
+    <!-- Imagen -->
+    <div class="d-flex align-items-center justify-content-center mx-5" style="width: 80px;">
+      <img src="${productoInfo.image}" alt="${name}" style="max-width: 100%; height: auto;">
+    </div>
+    
+    <!-- Info y controles -->
+    <div class="flex-grow-1">
+      <strong>${name}</strong><br>
+      <small class="text-muted">Precio: $${offerPrice.toFixed(2)}</small>
+
+      <div class="d-flex align-items-center mt-2">
+        <button class="btn btn-outline-secondary btn-sm btn-restar me-2">−</button>
+        <span>${cantidad}</span>
+        <button class="btn btn-outline-secondary btn-sm btn-sumar ms-2">+</button>
+      </div>
+
+      <div class="mt-2">
+        <button class="btn btn-danger btn-sm btn-eliminar">Eliminar</button>
+      </div>
+    </div>
+
+    <!-- Subtotal -->
+    <div class="text-end" style="min-width: 120px;">
+      <strong>Subtotal: </strong>
+      <span>$${subtotal.toFixed(2)}</span>
+    </div>
+
+  </li>
+`;
 
       $contenedor.append(itemHTML);
     } else {
@@ -89,10 +114,7 @@ function mostrarCarrito() {
   });
 
   // Mostrar el total general del carrito
-  const totalHTML = `
-    <li class="mt-3"><strong>Total del carrito: $${totalCarrito.toFixed(2)}</strong></li>
-  `;
-  $contenedor.append(totalHTML);
+  $('#total-carrito').text(totalCarrito.toFixed(2));
 }
 
 
@@ -151,5 +173,11 @@ function guardarCarrito() {
       alert('Error al guardar el carrito'); // Error si la llamada falla
     }
   });
+}
+
+//Función para contar el total de productos en el carrito y mantenerlo entre vistas
+function calcularTotalItems(carrito) {
+  if (!carrito || carrito.length === 0) return 0;
+  return carrito.reduce((total, producto) => total + producto.cantidad, 0);
 }
 

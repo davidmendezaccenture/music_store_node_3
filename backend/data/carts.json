@@ -1,3 +1,16 @@
 {
-  "guest": []
+  "guest": [
+    {
+      "id": 5,
+      "cantidad": 2
+    },
+    {
+      "id": 1,
+      "cantidad": 2
+    },
+    {
+      "id": 9,
+      "cantidad": 1
+    }
+  ]
 }
