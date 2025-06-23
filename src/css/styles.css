@@ -1,102 +1,84 @@
 /*reset css*/
-reset {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+:focus {
+    outline: 2px solid #0d6efd !important;
+    outline-offset: 2px;
+}
+
 h2 {
-    /*Centramos el título*/
     text-align: center;
 }
-/* Estilo para el header con imagen de fondo */
 
+/* Estilos para el header y navbar */
 .navbar {
-  padding: 0.8rem 0;
+    padding: 0.8rem 0;
+    background-color: white !important;
 }
 
 .navbar-brand {
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
+    font-size: 1.2rem;                  
+    transition: all 0.3s ease;
+    margin-right: auto;
 }
 
 .navbar-brand:hover {
-  transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 .nav-link {
-  font-size: 0.95rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  margin: 0 2px;
-  transition: all 0.2s ease;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin: 0 2px;
+    transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .nav-link i {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
 }
 
-@media (max-width: 992px) {
-  .navbar-collapse {
-    padding-top: 1rem;
-  }
-  .nav-link {
-    margin: 2px 0;
-  }
-  .d-flex {
+/* Menú hamburguesa - solo para items de navegación */
+.navbar-collapse {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 1rem;
     margin-top: 1rem;
-    padding-bottom: 0.5rem;
-  }
-}
-/* Overlay para mejorar el contraste */
-
-/* Centrar el contenido del header */
-
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
 }
 
-/* Estilo para el logo de RaiRock */
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
+/* Botones de carrito y login - siempre visibles */
+.navbar .d-flex {
+    display: flex !important;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-left: auto;
 }
 
-.logo-img {
-    height: 40px;
-    width: auto;
-    transition: transform 0.3s ease;
+/* Botón Volver */
+.container.text-end.mt-2 {
+    margin-right: 15px;
 }
 
-.logo-text {
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
+/* Estilos responsive */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+    
+    .nav-link {
+        margin: 2px 0;
+    }
 }
 
-/* Efecto hover para el logo */
-.logo-container:hover .logo-img {
-    transform: rotate(-5deg) scale(1.1);
-}
-
-.logo-container:hover .logo-text {
-    color: #ff6b6b;
-}
-
-/* Media queries para responsividad */
 @media (max-width: 768px) {
     .navbar-container {
         flex-direction: column;
@@ -118,10 +100,12 @@ a {
     transition: transform 0.3s ease;
     background-size: 24px 24px;
 }
+
 a:hover {
     transform: scale(1.2);
 }
-/*Añadimos a los iconos el efecto de pasar de gris a color, tener más brillo y aplicamos un efecto de sombreado*/
+
+/* Iconos de navegación */
 .icono-nav {
     width: 30px;
     height: 30px;
@@ -130,45 +114,54 @@ a:hover {
     filter: grayscale(100%) brightness(0.8);
     transition: transform 0.3s ease, filter 0.3s ease;
 }
+
 a:hover .icono-nav {
     transform: scale(1.1);
     filter: grayscale(0%) brightness(1.2) contrast(120%) saturate(150%) drop-shadow(0 0 2px #000);
 }
 
 /* Estilo para las flechas del carrusel */
-
 .icono-carrusel {
     width: 50px;
     height: auto;
+    transition: transform 0.3s ease;
 }
+
 .icono-carrusel:hover {
     transform: scale(1.2);
 }
-/*Puesto que usamos la misma imagen, debemlos invertir uno de los iconos del carrusel. Le aplicamos también efecto al pasar el ratón por encima */
-.mirror{
+
+/* Icono espejado para el prev */
+.mirror {
     transform: scaleX(-1);
 }
+
 .icono-carrusel:hover.mirror {
     transform: scaleX(-1) scale(1.2);
 }
-/*Cambios en los controles para situarlos más cerca de la imagen*/
+
+/* Controles del carrusel principal */
 .carousel-control-prev,
 .carousel-control-next {
     width: auto;
     top: 50%;
     transform: translateY(-50%);
 }
+
 .carousel-control-prev {
     left: 15%;
 }
+
 .carousel-control-next {
     right: 15%;
 }
-/*Cambios para visualizar los controles del carrusel de opiniones y colocarlos en los bordes*/
+
+/* Controles del carrusel de opiniones */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: invert(1);
 }
+
 #carouselOpiniones .carousel-control-prev {
     left: 0;
     transform: translateY(-50%);
@@ -185,10 +178,12 @@ a:hover .icono-nav {
     transform: translateY(-50%);
     width: auto;
 }
+
 #carouselOpiniones .carousel-control-next:hover {
     transform: translateY(-50%) scale(1.2);
 }
-/* Estilo para los indicadores del carrusel */
+
+/* Indicadores del carrusel */
 .carousel-indicators [data-bs-target] {
     width: 15px;
     height: 15px;
@@ -199,27 +194,25 @@ a:hover .icono-nav {
     transition: background-color 0.3s ease, transform 0.3s ease;
     opacity: 0.8;
 }
-/*El control cativo tendrá un color más claro, sin transparencia y aumentamos un poco el tamaño*/
+
 .carousel-indicators .active {
     background-color: #eee;
     opacity: 1;
     transform: scale(1.3);
 }
 
-
-/* Asegurar que el botón de iniciar sesión esté alineado correctamente */
-
-/* Ajustes para pantallas pequeñas */
-
-/* Estilo para el texto "RaiRock Music Store" */
-
-/* Ajustar el tamaño del carrusel */
-
-/* Hover redes sociales */
-
+/* Pre-footer */
 .pre-footer {
+    background-color: #f8f9fa;
     border-top: 1px solid #dee2e6;
     border-bottom: 1px solid #dee2e6;
+    padding: 3rem 0;
+}
+
+.pre-footer-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .payment-methods img {
@@ -230,30 +223,40 @@ a:hover .icono-nav {
     transform: translateY(-3px);
 }
 
+.payment-methods img:focus {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+    transform: translateY(-3px);
+}
+
 .social-links a {
     color: #6c757d;
     transition: color 0.3s ease;
 }
 
-.social-links a:hover {
+.social-links a:hover,
+.social-links a:focus {
     color: #0d6efd;
 }
 
-/* Estilos para el footer */
+/* Footer */
 footer {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 0;
 }
 
-/* Tarjetas de opiniones de usuarios */
+/* Tarjetas de opiniones */
 .opiniones {
     padding: 2rem;
     background-color: #f9f9f9;
     display: flex;
 }
+
 .opiniones h2 {
     text-align: center;
     margin-bottom: 2rem;
 }
+
 .tarjeta-opinion {
     background-color: white;
     border-radius: 12px;
@@ -263,14 +266,17 @@ footer {
     max-width: 600px;
     margin-inline: auto;
 }
+
 .texto {
     font-style: italic;
     margin-bottom: 1rem;
 }
+
 .usuario {
     display: flex;
     align-items: center;
 }
+
 .foto-usuario {
     width: 60px;
     height: 60px;
@@ -278,16 +284,47 @@ footer {
     object-fit: cover;
     margin-right: 1rem;
 }
+
 .info-usuario {
     display: flex;
     flex-direction: column;
 }
+
 .nombre {
     font-weight: bold;
     margin: 0;
 }
+
 .profesion {
     margin: 0;
     font-size: 0.9rem;
     color: #555;
 }
+
+/* Estilos para los botones y formularios */
+.btn:focus, 
+.nav-link:focus, 
+.form-control:focus, 
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: #86b7fe;
+}
+
+.btn-outline-dark:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-outline-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* Focus states */
+.social-icon:focus {
+    color: #0d6efd !important;
+    outline: none;
+}       
