@@ -4,21 +4,15 @@ reset {
     padding: 0;
     box-sizing: border-box;
 }
-/*Para corregir comportamiento el footer en el carrito*/
-html, body {
-    height: 100%;
-    margin: 0;
+/*Unificar el foco con teclado de los elementos */
+:focus-visible  {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+    border-radius: 0.2rem;
+    background-color: transparent;
+    color: black;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main {
-    flex: 1;
-}
 h2 {
     /*Centramos el título*/
     text-align: center;
@@ -225,6 +219,7 @@ a:hover .icono-nav {
     color: inherit;
     transform: translateY(-50%) scale(1.1);
 }
+
 .carousel-control-prev:focus-visible,
 .carousel-control-next:focus-visible {
     outline: none;
@@ -432,5 +427,67 @@ footer {
 #contenedor-carrito {
     min-height: 215.03px !important;
 }
+/*Estilo para los items del carrito, ampliación de imagen*/
 
+.item-carrito img {
+    border-radius: 3px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.item-carrito img:hover {
+    transform: scale(1.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+/*Enlace para volver al index*/
+.enlace-inicio {
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(125, 95, 255, 0.3);
+    box-shadow: 0 8px 16px rgba(125, 95, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.enlace-inicio:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(13, 110, 253, 0.3); /* sombra azul Bootstrap */
+}
+
+.enlace-inicio img {
+    height: 35px;
+    margin-right: 10px;
+    filter: brightness(1.1);
+}
+
+/* Estilo para botones */
+.botones-carrito .btn {
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.15s ease;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+#seguir-comprando:hover {
+    background-color: #e2e6ea; 
+    color: #343a40; 
+    text-decoration: none; 
+    transform: scale(1.05);
+}
+
+#confirmar-pago:hover {
+    background-color: #004085;
+    border-color: #004085;
+    transform: scale(1.05);
+}
+
+#confirmar-pago .icono {
+    margin-right: 0.4rem;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}

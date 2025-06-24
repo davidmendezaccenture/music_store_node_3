@@ -55,7 +55,7 @@
         
                     <!-- Carrito + Login -->
                     <div class="d-flex">
-                        <a href="cart.html" class="btn btn-outline-dark position-relative me-2">
+                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative me-2">
                             <i class="bi bi-cart3"></i>
                             <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
                         </a>
@@ -143,6 +143,12 @@
                 <div class="carousel-item">
                     <img src="/assets/images/imagen3.png" class="d-block mx-auto w-50 w-md-75 w-lg-50" alt="Producto destacado 3">
                 </div>
+                        <!--Indicadores del carrusel-->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
             </div>
             <!-- Controles del carrusel -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="prev" aria-label="Imagen anterior">
@@ -154,12 +160,7 @@
                 <span>Next</span>
             </button>
         </div>
-        <!--Indicadores del carrusel-->
-                    <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
+
         <!-- Aquí se mostrarán los productos -->
         <!-- Creo contenedor vacío para mostrar productos-->
         <div id="products-list"></div>

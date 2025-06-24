@@ -115,6 +115,7 @@ const itemHTML = `
 
   // Mostrar el total general del carrito
   $('#total-carrito').text(totalCarrito.toFixed(2));
+
   //Mostramos mensaje si el carrito está vacío
   mostrarMensajeCarritoVacio()
 
@@ -142,7 +143,6 @@ $(document).on('click', '.btn-restar', function () {
     if (producto.cantidad <= 0) {
       // Eliminamos si la cantidad es 0, llamando a la función que se dispara al hacer click en el botón eliminar
       $item.find('.btn-eliminar').trigger('click');
-
     } else {
     guardarCarrito();
     mostrarCarrito();
