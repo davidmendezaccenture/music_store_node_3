@@ -75,10 +75,10 @@ function mostrarCarrito() {
       totalCarrito += subtotal;
 
 const itemHTML = `
-  <li class="item-carrito list-group-item border rounded-3 shadow-sm p-3 mb-3 w-100 d-flex align-items-center gap-5" data-id="${item.id}">
+  <li class="item-carrito list-group-item border rounded-3 shadow-sm p-3 mb-3 w-100 d-flex flex-wrap align-items-center gap-5" data-id="${item.id}">
     
     <!-- Imagen -->
-    <div class="d-flex align-items-center justify-content-center mx-5" style="width: 80px;">
+    <div class="d-flex align-items-center justify-content-center flex-shrink-0 mx-5" style="width: 80px;">
       <img src="${productoInfo.image}" alt="${name}" style="max-width: 100%; height: auto;">
     </div>
     
@@ -99,7 +99,7 @@ const itemHTML = `
     </div>
 
     <!-- Subtotal -->
-    <div class="text-end" style="min-width: 120px;">
+    <div class="text-end flex-shrink-0" style="min-width: 120px;">
       <strong>Subtotal: </strong>
       <span>$${subtotal.toFixed(2)}</span>
     </div>
@@ -144,13 +144,77 @@ $(document).on('click', '.btn-restar', function () {
   }
 });
 
-// Evento para eliminar producto directamente
-$(document).on('click', '.btn-eliminar', function () {
-  const id = $(this).closest('li').data('id');
-  carrito = carrito.filter(p => p.id !== id); // Quitamos el producto del array
-  guardarCarrito();
-  mostrarCarrito();
+//Función para borrar elementos del carrito
+$('#contenedor-carrito').on('click', '.btn-eliminar', function () {
+  const $item = $(this).closest('.item-carrito');
+  const id = $item.data('id');
+
+  const posicionesAntes = guardarPosiciones();
+
+  // Quitamos del array
+  carrito = carrito.filter(p => p.id !== id);
+
+  // Eliminamos el elemento con desvanecimiento
+  $item.addClass('removiendo');
+
+  // Aplicamos animación de salida
+$item.addClass('removiendo');
+
+// Esperamos a que termine la animación CSS (400ms)
+setTimeout(() => {
+  // Guardamos las posiciones ANTES de eliminar
+  const posicionesAntes = guardarPosiciones();
+
+  // Eliminamos el elemento del DOM
+  $item.remove();
+
+  // Esperamos 1 frame para que el layout se actualice
+  requestAnimationFrame(() => {
+    const posicionesDespues = guardarPosiciones();
+
+    posicionesDespues.forEach((pos, i) => {
+      const antes = posicionesAntes.find(p => p.el.is(pos.el));
+      if (!antes) return;
+
+      const deltaY = antes.top - pos.top;
+      if (deltaY !== 0) {
+        pos.el.css('transform', `translateY(${deltaY}px)`);
+        pos.el[0].offsetHeight; // forzar reflow
+        pos.el.css({
+          transition: 'transform 0.4s ease',
+          transform: 'translateY(0)'
+        });
+
+        setTimeout(() => {
+          pos.el.css({
+            transition: '',
+            transform: ''
+          });
+        }, 400);
+      }
+    });
+
+    guardarCarrito();
+    actualizarTotal();
+  });
+
+}, 400); // este timeout es solo para esperar la animación de salida
+
 });
+
+
+//Función para actualizar el total del carrito sin tener que recargarlo completo
+function actualizarTotal() {
+  let total = 0;
+  carrito.forEach(item => {
+    const producto = productosDisponibles.find(p => p.id === item.id);
+    if (producto) {
+      total += producto.offerPrice * item.cantidad;
+    }
+  });
+
+  $('#total-carrito').text(`Total: $${total.toFixed(2)}`);
+}
 
 // Función para guardar el carrito en el backend
 function guardarCarrito() {
@@ -180,4 +244,18 @@ function calcularTotalItems(carrito) {
   if (!carrito || carrito.length === 0) return 0;
   return carrito.reduce((total, producto) => total + producto.cantidad, 0);
 }
+
+// Para animación suave, guardado de posiciones
+function guardarPosiciones() {
+  const posiciones = [];
+  $('.item-carrito, #total h4, #total button, .pie-de-pagina ').each(function () {
+    const $el = $(this);
+    posiciones.push({
+      el: $el,
+      top: $el.offset().top
+    });
+  });
+  return posiciones;
+}
+
 
