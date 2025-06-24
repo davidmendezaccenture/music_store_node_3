@@ -115,6 +115,9 @@ const itemHTML = `
 
   // Mostrar el total general del carrito
   $('#total-carrito').text(totalCarrito.toFixed(2));
+  //Mostramos mensaje si el carrito está vacío
+  mostrarMensajeCarritoVacio()
+
 }
 
 
@@ -131,25 +134,30 @@ $(document).on('click', '.btn-sumar', function () {
 
 // Evento para restar cantidad
 $(document).on('click', '.btn-restar', function () {
-  const id = $(this).closest('li').data('id');
+  const $item = $(this).closest('.item-carrito');
+  const id = $item.data('id');
   const producto = carrito.find(p => p.id === id);
   if (producto) {
     producto.cantidad -= 1;
     if (producto.cantidad <= 0) {
-      // Eliminamos si la cantidad es 0
-      carrito = carrito.filter(p => p.id !== id);
-    }
+      // Eliminamos si la cantidad es 0, llamando a la función que se dispara al hacer click en el botón eliminar
+      $item.find('.btn-eliminar').trigger('click');
+
+    } else {
     guardarCarrito();
     mostrarCarrito();
+    }
   }
 });
 
 //Función para borrar elementos del carrito
-$('#contenedor-carrito').on('click', '.btn-eliminar', function () {
+$('#contenedor-carrito').on('click', '.btn-eliminar', function() {
   const $item = $(this).closest('.item-carrito');
   const id = $item.data('id');
 
   const posicionesAntes = guardarPosiciones();
+  //Añadimos la clase que evita que aparezca la barra de navegación horizontal con cada click
+  $('body').addClass('body-no-scroll-x');
 
   // Quitamos del array
   carrito = carrito.filter(p => p.id !== id);
@@ -157,13 +165,8 @@ $('#contenedor-carrito').on('click', '.btn-eliminar', function () {
   // Eliminamos el elemento con desvanecimiento
   $item.addClass('removiendo');
 
-  // Aplicamos animación de salida
-$item.addClass('removiendo');
-
-// Esperamos a que termine la animación CSS (400ms)
-setTimeout(() => {
-  // Guardamos las posiciones ANTES de eliminar
-  const posicionesAntes = guardarPosiciones();
+  // Esperamos a que termine la animación CSS (400ms)
+  setTimeout(() => {
 
   // Eliminamos el elemento del DOM
   $item.remove();
@@ -185,7 +188,8 @@ setTimeout(() => {
           transform: 'translateY(0)'
         });
 
-        setTimeout(() => {
+        setTimeout(() => { 
+          $('body').removeClass('body-no-scroll-x');
           pos.el.css({
             transition: '',
             transform: ''
@@ -193,9 +197,10 @@ setTimeout(() => {
         }, 400);
       }
     });
-
     guardarCarrito();
     actualizarTotal();
+    //Si el carrito está vacío, mostramos mensaje
+    mostrarMensajeCarritoVacio();
   });
 
 }, 400); // este timeout es solo para esperar la animación de salida
@@ -213,7 +218,7 @@ function actualizarTotal() {
     }
   });
 
-  $('#total-carrito').text(`Total: $${total.toFixed(2)}`);
+  $('#total-carrito').text(`$${total.toFixed(2)}`);
 }
 
 // Función para guardar el carrito en el backend
@@ -248,7 +253,7 @@ function calcularTotalItems(carrito) {
 // Para animación suave, guardado de posiciones
 function guardarPosiciones() {
   const posiciones = [];
-  $('.item-carrito, #total h4, #total button, .pie-de-pagina ').each(function () {
+  $('.item-carrito, #total h4, #total button, #seguir-comprando, .pie-de-pagina ').each(function () {
     const $el = $(this);
     posiciones.push({
       el: $el,
@@ -257,5 +262,22 @@ function guardarPosiciones() {
   });
   return posiciones;
 }
+//Para mostrar mensaje si el carrito está vacío. Creo función aparte porque rompía la animación
+function mostrarMensajeCarritoVacio() {
+  if (carrito.length === 0) {
+    $('#contenedor-carrito')
+      .css('min-height', '180px')
+      .append(`
+        <li class="text-center text-muted py-5 w-100" style="list-style-type: none;">
+          <i class="bi bi-cart-x fs-1 d-block mb-3"></i>
+          <p class="mb-0">Tu carrito está vacío.</p>
+        </li>
+      `);
+      $('#confirmar-pago').prop('disabled', true);
+  } else {
+      $('#confirmar-pago').prop('disabled', false);
+  }
+}
+
 
 

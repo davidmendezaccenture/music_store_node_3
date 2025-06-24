@@ -1,23 +1,23 @@
 /*reset css*/
-* {
+reset {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 /*Para corregir comportamiento el footer en el carrito*/
 html, body {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 main {
-  flex: 1;
+    flex: 1;
 }
 h2 {
     /*Centramos el título*/
@@ -413,14 +413,24 @@ a:hover .icono-nav {
 footer {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
-
 /*Efecto borrar items del carrito*/
 .item-carrito.removiendo {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: translateX(150px); /* Solo horizontal */
-  opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(150px); /* Solo horizontal */
+    opacity: 0;
 }
 #total {
-  transition: transform 0.3s ease;
-  will-change: transform;
+    transition: transform 0.3s ease;
+    will-change: transform;
 }
+
+/*Para eliminar defecto del navegador con la animación al eliminar elementos del carrito.*/
+.body-no-scroll-x {
+    overflow-x: hidden;
+}
+/*Altura para el contenedor carrito. Le aplicamos el total de su altura con 1 elemento para que tras borrarlo no se desplacen los botones. Lo designamos como important para sobreescribir los estilos de bootstrap*/
+#contenedor-carrito {
+    min-height: 215.03px !important;
+}
+
+
