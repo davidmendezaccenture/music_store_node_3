@@ -4,5 +4,15 @@
     "username": "Pablo_Hernandez",
     "email": "pachepatat@gmail.com",
     "password": "Pacheco1987"
+  },
+  {
+    "username": "Angelica",
+    "password": "Angelica123",
+    "email": "rosaanli@hotmail.com"
+  },
+  {
+    "username": "prueba",
+    "password": "Prueba123",
+    "email": "prueba@prueba.com"
   }
 ]

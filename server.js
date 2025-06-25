@@ -45,19 +45,32 @@ app.post("/api/register", (req, res) => {
   // Extraer los datos del body de la petición
   const { username, password, email } = req.body;
 
-  // Validar que todos los campos obligatorios estén presentes
+  // Validaciones de campos obligatorios
   if (!username || !password || !email) {
     return res.status(400).json({
       error: "Los campos username, password y email son obligatorios.",
     });
   }
 
-  // Validar formato de email simple
+  // Validar username: 3-20 caracteres, solo letras, números, guiones y guiones bajos
+  if (!/^[a-zA-Z0-9_-]{3,20}$/.test(username)) {
+    return res.status(400).json({
+      error: "El nombre de usuario debe tener entre 3 y 20 caracteres y solo puede contener letras, números, guiones y guiones bajos.",
+    });
+  }
+
+  // Validar formato de email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    return res
-      .status(400)
-      .json({ error: "El Email no tiene un formato válido." });
+    return res.status(400).json({ error: "El Email no tiene un formato válido." });
+  }
+
+  // Validar password: mínimo 8 caracteres, al menos una mayúscula, una minúscula y un número
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+  if (!passwordRegex.test(password)) {
+    return res.status(400).json({
+      error: "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.",
+    });
   }
 
   // Ruta al archivo donde se almacenan los usuarios
@@ -110,21 +123,13 @@ app.post("/api/register", (req, res) => {
 // Login
 app.post("/api/login", (req, res) => {
   // Extraer los datos del body de la petición
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   // Validar que los campos obligatorios estén presentes
-  if (!email || !password) {
+  if (!username || !password) {
     return res.status(400).json({
-      error: "Los campos email y password son obligatorios.",
+      error: "Debes indicar usuario y la contraseña.",
     });
-  }
-
-  // Validar formato de email simple
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return res
-      .status(400)
-      .json({ error: "El Email no tiene un formato válido." });
   }
 
   // Ruta al archivo donde se almacenan los usuarios
@@ -132,30 +137,24 @@ app.post("/api/login", (req, res) => {
 
   // Leer el archivo de usuarios
   fs.readFile(usersPath, "utf8", (err, data) => {
-    // Si ocurre un error distinto a que el archivo no exista, devolver error
     if (err && err.code !== "ENOENT") {
       console.error("Error al leer el archivo de usuarios:", err);
       return res.status(500).json({ error: "Error interno del servidor" });
     }
-
     if (!data) {
       return res.status(404).json({ error: "No hay usuarios registrados." });
     }
 
     let users = [];
     try {
-      // Intentar parsear el JSON de usuarios
       users = JSON.parse(data);
     } catch (parseError) {
-      // Si el JSON está corrupto, devolver error
-      return res
-        .status(500)
-        .json({ error: "Error al procesar los datos de usuarios" });
+      return res.status(500).json({ error: "Error al procesar los datos de usuarios" });
     }
 
-    // Buscar el usuario por email y contraseña
+    // Buscar el usuario por nombre de usuario y contraseña
     const user = users.find(
-      (u) => u.email === email && u.password === password
+      (u) => u.username === username && u.password === password
     );
     if (!user) {
       return res.status(401).json({ error: "Credenciales inválidas." });
