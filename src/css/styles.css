@@ -441,42 +441,25 @@ footer {
 }
 
 /*Enlace para volver al index*/
-.enlace-inicio {
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(8px);
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid rgba(125, 95, 255, 0.3);
-    box-shadow: 0 8px 16px rgba(125, 95, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+/* Estilo para botones, para que sean iguales en tamaño*/
+
+#seguir-comprando,
+#confirmar-pago, .enlace-inicio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 140.969px;
+    box-sizing: content-box;
 }
 
+#seguir-comprando:hover,
 .enlace-inicio:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 20px rgba(13, 110, 253, 0.3); /* sombra azul Bootstrap */
-}
-
-.enlace-inicio img {
-    height: 35px;
-    margin-right: 10px;
-    filter: brightness(1.1);
-}
-
-/* Estilo para botones */
-.botones-carrito .btn {
-    padding: 0.5rem 1.2rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.15s ease;
-    border-radius: 0.3rem;
-    cursor: pointer;
-}
-
-#seguir-comprando:hover {
-    background-color: #e2e6ea; 
-    color: #343a40; 
-    text-decoration: none; 
+    background-color: #e2e6ea !important;
+    color: #343a40 !important;
+    text-decoration: none;
     transform: scale(1.05);
 }
 
@@ -486,8 +469,19 @@ footer {
     transform: scale(1.05);
 }
 
+.enlace-inicio img {
+    height: 25px;
+    margin-right: 10px;
+    filter: brightness(1.1);
+}
+
+/* Icono dentro del botón. Añadimos pequeño efecto de rotación*/
+
 #confirmar-pago .icono {
-    margin-right: 0.4rem;
-    font-size: 1.2rem;
-    vertical-align: middle;
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+#confirmar-pago:hover .icono {
+    transform: translateX(2px) rotate(-4deg);
 }
