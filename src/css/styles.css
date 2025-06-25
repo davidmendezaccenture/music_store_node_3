@@ -328,3 +328,106 @@ footer {
     color: #0d6efd !important;
     outline: none;
 }       
+
+/* Estilos para la página de contacto */
+#contactForm {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contactForm .form-label {
+    font-weight: 500;
+}
+
+#contactForm .form-control, 
+#contactForm .form-select {
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#contactForm .form-control:focus, 
+#contactForm .form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+#contactForm .is-invalid {
+    border-color: #dc3545;
+}
+
+#contactForm .is-invalid:focus {
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+#contactForm .invalid-feedback {
+    display: none;
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+
+#contactForm .is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+#contactForm button[type="submit"] {
+    padding: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+#contactForm button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #contactForm {
+        padding: 0 15px;
+    }
+}
+
+/* Estilos para los enlaces de pago */
+.payment-link {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.payment-link:hover,
+.payment-link:focus {
+    transform: translateY(-3px);
+}
+
+.payment-link img {
+    pointer-events: none; /* Evita problemas con el hover */
+}
+
+/* Estilos para los enlaces de ventajas */
+.advantage-link {
+    color: inherit;
+    transition: all 0.2s ease;
+    padding: 0.15rem 0.3rem;
+    border-radius: 4px;
+}
+
+.advantage-link:hover,
+.advantage-link:focus {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.advantage-link .bi {
+    transition: transform 0.2s ease;
+}
+
+.advantage-link:hover .bi,
+.advantage-link:focus .bi {
+    transform: scale(1.1);
+}
