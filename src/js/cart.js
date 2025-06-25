@@ -142,8 +142,7 @@ $(document).on('click', '.btn-restar', function () {
   const $item = $(this).closest('.item-carrito');
   const id = $item.data('id');
   const producto = carrito.find(p => p.id === id);
-  console.log(estaLogueado());
-    if (!estaLogueado()) {
+  if (!estaLogueado()) {
     mostrarModalLogin();
     return;
   }

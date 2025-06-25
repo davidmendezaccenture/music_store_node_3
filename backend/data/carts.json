@@ -25,14 +25,5 @@
       "cantidad": 1
     }
   ],
-  "{\"id\":1,\"username\":\"Pablo_Hernandez\",\"email\":\"pachepatat@gmail.com\",\"message\":\"Login correcto\"}": [
-    {
-      "id": 8,
-      "cantidad": 1
-    },
-    {
-      "id": 21,
-      "cantidad": 1
-    }
-  ]
+  "{\"id\":1,\"username\":\"Pablo_Hernandez\",\"email\":\"pachepatat@gmail.com\",\"message\":\"Login correcto\"}": []
 }
