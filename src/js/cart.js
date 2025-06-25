@@ -126,6 +126,10 @@ const itemHTML = `
 $(document).on('click', '.btn-sumar', function () {
   const id = $(this).closest('li').data('id');
   const producto = carrito.find(p => p.id === id);
+if (!estaLogueado()) {
+  mostrarModalLogin();
+  return;
+}
   if (producto) {
     producto.cantidad += 1;
     guardarCarrito();
@@ -138,6 +142,11 @@ $(document).on('click', '.btn-restar', function () {
   const $item = $(this).closest('.item-carrito');
   const id = $item.data('id');
   const producto = carrito.find(p => p.id === id);
+  console.log(estaLogueado());
+    if (!estaLogueado()) {
+    mostrarModalLogin();
+    return;
+  }
   if (producto) {
     producto.cantidad -= 1;
     if (producto.cantidad <= 0) {
@@ -156,6 +165,10 @@ $('#contenedor-carrito').on('click', '.btn-eliminar', function() {
   const id = $item.data('id');
 
   const posicionesAntes = guardarPosiciones();
+    if (!estaLogueado()) {
+    mostrarModalLogin();
+    return;
+  }
   //Añadimos la clase que evita que aparezca la barra de navegación horizontal con cada click
   $('body').addClass('body-no-scroll-x');
 
@@ -278,6 +291,12 @@ function mostrarMensajeCarritoVacio() {
       $('#confirmar-pago').prop('disabled', false);
   }
 }
-
-
-
+const estaLogueado = () => {
+  const usuario = localStorage.getItem('usuario');
+  // Si usuario es null o 'guest' no está logueado
+  return usuario !== null && usuario !== 'guest';
+}
+function mostrarModalLogin() {
+  const loginModal = new bootstrap.Modal(document.getElementById('modalCarrito'));
+  loginModal.show();
+}

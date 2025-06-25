@@ -444,15 +444,18 @@ footer {
 
 
 /* Estilo para botones, para que sean iguales en tamaño*/
-
+.enlace-inicio img {
+    width: 16px;
+    height: 16px;
+}
 #seguir-comprando,
 #confirmar-pago, .enlace-inicio {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-width: 140.969px;
-    box-sizing: content-box;
+    display: inline-flex;       /* inline para que el botón se adapte al contenido */
+    align-items: center;        /* alinear verticalmente texto e imagen */
+    gap: 8px;                   /* separación entre icono y texto */
+    justify-content: flex-start; /* texto pegado a la izquierda junto al icono */
+    min-width: auto;            /* eliminar ancho mínimo fijo */
+    padding: 0.375rem 0.75rem;  /* ajusta el padding para que quede mejor */
 }
 
 #seguir-comprando:hover,
@@ -480,8 +483,14 @@ footer {
 #confirmar-pago .icono {
     transition: transform 0.2s ease;
     display: inline-block;
+    vertical-align: middle;
 }
 
 #confirmar-pago:hover .icono {
     transform: translateX(2px) rotate(-4deg);
+}
+
+.modal-body p {
+    font-weight: 500;
+    color: #444;
 }
