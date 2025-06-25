@@ -4,18 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RaiRock Music Store - Sobre Nosotros</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
-  <!-- Header igual que index pero con botón Volver -->
+  <!-- Header -->
   <header class="bg-white shadow-sm sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
@@ -29,54 +24,23 @@
           <span class="fw-bold">RaiRock</span>
         </a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarMain"
-          aria-controls="navbarMain"
-          aria-expanded="false"
-          aria-label="Alternar menú principal"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+          aria-controls="navbarMain" aria-expanded="false" aria-label="Alternar menú principal">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <i class="bi bi-house-door me-1"></i> Inicio
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#services">
-                <i class="bi bi-gear me-1"></i> Servicios
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="sobre-nosotros.html"
-              >
-                <i class="bi bi-people me-1"></i> Sobre Nosotros
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">
-                <i class="bi bi-envelope me-1"></i> Contacto
-              </a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i> Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services"><i class="bi bi-gear me-1"></i> Servicios</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="sobre-nosotros.html"><i class="bi bi-people me-1"></i> Sobre Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact"><i class="bi bi-envelope me-1"></i> Contacto</a></li>
           </ul>
 
           <div class="d-flex">
             <a href="cart.html" class="btn btn-outline-dark position-relative me-2">
               <i class="bi bi-cart3"></i>
-              <span
-                id="cartCounter"
-                class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"
-                >0</span
-              >
+              <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
             </a>
             <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
               <i class="bi bi-person-fill me-1"></i> Login
@@ -108,56 +72,30 @@
     </section>
   </main>
 
-  <!-- Footer igual que index -->
+  <!-- Footer -->
   <footer class="bg-dark text-white py-3">
     <div class="container text-center">
-      <p class="mb-0">
-        &copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.
-      </p>
+      <p class="mb-0">&copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <!-- Modal de inicio de sesión igual que index -->
-  <div
-    class="modal fade"
-    id="loginModal"
-    tabindex="-1"
-    aria-labelledby="loginModalLabel"
-    aria-hidden="true"
-  >
+  <!-- Modal de inicio de sesión -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Cerrar"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
           <form id="loginForm">
             <div class="mb-3">
               <label for="loginEmail" class="form-label">Correo electrónico</label>
-              <input
-                type="email"
-                class="form-control"
-                id="loginEmail"
-                required
-                aria-describedby="emailHelp"
-                placeholder="tucorreo@ejemplo.com"
-              />
+              <input type="email" class="form-control" id="loginEmail" required placeholder="tucorreo@ejemplo.com" />
             </div>
             <div class="mb-3">
               <label for="loginPassword" class="form-label">Contraseña</label>
-              <input
-                type="password"
-                class="form-control"
-                id="loginPassword"
-                required
-                placeholder="Introduce tu contraseña"
-              />
+              <input type="password" class="form-control" id="loginPassword" required placeholder="Introduce tu contraseña" />
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="rememberMe" />
@@ -167,40 +105,23 @@
           </form>
         </div>
         <div class="modal-footer justify-content-center">
-          <p class="mb-0">
-            ¿No tienes cuenta?
-            <a
-              href="#"
-              data-bs-toggle="modal"
-              data-bs-target="#registerModal"
-              data-bs-dismiss="modal"
-              >Regístrate aquí</a
-            >
-          </p>
+          <p class="mb-0">¿No tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Regístrate aquí</a></p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Año actual -->
   <script>
-    // Añadir el año actual automáticamente
     document.getElementById("currentYear").textContent = new Date().getFullYear();
   </script>
 
-  <!-- Scripts de Bootstrap y jQuery -->
+  <!-- Librerías -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-  ></script>
-
-  <!-- Script específico para la lógica de la página Sobre Nosotros -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/about_us.js"></script>
 
-  <!-- Google Maps API (pon tu API key) -->
-  <script
-    async
-    defer
-    src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"
-  ></script>
+  <!-- Google Maps API (REEMPLAZA "TU_API_KEY" con tu clave real) -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5F5tAirDf5wsL_K9oLu-lGVVEDM6gEIs&callback=initMap"></script>
 </body>
 </html>
