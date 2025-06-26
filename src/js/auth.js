@@ -7,12 +7,12 @@ $(document).ready(function () {
     e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
 
     const credenciales = {
-      username: $('#loginEmail').val().trim(), // Valor del input con id 'loginEmail'
+      email: $('#loginEmail').val().trim(), // Valor del input con id 'loginEmail'
       password: $('#loginPassword').val()         // Valor del input con id 'loginPassword'
     };
 
     // Validación simple (puedes mover esto a utils.js si prefieres)
-    if (!credenciales.username || !credenciales.password) {
+    if (!credenciales.email || !credenciales.password) {
       alert('Por favor, completa todos los campos');
       return;
     }
@@ -25,7 +25,7 @@ $(document).ready(function () {
       data: JSON.stringify(credenciales),    // Convertimos el objeto a JSON
 
       success: function (res) {
-        alert(`Bienvenido, ${res.username}`);
+        alert(`Bienvenido, ${res.user.username}`);
         localStorage.setItem('usuario', JSON.stringify(res)); // Guardamos el objeto usuario completo en localStorage
         $('#loginModal').modal('hide'); // Cierra el modal de login
         window.location.href = '/pages/index.html';       // Redirigimos a pagina index
