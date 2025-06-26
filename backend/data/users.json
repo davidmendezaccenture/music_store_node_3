@@ -66,5 +66,14 @@
     "phone": "600000000",
     "postalcode": "28030",
     "city": "Madrid"
+  },
+  {
+    "username": "defi",
+    "password": "Defi1234",
+    "email": "defi@defi.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
   }
 ]
