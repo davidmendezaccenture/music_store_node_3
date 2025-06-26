@@ -178,5 +178,33 @@
         "image": "../assets/images/drum5.png",
         "description": "Set completo de batería para principiantes y avanzados.",
         "category": "drums"
+    },
+        {
+        "id": 21,
+        "name": "Guitarra Eléctrica",
+        "price": 349,
+        "offerPrice": 299,
+        "image": "../assets/images/guitar4.png",
+        "description": "Sonido potente, ideal para rock y metal.",
+        "category": "electric-guitars"
+    },
+            {
+        "id": 22,
+        "name": "Guitarra Eléctrica",
+        "price": 349,
+        "offerPrice": 299,
+        "image": "../assets/images/guitar8.png",
+        "description": "Sonido potente, ideal para rock y metal.",
+        "category": "electric-guitars"
+    },
+                {
+        "id": 23,
+        "name": "Guitarra Clásica Clara",
+        "price": 199,
+        "offerPrice": 150,
+        "image": "../assets/images/guitar11.png",
+        "description": "Cuerpo de madera clara, cuerda de nylon. Ideal para principiantes.",
+        "category": "classical-guitars"
     }
+
 ]

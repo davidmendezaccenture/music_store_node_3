@@ -11,6 +11,7 @@
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+   
 </head>
 <body>
     <!-- Encabezado -->
@@ -23,10 +24,10 @@
                 <span class="fw-bold">RaiRock</span>
               </a>
         
-              <!-- Menú Hamburguesa (mobile) -->
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+                <!-- Menú Hamburguesa (mobile) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
         
               <!-- Menú Principal -->
               <div class="collapse navbar-collapse" id="navbarMain">
@@ -55,7 +56,7 @@
         
                 <!-- Carrito + Login -->
                 <div class="d-flex ms-auto">
-                  <a href="cart.html" class="btn btn-outline-dark position-relative me-2">
+                  <a href="/pages/cart.html" class="btn btn-outline-dark position-relative me-2">
                     <i class="bi bi-cart3"></i>
                     <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
                   </a>
@@ -65,7 +66,7 @@
                 </div>
               </div>
             </div>
-          </nav>
+        </nav>
     </header>
 
     <!-- Resto del contenido se mantiene igual -->
@@ -75,7 +76,7 @@
         <!-- Barra de navegación secundaria -->
         <nav class="navbar bg-light py-2 mb-4" role="navigation" aria-label="Menú de categorías de productos">
             <div class="container-fluid justify-content-center" id="navbarNav">
-                <ul class="navbar-nav flex-row flex-wrap">
+                <ul class="navbar-nav flex-row flex-wrap justify-content-center text-center">
                     <li class="nav-item p-0">
                         <a class="nav-link fw-bold text-dark" href="/pages/guitar.html">
                             <img src="/assets/images/guitar-svgrepo-com.svg" alt="Icono guitarra" class="icono-nav">Guit/Bajos
@@ -132,11 +133,6 @@
         <!-- Sección de productos -->   
             <!-- Carrusel de imágenes -->
         <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" aria-label="Galería de productos destacados">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
             <!--La descripción de los productos destacados no puede ser precisa si en el futuro queremos que estos productos se seleccionen al azar-->
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -147,6 +143,12 @@
                 </div>
                 <div class="carousel-item">
                     <img src="/assets/images/imagen3.png" class="d-block mx-auto w-50 w-md-75 w-lg-50" alt="Producto destacado 3">
+                </div>
+                        <!--Indicadores del carrusel-->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
             </div>
             <!-- Controles del carrusel -->
@@ -159,6 +161,7 @@
                 <span>Next</span>
             </button>
         </div>
+
         <!-- Aquí se mostrarán los productos -->
         <!-- Creo contenedor vacío para mostrar productos-->
         <div id="products-list"></div>
@@ -282,96 +285,17 @@
     </div>
 </div>
 
-<script>
-    // Añadir el año actual automáticamente
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
-
-    <!--Script jQuery para cargar clientes. Con cada recarga se seleccionan 9 opiniones aleatorias que distribuimos en la estructura del carrusel. Después Lo añadimos al DOM-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Glide JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $.getJSON("/assets/data/clients.json")
-                .done(function (data) {
-                // Seleccionamos 9 opiniones aleatorias
-                    const opinionesAleatorias = data.sort(() => 0.5 - Math.random()).slice(0, 9);
-                    const $slidesContainer = $(".glide__slides");
-                    opinionesAleatorias.forEach(function (cliente) {
-                        const $li = $(`
-                            <li class="glide__slide">
-                                <div class="tarjeta-opinion">
-                                    <p class="texto mb-4">${cliente.opinion}</p>
-                                    <div class="usuario d-flex align-items-center mt-auto">
-                                        <img
-                                            src="${cliente.urlImagen}"
-                                            alt="Foto de ${cliente.nombre}"
-                                            class="foto-usuario rounded-circle me-3">
-                                        <div class="info-usuario">
-                                            <p class="nombre mb-0 fw-semibold">${cliente.nombre}</p>
-                                            <p class="profesion mb-0 text-muted">${cliente.profesion}</p>
-                                            <div class="estrellas text-warning">${cliente.estrellas}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        `);
-                        $slidesContainer.append($li);
-                    });
-                    const glide = new Glide(".glide", {
-                        type: "carousel",
-                        perView: 3,
-                        gap: 30,
-                        breakpoints: {
-                            992: { perView: 2 },
-                            768: { perView: 1 },
-                        },
-                    });
-                    /*Función para igualar la alturas de todas las tarjetas una vez cargadas. Si cambiamos a tamaño estándar y añadimos alguna opción de visualización del texto de aquellas con más texto, se puede eliminar */
-                    function igualarAlturaTarjetas() {
-                        const tarjetas = document.querySelectorAll(".glide__slide .tarjeta-opinion");
-                        /*Obtenemos las alturas de todas las tarjetas y almacenamos el valor mayor, que aplicamos como altura mínima a todas las tarjetas*/
-                        const maxAltura = Math.max(...Array.from(tarjetas).map(t => t.offsetHeight));
-                        tarjetas.forEach(t => (t.style.minHeight = `${maxAltura}px`));
-                    }
-                    /*Se ejecuta la función de igualar alturas cuando se crea el carrusel*/
-                    glide.on(["mount.after"], igualarAlturaTarjetas);
-                    glide.mount();
-                    // Flechas
-                    $(".glide__arrow--left").click(() => glide.go("<"));
-                    $(".glide__arrow--right").click(() => glide.go(">"));
-                })
-                .fail(function () {
-                    console.error("Error cargando clients.json");
-            });
-        });
-    </script>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/utils.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/cart.js"></script>
     <script src="../js/app.js"></script>
-    <script src="../js/cart.js"></script>
-    
-    <script>
-        document.getElementById('categoria').addEventListener('change', function () {
-            const categoria = this.value;
-            document.querySelectorAll('[data-category]').forEach(card => {
-                if (categoria === 'Todas' || card.getAttribute('data-category') === categoria) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    </script>
-    <script>
-        //Guardamos página actual
-        document.addEventListener('DOMContentLoaded', () => {
-        localStorage.setItem('ultimaPagina', window.location.pathname + window.location.search);
-        });
-    </script>
+    <script src="../js/index.js"></script> 
+      <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+             
+        
 </body>
 </html>

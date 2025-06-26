@@ -1,3 +1,33 @@
 {
-  "guest": []
+  "guest": [
+    {
+      "id": 5,
+      "cantidad": 2
+    },
+    {
+      "id": 4,
+      "cantidad": 1
+    },
+    {
+      "id": 21,
+      "cantidad": 1
+    },
+    {
+      "id": 9,
+      "cantidad": 2
+    },
+    {
+      "id": 22,
+      "cantidad": 2
+    },
+    {
+      "id": 1,
+      "cantidad": 2
+    },
+    {
+      "id": 8,
+      "cantidad": 1
+    }
+  ],
+  "{\"id\":1,\"username\":\"Pablo_Hernandez\",\"email\":\"pachepatat@gmail.com\",\"message\":\"Login correcto\"}": []
 }
