@@ -256,6 +256,17 @@ function guardarPosiciones() {
   });
   return posiciones;
 }
+//Función para el botón de pagar
+$(document).ready(function () {
+  $('#confirmar-pago').on('click', function () {
+    if (!estaLogueado()) {
+      mostrarModalLogin();
+    } else {
+      alert("✅ Pago realizado correctamente");
+      //Implementar aquí la función que queramos
+    }
+  });
+});
 
 // Mostrar mensaje si carrito está vacío
 function mostrarMensajeCarritoVacio() {
