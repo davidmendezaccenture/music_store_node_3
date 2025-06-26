@@ -36,7 +36,8 @@ $(document).ready(function () {
         return res.json();
       })
       .then(data => {
-        // Acceso concedido: redirigir a la página principal
+        // Acceso concedido: redirigir a la página principal y almacenar usuario
+        localStorage.setItem('usuario', data.username);
         window.location.href = '/';
       })
       .catch(err => {
@@ -60,8 +61,7 @@ $(document).ready(function () {
       password: $('#password').val()
     };
 
-    const confirmPassword = $('#ConfirmPassword').val();
-    console.log(password,confirmPassword);
+    const confirmPassword = $('#confirmPassword').val();
     // Validación básica
     if (!nuevoUsuario.username || !nuevoUsuario.email || !nuevoUsuario.birthdate || !nuevoUsuario.phone || !nuevoUsuario.postalcode || !nuevoUsuario.city || !nuevoUsuario.password) {
       alert('Por favor, completa todos los campos');
@@ -106,6 +106,7 @@ $(document).ready(function () {
     }
     // Confirmar que ambas contraseñas coinciden
     if (!compararPasswords(nuevoUsuario.password, confirmPassword)) {
+      console.log(nuevoUsuario.password, confirmPassword);
       alert('Las contraseñas no coinciden.');
       return;
     }

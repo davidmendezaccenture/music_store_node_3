@@ -1,13 +1,7 @@
 [
-  {
-   
-  },
-  {
-    
-  },
-  {
-    
-  },
+  {},
+  {},
+  {},
   {
     "username": "prueba2",
     "password": "Prueba222",
@@ -68,5 +62,14 @@
     "phone": "600000000",
     "postalcode": "28030",
     "city": "Madrid"
+  },
+  {
+    "username": "David",
+    "password": "Malvado1",
+    "email": "davidsantosbelmonte@gmail.com",
+    "birthdate": "1980-06-14",
+    "phone": "653511423",
+    "postalcode": "41960",
+    "city": "Gines"
   }
 ]
