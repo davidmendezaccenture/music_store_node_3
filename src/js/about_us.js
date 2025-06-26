@@ -5,73 +5,84 @@ $(document).ready(function () {
   const integrantes = [
     {
       nombre: "Pablo Hernández",
-      descripcion: "Especialista en baterías y equipos de sonido.",
+      descripcion: "Especialista en baterías y equipos de sonido. Ingeniero de sonido con más de 10 años de experiencia en giras nacionales e internacionales.",
       imagen: "../assets/images/team1.jpg",
     },
     {
       nombre: "David Santos Belmonte",
-      descripcion: "Especialista en guitarra clásica y acústica.",
+      descripcion: "Especialista en guitarra clásica y acústica. Profesor y compositor con estilo fingerstyle y pasión por el flamenco moderno.",
       imagen: "../assets/images/team2.jpg",
     },
     {
       nombre: "Angélica Libreros",
-      descripcion: "Especialista en guitarra eléctrica.",
+      descripcion: "Especialista en guitarra eléctrica. Productora musical apasionada del metal alternativo y efectos analógicos.",
       imagen: "../assets/images/team3.jpg",
     },
     {
       nombre: "Antonio Fernández",
-      descripcion: "Especialista en bajos y teclados.",
+      descripcion: "Especialista en bajos y teclados. Compositor profesional y experto en sintetizadores, grooves y armonías modernas.",
       imagen: "../assets/images/team3.jpg",
     },
   ];
 
-  // Generar dinámicamente cada card del equipo con animaciones
+  // Generar dinámicamente cada card del equipo
   integrantes.forEach((persona, index) => {
-    const delay = index * 200; // Delay progresivo para efecto escalonado
+    const delay = index * 200; // efecto escalonado
 
-    // Crear la card con Animate.css y Bootstrap
     const card = $(`
-      <div class="col-md-4 mb-4 animate__animated" style="animation-delay: ${delay}ms;">
-        <div class="card h-100 shadow-sm">
-          <img src="${persona.imagen}" class="card-img-top" alt="${persona.nombre}">
+      <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 animate__animated animate__fadeInUp" style="animation-delay: ${delay}ms;">
+        <div class="card h-100 shadow-sm border-0" tabindex="0" role="button" aria-label="Más información sobre ${persona.nombre}">
+          <img src="${persona.imagen}" class="card-img-top img-fluid" alt="${persona.nombre}">
           <div class="card-body">
             <h5 class="card-title">${persona.nombre}</h5>
-            <p class="card-text">${persona.descripcion}</p>
+            <p class="card-text small">${persona.descripcion.slice(0, 100)}...</p>
+            <button class="btn btn-outline-dark btn-sm w-100 btn-mas-info mt-2" 
+              data-nombre="${persona.nombre}" 
+              data-desc="${persona.descripcion}" 
+              data-img="${persona.imagen}">
+              Ver más
+            </button>
           </div>
         </div>
       </div>
-    `).addClass("animate__fadeInUp");
+    `);
 
-    // Insertar la card en el contenedor del DOM
     $("#team-cards").append(card);
   });
 
-  // Añadir efecto animado al pasar el ratón (hover) sobre cada card
+  // Animación al pasar el ratón (hover)
   $(document).on("mouseenter", ".card", function () {
-    $(this)
-      .addClass("animate__pulse animate__fast")
-      .css("transform", "scale(1.03)");
+    $(this).addClass("animate__pulse animate__fast").css("transform", "scale(1.03)");
   });
 
   $(document).on("mouseleave", ".card", function () {
-    $(this)
-      .removeClass("animate__pulse")
-      .css("transform", "scale(1)");
+    $(this).removeClass("animate__pulse").css("transform", "scale(1)");
+  });
+
+  // Efecto al hacer clic en botón "Ver más" y mostrar el modal
+  $(document).on("click", ".btn-mas-info", function () {
+    const nombre = $(this).data("nombre");
+    const descripcion = $(this).data("desc");
+    const imagen = $(this).data("img");
+
+    $("#modalIntegranteLabel").text(nombre);
+    $("#modalDesc").text(descripcion);
+    $("#modalImg").attr("src", imagen).attr("alt", nombre);
+
+    $("#modalIntegrante").modal("show");
   });
 });
 
-// Función que se invoca al cargar el script de Google Maps (desde el callback de la URL)
+// Función para inicializar Google Maps
 window.initMap = function () {
-  // Ubicación ficticia de la tienda: Calle ACDC, Leganés (coordenadas ficticias)
+  // Ubicación ficticia: Calle ACDC, Leganés
   const rairockLocation = { lat: 40.3270, lng: -3.7635 };
 
-  // Crear el mapa en el contenedor con centro en la ubicación
   const map = new google.maps.Map(document.getElementById("map"), {
     center: rairockLocation,
     zoom: 15,
   });
 
-  // Colocar un marcador en la ubicación
   new google.maps.Marker({
     position: rairockLocation,
     map: map,
