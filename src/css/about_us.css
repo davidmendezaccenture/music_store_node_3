@@ -1,0 +1,86 @@
+/* === SOBRE NOSOTROS CSS === */
+/* Estilo específico para la página sobre-nosotros.html */
+
+/* Ajustes para que el mapa sea totalmente responsivo */
+#map {
+  width: 100%;
+  height: 400px;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  #map {
+    height: 300px;
+  }
+}
+
+/* Mejoras en las cards del equipo */
+#team-cards .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  height: 100%;
+}
+
+#team-cards .card-img-top {
+  object-fit: cover;
+  height: 220px;
+  border-bottom: 1px solid #ddd;
+}
+
+#team-cards .card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#team-cards .card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #222;
+}
+
+#team-cards .card-text {
+  font-size: 0.95rem;
+  color: #444;
+  flex-grow: 1;
+}
+
+/* Responsivo: altura menor en móviles */
+@media (max-width: 576px) {
+  #team-cards .card-img-top {
+    height: 180px;
+  }
+
+  #team-cards .card-body {
+    padding: 0.75rem;
+  }
+
+  #team-cards .card-title {
+    font-size: 1rem;
+  }
+
+  #team-cards .card-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* Estilo para mejorar el modal */
+.modal-content {
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo accesible para botones y focus */
+button:focus, .btn:focus, input:focus {
+  outline: 2px solid #198754 !important;
+  outline-offset: 2px;
+}
+
+/* Alinear mejor textos */
+main p.lead {
+  max-width: 800px;
+  margin: auto;
+  font-size: 1.1rem;
+}
