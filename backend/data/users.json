@@ -30,5 +30,23 @@
     "birthdate": "1991-01-06",
     "phone": "692370369",
     "postalcode": "28030"
+  },
+  {
+    "username": "prueba4",
+    "password": "Prueba444",
+    "email": "p@4.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
+  },
+  {
+    "username": "prueba5",
+    "password": "Prueba555",
+    "email": "p@5.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
   }
 ]
