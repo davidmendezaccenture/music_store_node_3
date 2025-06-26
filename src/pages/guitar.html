@@ -49,18 +49,18 @@
                     </a>
                   </li>
                 </ul>
-        
+
                 <!-- Carrito + Login -->
-                    <div class="d-flex ms-auto">
-                        <a href="cart.html?from=/pages/guitar.html" class="btn btn-outline-dark position-relative me-2">
-                            <i class="bi bi-cart3"></i>
-                            <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
-                        </a>
-                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            <i class="bi bi-person-fill me-1"></i> Login
-                        </button>
-                    </div>
+                <div class="d-flex ms-auto" id="user-actions">
+                  <a href="cart.html?from=/pages/guitar.html" class="btn btn-outline-dark position-relative me-2">
+                    <i class="bi bi-cart3"></i>
+                    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
+                  </a>
+                  <button class="btn btn-primary" id="loginBtn" aria-haspopup="dialog" aria-controls="loginModal"></button>
+                    <i class="bi bi-person-fill me-1"></i> Login
+                  </button>
                 </div>
+              </div>
             </div>
         </nav>
     </header>
@@ -68,23 +68,20 @@
     <!-- Contenido principal -->
     <main class="container mt-4" role="main">
         <!-- Encabezado -->
-        <!-- Menú de Filtros -->
-        <!-- Filtro por categoría centrado -->
-        <div class="d-flex justify-content-center mb-4">
-            <form class="row g-2 align-items-center" role="search" aria-label="Filtrar por categoría">
-                <div class="col-auto">
-                    <label for="categoria" class="col-form-label">Filtrar por tipo:</label>
-                </div>
-                <div class="col-auto">
-                    <select id="categoria" class="form-select" aria-label="Seleccionar categoría">
-                        <option value="Todas" selected>Todas</option>
-                        <option value="Clásica">Clásica</option>
-                        <option value="Eléctrica">Eléctrica</option>
-                        <option value="Acústica">Acústica</option>
-                    </select>
-                </div>
-            </form>
-        </div>
+            <!-- Menú de Filtros -->
+            <!-- Filtro por categoría centrado -->
+            <div class="d-flex justify-content-center mb-4">
+              <form class="row g-2 align-items-center" role="search" aria-label="Filtrar por categoría">
+                  <div class="col-auto">
+                      <label for="categoria" class="col-form-label">Filtrar por tipo:</label>
+                  </div>
+                  <div class="col-auto">
+                      <select id="categoria" class="form-select" aria-label="Seleccionar categoría">
+                          <option value="Todas" selected>Todas</option>
+                      </select>
+                  </div>
+              </form>
+            </div>
                 <!-- Tarjetas existentes -->
                 <section class="row row-cols-1 row-cols-md-3 g-4" aria-label="Listado de productos">
                     <div class="col" data-category="Clásica">
@@ -279,39 +276,16 @@
         </div>
     </footer>
 
-    <!-- Modal de inicio de sesión -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <form id="loginForm">
-                    <div class="mb-3">
-                        <label for="loginEmail" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="loginEmail" required 
-                            aria-describedby="emailHelp" placeholder="tucorreo@ejemplo.com">
-                    </div>
-                    <div class="mb-3">
-                        <label for="loginPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="loginPassword" required 
-                               placeholder="Introduce tu contraseña">
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Recordar sesión</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-                </form>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <p class="mb-0">¿No tienes cuenta? <a href="#" id="enlace-registro">Regístrate aquí</a></p>
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- Modales de login y error importados dinámicamente -->
+    <div id="modals-container"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // Importa dinámicamente los modales desde partials/modals.html usando jQuery
+      $(function() {
+        $('#modals-container').load('../partials/modals.html');
+      });
+    </script>
+
 
 <script>
     // Añadir el año actual automáticamente
@@ -319,40 +293,9 @@
 </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
     <script src="../js/cart.js"></script>
     <script src="../js/app.js"></script>
-
-    <script>
-        document.getElementById('categoria').addEventListener('change', function () {
-            const categoria = this.value;
-            document.querySelectorAll('[data-category]').forEach(card => {
-                if (categoria === 'Todas' || card.getAttribute('data-category') === categoria) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    </script>
-    <!-- Añdo una animacion para dar tiempo a redirigir a la pagina de registro antes de cerrar el modal de login-->
-    <script>
-        $('#enlace-registro').on('click', function (e) {
-        e.preventDefault();
-
-        // Añade una clase de animación de salida al modal
-        $('#loginModal .modal-content').addClass('animate__animated animate__fadeOutUp');
-
-        // Espera la animación (500 ms aprox), luego cierra el modal y redirige
-        setTimeout(() => {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-            modal.hide(); // Cierra el modal programáticamente
-            window.location.href = 'registro.html'; // Redirige a la página de registro
-        }, 600); // Delay algo mayor a la duración de la animación
-        });
-    </script>
-
-    <!-- Modal de Producto Añadido -->
-
+    <script src="../js/login-ui.js"></script>
 </body>
 </html>

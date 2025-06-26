@@ -18,53 +18,53 @@
     <header class="bg-white shadow-sm sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-              <!-- Logo + Nombre -->
-              <a class="navbar-brand d-flex align-items-center" href="/pages/index.html">
-                <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="30" class="me-2">
-                <span class="fw-bold">RaiRock</span>
-              </a>
+                <!-- Logo + Nombre -->
+                <a class="navbar-brand d-flex align-items-center" href="/pages/index.html">
+                    <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="30" class="me-2">
+                    <span class="fw-bold">RaiRock</span>
+                </a>
         
                 <!-- Menú Hamburguesa (mobile) -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                     <span class="navbar-toggler-icon"></span>
                 </button>
         
-              <!-- Menú Principal -->
-              <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pages/index.html">
-                      <i class="bi bi-house-door me-1"></i> Inicio
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#services">
-                      <i class="bi bi-gear me-1"></i> Servicios
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pages/sobre_nosotros.html">
-                      <i class="bi bi-people me-1"></i> Sobre Nosotros
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pages/contact.html">
-                      <i class="bi bi-envelope me-1"></i> Contacto
-                    </a>
-                  </li>
-                </ul>
+                <!-- Menú Principal -->
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pages/index.html">
+                                <i class="bi bi-house-door me-1"></i> Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#services">
+                                <i class="bi bi-gear me-1"></i> Servicios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pages/sobre_nosotros.html">
+                                <i class="bi bi-people me-1"></i> Sobre Nosotros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pages/contact.html">
+                                <i class="bi bi-envelope me-1"></i> Contacto
+                            </a>
+                        </li>
+                    </ul>
         
-                <!-- Carrito + Login -->
-                <div class="d-flex ms-auto">
-                  <a href="/pages/cart.html" class="btn btn-outline-dark position-relative me-2">
-                    <i class="bi bi-cart3"></i>
-                    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
-                  </a>
-                  <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <i class="bi bi-person-fill me-1"></i> Login
-                  </button>
+                    <!-- Carrito + Login -->
+                    <div class="d-flex">
+                        <a href="cart.html" class="btn btn-outline-dark position-relative me-2">
+                            <i class="bi bi-cart3"></i>
+                            <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
+                        </a>
+                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="bi bi-person-fill me-1"></i> Login
+                        </button>
+                    </div>
                 </div>
-              </div>
             </div>
         </nav>
     </header>
@@ -130,7 +130,7 @@
                 </ul>
             </div>
         </nav>
-        <!-- Sección de productos -->   
+        <!-- Sección de productos -->
             <!-- Carrusel de imágenes -->
         <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" aria-label="Galería de productos destacados">
             <!--La descripción de los productos destacados no puede ser precisa si en el futuro queremos que estos productos se seleccionen al azar-->
@@ -165,7 +165,7 @@
         <!-- Aquí se mostrarán los productos -->
         <!-- Creo contenedor vacío para mostrar productos-->
         <div id="products-list"></div>
-        
+
         <!-- opinion clientes -->
         <!-- Creo un carrusel para opiniones de clientes. Están agrupadas de 3 en 3, y cada grupo de 3 está metido en una slide del carrusel-->
         <section class="py-5">
@@ -250,52 +250,89 @@
         </div>
     </footer>
 
-    <!-- Modal de inicio de sesión -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <form id="loginForm">
-                    <div class="mb-3">
-                        <label for="loginEmail" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="loginEmail" required 
-                            aria-describedby="emailHelp" placeholder="tucorreo@ejemplo.com">
-                    </div>
-                    <div class="mb-3">
-                        <label for="loginPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="loginPassword" required 
-                            placeholder="Introduce tu contraseña">
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Recordar sesión</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-                </form>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <p class="mb-0">¿No tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" 
-                data-bs-dismiss="modal">Regístrate aquí</a></p>
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- Aquí estaba la modal de login duplicada, eliminada para evitar conflictos. -->
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/utils.js"></script>
-    <script src="../js/auth.js"></script>
-    <script src="../js/cart.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="../js/index.js"></script> 
-      <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-             
-        
+<div id="modals-container"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.getJSON("/assets/data/clients.json")
+            .done(function (data) {
+                // Seleccionamos 9 opiniones aleatorias
+                const opinionesAleatorias = data.sort(() => 0.5 - Math.random()).slice(0, 9);
+                const $slidesContainer = $(".glide__slides");
+                opinionesAleatorias.forEach(function (cliente) {
+                    const $li = $(`
+                        <li class="glide__slide">
+                            <div class="tarjeta-opinion">
+                                <p class="texto mb-4">${cliente.opinion}</p>
+                                <div class="usuario d-flex align-items-center mt-auto">
+                                    <img
+                                        src="${cliente.urlImagen}"
+                                        alt="Foto de ${cliente.nombre}"
+                                        class="foto-usuario rounded-circle me-3">
+                                    <div class="info-usuario">
+                                        <p class="nombre mb-0 fw-semibold">${cliente.nombre}</p>
+                                        <p class="profesion mb-0 text-muted">${cliente.profesion}</p>
+                                        <div class="estrellas text-warning">${cliente.estrellas}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    `);
+                    $slidesContainer.append($li);
+                });
+                const glide = new Glide(".glide", {
+                    type: "carousel",
+                    perView: 3,
+                    gap: 30,
+                    breakpoints: {
+                        992: { perView: 2 },
+                        768: { perView: 1 },
+                    },
+                });
+                /*Función para igualar la alturas de todas las tarjetas una vez cargadas. Si cambiamos a tamaño estándar y añadimos alguna opción de visualización del texto de aquellas con más texto, se puede eliminar */
+                function igualarAlturaTarjetas() {
+                    const tarjetas = document.querySelectorAll(".glide__slide .tarjeta-opinion");
+                    /*Obtenemos las alturas de todas las tarjetas y almacenamos el valor mayor, que aplicamos como altura mínima a todas las tarjetas*/
+                    const maxAltura = Math.max(...Array.from(tarjetas).map(t => t.offsetHeight));
+                    tarjetas.forEach(t => (t.style.minHeight = `${maxAltura}px`));
+                }
+                /*Se ejecuta la función de igualar alturas cuando se crea el carrusel*/
+                glide.on(["mount.after"], igualarAlturaTarjetas);
+                glide.mount();
+                // Flechas
+                $(".glide__arrow--left").click(() => glide.go("<"));
+                $(".glide__arrow--right").click(() => glide.go(">"));
+            })
+            .fail(function () {
+                console.error("Error cargando clients.json");
+            });
+        // Importa dinámicamente los modales desde partials/modals.html usando jQuery
+        $('#modals-container').load('../partials/modals.html');
+    });
+</script>
+<script>
+    // Añadir el año currentYear automáticamente
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+<script src="../js/login-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/app.js"></script>
+<script>
+    /*document.getElementById('categoria').addEventListener('change', function () {
+        const categoria = this.value;
+        document.querySelectorAll('[data-category]').forEach(card => {
+            if (categoria === 'Todas' || card.getAttribute('data-category') === categoria) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });*/
+</script>
 </body>
 </html>

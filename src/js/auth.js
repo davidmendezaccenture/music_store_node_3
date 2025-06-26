@@ -6,35 +6,44 @@ $(document).ready(function () {
   $('#loginForm').submit(function (e) {
     e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
 
-    const credenciales = {
-      email: $('#loginEmail').val().trim(), // Valor del input con id 'loginEmail'
-      password: $('#loginPassword').val()         // Valor del input con id 'loginPassword'
-    };
+    // Obtenemos los valores de los campos del formulario
+    // Usamos .trim() para eliminar espacios al inicio y final
+    const username = $('#username').val().trim(); // Solo username
+    const password = $('#password').val();
 
-    // Validación simple (puedes mover esto a utils.js si prefieres)
-    if (!credenciales.email || !credenciales.password) {
+    // Validación simple
+    if (!username || !password) {
       alert('Por favor, completa todos los campos');
       return;
     }
 
-    // Enviamos los datos al backend con AJAX
-    $.ajax({
-      url: '/api/login',                     // Ruta de registro en el backend
-      method: 'POST',                        // Método POST para enviar datos
-      contentType: 'application/json',       // Indicamos que enviamos JSON
-      data: JSON.stringify(credenciales),    // Convertimos el objeto a JSON
+    // Validar formato de username (opcional, si quieres puedes agregar una expresión regular)
+    // if (!/^[a-zA-Z0-9_-]{3,20}$/.test(username)) {
+    //   alert('El nombre de usuario no tiene un formato válido.');
+    //   return;
+    // }
 
-      success: function (res) {
-        alert(`Bienvenido, ${res.user.username}`);
-        localStorage.setItem('usuario', JSON.stringify(res)); // Guardamos el objeto usuario completo en localStorage
-        $('#loginModal').modal('hide'); // Cierra el modal de login
-        window.location.href = '/pages/index.html';       // Redirigimos a pagina index
-      },
+    const body = { username, password };
 
-      error: function (xhr) {
-        alert(xhr.responseJSON?.error || 'Error al iniciar sesión');// Si hay error, mostramos el mensaje que devuelve el backend
-      }
-    });
+    // Enviamos los datos al backend con fetch
+    fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Usuario o contraseña incorrectos');
+        return res.json();
+      })
+      .then(data => {
+        // Acceso concedido: redirigir a la página principal
+        window.location.href = '/';
+      })
+      .catch(err => {
+        // Mostrar modal de error
+        var myModal = new bootstrap.Modal(document.getElementById('loginErrorModal'));
+        myModal.show();
+      });
   });
 
   // === REGISTRO ===
@@ -42,63 +51,77 @@ $(document).ready(function () {
     e.preventDefault(); // Previene envío clásico (con recarga)
 
     const nuevoUsuario = {
-      username: $('#regUsername').val().trim(),
-      email: $('#regEmail').val().trim(),
-      password: $('#regPassword').val()
+      username: $('#username').val().trim(),
+      email: $('#email').val().trim(),
+      birthdate: $('#birthdate').val(),
+      phone: $('#phone').val().trim(),
+      postalcode: $('#postalcode').val().trim(),
+      city: $('#city').val().trim(),
+      password: $('#password').val()
     };
 
     const confirmPassword = $('#regConfirmPassword').val();
 
     // Validación básica
-    if (!nuevoUsuario.username || !nuevoUsuario.email || !nuevoUsuario.password) {
+    if (!nuevoUsuario.username || !nuevoUsuario.email || !nuevoUsuario.birthdate || !nuevoUsuario.phone || !nuevoUsuario.postalcode || !nuevoUsuario.city || !nuevoUsuario.password) {
       alert('Por favor, completa todos los campos');
       return;
     }
 
-    
-
-     // Validaciones con funciones de utils.js
-
+    // Validaciones con funciones de utils.js
     // Validar username
     if (!validarUsername(nuevoUsuario.username)) {
       alert('El nombre de usuario debe tener entre 3 y 20 caracteres, y solo letras, números, guiones o guiones bajos.');
       return;
     }
-
     // Validar email
     if (!validarEmail(nuevoUsuario.email)) {
       alert('El email no tiene un formato válido.');
       return;
     }
-
+    // Validar fecha de nacimiento (mayor de 13 años)
+    if (!/\d{4}-\d{2}-\d{2}/.test(nuevoUsuario.birthdate)) {
+      alert('La fecha de nacimiento no es válida.');
+      return;
+    }
+    // Validar teléfono (9 dígitos)
+    if (!/^\d{9}$/.test(nuevoUsuario.phone)) {
+      alert('El teléfono debe tener 9 dígitos.');
+      return;
+    }
+    // Validar código postal (5 dígitos)
+    if (!/^\d{5}$/.test(nuevoUsuario.postalcode)) {
+      alert('El código postal debe tener 5 dígitos.');
+      return;
+    }
+    // Validar ciudad (no vacía, solo letras y espacios)
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$/.test(nuevoUsuario.city)) {
+      alert('La ciudad debe tener entre 2 y 40 letras.');
+      return;
+    }
     // Validar password
     if (!validarPassword(nuevoUsuario.password)) {
       alert('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.');
       return;
     }
-
     // Confirmar que ambas contraseñas coinciden
     if (!compararPasswords(nuevoUsuario.password, confirmPassword)) {
       alert('Las contraseñas no coinciden.');
       return;
     }
 
-
     // Enviamos la solicitud al servidor
     $.ajax({
-      url: '/api/register',               // Ruta de registro en el backend
+      url: '/api/register',
       method: 'POST',
-  
-    contentType: 'application/json',
-      data: JSON.stringify(nuevoUsuario), // Convertimos el objeto a JSON
-
-       success: function (res) {
-        alert(res.message || 'Usuario registrado correctamente. Ahora puedes iniciar sesión desde el botón "Login".');
-      $('#form-registro')[0].reset();
-      window.location.href = '/pages/index.html'; // Redirijo a index.html
+      contentType: 'application/json',
+      data: JSON.stringify(nuevoUsuario),
+      success: function (res) {
+        alert(res.message || 'Usuario registrado correctamente');// Mostramos el mensaje de éxito
+        $('#form-registro')[0].reset();
+        // Redirige a index.html y abre la modal de login automáticamente
+        window.location.href = 'index.html?showLogin=1';
       },
-
-
       error: function (xhr) {
         alert(xhr.responseJSON?.error || 'Error al registrar usuario');// Si hay error, mostramos el mensaje
       }
