@@ -25,11 +25,11 @@ $(document).ready(function () {
 
     // Luego cargar carrito servidor para sincronizar
     $.ajax({
-      url: `/api/cart/${usuario}`,
+      url: `/api/cart?user=${usuario}`,
       method: 'GET',
       success: function (respuesta) {
-        if (respuesta && respuesta.cart) {
-          carrito = respuesta.cart;
+        if (respuesta) {
+          carrito = respuesta;
           actualizarContadorCarrito(calcularTotalItems(carrito));
           mostrarCarrito();
         }
@@ -230,7 +230,7 @@ function guardarCarrito() {
     url: '/api/cart',
     method: 'POST',
     contentType: 'application/json',
-    data: JSON.stringify({ user: usuario, cart: carrito }),
+    data: JSON.stringify({ user: usuario, items: carrito }),
     success: function () {
       console.log('Carrito guardado');
     },
@@ -282,3 +282,5 @@ function mostrarModalLogin() {
   const loginModal = new bootstrap.Modal(document.getElementById('modalCarrito'));
   loginModal.show();
 }
+
+

@@ -1,13 +1,72 @@
 [
   {
-    "id": 1,
-    "username": "Pablo_Hernandez",
-    "email": "pachepatat@gmail.com",
-    "password": "Pacheco1987"
+   
   },
   {
-    "username": "Perico_Jimenez",
-    "password": "Pachuloyo1",
-    "email": "potato@gmail.com"
+    
+  },
+  {
+    
+  },
+  {
+    "username": "prueba2",
+    "password": "Prueba222",
+    "email": "prueba@2.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030"
+  },
+  {
+    "username": "prueba3",
+    "password": "Prueba333",
+    "email": "prueba@3.com",
+    "birthdate": "1991-01-06",
+    "phone": "692370369",
+    "postalcode": "28030"
+  },
+  {
+    "username": "prueba4",
+    "password": "Prueba444",
+    "email": "p@4.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
+  },
+  {
+    "username": "prueba5",
+    "password": "Prueba555",
+    "email": "p@5.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
+  },
+  {
+    "username": "prueba6",
+    "password": "Prueba666",
+    "email": "p@6.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
+  },
+  {
+    "username": "prueba7",
+    "password": "Prueba777",
+    "email": "p@7.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
+  },
+  {
+    "username": "defi",
+    "password": "Defi1234",
+    "email": "defi@defi.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
   }
 ]
