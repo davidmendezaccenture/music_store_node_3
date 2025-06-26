@@ -49,7 +49,7 @@ $(document).ready(function () {
   // === REGISTRO ===
   $('#form-registro').submit(function (e) {
     e.preventDefault(); // Previene envío clásico (con recarga)
-
+    
     const nuevoUsuario = {
       username: $('#username').val().trim(),
       email: $('#email').val().trim(),
@@ -60,8 +60,8 @@ $(document).ready(function () {
       password: $('#password').val()
     };
 
-    const confirmPassword = $('#regConfirmPassword').val();
-
+    const confirmPassword = $('#ConfirmPassword').val();
+    console.log(password,confirmPassword);
     // Validación básica
     if (!nuevoUsuario.username || !nuevoUsuario.email || !nuevoUsuario.birthdate || !nuevoUsuario.phone || !nuevoUsuario.postalcode || !nuevoUsuario.city || !nuevoUsuario.password) {
       alert('Por favor, completa todos los campos');
