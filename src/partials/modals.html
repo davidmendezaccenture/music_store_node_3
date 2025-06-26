@@ -12,13 +12,13 @@
                 <form id="form-login">
                     <div class="mb-3">
                         <label for="username" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="username" required
-                               placeholder="Tu nombre de usuario" autofocus>
+                        <input type="text" class="form-control" id="username" name="username" required
+                               placeholder="Tu nombre de usuario" autofocus autocomplete="username">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" id="password" required placeholder="Introduce tu contraseña" autocomplete="current-password" aria-describedby="loginPasswordHelp">
+                            <input type="password" class="form-control" id="password" name="password" required placeholder="Introduce tu contraseña" autocomplete="current-password" aria-describedby="loginPasswordHelp">
                             <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="0" aria-label="Mostrar contraseña">
                                 <i class="bi bi-eye"></i>
                             </button>
@@ -34,7 +34,7 @@
                 </form>
             </div>
             <div class="modal-footer justify-content-center">
-                <p class="mb-0">¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+                <p class="mb-0">¿No tienes cuenta? <a href="/pages/registro.html">Regístrate aquí</a></p>
             </div>
         </div>
     </div>

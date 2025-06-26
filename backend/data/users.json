@@ -48,5 +48,23 @@
     "phone": "600000000",
     "postalcode": "28030",
     "city": "Madrid"
+  },
+  {
+    "username": "prueba6",
+    "password": "Prueba666",
+    "email": "p@6.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
+  },
+  {
+    "username": "prueba7",
+    "password": "Prueba777",
+    "email": "p@7.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030",
+    "city": "Madrid"
   }
 ]
