@@ -43,12 +43,12 @@ app.get("/api/products", (req, res) => {
 // Registrar un nuevo usuario
 app.post("/api/register", (req, res) => {
   // Extraer los datos del body de la petición
-  const { username, password, email } = req.body;
+  const { username, password, email, birthdate, phone, postalcode, city } = req.body;
 
   // Validaciones de campos obligatorios
-  if (!username || !password || !email) {
+  if (!username || !password || !email || !birthdate || !phone || !postalcode || !city) {
     return res.status(400).json({
-      error: "Los campos username, password y email son obligatorios.",
+      error: "Todos los campos son obligatorios: username, password, email, fecha de nacimiento, teléfono, código postal y ciudad.",
     });
   }
 
@@ -63,6 +63,26 @@ app.post("/api/register", (req, res) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({ error: "El Email no tiene un formato válido." });
+  }
+
+  // Validar fecha de nacimiento (YYYY-MM-DD)
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(birthdate)) {
+    return res.status(400).json({ error: "La fecha de nacimiento no es válida." });
+  }
+
+  // Validar teléfono (9 dígitos)
+  if (!/^\d{9}$/.test(phone)) {
+    return res.status(400).json({ error: "El teléfono debe tener 9 dígitos." });
+  }
+
+  // Validar código postal (5 dígitos)
+  if (!/^\d{5}$/.test(postalcode)) {
+    return res.status(400).json({ error: "El código postal debe tener 5 dígitos." });
+  }
+
+  // Validar ciudad (no vacía, solo letras y espacios)
+  if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$/.test(city)) {
+    return res.status(400).json({ error: "La ciudad debe tener entre 2 y 40 letras." });
   }
 
   // Validar password: mínimo 8 caracteres, al menos una mayúscula, una minúscula y un número
@@ -106,7 +126,7 @@ app.post("/api/register", (req, res) => {
     }
 
     // Añadir el nuevo usuario al array
-    users.push({ username, password, email });
+    users.push({ username, password, email, birthdate, phone, postalcode, city });
     // Guardar el array actualizado en el archivo
     fs.writeFile(usersPath, JSON.stringify(users, null, 2), (err) => {
       if (err) {

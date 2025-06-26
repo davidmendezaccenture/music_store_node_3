@@ -14,5 +14,21 @@
     "username": "prueba",
     "password": "Prueba123",
     "email": "prueba@prueba.com"
+  },
+  {
+    "username": "prueba2",
+    "password": "Prueba222",
+    "email": "prueba@2.com",
+    "birthdate": "1991-01-01",
+    "phone": "600000000",
+    "postalcode": "28030"
+  },
+  {
+    "username": "prueba3",
+    "password": "Prueba333",
+    "email": "prueba@3.com",
+    "birthdate": "1991-01-06",
+    "phone": "692370369",
+    "postalcode": "28030"
   }
 ]

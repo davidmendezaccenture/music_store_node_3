@@ -36,8 +36,7 @@ $(document).ready(function () {
         return res.json();
       })
       .then(data => {
-        // Acceso concedido: mostrar alerta de bienvenida desde la modal
-        alert('¡Bienvenido, ' + data.user.username + '! (modal)');
+        // Acceso concedido: redirigir a la página principal
         window.location.href = '/';
       })
       .catch(err => {
@@ -54,59 +53,75 @@ $(document).ready(function () {
     const nuevoUsuario = {
       username: $('#username').val().trim(),
       email: $('#email').val().trim(),
+      birthdate: $('#birthdate').val(),
+      phone: $('#phone').val().trim(),
+      postalcode: $('#postalcode').val().trim(),
+      city: $('#city').val().trim(),
       password: $('#password').val()
     };
 
     const confirmPassword = $('#confirmPassword').val();
 
     // Validación básica
-    if (!nuevoUsuario.username || !nuevoUsuario.email || !nuevoUsuario.password) {
+    if (!nuevoUsuario.username || !nuevoUsuario.email || !nuevoUsuario.birthdate || !nuevoUsuario.phone || !nuevoUsuario.postalcode || !nuevoUsuario.city || !nuevoUsuario.password) {
       alert('Por favor, completa todos los campos');
       return;
     }
 
     // Validaciones con funciones de utils.js
-
     // Validar username
     if (!validarUsername(nuevoUsuario.username)) {
       alert('El nombre de usuario debe tener entre 3 y 20 caracteres, y solo letras, números, guiones o guiones bajos.');
       return;
     }
-
     // Validar email
     if (!validarEmail(nuevoUsuario.email)) {
       alert('El email no tiene un formato válido.');
       return;
     }
-
+    // Validar fecha de nacimiento (mayor de 13 años)
+    if (!/\d{4}-\d{2}-\d{2}/.test(nuevoUsuario.birthdate)) {
+      alert('La fecha de nacimiento no es válida.');
+      return;
+    }
+    // Validar teléfono (9 dígitos)
+    if (!/^\d{9}$/.test(nuevoUsuario.phone)) {
+      alert('El teléfono debe tener 9 dígitos.');
+      return;
+    }
+    // Validar código postal (5 dígitos)
+    if (!/^\d{5}$/.test(nuevoUsuario.postalcode)) {
+      alert('El código postal debe tener 5 dígitos.');
+      return;
+    }
+    // Validar ciudad (no vacía, solo letras y espacios)
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$/.test(nuevoUsuario.city)) {
+      alert('La ciudad debe tener entre 2 y 40 letras.');
+      return;
+    }
     // Validar password
     if (!validarPassword(nuevoUsuario.password)) {
       alert('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.');
       return;
     }
-
     // Confirmar que ambas contraseñas coinciden
     if (!compararPasswords(nuevoUsuario.password, confirmPassword)) {
       alert('Las contraseñas no coinciden.');
       return;
     }
 
-
     // Enviamos la solicitud al servidor
     $.ajax({
-      url: '/api/register',               // Ruta de registro en el backend
+      url: '/api/register',
       method: 'POST',
-
-    contentType: 'application/json',
-      data: JSON.stringify(nuevoUsuario), // Convertimos el objeto a JSON
-
+      contentType: 'application/json',
+      data: JSON.stringify(nuevoUsuario),
       success: function (res) {
         alert(res.message || 'Usuario registrado correctamente');// Mostramos el mensaje de éxito
         $('#form-registro')[0].reset();
         // Redirige a index.html y abre la modal de login automáticamente
         window.location.href = 'index.html?showLogin=1';
       },
-
       error: function (xhr) {
         alert(xhr.responseJSON?.error || 'Error al registrar usuario');// Si hay error, mostramos el mensaje
       }
