@@ -15,21 +15,21 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
               <!-- Logo + Nombre -->
-              <a class="navbar-brand d-flex align-items-center" href="index.html">
+              <a class="navbar-brand d-flex align-items-center" href="/pages/index.html">
                 <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="30" class="me-2">
                 <span class="fw-bold">RaiRock</span>
               </a>
         
-              <!-- Menú Hamburguesa (mobile) -->
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+                <!-- Menú Hamburguesa (mobile) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
         
               <!-- Menú Principal -->
               <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="/pages/index.html">
                       <i class="bi bi-house-door me-1"></i> Inicio
                     </a>
                   </li>
@@ -39,30 +39,30 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#about">
+                    <a class="nav-link" href="/pages/sobre_nosotros.html">
                       <i class="bi bi-people me-1"></i> Sobre Nosotros
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#contact">
+                    <a class="nav-link" href="/pages/contact.html">
                       <i class="bi bi-envelope me-1"></i> Contacto
                     </a>
                   </li>
                 </ul>
         
                 <!-- Carrito + Login -->
-                <div class="d-flex">
-                  <a href="cart.html" class="btn btn-outline-dark position-relative me-2">
-                    <i class="bi bi-cart3"></i>
-                    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
-                  </a>
-                  <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <i class="bi bi-person-fill me-1"></i> Login
-                  </button>
+                    <div class="d-flex ms-auto">
+                        <a href="cart.html?from=/pages/guitar.html" class="btn btn-outline-dark position-relative me-2">
+                            <i class="bi bi-cart3"></i>
+                            <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
+                        </a>
+                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="bi bi-person-fill me-1"></i> Login
+                        </button>
+                    </div>
                 </div>
-              </div>
             </div>
-          </nav>
+        </nav>
     </header>
 
     <!-- Contenido principal -->
@@ -95,7 +95,7 @@
                                 <h2 class="card-title h5">Guitarra Clásica</h2>
                                 <p class="card-text">Cuerpo de madera, cuerdas de nylon. Ideal para principiantes.</p>
                                 <p class="card-text fw-bold" aria-label="Precio">199&nbsp;€</p>
-                                <button class="btn btn-primary" aria-label="Añadir Guitarra Clásica a la cesta">Añadir a la
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Clásica a la cesta" data-id="9">Añadir a la
                                     cesta</button>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                                     <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
                                     <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
                                 </p>
-                                <button class="btn btn-primary" aria-label="Añadir Guitarra Eléctrica a la cesta">Añadir a la
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="5">Añadir a la
                                     cesta</button>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                                 <h2 class="card-title h5">Guitarra Acústica</h2>
                                 <p class="card-text">Perfecta para tocar en cualquier lugar, sonido brillante.</p>
                                 <p class="card-text fw-bold" aria-label="Precio">249&nbsp;€</p>
-                                <button class="btn btn-primary" aria-label="Añadir Guitarra Acústica a la cesta">Añadir a la
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Acústica a la cesta" data-id="1">Añadir a la
                                     cesta</button>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                     <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
                                     <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
                                 </p>
-                                <button class="btn btn-primary" aria-label="Añadir Guitarra Eléctrica a la cesta">Añadir a la
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="21">Añadir a la
                                     cesta</button>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                                 <h2 class="card-title h5">Guitarra Clásica</h2>
                                 <p class="card-text">Cuerpo de madera, cuerdas de nylon. Ideal para principiantes.</p>
                                 <p class="card-text fw-bold" aria-label="Precio">199&nbsp;€</p>
-                                <button class="btn btn-primary" aria-label="Añadir Guitarra Clásica a la cesta">Añadir a la
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Clásica a la cesta" data-id="4">Añadir a la
                                     cesta</button>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                                     <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
                                     <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
                                 </p>
-                                <button class="btn btn-primary" aria-label="Añadir Guitarra Eléctrica a la cesta">Añadir a la
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="8">Añadir a la
                                     cesta</button>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                                 <h2 class="card-title h5">Guitarra Acústica Clara</h2>
                                 <p class="card-text">Perfecta para tocar en cualquier lugar, sonido brillante.</p>
                                 <p class="card-text fw-bold" aria-label="Precio">199&nbsp;€</p>
-                                <button class="btn btn-primary" aria-label="Añadir Guitarra Acústica Clara a la cesta">Añadir a la
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Acústica Clara a la cesta" data-id="1">Añadir a la
                                     cesta</button>
                             </div>
                         </div>
@@ -198,7 +198,7 @@
                                     <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
                                     <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
                                 </p>
-                                <button class="btn btn-primary" aria-label="Añadir Guitarra Eléctricaa la cesta">Añadir a la
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctricaa la cesta" data-id="22">Añadir a la
                                     cesta</button>
                             </div>
                         </div>
@@ -211,7 +211,7 @@
                                 <h2 class="card-title h5">Guitarra Clásica Clara</h2>
                                 <p class="card-text">Cuerpo de madera clara, cuerdas de nylon. Ideal para principiantes.</p>
                                 <p class="card-text fw-bold" aria-label="Precio">199&nbsp;€</p>
-                                <button class="btn btn-primary" aria-label="Añadir Guitarra eléctrica Clara a la cesta">Añadir a la
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra eléctrica Clara a la cesta" data-id="22">Añadir a la
                                     cesta</button>
                             </div>
                         </div>
@@ -219,52 +219,58 @@
                 </section>
     </main>
     <!-- Pre-footer -->
-    <section class="pre-footer py-4 bg-light">
-        <div class="container">
-            <div class="row">
-                <!-- Columna 1: Métodos de pago -->
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h3 class="h5">Pago seguro</h3>
-                    <div class="payment-methods">
-                        <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" class="img-thumbnail me-2" width="50">
-                        <img src="../assets/images/icons8-visa-48.png" alt="Visa" class="img-thumbnail me-2" width="50">
-                        <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" class="img-thumbnail me-2" width="50">
-                        <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" class="img-thumbnail" width="50">
-                    </div>
-                </div>
-                
-                <!-- Columna 2: Ventajas -->
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h3 class="h5">Ventajas RaiRock</h3>
-                    <ul class="list-unstyled">
-                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Garantía de 2 años</li>
-                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Devoluciones fáciles</li>
-                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Servicio técnico especializado</li>
-                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Asesoramiento profesional</li>
-                    </ul>
-                </div>
-                
-                <!-- Columna 3: Redes sociales -->
-                <div class="col-md-4">
-                    <h3 class="h5">Síguenos</h3>
-                    <div class="social-links">
-                        <a href="#" class="text-decoration-none me-3" aria-label="Facebook de RaiRock">
-                            <i class="bi bi-facebook fs-4"></i>
-                        </a>
-                        <a href="#" class="text-decoration-none me-3" aria-label="Twitter de RaiRock">
-                            <i class="bi bi-twitter fs-4"></i>
-                        </a>
-                        <a href="#" class="text-decoration-none me-3" aria-label="Instagram de RaiRock">
-                            <i class="bi bi-instagram fs-4"></i>
-                        </a>
-                        <a href="#" class="text-decoration-none" aria-label="YouTube de RaiRock">
-                            <i class="bi bi-youtube fs-4"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section class="pre-footer py-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Columna 1: Métodos de pago -->
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="pre-footer-card h-100 p-4">
+          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
+          <div class="payment-methods d-flex flex-wrap gap-3">
+            <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" width="80">
+            <img src="../assets/images/icons8-visa-48 (1).png" alt="Visa" width="80">
+            <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" width="80">
+            <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" width="80">
+          </div>
         </div>
-    </section>
+      </div>
+      
+      <!-- Columna 2: Ventajas -->
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="pre-footer-card h-100 p-4">
+          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Ventajas RaiRock</h3>
+          <ul class="list-unstyled">
+            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Garantía de 2 años</li>
+            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Devoluciones fáciles</li>
+            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Servicio técnico especializado</li>
+            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Asesoramiento profesional</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Columna 3: Redes sociales -->
+      <div class="col-md-4">
+        <div class="pre-footer-card h-100 p-4">
+          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Síguenos</h3>
+          <div class="social-links d-flex flex-wrap gap-3">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <i class="bi bi-facebook fs-3"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <i class="bi bi-twitter-x fs-3"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <i class="bi bi-instagram fs-3"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <i class="bi bi-youtube fs-3"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
                 
     <!-- Footer -->
     <footer class="bg-dark text-white py-3">
@@ -286,7 +292,7 @@
                     <div class="mb-3">
                         <label for="loginEmail" class="form-label">Correo electrónico</label>
                         <input type="email" class="form-control" id="loginEmail" required 
-                               aria-describedby="emailHelp" placeholder="tucorreo@ejemplo.com">
+                            aria-describedby="emailHelp" placeholder="tucorreo@ejemplo.com">
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="form-label">Contraseña</label>
@@ -301,18 +307,16 @@
                 </form>
             </div>
             <div class="modal-footer justify-content-center">
-                <p class="mb-0">¿No tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" 
-                   data-bs-dismiss="modal">Regístrate aquí</a></p>
+                <p class="mb-0">¿No tienes cuenta? <a href="#" id="enlace-registro">Regístrate aquí</a></p>
             </div>
         </div>
     </div>
 </div>
 
-    <!-- Scripts -->
-    <script>
-        // Añadir el año actual automáticamente
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
+<script>
+    // Añadir el año actual automáticamente
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/app.js"></script>
@@ -331,7 +335,22 @@
             });
         });
     </script>
+    <!-- Añdo una animacion para dar tiempo a redirigir a la pagina de registro antes de cerrar el modal de login-->
+    <script>
+        $('#enlace-registro').on('click', function (e) {
+        e.preventDefault();
 
+        // Añade una clase de animación de salida al modal
+        $('#loginModal .modal-content').addClass('animate__animated animate__fadeOutUp');
+
+        // Espera la animación (500 ms aprox), luego cierra el modal y redirige
+        setTimeout(() => {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            modal.hide(); // Cierra el modal programáticamente
+            window.location.href = 'registro.html'; // Redirige a la página de registro
+        }, 600); // Delay algo mayor a la duración de la animación
+        });
+    </script>
 
     <!-- Modal de Producto Añadido -->
 
