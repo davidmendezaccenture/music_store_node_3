@@ -3,7 +3,8 @@
 $(document).ready(function () {
 
   // === LOGIN desde el modal===
-  $('#loginForm').submit(function (e) {
+ $(document).on('submit', '#form-login', function(e){
+    console.log("Submit capturado");
     e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
 
     // Obtenemos los valores de los campos del formulario
@@ -32,17 +33,24 @@ $(document).ready(function () {
       body: JSON.stringify(body)
     })
       .then(res => {
+        console.log("Respuesta recibida:", res);
         if (!res.ok) throw new Error('Usuario o contraseña incorrectos');
         return res.json();
       })
       .then(data => {
+        console.log("Datos decodificados:", data);
+        const usuario = data.user.username;
+
+        console.log("Usuario logueado:", usuario);
         // Acceso concedido: redirigir a la página principal y almacenar usuario
         localStorage.setItem('usuario', data.user.username);
-        const carritoGuardado = localStorage.getItem('carrito');
-        cargarCarritoUsuario(usuario);
-        window.location.href = '/';
+        alert("Bienvenido " + usuario);
+        const referrer = document.referrer;
+          window.location.href = "/pages/index.html";
       })
       .catch(err => {
+        console.error("Error en el login:", err);
+
         // Mostrar modal de error
         var myModal = new bootstrap.Modal(document.getElementById('loginErrorModal'));
         myModal.show();
