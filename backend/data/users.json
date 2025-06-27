@@ -71,5 +71,14 @@
     "phone": "653511423",
     "postalcode": "41960",
     "city": "Gines"
+  },
+  {
+    "username": "nombreFicticio",
+    "password": "8Caracteres",
+    "email": "correodeMentira@gmail.com",
+    "birthdate": "2025-06-06",
+    "phone": "600123456",
+    "postalcode": "28001",
+    "city": "Madrid"
   }
 ]

@@ -18,17 +18,19 @@ function ocultarErrorLoginPassword() {
 function mostrarBotonLogout(username) {
   const userActions = document.getElementById('user-actions');
   if (!userActions) return;
-  userActions.innerHTML = `
-    <a href="cart.html" class="btn btn-outline-dark position-relative me-2">
-      <i class="bi bi-cart3"></i>
-      <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
-    </a>
-    <span class="me-2 fw-bold">${username}</span>
-    <button class="btn btn-danger" id="logoutBtn">
-      <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
-    </button>
-    <a class="enlace-inicio btn btn-outline-secondary" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Volver a inicio</a>
-  `;
+userActions.innerHTML = `
+  <a href="cart.html" class="btn btn-outline-dark position-relative me-3">
+    <i class="bi bi-cart3"></i>
+    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
+  </a>
+  <span class="me-3 fw-bold align-self-center">${username}</span>
+  <button class="btn btn-danger me-3" id="logoutBtn">
+    <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+  </button>
+  <a class="enlace-inicio btn btn-outline-secondary" href="/pages/index.html">
+    <i class="bi bi-house-door me-1"></i>Volver a inicio
+  </a>
+`;
   document.getElementById('logoutBtn').addEventListener('click', function() {
     localStorage.removeItem('usuario');
     location.reload();
