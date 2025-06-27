@@ -379,18 +379,72 @@ a:hover .icono-nav {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.payment-methods img {
-    transition: transform 0.3s ease;
+/* Estilos para los iconos de pago (igual que redes sociales) */
+.payment-methods {
+    gap: 1rem !important;
 }
 
-.payment-methods img:hover {
-    transform: translateY(-3px);
+.payment-icon {
+    display: inline-block;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    text-align: center;
 }
 
-.payment-methods img:focus {
-    outline: 2px solid #0d6efd;
-    outline-offset: 2px;
-    transform: translateY(-3px);
+.payment-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.grayscale {
+    filter: grayscale(100%) brightness(1.2);
+}
+
+.payment-icon:hover .payment-img,
+.payment-icon:focus .payment-img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.1);
+}
+
+/* PayPal - Color específico al pasar el ratón */
+.payment-icon:hover:nth-child(1) .payment-img,
+.payment-icon:focus:nth-child(1) .payment-img {
+    filter: grayscale(0%) brightness(1) hue-rotate(-10deg);
+}
+
+/* Visa - Color específico al pasar el ratón */
+.payment-icon:hover:nth-child(2) .payment-img,
+.payment-icon:focus:nth-child(2) .payment-img {
+    filter: grayscale(0%) brightness(1) hue-rotate(-10deg);
+}
+
+/* Mastercard - Color específico al pasar el ratón */
+.payment-icon:hover:nth-child(3) .payment-img,
+.payment-icon:focus:nth-child(3) .payment-img {
+    filter: grayscale(0%) brightness(1) hue-rotate(-10deg);
+}
+
+/* American Express - Color específico al pasar el ratón */
+.payment-icon:hover:nth-child(4) .payment-img,
+.payment-icon:focus:nth-child(4) .payment-img {
+    filter: grayscale(0%) brightness(1) hue-rotate(-10deg);
+}
+
+/* Ajustar tamaño de redes sociales para que coincidan */
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon i {
+    font-size: 1.5rem;
 }
 
 .social-links a {
