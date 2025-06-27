@@ -67,7 +67,17 @@ $(document).ready(function () {
 
     $("#modalIntegranteLabel").text(nombre);
     $("#modalDesc").text(descripcion);
-    $("#modalImg").attr("src", imagen).attr("alt", nombre);
+    $("#modalImg")
+    .attr("src", imagen)
+    .attr("alt", nombre)
+    .css({
+      width: "100%",
+      maxHeight: "400px",
+      objectFit: "contain",
+      display: "block",
+      margin: "0 auto",
+    });
+
 
     $("#modalIntegrante").modal("show");
   });
@@ -78,15 +88,39 @@ window.initMap = function () {
   // Ubicación ficticia: Calle ACDC, Leganés
   const rairockLocation = { lat: 40.3270, lng: -3.7635 };
 
+  // Crear el mapa
   const map = new google.maps.Map(document.getElementById("map"), {
     center: rairockLocation,
     zoom: 15,
   });
 
-  new google.maps.Marker({
+  // Contenido de la ventana emergente
+  const infoContent = `
+    <div style="max-width: 250px;">
+      <h6 class="mb-1">RaiRock Music Store</h6>
+      <p class="mb-0"><strong>Dirección:</strong> Calle ACDC, Leganés<br>
+      <strong>Horario:</strong> Lunes a Sábado, 10:00 - 20:00<br>
+      <strong>Tel:</strong> 911 123 456</p>
+    </div>
+  `;
+
+  const infoWindow = new google.maps.InfoWindow({
+    content: infoContent,
+  });
+
+  // Crear el marcador
+  const marker = new google.maps.Marker({
     position: rairockLocation,
     map: map,
-    title: "RaiRock Music Store",
+    title: "RaiRock Music Store - Calle ACDC, Leganés",
+    animation: google.maps.Animation.DROP
+  });
+
+  // Mostrar infoWindow al hacer clic
+  marker.addListener("click", () => {
+    infoWindow.open(map, marker);
   });
 };
+
+
 
