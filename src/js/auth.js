@@ -45,8 +45,13 @@ $(document).ready(function () {
         // Acceso concedido: redirigir a la página principal y almacenar usuario
         localStorage.setItem('usuario', data.user.username);
         alert("Bienvenido " + usuario);
-        const referrer = document.referrer;
-          window.location.href = "/pages/index.html";
+        if (window.location.pathname.includes('login.html')) {
+            // Redirigir a index.html solo si venimos de login
+            window.location.href = "/pages/index.html";
+        } else {
+            // Recargar la página actual si estamos en otra página
+            location.reload();
+        }
       })
       .catch(err => {
         console.error("Error en el login:", err);
