@@ -6,19 +6,6 @@
     }
   ],
   "{\"message\":\"Login exitoso.\",\"user\":{\"username\":\"PabloEmilio\",\"email\":\"pachepatat@gmail.com\"}}": [],
-  "David": [
-    {
-      "id": 9,
-      "cantidad": 1
-    },
-    {
-      "id": 5,
-      "cantidad": 1
-    },
-    {
-      "id": 1,
-      "cantidad": 2
-    }
-  ],
+  "David": [],
   "PabloEmilio": []
 }

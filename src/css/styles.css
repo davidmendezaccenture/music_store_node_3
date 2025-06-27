@@ -387,12 +387,6 @@ a:hover .icono-nav {
     transform: translateY(-3px);
 }
 
-.payment-methods img:focus {
-    outline: 2px solid #0d6efd;
-    outline-offset: 2px;
-    transform: translateY(-3px);
-}
-
 .social-links a {
     color: #6c757d;
     transition: color 0.3s ease;
@@ -439,16 +433,10 @@ footer {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-/*Enlace para volver al index*/
-
 
 /* Estilo para botones, para que sean iguales en tamaño*/
-.enlace-inicio img {
-    width: 16px;
-    height: 16px;
-}
 #seguir-comprando,
-#confirmar-pago, .enlace-inicio {
+#confirmar-pago {
     display: inline-flex;       /* inline para que el botón se adapte al contenido */
     align-items: center;        /* alinear verticalmente texto e imagen */
     gap: 8px;                   /* separación entre icono y texto */
@@ -457,8 +445,7 @@ footer {
     padding: 0.375rem 0.75rem;  /* ajusta el padding para que quede mejor */
 }
 
-#seguir-comprando:hover,
-.enlace-inicio:hover {
+#seguir-comprando:hover {
     background-color: #e2e6ea !important;
     color: #343a40 !important;
     text-decoration: none;
@@ -469,12 +456,6 @@ footer {
     background-color: #004085;
     border-color: #004085;
     transform: scale(1.05);
-}
-
-.enlace-inicio img {
-    height: 25px;
-    margin-right: 10px;
-    filter: brightness(1.1);
 }
 
 /* Icono dentro del botón. Añadimos pequeño efecto de rotación*/

@@ -17,8 +17,6 @@ function ocultarErrorLoginPassword() {
 
 function mostrarBotonLogout(username) {
   const userActions = document.getElementById('user-actions');
-  //Para evitar que se pinte el enlace de inicio en el index y en otras vistas
-  const esPaginaCarrito = window.location.pathname.includes('cart.html');
   if (!userActions) return;
 userActions.innerHTML = `
   <a href="/pages/cart.html" class="btn btn-outline-dark position-relative me-3">
@@ -29,10 +27,6 @@ userActions.innerHTML = `
   <button class="btn btn-danger me-3" id="logoutBtn">
     <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
   </button>
-    ${esPaginaCarrito ? 
-      '<a class="enlace-inicio btn btn-outline-secondary" href="/pages/index.html">' + 
-      '<i class="bi bi-house-door me-1"></i>Volver a inicio</a>' : 
-      ''}
 `;
   document.getElementById('logoutBtn').addEventListener('click', function() {
     localStorage.removeItem('usuario');
