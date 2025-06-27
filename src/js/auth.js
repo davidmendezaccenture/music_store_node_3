@@ -37,7 +37,9 @@ $(document).ready(function () {
       })
       .then(data => {
         // Acceso concedido: redirigir a la página principal y almacenar usuario
-        localStorage.setItem('usuario', data.username);
+        localStorage.setItem('usuario', data.user.username);
+        const carritoGuardado = localStorage.getItem('carrito');
+        cargarCarritoUsuario(usuario);
         window.location.href = '/';
       })
       .catch(err => {

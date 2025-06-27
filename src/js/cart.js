@@ -284,6 +284,24 @@ function mostrarMensajeCarritoVacio() {
     $('#confirmar-pago').prop('disabled', false);
   }
 }
+//Para cargar el carrito tras el loguin
+function cargarCarritoUsuario(usuario) {
+  // Luego cargar carrito servidor para sincronizar
+  $.ajax({
+    url: `/api/cart?user=${usuario}`,
+    method: 'GET',
+    success: function (respuesta) {
+      if (respuesta) {
+        carrito = respuesta;
+        actualizarContadorCarrito(calcularTotalItems(carrito));
+        mostrarCarrito();
+      }
+    },
+    error: function () {
+      console.warn('No se pudo cargar el carrito del servidor.');
+    }
+  });
+}
 
 const estaLogueado = () => {
   const usuario = localStorage.getItem('usuario');

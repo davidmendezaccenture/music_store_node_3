@@ -27,9 +27,10 @@ function mostrarBotonLogout(username) {
     <button class="btn btn-danger" id="logoutBtn">
       <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
     </button>
+    <a class="enlace-inicio btn btn-outline-secondary" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Volver a inicio</a>
   `;
   document.getElementById('logoutBtn').addEventListener('click', function() {
-    localStorage.removeItem('usuarioLogeado');
+    localStorage.removeItem('usuario');
     location.reload();
   });
 }
@@ -74,9 +75,9 @@ document.addEventListener('click', function(e) {
 
 function initLoginUI() {
   // Revisar si hay usuario logeado
-  const usuarioLogeado = localStorage.getItem('usuarioLogeado');
-  if (usuarioLogeado) {
-    mostrarBotonLogout(usuarioLogeado);
+  const usuario = localStorage.getItem('usuario');
+  if (usuario) {
+    mostrarBotonLogout(usuario);
   }
 
   // Lógica de submit del formulario de login
@@ -97,7 +98,7 @@ function initLoginUI() {
         })
         .then(data => {
           // Acceso concedido: guardar usuario y cerrar modal
-          localStorage.setItem('usuarioLogeado', data.user.username);
+          localStorage.setItem('usuario', data.user.username);
           mostrarBotonLogout(data.user.username);
           // Cerrar modal si existe
           if (typeof bootstrap !== 'undefined') {
