@@ -3,63 +3,103 @@
 $(document).ready(function () {
 
   // === LOGIN desde el modal===
- $(document).on('submit', '#form-login', function(e){
-    console.log("Submit capturado");
-    e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+$(document).on('submit', '#form-login', function(e) {
+  console.log("Submit capturado");
+  e.preventDefault();
+  const username = $('#username').val().trim();
+  const password = $('#password').val();
 
-    // Obtenemos los valores de los campos del formulario
-    // Usamos .trim() para eliminar espacios al inicio y final
-    const username = $('#username').val().trim(); // Solo username
-    const password = $('#password').val();
+  if (!username || !password) {
+    alert('Por favor, completa todos los campos');
+    return;
+  }
 
-    // Validación simple
-    if (!username || !password) {
-      alert('Por favor, completa todos los campos');
-      return;
-    }
+  const body = { username, password };
+  let carritoInvitado = [];
+  let carritoUsuario = [];
 
-    // Validar formato de username (opcional, si quieres puedes agregar una expresión regular)
-    // if (!/^[a-zA-Z0-9_-]{3,20}$/.test(username)) {
-    //   alert('El nombre de usuario no tiene un formato válido.');
-    //   return;
-    // }
-
-    const body = { username, password };
-
-    // Enviamos los datos al backend con fetch
-    fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+  //Obtenemos el carrito del invitado
+  fetch('/api/cart?user=guest')
+    .then(res => {
+      if (!res.ok) throw new Error('Error al obtener el carrito del invitado');
+      return res.json();
     })
-      .then(res => {
-        console.log("Respuesta recibida:", res);
-        if (!res.ok) throw new Error('Usuario o contraseña incorrectos');
-        return res.json();
-      })
-      .then(data => {
-        const usuario = data.user.username;
-        // Acceso concedido: redirigir a la página principal y almacenar usuario
-        localStorage.setItem('usuario', data.user.username);
-        // Eliminar el carrito del guest del backend (si existía)
-        fetch('/api/cart', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            user: 'guest',
-            items: []
-          })
-        });
-        mostrarModalBienvenida(`Bienvenido ${usuario}`);
-      })
-      .catch(err => {
-        console.error("Error en el login:", err);
-
-        // Mostrar modal de error
-        var myModal = new bootstrap.Modal(document.getElementById('loginErrorModal'));
-        myModal.show();
+    .then(data => {
+      carritoInvitado = data;
+      
+    //Borramos el carrito del invitado para que al hacer logout esté vacío
+      return fetch('/api/cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: 'guest', items: [] })
       });
-  });
+    })
+    .then(() => {
+    //Completamos el login
+      return fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Usuario o contraseña incorrectos');
+      return res.json();
+    })
+    .then(data => {
+      //Guardamos los datos los datos del usuario
+      const usuario = data.user.username;
+      localStorage.setItem('usuario', usuario);
+
+      //Obtenemos el carrito del usuario
+      return fetch(`/api/cart?user=${usuario}`)
+        .then(res => {
+          if (!res.ok) throw new Error('Error al obtener el carrito del usuario');
+          return res.json();
+        })
+        .then(data => {
+          carritoUsuario = data;
+          //Actualizamos el contador del carrito
+          const carritoFinal = unificarCarritos(carritoUsuario, carritoInvitado);
+          actualizarContadorCarrito(calcularTotalItems(carritoFinal));
+
+          // Guardamos el carrito unificado en el backend del usuario
+          return fetch('/api/cart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user: usuario, items: carritoFinal })
+          }).then(() => {
+            //Modal de bienvenida
+            mostrarModalBienvenida(`Bienvenido ${usuario}`);
+          });
+        });
+    })
+    .catch(err => {
+      console.error("Error en el proceso de login o carrito:", err);
+      var myModal = new bootstrap.Modal(document.getElementById('loginErrorModal'));
+      myModal.show();
+    });
+
+  //Función para unificar el contenido de los carritos
+  function unificarCarritos(carritoUsuario, carritoInvitado) {
+    const mapa = new Map();
+
+    //Añadimos el carrito del usuario
+    carritoUsuario.forEach(item => {
+      mapa.set(item.id, { ...item });
+    });
+
+    //Añadimos el contenido del carrito de invitado. Si el elemento ya está, sumamos cantidades
+    carritoInvitado.forEach(item => {
+      if (mapa.has(item.id)) {
+        mapa.get(item.id).cantidad += item.cantidad;
+      } else {
+        mapa.set(item.id, { ...item });
+      }
+    });
+    return Array.from(mapa.values());
+  }
+});
 
   // === REGISTRO ===
   $('#form-registro').submit(function (e) {
