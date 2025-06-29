@@ -154,3 +154,97 @@ if (document.getElementById('modals-container')) {
 } else {
   document.addEventListener('DOMContentLoaded', initLoginUI);
 }
+//Modal de bienvenida de usuario
+function mostrarModalBienvenida(mensaje) {
+  const modalHTML = `
+    <div class="modal fade" id="modalBienvenida" tabindex="-1" aria-labelledby="modalBienvenidaLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-body">
+            <i class="bi bi-person-check text-primary" style="font-size: 3rem; margin-bottom:15px;"></i>
+            <p class="fs-5 mb-2">${mensaje}</p>
+            <button class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Insertar en el contenedor
+  const contenedor = document.getElementById('modals-container');
+  contenedor.innerHTML = modalHTML;
+
+  // Mostrar la modal
+  const modal = new bootstrap.Modal(document.getElementById('modalBienvenida'));
+  modal.show();
+  //Redirigir tras cerrar la modal
+  document.getElementById('modalBienvenida').addEventListener('hidden.bs.modal', function () {
+  if (window.location.pathname.includes('login.html')) {
+    window.location.href = "/pages/index.html";
+  } else {
+    location.reload();
+  }
+});
+}
+//Modal de confirmacion de pago
+function mostrarModalPago() {
+  const modalHTML = `
+    <div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-labelledby="modalPagoConfirmadoLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-body">
+            <i class="bi bi-check-circle text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
+            <p class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
+            <button class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Insertar en el contenedor
+  const contenedor = document.getElementById('modals-container');
+  contenedor.innerHTML = modalHTML;
+
+  // Mostrar la modal
+  const modal = new bootstrap.Modal(document.getElementById('modalPagoConfirmado'));
+  modal.show();
+  //Recargar tras mostrar la modal
+  document.getElementById('modalPagoConfirmado').addEventListener('hidden.bs.modal', function () {
+    location.reload();
+  });
+}
+//Modal de confirmacion de borrado de elementos
+let modalEliminar=null;
+function mostrarModalConfirmarEliminacion() {
+  const modalHTML = `
+  <div class="modal fade" id="modalConfirmarEliminacion" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmar eliminación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de que quieres eliminar este producto del carrito?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="btn-confirmar-eliminar" type="button" class="btn btn-danger">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+
+  // Insertar en el contenedor
+  const contenedor = document.getElementById('modals-container');
+  contenedor.innerHTML = modalHTML;
+
+  // Mostrar la modal
+  modalEliminar = new bootstrap.Modal(document.getElementById('modalConfirmarEliminacion'));
+  modalEliminar.show();
+}
+
+
+

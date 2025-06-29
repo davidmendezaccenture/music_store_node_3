@@ -38,20 +38,19 @@ $(document).ready(function () {
         return res.json();
       })
       .then(data => {
-        console.log("Datos decodificados:", data);
         const usuario = data.user.username;
-
-        console.log("Usuario logueado:", usuario);
         // Acceso concedido: redirigir a la página principal y almacenar usuario
         localStorage.setItem('usuario', data.user.username);
-        alert("Bienvenido " + usuario);
-        if (window.location.pathname.includes('login.html')) {
-            // Redirigir a index.html solo si venimos de login
-            window.location.href = "/pages/index.html";
-        } else {
-            // Recargar la página actual si estamos en otra página
-            location.reload();
-        }
+        // Eliminar el carrito del guest del backend (si existía)
+        fetch('/api/cart', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            user: 'guest',
+            items: []
+          })
+        });
+        mostrarModalBienvenida(`Bienvenido ${usuario}`);
       })
       .catch(err => {
         console.error("Error en el login:", err);

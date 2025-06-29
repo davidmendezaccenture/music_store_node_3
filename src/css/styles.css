@@ -393,11 +393,14 @@ footer {
     padding: 0.375rem 0.75rem;  /* ajusta el padding para que quede mejor */
 }
 
+#seguir-comprando {
+    margin-left:16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease;
+}
 #seguir-comprando:hover {
-    background-color: #e2e6ea !important;
-    color: #343a40 !important;
-    text-decoration: none;
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 #confirmar-pago:hover {
