@@ -459,6 +459,9 @@ footer {
 .texto-precio {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     min-height: 120px;
+}
+.precio {
+    margin-top: auto;
 }
