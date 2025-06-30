@@ -19,13 +19,13 @@ function mostrarBotonLogout(username) {
   const userActions = document.getElementById('user-actions');
   if (!userActions) return;
 userActions.innerHTML = `
-  <a href="/pages/cart.html" class="btn btn-outline-dark position-relative me-3">
+  <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
     <i class="bi bi-cart3"></i>
-    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
+    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
   </a>
-  <span class="me-3 fw-bold align-self-center">${username}</span>
-  <button class="btn btn-danger me-3" id="logoutBtn">
-    <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+  <span class="fw-bold user-name mx-3 text-truncate">${username}</span>
+  <button class="btn btn-danger" id="logoutBtn">
+    <i class="bi bi-box-arrow-right me-1"></i> Logout
   </button>
 `;
   document.getElementById('logoutBtn').addEventListener('click', function() {

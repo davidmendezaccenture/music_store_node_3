@@ -49,6 +49,41 @@ h2 {
 .nav-link i {
     font-size: 0.9rem;
 }
+header nav.navbar {
+  white-space: nowrap; /* Evita salto de línea en los hijos */
+  overflow-x: auto;    /* Permite scroll horizontal si no cabe */
+}
+
+#user-actions {
+  white-space: nowrap; /* No permitir salto de línea en el contenido */
+  flex-shrink: 0;      /* Que no se reduzca el tamaño */
+  align-items: center; /* Centrar verticalmente */
+}
+#user-actions span.me-3 {
+  white-space: nowrap; /* Que el texto no se divida */
+  margin-right: 1rem;  /* Separación con el botón */
+}
+/*Estilo para botones y user name, para que se mantengan independientemente del tamaño del nombre del usuario*/
+.btnLogin,
+#logoutBtn {
+    width: 120px; /* o el ancho máximo que necesita "Cerrar sesión" */
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem; /* espacio entre ícono y texto */
+}
+.user-name {
+    display: inline-block;
+    width: 100px;          /* ancho fijo */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 0;        /* impide que se reduzca */
+}
+
+
 
 /* Menú hamburguesa - solo para items de navegación */
 .navbar-collapse {
@@ -465,3 +500,4 @@ footer {
 .precio {
     margin-top: auto;
 }
+

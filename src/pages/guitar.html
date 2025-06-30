@@ -6,7 +6,6 @@
     <title>Guitarras y Bajos - RaiRock Music Store</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -49,17 +48,33 @@
                     </a>
                   </li>
                 </ul>
-
+                    <!--Barra de búsqueda-->
+                    <form class="d-flex me-3 mb-3 mb-lg-0" action="/buscar" method="GET" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q" placeholder="Buscar" required>
+                            <select class="form-select" name="categoria">
+                                <option value="">Todas</option>
+                                <option value="guitarras">Guitarras</option>
+                                <option value="teclados">Teclados</option>
+                                <option value="percusion">Percusión</option>
+                                <option value="viento">Viento</option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
                 <!-- Carrito + Login -->
-                <div class="d-flex ms-auto" id="user-actions">
-                    <a href="cart.html?from=/pages/guitar.html" class="btn btn-outline-dark position-relative me-2">
-                        <i class="bi bi-cart3"></i>
-                        <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
-                    </a>
-                    <button class="btn btn-primary" id="loginBtn" aria-haspopup="dialog" aria-controls="loginModal">
-                        <i class="bi bi-person-fill me-1"></i> Login
-                    </button>
-                </div>
+                    <div class="d-flex align-items-center ms-auto" id="user-actions">
+                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
+                            <i class="bi bi-cart3"></i>
+                            <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
+                        </a>
+                          <span class="fw-bold user-name mx-3 text-truncate" title="Nombre de usuario">Invitado</span>
+                        <button class="btn btn-primary btnLogin" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="bi bi-person-fill me-1"></i> Login
+                        </button>
+                    </div>
               </div>
             </div>
         </nav>
