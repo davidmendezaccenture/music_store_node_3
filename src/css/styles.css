@@ -402,9 +402,15 @@ footer {
 }
 /*Altura para el contenedor carrito. Le aplicamos el total de su altura con 1 elemento para que tras borrarlo no se desplacen los botones. Lo designamos como important para sobreescribir los estilos de bootstrap*/
 #contenedor-carrito {
-    min-height: 215.03px !important;
+    min-height: 166px !important;
+    margin-bottom: 0;
 }
 /*Estilo para los items del carrito, ampliación de imagen*/
+.item-carrito {
+    margin-bottom: 8px !important;
+    padding-top: 15.5px !important;
+    padding-bottom: 15.5px !important;
+}
 
 .item-carrito img {
     border-radius: 3px;
