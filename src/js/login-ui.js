@@ -188,9 +188,13 @@ function mostrarModalBienvenida(mensaje) {
 
   // Al cerrar modal, actualizar carrito y eliminar backdrop
   modalElement.addEventListener('hidden.bs.modal', () => {
+      if (window.location.pathname.includes('login.html')) {
+    window.location.href = "/pages/cart.html";
+      }else{
       mostrarCarrito();
       const backdrop = document.querySelector('.modal-backdrop');
       if (backdrop) backdrop.remove();
+      }
   });
 }
 

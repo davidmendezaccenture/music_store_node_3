@@ -285,3 +285,21 @@ if (require.main === module) {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
   });
 }
+//Búsquedas dentro de la web
+// Ruta de búsqueda
+app.get('/search', (req, res) => {
+  const query = req.query.q?.toLowerCase() || '';
+
+  const dataPath = path.join(__dirname, 'src', 'assets', 'data', 'products.json');
+  fs.readFile(dataPath, 'utf8', (err, data) => {
+    if (err) return res.status(500).send('Error al leer los datos');
+
+    const productos = JSON.parse(data);
+    const resultados = productos.filter(p =>
+      p.name.toLowerCase().includes(query) ||
+      p.category.toLowerCase().includes(query)
+    );
+
+    res.json(resultados); // Envía los resultados como JSON
+  });
+});
