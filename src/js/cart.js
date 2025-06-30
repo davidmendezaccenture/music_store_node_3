@@ -284,24 +284,14 @@ $(document).ready(function () {
     if (!estaLogueado()) {
       mostrarModalLogin();
     } else {
-      try {
-        const response = await fetch('/api/cart', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            user: usuario,
-            items: []
-          })
-        });
-
-        if (response.ok) {
-          mostrarModalPago()
-        } else {
-          console.error("Error al vaciar el carrito");
-        }
-      } catch (error) {
-        console.error("Error en la solicitud fetch:", error);
-      }
+      mostrarModalPago();
+      $('#modalPagoConfirmado').one('hidden.bs.modal', function () {
+        carrito = [];
+        guardarCarrito();
+        actualizarContadorCarrito(calcularTotalItems(carrito));
+        mostrarCarrito();
+        console.log('Modal de pago cerrada, ahora ejecuto otras funciones.');
+      });
     }
   });
 });

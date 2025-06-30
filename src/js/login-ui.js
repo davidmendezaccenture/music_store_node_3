@@ -203,7 +203,7 @@ function mostrarModalPago() {
           <div class="modal-body">
             <i class="bi bi-check-circle text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
             <p class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
-            <button class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
+            <button id="btnCerrarModal" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
           </div>
         </div>
       </div>
@@ -217,9 +217,10 @@ function mostrarModalPago() {
   // Mostrar la modal
   const modal = new bootstrap.Modal(document.getElementById('modalPagoConfirmado'));
   modal.show();
-  //Recargar tras mostrar la modal
-  document.getElementById('modalPagoConfirmado').addEventListener('hidden.bs.modal', function () {
-    location.reload();
+
+  // Añadir evento para el botón que cierra modal
+  document.getElementById('btnCerrarModal').addEventListener('click', () => {
+    modal.hide();
   });
 }
 //Modal de confirmacion de borrado de elementos
