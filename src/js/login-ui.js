@@ -163,7 +163,7 @@ function mostrarModalBienvenida(mensaje) {
           <div class="modal-body">
             <i class="bi bi-person-check text-primary" style="font-size: 3rem; margin-bottom:15px;"></i>
             <p class="fs-5 mb-2">${mensaje}</p>
-            <button class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
+            <button id="btnCerrarModal" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
           </div>
         </div>
       </div>
@@ -174,18 +174,26 @@ function mostrarModalBienvenida(mensaje) {
   const contenedor = document.getElementById('modals-container');
   contenedor.innerHTML = modalHTML;
 
-  // Mostrar la modal
-  const modal = new bootstrap.Modal(document.getElementById('modalBienvenida'));
+  // Crear modal de bootstrap
+  const modalElement = document.getElementById('modalBienvenida');
+  const modal = new bootstrap.Modal(modalElement);
+
+  // Mostrar modal
   modal.show();
-  //Redirigir tras cerrar la modal
-  document.getElementById('modalBienvenida').addEventListener('hidden.bs.modal', function () {
-  if (window.location.pathname.includes('login.html')) {
-    window.location.href = "/pages/index.html";
-  } else {
-    location.reload();
-  }
-});
+
+  // Añadir evento para el botón que cierra modal
+  document.getElementById('btnCerrarModal').addEventListener('click', () => {
+    modal.hide();
+  });
+
+  // Al cerrar modal, actualizar carrito y eliminar backdrop
+  modalElement.addEventListener('hidden.bs.modal', () => {
+      mostrarCarrito();
+      const backdrop = document.querySelector('.modal-backdrop');
+      if (backdrop) backdrop.remove();
+  });
 }
+
 //Modal de confirmacion de pago
 function mostrarModalPago() {
   const modalHTML = `
