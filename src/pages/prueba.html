@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUZZR</title>
+
+    <!-- Bootstrap core & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- Encabezado -->
+<header class="shadow-sm border-bottom">
+    <!-- 1ª línea – logo centrado -->
+    <div class="bg-light py-2">
+        <h1 class="display-5 text-center fw-bold mb-0">FUZZR</h1>
+    </div>
+
+    <!-- 2ª línea – navegación, buscador y acciones usuario -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-2">
+        <div class="container">
+            <!-- Fila flexible para mantener todo en una sola línea y permitir centrado real -->
+            <div class="d-flex w-100 align-items-center flex-nowrap">
+                <!-- Zona izquierda: toggler + enlaces -->
+                <div class="d-flex align-items-center flex-shrink-0">
+                    <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-wrench-adjustable me-1"></i>Servicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Buscador perfectamente centrado -->
+                <div class="flex-grow-1 d-flex justify-content-center px-3">
+                    <form class="w-100" style="max-width: 420px;" role="search">
+                        <div class="input-group w-100">
+                            <span class="input-group-text bg-white border-end-0 rounded-start-pill"><i class="bi bi-search"></i></span>
+                            <input class="form-control border-start-0 rounded-end-pill" type="search" placeholder="Buscar…" aria-label="Buscar">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Zona derecha: botones de acción -->
+                <div class="d-flex align-items-center gap-2 flex-shrink-0 ms-auto">
+                    <a href="#" class="btn btn-outline-dark position-relative">
+                        <i class="bi bi-cart3"></i>
+                        <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                    </a>
+                    <a href="#" class="btn btn-outline-dark"><i class="bi bi-heart"></i></a>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="bi bi-person-fill me-1"></i>Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container my-5">
+    <h2 class="text-center">Contenido de prueba</h2>
+    <p class="lead text-center">Prueba.</p>
+</main>
+
+<!-- Modal de login -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="loginLabel">Iniciar sesión</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="loginEmail" required placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="loginPassword" required placeholder="Contraseña">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

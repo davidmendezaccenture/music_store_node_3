@@ -539,83 +539,198 @@ footer {
     margin-top: auto;
 }
 
-/* Estilos para el offcanvas de servicios */
-.offcanvas-start {
-    width: 280px;
-}
-
-/* Menú sticky en desktop */
-.sticky-menu {
-    position: sticky;
-    top: 120px;
-}
-
-/* Estilos para las cards de servicios */
-.service-card {
-    transition: transform 0.3s ease;
-    border-left: 4px solid #0d6efd;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.service-card h2 {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-/* Responsividad */
-@media (max-width: 992px) {
-    .sticky-menu {
-        position: static;
-    }
-}
-
-
-/* Estilos para el offcanvas de servicios */
-.offcanvas-start {
-    width: 280px;
-}
-
-/* Menú sticky en desktop */
-.sticky-menu {
-    position: sticky;
-    top: 120px;
-}
-
-/* Alineación perfecta del menú lateral con el primer cuadro */
+/* Estilos para la barra de búsqueda responsive */
 @media (min-width: 992px) {
-    .sticky-top {
-        margin-top: 4.5rem !important;
+    /* En desktop: buscador inline */
+    nav.navbar {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
     }
     
-    .col-lg-9 > div:first-of-type {
-        margin-top: 3 !important;
+    .navbar > .container-fluid {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    
+    .navbar .w-100.my-2 {
+        width: auto !important;
+        margin: 0 !important;
+        flex-grow: 1;
+        max-width: 500px;
+        margin: 0 auto !important;
+    }
+    
+    .navbar .d-flex.w-100 {
+        display: none !important;
+    }
+    
+    .navbar-collapse {
+        flex-grow: 0;
     }
 }
 
+@media (max-width: 991.98px) {
+    /* En mobile: buscador en línea propia */
+    nav.navbar {
+        flex-direction: column;
+    }
+    
+    .navbar > .container-fluid {
+        flex-direction: column;
+    }
+    
+    .navbar .d-flex.w-100 {
+        width: 100% !important;
+    }
+    
+    .navbar .w-100.my-2 {
+        order: 2;
+    }
+    
+    .navbar-collapse {
+        order: 3;
+        width: 100%;
+    }
+}
 
-/* Estilos para las cards de servicios */
-.service-card {
+/* Asegurar que el buscador no se corte */
+.input-group {
+    min-width: 150px;
+}
+
+.form-control {
+    flex-grow: 1;
+    min-width: 120px;
+}
+
+/* ===== ESTILOS GENERALES ===== */
+header {
+    background-color: #f8f9fa !important;
+}
+
+.navbar-brand img {
+    height: 50px;
     transition: transform 0.3s ease;
-    border-left: 4px solid #0d6efd;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.navbar-brand:hover img {
+    transform: scale(1.05);
 }
 
-.service-card h2 {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-/* Responsividad */
-@media (max-width: 992px) {
-    .sticky-menu {
-        position: static;
+/* ===== VERSIÓN MOBILE ===== */
+@media (max-width: 991.98px) {
+    .mobile-top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
+    
+    .user-actions-mobile {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .search-bar-mobile {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+    
+    .navbar-nav {
+        padding-top: 1rem;
+    }
+    
+    .nav-item {
+        border-bottom: 1px solid #eee;
+        padding: 0.5rem 0;
+    }
+}
+
+/* ===== VERSIÓN DESKTOP ===== */
+@media (min-width: 992px) {
+    .desktop-nav-container {
+        display: flex;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .nav-links-desktop {
+        flex-shrink: 0;
+    }
+    
+    .search-bar-desktop {
+        flex: 0 1 500px;
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    
+    
+    .user-actions-desktop {
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+}
+
+/* ===== ESTILOS DE HOVER ORIGINALES ===== */
+/* Estilos para los enlaces de navegación */
+.nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para los botones */
+.btn-outline-dark {
+    transition: all 0.2s ease;
+}
+
+.btn-outline-dark:hover {
+    background-color: #2e2f30;
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    --bs-btn-bg: #0d6efd;
+    --bs-btn-border-color: #0d6efd;
+    --bs-btn-hover-bg: #0b5ed7;
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-active-bg: #0a58ca;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+/* Estilos para la barra de búsqueda */
+.search-bar-desktop .input-group,
+.search-bar-mobile .input-group {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-bar-desktop .form-control,
+.search-bar-mobile .form-control {
+    border-radius: 0 50rem 50rem 0 !important;
+    border-left: none;
+}
+
+.search-bar-desktop .input-group-text,
+.search-bar-mobile .input-group-text {
+    border-radius: 50rem 0 0 50rem !important;
+    border-right: none;
+    background-color: white;
+}
+
+.search-bar-desktop .btn:hover,
+.search-bar-mobile .btn:hover {
+    background-color: #f8f9fa;
 }
