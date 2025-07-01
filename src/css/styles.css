@@ -18,27 +18,40 @@ h2 {
     text-align: center;
 }
 
-/* Estilos para el header y navbar */
-.navbar {
-    padding: 0.8rem 0;
-    background-color: white !important;
+/* Estilos para el header unificado */
+header {
+    background-color: #f8f9fa !important;
 }
 
 .navbar-brand {
-    font-size: 1.2rem;                  
     transition: all 0.3s ease;
-    margin-right: auto;
+    padding: 0.5rem 0;
 }
 
 .navbar-brand:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
+}
+
+/* Barra de búsqueda mejorada */
+.input-group.rounded-pill {
+    border: 1px solid #dee2e6;
+    padding: 0.3rem;
+    transition: all 0.3s ease;
+}
+
+.input-group.rounded-pill:focus-within {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Elementos del menú */
+.nav-item {
+    margin: 0 0.5rem;
+    transition: all 0.2s ease;
 }
 
 .nav-link {
-    font-size: 0.95rem;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    margin: 0 2px;
+    border-radius: 0.5rem;
     transition: all 0.2s ease;
 }
 
@@ -46,8 +59,33 @@ h2 {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-.nav-link i {
-    font-size: 0.9rem;
+/* Botón de login */
+.btn-primary {
+    --bs-btn-bg: #0d6efd;
+    --bs-btn-border-color: #0d6efd;
+    --bs-btn-hover-bg: #0b5ed7;
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-active-bg: #0a58ca;
+    padding: 0.5rem 1.25rem;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #f8f9fa;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        padding: 1rem;
+    }
+    
+    .nav-item {
+        margin: 0.2rem 0;
+    }
+    
+    .input-group.rounded-pill {
+        margin-top: 1rem;
+        width: 100%;
+    }
 }
 
 /* Menú hamburguesa - solo para items de navegación */
@@ -577,4 +615,85 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Estilos para el offcanvas de servicios */
+.offcanvas-start {
+    width: 280px;
+}
+
+/* Menú sticky en desktop */
+.sticky-menu {
+    position: sticky;
+    top: 120px;
+}
+
+/* Estilos para las cards de servicios */
+.service-card {
+    transition: transform 0.3s ease;
+    border-left: 4px solid #0d6efd;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.service-card h2 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .sticky-menu {
+        position: static;
+    }
+}
+
+
+/* Estilos para el offcanvas de servicios */
+.offcanvas-start {
+    width: 280px;
+}
+
+/* Menú sticky en desktop */
+.sticky-menu {
+    position: sticky;
+    top: 120px;
+}
+
+/* Alineación perfecta del menú lateral con el primer cuadro */
+@media (min-width: 992px) {
+    .sticky-top {
+        margin-top: 4.5rem !important;
+    }
+    
+    .col-lg-9 > div:first-of-type {
+        margin-top: 3 !important;
+    }
+}
+
+
+/* Estilos para las cards de servicios */
+.service-card {
+    transition: transform 0.3s ease;
+    border-left: 4px solid #0d6efd;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.service-card h2 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .sticky-menu {
+        position: static;
+    }
 }
