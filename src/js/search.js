@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Pequeño delay para activar la animación
       setTimeout(() => {
+        void col.offsetWidth; 
         col.classList.add('visible');
       }, 10);
     });
