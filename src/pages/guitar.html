@@ -49,15 +49,19 @@
                   </li>
                 </ul>
                     <!--Barra de búsqueda-->
-                    <form class="d-flex me-3 mb-3 mb-lg-0" action="/buscar" method="GET" role="search">
+                    <!--Barra de búsqueda-->
+                    <form id="form-busqueda" class="d-flex me-3 mb-3 mb-lg-0" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar" required>
-                            <select class="form-select" style="max-width: 120px;" name="categoria">
+                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <select class="form-select" name="category" style="max-width: 120px;">
                                 <option value="">Todas</option>
-                                <option value="guitarras">Guitarras</option>
-                                <option value="teclados">Teclados</option>
-                                <option value="percusion">Percusión</option>
-                                <option value="viento">Viento</option>
+                                <option value="acoustic-guitars">Guitarras acústica</option>
+                                <option value="classical-guitars">Guitarras clásicas</option>
+                                <option value="electric-guitars">Guitarras eléctrica</option>
+                                <option value="basses">Bajos</option>
+                                <option value="amplifiers">Amplificadores</option>
+                                <option value="effect-pedals">Pedales</option>
+                                <option value="drums">Baterías</option>
                             </select>
                             <button class="btn btn-outline-primary" type="submit">
                                 <i class="bi bi-search"></i>

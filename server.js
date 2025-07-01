@@ -299,8 +299,8 @@ app.get('/buscar', (req, res) => {
       const productos = JSON.parse(data);
 
       const resultados = productos.filter(p => {
-        const nombreIncluye = p.name?.toLowerCase().includes(query);
-        const categoriaCoincide = !category || p.category?.toLowerCase() === category;
+        const nombreIncluye = !query || (p.name && p.name.toLowerCase().includes(query));
+        const categoriaCoincide = !category || (p.category && p.category.toLowerCase() === category);
 
         return nombreIncluye && categoriaCoincide;
       });
@@ -311,4 +311,5 @@ app.get('/buscar', (req, res) => {
     }
   });
 });
+
 

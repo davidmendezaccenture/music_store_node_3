@@ -51,7 +51,7 @@
                     <!--Barra de búsqueda-->
                     <form id="form-busqueda" class="d-flex me-3 mb-3 mb-lg-0" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar" required>
+                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
                             <select class="form-select" name="category" style="max-width: 120px;">
                                 <option value="">Todas</option>
                                 <option value="acoustic-guitars">Guitarras acústica</option>
@@ -84,40 +84,41 @@
     </header>
 
     <!-- Contenido principal -->
-    <main class="container mt-4" role="main">
-        <!-- Encabezado -->
-            <!-- Menú de Filtros -->
-            <!-- Filtro por categoría centrado -->
-            <div class="d-flex justify-content-center mb-4">
-              <form class="row g-2 align-items-center" role="search" aria-label="Filtrar por categoría">
-                  <div class="col-auto">
-                      <label for="categoria" class="col-form-label">Filtrar por tipo:</label>
-                  </div>
-                  <div class="col-auto">
-                    <select id="categoria" class="form-select" aria-label="Seleccionar categoría">
-                        <option value="Todas" selected>Todas</option>
-                        <option value="Clásica">Clásica</option>
-                        <option value="Eléctrica">Eléctrica</option>
-                        <option value="Acústica">Acústica</option>
-                    </select>
-                  </div>
-              </form>
-            </div>
-                <!-- Tarjetas existentes -->
-                <section class="row row-cols-1 row-cols-md-3 g-4" id="resultados" aria-label="Listado de productos">
+<main class="container mt-4" role="main" id="main-search">
+  <div class="d-flex gap-4">
+    <!-- Filtros al lado izquierdo -->
+<aside id="filtros" class="filtros-lateral">
+  <h3 class="d-flex align-items-center mb-4">
+    <img src="/assets/images/filter.svg" class="icono-nav" alt="imagen filtro">  
+    Filtros
+  </h3>
 
-                </section>
-                <!--Notificacion de producto añadido-->
-                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
-                  <div id="toastAdd" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex">
-                      <div class="toast-body">Instrumento añadido al carrito</div>
-                      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
-                    </div>
-                  </div>
-                </div>
+  <h4>Filtrar por precio</h4>
+  <label for="precio-min">Precio mínimo: <span id="min-valor">0</span> €</label>
+  <input type="range" id="precio-min" name="precio-min" min="0" max="1000" value="0" step="10" />
 
-    </main>
+  <label for="precio-max">Precio máximo: <span id="max-valor">1000</span> €</label>
+  <input type="range" id="precio-max" name="precio-max" min="0" max="1000" value="1000" step="10" />
+</aside>
+
+
+    <!-- Resultados a la derecha, que ocupan el resto -->
+    <section class="row row-cols-1 row-cols-md-3 g-4 flex-grow-1" id="resultados" aria-label="Listado de productos">
+      <!-- Aquí van las tarjetas -->
+    </section>
+  </div>
+
+  <!-- Notificación producto añadido -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+    <div id="toastAdd" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Instrumento añadido al carrito</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+</main>
+
     <!-- Pre-footer -->
     <section class="pre-footer py-5">
   <div class="container">

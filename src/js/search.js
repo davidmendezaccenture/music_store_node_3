@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Actualizar la URL en la barra sin recargar
       const newUrl = `${window.location.pathname}?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`;
+      console.log('Nueva URL:', newUrl);
       window.history.replaceState(null, '', newUrl);
     });
 
@@ -34,14 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const q = params.get('q') || '';
     const cat = params.get('category') || '';
 
-    if (q || cat) {
-      // Poner valores en el formulario para que coincidan con la URL
+
       form.q.value = q;
       form.category.value = cat;
       buscarYMostrar(q, cat);
-    }
-  } else {
-    // En otras páginas (como index.html) no interferimos, el formulario hace submit normal y redirige a search.html
+
   }
 });
 
@@ -52,6 +50,12 @@ function mostrarResultados(productos) {
     // Evitar error si no existe el contenedor en esta página
     return;
   }
+  //Por defecto ordenamos por precio
+    productos.sort((a, b) => {
+    const precioA = a.offerPrice ?? a.price;
+    const precioB = b.offerPrice ?? b.price;
+    return precioA - precioB;
+  });
 
   contenedor.innerHTML = ''; // Limpia resultados anteriores
 
