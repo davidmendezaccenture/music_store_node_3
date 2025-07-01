@@ -543,22 +543,33 @@ main {
 .filtros-lateral {
     flex: 0 1 300px;
     max-width: 35%;
-  min-width: 150px;
-  box-sizing: border-box;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #f9f9f9;
-  font-family: Arial, sans-serif;
-  position: sticky;
-  top: 1rem;
-  height: fit-content;
-  top: 135px;
+    min-width: 150px;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+    font-family: Arial, sans-serif;
+    position: sticky;
+    top: 135px; /* mantengo para que quede pegado debajo de tu header si lo tienes */
+    
+    /* Cambios */
+    max-height: calc(100vh - 145px); /* altura máxima para que no sobresalga de la pantalla (135px top + 10px margen) */
+    overflow-y: auto; /* scroll interno si el contenido es muy alto */
+    height: auto; /* quito fit-content que puede dar problemas */
 }
+
 
 #resultados {
     flex:1;
 }
-
+.no-encontrado {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin: 2rem 0; /* espacio arriba y abajo */
+  width: 100%;
+}
 
 
