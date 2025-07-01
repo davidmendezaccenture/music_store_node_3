@@ -287,19 +287,28 @@ if (require.main === module) {
 }
 //Búsquedas dentro de la web
 // Ruta de búsqueda
-app.get('/search', (req, res) => {
+app.get('/buscar', (req, res) => {
   const query = req.query.q?.toLowerCase() || '';
+  const category = req.query.category?.toLowerCase() || '';
 
   const dataPath = path.join(__dirname, 'src', 'assets', 'data', 'products.json');
   fs.readFile(dataPath, 'utf8', (err, data) => {
     if (err) return res.status(500).send('Error al leer los datos');
 
-    const productos = JSON.parse(data);
-    const resultados = productos.filter(p =>
-      p.name.toLowerCase().includes(query) ||
-      p.category.toLowerCase().includes(query)
-    );
+    try {
+      const productos = JSON.parse(data);
 
-    res.json(resultados); // Envía los resultados como JSON
+      const resultados = productos.filter(p => {
+        const nombreIncluye = p.name?.toLowerCase().includes(query);
+        const categoriaCoincide = !category || p.category?.toLowerCase() === category;
+
+        return nombreIncluye && categoriaCoincide;
+      });
+
+      res.json(resultados);
+    } catch (e) {
+      res.status(500).send('Error al procesar los datos');
+    }
   });
 });
+
