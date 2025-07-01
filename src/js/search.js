@@ -1,16 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const query = params.get('q') || '';
-  const category = params.get('category') || '';
+  const form = document.getElementById('form-busqueda');
 
-  fetch(`/buscar?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`)
-    .then(res => res.json())
-    .then(data => mostrarResultados(data))
-    .catch(err => console.error('Error al obtener productos:', err));
+  // Función para hacer la búsqueda y mostrar resultados
+  function buscarYMostrar(query, category) {
+    fetch(`/buscar?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`)
+      .then(res => res.json())
+      .then(data => mostrarResultados(data))
+      .catch(err => console.error('Error al obtener productos:', err));
+  }
+
+  // Detectamos si estamos en search.html
+  const esSearchPage = window.location.pathname.endsWith('search.html');
+
+  if (esSearchPage) {
+    // En search.html hacemos búsqueda dinámica
+
+    // 1. Interceptar submit para evitar recarga
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const query = form.q.value.trim();
+      const category = form.category.value;
+
+      buscarYMostrar(query, category);
+
+      // Actualizar la URL en la barra sin recargar
+      const newUrl = `${window.location.pathname}?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`;
+      window.history.replaceState(null, '', newUrl);
+    });
+
+    // 2. Si al cargar la página hay parámetros en la URL, hacer búsqueda inicial
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q') || '';
+    const cat = params.get('category') || '';
+
+    if (q || cat) {
+      // Poner valores en el formulario para que coincidan con la URL
+      form.q.value = q;
+      form.category.value = cat;
+      buscarYMostrar(q, cat);
+    }
+  } else {
+    // En otras páginas (como index.html) no interferimos, el formulario hace submit normal y redirige a search.html
+  }
 });
+
 
 function mostrarResultados(productos) {
   const contenedor = document.getElementById('resultados');
+  if (!contenedor) {
+    // Evitar error si no existe el contenedor en esta página
+    return;
+  }
+
   contenedor.innerHTML = ''; // Limpia resultados anteriores
 
   if (productos.length === 0) {
