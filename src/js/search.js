@@ -1,20 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Guardamos la última búsqueda
+
   const form = document.getElementById('form-busqueda');
   const esSearchPage = window.location.pathname.endsWith('search.html');
+
+  const precioMinInput = document.getElementById('precio-min');
+  const precioMaxInput = document.getElementById('precio-max');
+  const ordenPrecioSelect = document.getElementById('orden-precio');
+  const ordenValoracionSelect = document.getElementById('orden-valoracion');
 
   function buscarYMostrar(query, category) {
     fetch(`/buscar?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`)
       .then(res => res.json())
       .then(productos => {
         const estrellasSeleccionadas = obtenerEstrellasSeleccionadas();
+        const minPrecio = parseFloat(precioMinInput.value);
+        const maxPrecio = parseFloat(precioMaxInput.value);
 
-        // Filtrar por estrellas seleccionadas
-        let productosFiltrados = productos;
-        if (estrellasSeleccionadas.length > 0) {
-          productosFiltrados = productos.filter(producto =>
-            estrellasSeleccionadas.includes(producto.rating)
-          );
-        }
+        // Filtrado combinado por estrellas y precio
+        let productosFiltrados = productos.filter(producto => {
+          const ratingOk = estrellasSeleccionadas.length === 0 || estrellasSeleccionadas.includes(producto.rating);
+          const precio = producto.offerPrice ?? producto.price;
+          const precioOk = precio >= minPrecio && precio <= maxPrecio;
+
+          return ratingOk && precioOk;
+        });
 
         mostrarResultados(productosFiltrados);
       })
@@ -32,11 +42,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const contenedor = document.getElementById('resultados');
     if (!contenedor) return;
 
-    // Ordenar por precio
+    // Ordenar primero por precio y luego por valoraciones según los selectores
     productos.sort((a, b) => {
       const precioA = a.offerPrice ?? a.price;
       const precioB = b.offerPrice ?? b.price;
-      return precioA - precioB;
+
+      let ordenPrecio;
+      if (ordenPrecioSelect.value === 'asc') {
+        ordenPrecio = precioA - precioB;
+      } else {
+        ordenPrecio = precioB - precioA;
+      }
+
+      if (ordenPrecio !== 0) {
+        return ordenPrecio;
+      }
+
+      // Si precios iguales, ordenar por valoración
+      if (ordenValoracionSelect.value === 'asc') {
+        return a.rating - b.rating; // menor a mayor
+      } else {
+        return b.rating - a.rating; // mayor a menor
+      }
     });
 
     contenedor.innerHTML = '';
@@ -48,7 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     productos.forEach(producto => {
       const col = document.createElement('div');
-      col.className = 'col';
+      col.className = 'col producto-animado';  // añadida clase
+
       col.setAttribute('data-category', producto.category);
 
       const estrellas = '★'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
@@ -73,6 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       contenedor.appendChild(col);
+
+      // Pequeño delay para activar la animación
+      setTimeout(() => {
+        col.classList.add('visible');
+      }, 10);
     });
   }
 
@@ -87,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const newUrl = `${window.location.pathname}?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`;
       window.history.replaceState(null, '', newUrl);
+      // Guardamos la última búsqueda para volver desde el carrito
+      localStorage.setItem('ultimaPagina', newUrl);
     });
 
     const params = new URLSearchParams(window.location.search);
@@ -106,4 +141,31 @@ document.addEventListener('DOMContentLoaded', () => {
       buscarYMostrar(query, category);
     });
   });
+
+  // Filtrado y actualización por precio
+  precioMinInput.addEventListener('input', actualizarYFiltrar);
+  precioMaxInput.addEventListener('input', actualizarYFiltrar);
+
+  // Ordenar por precio al cambiar el selector
+  ordenPrecioSelect.addEventListener('change', () => {
+    const query = form.q.value.trim();
+    const category = form.category.value;
+    buscarYMostrar(query, category);
+  });
+
+  // Ordenar por valoración al cambiar el selector
+  ordenValoracionSelect.addEventListener('change', () => {
+    const query = form.q.value.trim();
+    const category = form.category.value;
+    buscarYMostrar(query, category);
+  });
+
+  function actualizarYFiltrar() {
+    document.getElementById('min-valor').textContent = precioMinInput.value;
+    document.getElementById('max-valor').textContent = precioMaxInput.value;
+
+    const query = form.q.value.trim();
+    const category = form.category.value;
+    buscarYMostrar(query, category);
+  }
 });

@@ -92,7 +92,16 @@
     <img src="/assets/images/filter.svg" class="icono-nav" alt="imagen filtro">  
     Filtros
   </h3>
-
+  <h4 class="mt-4">Ordenar por precio</h4>
+<select id="orden-precio" name="orden-precio">
+  <option value="asc">Menor a mayor</option>
+  <option value="desc">Mayor a menor</option>
+</select>
+<h4 class="mt-4">Ordenar por valoraciones</h4>
+<select id="orden-valoracion" name="orden-valoracion">
+  <option value="desc">De mayor a menor</option>
+  <option value="asc">De menor a mayor</option>
+</select>
   <h4>Filtrar por precio</h4>
   <label for="precio-min">Precio mínimo: <span id="min-valor">0</span> €</label>
   <input type="range" id="precio-min" name="precio-min" min="0" max="1000" value="0" step="10" />
