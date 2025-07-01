@@ -181,19 +181,24 @@ a:hover .icono-nav {
     position: relative;
     z-index: 1;
 }
-/*Puesto que usamos la misma imagen, debemlos invertir uno de los iconos del carrusel. Le aplicamos también efecto al pasar el ratón por encima */
-.mirror{
-    transform: scaleX(-1);
-    transition: transform 0.3s ease;
+/*Imagenes del carrusel princpal*/
+.carousel-item img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
 }
-
-.icono-carrusel:hover.mirror {
-    transform: scaleX(-1) scale(1.2);
+/*Dejamos espacio para los controles*/
+.carousel {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 /* Controles del carrusel principal */
 .carousel-control-prev,
-.carousel-control-next {
+.carousel-control-next,
+.glide__arrow--left,
+.glide__arrow--right {
     width: auto;
     top: 50%;
     transform: translateY(-50%);
@@ -206,20 +211,32 @@ a:hover .icono-nav {
     text-decoration: none;
     font-weight: bold;
     border: none;
-    background-color: rgba(255, 255, 255, 0);
     transition: transform 0.3s ease, color 0.3s ease;
     background-color: transparent !important;
 
 }
-.carousel-control-prev {
-    left: 10%;
+.carousel-control-prev
+{
+    left: 5%;
 }
-
 .carousel-control-next {
-    right: 10%;
+    right: 5%
+}
+/*Visualizacion responsive de controles carrusel principal*/
+@media (max-width: 991px) {
+    .carousel-control-prev,
+    .glide__arrow--left {
+        left: 2px;
+    }
+    .carousel-control-next,
+    .glide__arrow--right {
+        right: 2px;
+    }
 }
 .carousel-control-prev:hover,
-.carousel-control-next:hover {
+.carousel-control-next:hover,
+.glide__arrow--left:hover,
+.glide__arrow--right:hover {
     text-decoration: none;
     color: black;
     transform: translateY(-50%) scale(1.2);
@@ -233,7 +250,9 @@ a:hover .icono-nav {
 
 /*Igualamos el focus de los controles e indicadores del carrusel */
 .carousel-control-prev:focus,
-.carousel-control-next:focus {
+.carousel-control-next:focus,
+.glide__arrow--left:focus,
+.glide__arrow--right:focus {
     outline: none;
     box-shadow: none;
     background-color: transparent;
@@ -241,15 +260,6 @@ a:hover .icono-nav {
     transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-control-prev:focus-visible,
-.carousel-control-next:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); 
-    border-radius: 0.5rem;
-    background-color: transparent;
-    color: black;
-    transform: translateY(-50%) scale(1.1);
-}
 .carousel-indicators [data-bs-target]:focus-visible {
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Estilo Bootstrap */
@@ -271,6 +281,13 @@ a:hover .icono-nav {
     background-color: #eee;
     opacity: 1;
     transform: scale(1.3);
+}
+/*28/06 igualamos trajetas de opinion e imagen */
+.carruselGlide {
+    padding-left: 50px;
+    padding-right: 50px;
+    position: relative;
+    overflow: visible;
 }
 /*Estilo para las tarjetas y el carrusel de opiniones */
 .tarjeta-opinion {
@@ -294,6 +311,7 @@ a:hover .icono-nav {
 
 .glide {
     position: relative;
+    overflow: visible;
 }
 
 .glide__arrow--custom {
@@ -307,93 +325,23 @@ a:hover .icono-nav {
     z-index: 10;
     padding: 0;
 }
-
-/* Estilo base para flecha izquierda */
 .glide__arrow--left {
-    left: 0;
-    transform: translate(-120%, -50%);
+    left: -40px; /* o el valor que necesites */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/* Estilo base para flecha derecha */
 .glide__arrow--right {
-    right: 0;
-    transform: translate(120%, -50%);
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/*Estilo para hover para ambas flechas*/
-.glide__arrow--left:hover {
-    transform: translate(-120%, -50%) scale(1.2);
-}
-.glide__arrow--right:hover {
-    transform: translate(120%, -50%) scale(1.2);
-}
-/* Estilos de foco para ambas flechas */
-.glide__arrow--left:focus,
-.glide__arrow--right:focus {
-    outline: none;
-    box-shadow: none;
-    background-color: transparent;
-    color: #6c757d;
-    transform: translate(var(--tx, 0), -50%) scale(1.1);
-}
+/*posicion de flechas del carrusel opiniones*/
 
-.glide__arrow--left:focus {
-    outline: none;
-    box-shadow: none;
-    background-color: transparent;
-    color: #6c757d;
-    transform: translate(-120%, -50%) scale(1.1);
-}
-
-.glide__arrow--right:focus {
-    outline: none;
-    box-shadow: none;
-    background-color: transparent;
-    color: #6c757d;
-    transform: translate(120%, -50%) scale(1.1);
-}
-
-/* Foco visible */
-.glide__arrow--left:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-    border-radius: 0.5rem;
-    background-color: transparent;
-    color: black;
-    transform: translate(-120%, -50%) scale(1.1);
-}
-
-.glide__arrow--right:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-    border-radius: 0.5rem;
-    background-color: transparent;
-    color: black;
-    transform: translate(120%, -50%) scale(1.1);
-}
 
 /* Ajustes responsive para que las flechas se mantengan visibles */
-@media (max-width: 768px) {
-    .glide__arrow--left {
-        left: -0.35rem;
-        transform: translate(0, -50%);
-    }
 
-    .glide__arrow--right {
-        right: -0.35rem;
-        transform: translate(0, -50%);
-    }
-
-    .glide__arrow--left:focus,
-    .glide__arrow--left:focus-visible {
-        transform: translate(0, -50%) scale(1.1);
-    }
-
-    .glide__arrow--right:focus,
-    .glide__arrow--right:focus-visible {
-        transform: translate(0, -50%) scale(1.1);
-    }
-}
 /* Asegurar que el botón de iniciar sesión esté alineado correctamente */
 
 /* Ajustes para pantallas pequeñas */
@@ -460,31 +408,6 @@ a:hover .icono-nav {
     filter: grayscale(0%) brightness(1) hue-rotate(-10deg);
 }
 
-/* Mastercard - Color específico al pasar el ratón */
-.payment-icon:hover:nth-child(3) .payment-img,
-.payment-icon:focus:nth-child(3) .payment-img {
-    filter: grayscale(0%) brightness(1) hue-rotate(-10deg);
-}
-
-/* American Express - Color específico al pasar el ratón */
-.payment-icon:hover:nth-child(4) .payment-img,
-.payment-icon:focus:nth-child(4) .payment-img {
-    filter: grayscale(0%) brightness(1) hue-rotate(-10deg);
-}
-
-/* Ajustar tamaño de redes sociales para que coincidan */
-.social-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.social-icon i {
-    font-size: 1.5rem;
-}
-
 .social-links a {
     color: #6c757d;
     transition: color 0.3s ease;
@@ -531,16 +454,10 @@ footer {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-/*Enlace para volver al index*/
-
 
 /* Estilo para botones, para que sean iguales en tamaño*/
-.enlace-inicio img {
-    width: 16px;
-    height: 16px;
-}
 #seguir-comprando,
-#confirmar-pago, .enlace-inicio {
+#confirmar-pago {
     display: inline-flex;       /* inline para que el botón se adapte al contenido */
     align-items: center;        /* alinear verticalmente texto e imagen */
     gap: 8px;                   /* separación entre icono y texto */
@@ -549,24 +466,20 @@ footer {
     padding: 0.375rem 0.75rem;  /* ajusta el padding para que quede mejor */
 }
 
-#seguir-comprando:hover,
-.enlace-inicio:hover {
-    background-color: #e2e6ea !important;
-    color: #343a40 !important;
-    text-decoration: none;
-    transform: scale(1.05);
+#seguir-comprando {
+    margin-left:16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease;
+}
+#seguir-comprando:hover {
+  transform: scale(1.05);
 }
 
 #confirmar-pago:hover {
     background-color: #004085;
     border-color: #004085;
     transform: scale(1.05);
-}
-
-.enlace-inicio img {
-    height: 25px;
-    margin-right: 10px;
-    filter: brightness(1.1);
 }
 
 /* Icono dentro del botón. Añadimos pequeño efecto de rotación*/
@@ -615,6 +528,15 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.texto-precio {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 120px;
+}
+.precio {
+    margin-top: auto;
 }
 
 /* Estilos para el offcanvas de servicios */

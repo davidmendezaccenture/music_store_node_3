@@ -62,7 +62,10 @@ $(document).on('click', '.agregar-carrito', function () {
   } else {
     carrito.push({ id, cantidad: 1 });
   }
+  const toastElement = document.getElementById('toastAdd');
+const toast = new bootstrap.Toast(toastElement);
 
+  mostrarToastAgregar();
   guardarCarrito();
   actualizarContadorCarrito(calcularTotalItems(carrito));
   mostrarCarrito();
@@ -159,36 +162,49 @@ $(document).on('click', '.btn-restar', function () {
 });
 
 // Eliminar producto
-$('#contenedor-carrito').on('click', '.btn-eliminar', function () {
+let itemPendienteEliminar = null; // Almacenará el elemento a eliminar
+let posicionesAntesEliminar = null; // Almacenará las posiciones iniciales
+
+$('#contenedor-carrito').on('click', '.btn-eliminar', function() {
   if (!estaLogueado()) {
     mostrarModalLogin();
     return;
   }
 
   const $item = $(this).closest('.item-carrito');
-  const id = $item.data('id');
+  itemPendienteEliminar = $item; // Guarda el item para usarlo después
+  posicionesAntesEliminar = guardarPosiciones(); // Guarda posiciones ANTES de abrir modal
+  
+  mostrarModalConfirmarEliminacion(); // Muestra la modal de confirmación
+});
 
-  const posicionesAntes = guardarPosiciones();
+$(document).on('click', '#btn-confirmar-eliminar', function() {
+  if (!itemPendienteEliminar) return;
+  modalEliminar.hide();
 
   $('body').addClass('body-no-scroll-x');
+  const id = itemPendienteEliminar.data('id');
 
+  // 1. Filtra el carrito
   carrito = carrito.filter(p => p.id !== id);
 
-  $item.addClass('removiendo');
+  // 2. Animación y eliminación del DOM
+  itemPendienteEliminar.addClass('removiendo');
+  
   setTimeout(() => {
-    $item.remove();
-
+    itemPendienteEliminar.remove();
+    
     requestAnimationFrame(() => {
       const posicionesDespues = guardarPosiciones();
-
+      
       posicionesDespues.forEach((pos) => {
-        const antes = posicionesAntes.find(p => p.el.is(pos.el));
+        const antes = posicionesAntesEliminar.find(p => p.el.is(pos.el));
         if (!antes) return;
 
         const deltaY = antes.top - pos.top;
         if (deltaY !== 0) {
           pos.el.css('transform', `translateY(${deltaY}px)`);
-          pos.el[0].offsetHeight; // forzar reflow
+          pos.el[0].offsetHeight; // Reflow
           pos.el.css({
             transition: 'transform 0.4s ease',
             transform: 'translateY(0)'
@@ -201,13 +217,19 @@ $('#contenedor-carrito').on('click', '.btn-eliminar', function () {
         }
       });
 
+      // Actualizaciones finales
       guardarCarrito();
       actualizarTotal();
       mostrarMensajeCarritoVacio();
       actualizarContadorCarrito(calcularTotalItems(carrito));
+
     });
   }, 400);
+
 });
+
+
+
 
 // Actualizar total sin recargar todo
 function actualizarTotal() {
@@ -257,12 +279,29 @@ function guardarPosiciones() {
 }
 //Función para el botón de pagar
 $(document).ready(function () {
-  $('#confirmar-pago').on('click', function () {
+  const usuario = localStorage.getItem('usuario') || 'guest';
+  $('#confirmar-pago').on('click', async function () {
     if (!estaLogueado()) {
       mostrarModalLogin();
     } else {
-      alert("✅ Pago realizado correctamente");
-      //Implementar aquí la función que queramos
+      try {
+        const response = await fetch('/api/cart', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            user: usuario,
+            items: []
+          })
+        });
+
+        if (response.ok) {
+          mostrarModalPago()
+        } else {
+          console.error("Error al vaciar el carrito");
+        }
+      } catch (error) {
+        console.error("Error en la solicitud fetch:", error);
+      }
     }
   });
 });
@@ -312,4 +351,13 @@ function mostrarModalLogin() {
   loginModal.show();
 }
 
+//Mostrar notificacion al añadir instrumento
+const toastElement = document.getElementById('toastAdd');
+const toast = new bootstrap.Toast(toastElement, {
+  delay: 1500,
+  autohide: true,
+});
+function mostrarToastAgregar() {
+  toast.show();
+}
 

@@ -42,7 +42,7 @@ $(document).ready(function () {
             const tarjetas = document.querySelectorAll(".glide__slide .tarjeta-opinion");
             /*Obtenemos las alturas de todas las tarjetas y almacenamos el valor mayor, que aplicamos como altura mínima a todas las tarjetas*/
             const maxAltura = Math.max(...Array.from(tarjetas).map(t => t.offsetHeight));
-            tarjetas.forEach(t => (t.style.minHeight = `${maxAltura}px`));
+            tarjetas.forEach(t => (t.style.maxHeight = `${maxAltura}px`));
             }
         /*Se ejecuta la función de igualar alturas cuando se crea el carrusel*/
         glide.on(["mount.after"], igualarAlturaTarjetas);
