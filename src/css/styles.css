@@ -649,7 +649,7 @@ header {
 }
 
 /* ===== VERSIÓN DESKTOP ===== */
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
     .desktop-nav-container {
         display: flex;
         width: 100%;
@@ -734,3 +734,19 @@ header {
 .search-bar-mobile .btn:hover {
     background-color: #f8f9fa;
 }
+
+/* Corrección para el offcanvas y menú lateral */
+.offcanvas-start {
+    width: 280px;
+    top: 112px !important;
+    height: auto !important;
+    bottom: 0;
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Ajuste de posición para el header */
+header.sticky-top {
+    z-index: 1030;
+}
+
+

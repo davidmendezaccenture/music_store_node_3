@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media - RaiRock Music Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="sticky-top bg-light shadow-sm">
+        <!-- 1ª línea - logo centrado -->
+        <div class="border-bottom py-2 bg-light">
+            <div class="text-center">
+                <a class="navbar-brand d-inline-flex align-items-center" href="/pages/index.html">
+                    <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="50" class="me-2">
+                    <span class="fw-bold fs-3">RaiRock</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 2ª línea - navegación y acciones -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-2 px-3">
+            <div class="container-fluid p-0">
+                <!-- Versión mobile -->
+                <div class="d-lg-none w-100">
+                    <div class="mobile-top-bar">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="user-actions-mobile">
+                            <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
+                                <i class="bi bi-heart"></i>
+                                <span id="favoritesCounter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                            </a>
+                            <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
+                                <i class="bi bi-cart3"></i>
+                                <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                            </a>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <i class="bi bi-person-fill me-1"></i>Login
+                            </button>
+                        </div>
+                    </div>
+                    <div class="search-bar-mobile">
+                        <form class="w-100" role="search">
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 rounded-start-pill"><i class="bi bi-search"></i></span>
+                                <input class="form-control border-start-0 rounded-end-pill" type="search" placeholder="Buscar productos..." aria-label="Buscar">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Versión desktop -->
+                <div class="d-none d-lg-flex desktop-nav-container">
+                    <div class="nav-links-desktop">
+                        <ul class="navbar-nav d-flex flex-row">
+                            <li class="nav-item me-3"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                            <li class="nav-item me-3"><a class="nav-link" href="services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
+                            <li class="nav-item me-3"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="search-bar-desktop">
+                        <form class="w-100" role="search">
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 rounded-start-pill"><i class="bi bi-search"></i></span>
+                                <input class="form-control border-start-0 rounded-end-pill" type="search" placeholder="Buscar productos..." aria-label="Buscar">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="user-actions-desktop d-flex gap-2">
+                        <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
+                            <i class="bi bi-heart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </a>
+                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
+                            <i class="bi bi-cart3"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </a>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="bi bi-person-fill me-1"></i>Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Botón para activar el offcanvas -->
+    <button class="btn btn-primary d-lg-none fixed-bottom m-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#servicesOffcanvas">
+        <i class="bi bi-list"></i> Contacto 
+    </button>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="servicesOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Ponte en contacto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        <i class="bi bi-envelope me-2"></i> Contacto
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="newsletter.html">
+                        <i class="bi bi-mailbox me-2"></i> Newsletter
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="media.html">
+                        <i class="bi bi-camera-reels me-2"></i> Media
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="faq.html">
+                        <i class="bi bi-question-circle me-2"></i> FAQ
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-lg-3 d-none d-lg-block">
+                <!-- Menú lateral para desktop -->
+                <div class="card shadow-sm sticky-top" style="top: 260px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Ponte en contacto</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">
+                                    <i class="bi bi-envelope me-2"></i> Contacto
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="newsletter.html">
+                                    <i class="bi bi-mailbox me-2"></i> Newsletter
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="media.html">
+                                    <i class="bi bi-camera-reels me-2"></i> Media
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="faq.html">
+                                    <i class="bi bi-question-circle me-2"></i> FAQ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <h1 class="mb-4">Galería Multimedia</h1>
+                
+                <div class="card shadow-sm mb-5">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="bi bi-camera-video text-primary me-2"></i>
+                            Videos de nuestros productos
+                        </h2>
+                        <p>Descubre nuestros instrumentos en acción con estos videos demostrativos.</p>
+                        
+                        <div class="row g-4 mt-3">
+                            <!-- Video 1 -->
+                            <div class="col-md-6">
+                                <div class="ratio ratio-16x9">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/P3t-yQku-Rc?si=UwAjqqWrGiZj--Je" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                                <h4 class="mt-2">Guitarra Fender Stratocaster</h4>
+                                <p>Demostración de sonidos y características.</p>
+                            </div>
+                            
+                            <!-- Video 2 -->
+                            <div class="col-md-6">
+                                <div class="ratio ratio-16x9">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/hwgPTXeI0E8?si=ZrK_ALSAzY-NXkzp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                                <h4 class="mt-2">Amplificador Marshall</h4>
+                                <p>Prueba de sonido en diferentes configuraciones.</p>
+                            </div>
+                            
+                            <!-- Video 3 -->
+                            <div class="col-md-6">
+                                <div class="ratio ratio-16x9">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZZq9ZCYQP20?si=2g8NdKeopHXj8Cqj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                                <h4 class="mt-2">Bajo Ibanez</h4>
+                                <p>Review completo del modelo SR500.</p>
+                            </div>
+                            
+                            <!-- Video 4 -->
+                            <div class="col-md-6">
+                                <div class="ratio ratio-16x9">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/FiLzjrLfRVI?si=cqidWq9Zli8796No" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                                <h4 class="mt-2">Batería Pearl</h4>
+                                <p>Prueba de sonido en estudio profesional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="bi bi-images text-primary me-2"></i>
+                            Galería de imágenes
+                        </h2>
+                        <p>Explora fotos de alta calidad de nuestros productos.</p>
+                        
+                        <div class="row g-3 mt-3">
+                            <!-- Imagen 1 -->
+                            <div class="col-md-4 col-6">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="../assets/images/guitar1.jpg">
+                                    <img src="../assets/images/guitar1.png" alt="Guitarra eléctrica" class="img-fluid rounded shadow-sm">
+                                </a>
+                            </div>
+                            
+                            <!-- Imagen 2 -->
+                            <div class="col-md-4 col-6">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="../assets/images/guitar2.jpg">
+                                    <img src="../assets/images/guitar12.png" alt="Guitarra acústica" class="img-fluid rounded shadow-sm">
+                                </a>
+                            </div>
+                            
+                            <!-- Imagen 3 -->
+                            <div class="col-md-4 col-6">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="../assets/images/amp1.jpg">
+                                    <img src="../assets/images/amp1.jpg" alt="Amplificador" class="img-fluid rounded shadow-sm">
+                                </a>
+                            </div>
+                            
+                            <!-- Imagen 4 -->
+                            <div class="col-md-4 col-6">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="../assets/images/drums1.jpg">
+                                    <img src="../assets/images/drum1.png" alt="Batería" class="img-fluid rounded shadow-sm">
+                                </a>
+                            </div>
+                            
+                            <!-- Imagen 5 -->
+                            <div class="col-md-4 col-6">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="../assets/images/bass1.jpg">
+                                    <img src="../assets/images/bass1.png" alt="Bajo eléctrico" class="img-fluid rounded shadow-sm">
+                                </a>
+                            </div>
+                            
+                            <!-- Imagen 6 -->
+                            <div class="col-md-4 col-6">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-img="../assets/images/studio1.jpg">
+                                    <img src="../assets/images/key1.png" alt="Teclado" class="img-fluid rounded shadow-sm">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para imágenes -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pre-footer -->
+    <section class="pre-footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Columna 1: Métodos de pago -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="pre-footer-card h-100 p-4">
+                        <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
+                        <div class="payment-methods d-flex flex-wrap gap-3 align-items-center">
+                            <a href="payment-methods.html" class="payment-icon" aria-label="Pagar con PayPal">
+                                <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" class="payment-img grayscale">
+                            </a>
+                            <a href="payment-methods.html" class="payment-icon" aria-label="Pagar con Visa">
+                                <img src="../assets/images/icons8-visa-48 (1).png" alt="Visa" class="payment-img grayscale">
+                            </a>
+                            <a href="payment-methods.html" class="payment-icon" aria-label="Pagar con MasterCard">
+                                <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" class="payment-img grayscale">
+                            </a>
+                            <a href="payment-methods.html" class="payment-icon" aria-label="Pagar con American Express">
+                                <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" class="payment-img grayscale">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Columna 2: Ventajas -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="pre-footer-card h-100 p-4">
+                        <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Ventajas RaiRock</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Garantía de 2 años</li>
+                            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Devoluciones fáciles</li>
+                            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Servicio técnico especializado</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Asesoramiento profesional</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Columna 3: Redes sociales -->
+                <div class="col-md-4">
+                    <div class="pre-footer-card h-100 p-4">
+                        <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Síguenos</h3>
+                        <div class="social-links d-flex flex-wrap gap-3">
+                            <a href="#" class="social-icon" aria-label="Facebook">
+                                <i class="bi bi-facebook fs-3"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Twitter">
+                                <i class="bi bi-twitter-x fs-3"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Instagram">
+                                <i class="bi bi-instagram fs-3"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="YouTube">
+                                <i class="bi bi-youtube fs-3"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
+            <p class="mb-0">&copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Script para el modal de imágenes
+        const imageModal = document.getElementById('imageModal');
+        if (imageModal) {
+            imageModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget;
+                const imageUrl = button.getAttribute('data-bs-img');
+                const modalImage = imageModal.querySelector('#modalImage');
+                modalImage.src = imageUrl;
+                modalImage.alt = button.querySelector('img').alt;
+            });
+        }
+    </script>
+    <script src="../js/app.js"></script>
+</body>
+</html>
