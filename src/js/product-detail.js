@@ -32,21 +32,26 @@
               " "
             )}</span>
             <h2 class="card-title">${product.name}</h2>
-            <h3 class="text-primary fw-bold mb-2" style="font-size:2rem;">€${product.price.toFixed(
-              2
-            )} <span class="fs-5 text-decoration-line-through text-muted ms-2">${
-      product.offerPrice && product.offerPrice !== product.price
-        ? "€" + product.offerPrice.toFixed(2)
-        : ""
-    }</span></h3>
+            <h3 class="text-primary fw-bold mb-2" style="font-size:2rem;">
+              ${
+                product.offerPrice && product.offerPrice !== product.price
+                  ? "€" + product.offerPrice.toFixed(2)
+                  : ""
+              }
+              <span class="fs-5 text-decoration-line-through text-muted ms-2">
+                €${product.price.toFixed(2)}
+              </span>
+            </h3>
             <h6 class="fw-bold mt-3">Descripción</h6>
             <p class="card-text">${product.description}</p>
           </div>
           <div>
             <div class="d-flex gap-2 mb-3">
-            <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Clásica a la cesta" data-id="${product.id}">Añadir a la
+            <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Clásica a la cesta" data-id="${
+              product.id
+            }">Añadir a la
             cesta</button>
-            <a href="guitar.html" class="btn btn-outline-secondary">Seguir comprando</a>
+            <a href="guitar.html" class="btn btn-outline-dark">Seguir comprando</a>
             </div>
             <div class="d-flex gap-4 mt-2 align-items-center">
               <span><i class="bi bi-truck fs-4 text-primary"></i><br><small>Envío gratuito</small></span>

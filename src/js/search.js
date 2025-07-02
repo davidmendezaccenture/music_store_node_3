@@ -88,16 +88,20 @@ productos.sort((a, b) => {
 
             col.innerHTML = `
                 <div class="card h-100 position-relative" role="article">
-                    ${producto.enOferta === "sí"
+                    ${
+                      producto.enOferta === "sí"
                         ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">🔥 En oferta</div>`
                         : ""
                     }
-                    <img src="${producto.image.replace('..', '')}" class="card-img-top" alt="${producto.name}">
+                    <img src="${producto.image.replace(
+                      "..",
+                      ""
+                    )}" class="card-img-top" alt="${producto.name}">
                     <div class="card-body">
                             <h2 class="card-title h5">${producto.name}</h2>
                                 <p class="card-text">${producto.description}</p>
                                 ${
-                                    producto.enOferta === "sí"
+                                  producto.enOferta === "sí"
                                     ? `<span class="precio">
                                             <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
                                             <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
@@ -109,11 +113,14 @@ productos.sort((a, b) => {
                                 </p>
 
                         <div class="mt-auto">
-                          <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Clásica" href="product-detail.html?id=${producto.id}">Ver
-                            detalles</a>
+                          <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Clásica" href="product-detail.html?id=${
+                            producto.id
+                          }">Ver detalles</a>
                         </div>
                         <div class="mt-auto">
-                            <button class="btn btn-primary agregar-carrito" aria-label="Añadir ${producto.name} a la cesta" data-id="${producto.id}">
+                            <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir ${
+                              producto.name
+                            } a la cesta" data-id="${producto.id}">
                                 Añadir a la cesta
                             </button>
                         </div>

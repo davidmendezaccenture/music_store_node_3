@@ -106,203 +106,141 @@
             </div>
                 <!-- Tarjetas existentes -->
                 <section class="row row-cols-1 row-cols-md-3 g-4" aria-label="Listado de productos">
+                    <!-- Card 1: Sin descuento -->
                     <div class="col" data-category="Clásica">
-                        <!-- Card 1: Sin descuento -->
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar6.png" class="card-img-top" alt="Guitarra Clásica de madera natural" />
-                            <div class="card-body">
-                              <div class="texto-precio">
+                        <div class="card h-100 position-relative" role="article">
+                            <img src="/assets/images/guitar6.png" class="card-img-top img-fluid img-producto" alt="Guitarra Clásica de madera natural" style="max-height:250px; width:auto; object-fit:contain;" />
+                            <div class="card-body d-flex flex-column">
                                 <h2 class="card-title h5">Guitarra Clásica</h2>
                                 <p class="card-text">Cuerpo de madera, cuerdas de nylon. Ideal para principiantes.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">199&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Clásica" href="product-detail.html?id=9">Ver
-                                    detalles</a>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Clásica a la cesta" data-id="9">Añadir a la
-                                    cesta</button>
+                                <p class="card-text fw-bold precio" aria-label="Precio"><span class="text-muted">Precio: </span>900&nbsp;€</p>
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Clásica" href="product-detail.html?id=9">Ver detalles</a>
+                                    <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir Guitarra Clásica a la cesta" data-id="9">Añadir a la cesta</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Card 2: Con descuento -->
                     <div class="col" data-category="Eléctrica">
-                        <!-- Card 2: Con descuento -->
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar2.png" class="card-img-top" alt="Guitarra Eléctrica color rojo" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Eléctrica</h2>
-                                <p class="card-text">Sonido potente, ideal para rock y metal.</p>
-                                <p class="card-text precio">
-                                    <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
-                                    <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
-                                </p>
-                                </div>
-                                <div class="mt-auto">
-                                  <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Eléctrica" href="product-detail.html?id=5">Ver
-                                    detalles</a>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="5">Añadir a la
-                                    cesta</button>
+                        <div class="card h-100 position-relative" role="article">
+                            <div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">🔥 En oferta</div>
+                            <img src="/assets/images/guitar2.png" class="card-img-top img-fluid img-producto" alt="Guitarra Eléctrica color rojo" style="max-height:250px; width:auto; object-fit:contain;" />
+                            <div class="card-body d-flex flex-column">
+                                <h2 class="card-title h5">Guitarra Stratocaster</h2>
+                                <p class="card-text">Guitarra eléctrica estilo Stratocaster.</p>
+                                <p class="card-text precio"><span class="text-muted">Precio: </span><span class="text-muted text-decoration-line-through" aria-label="Precio anterior">600&nbsp;€</span><span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">550&nbsp;€</span></p>
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Stratocaster" href="product-detail.html?id=5">Ver detalles</a>
+                                    <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir Guitarra Stratocaster a la cesta" data-id="5">Añadir a la cesta</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Card 3: Sin descuento -->
                     <div class="col" data-category="Acústica">
-                        <!-- Card 3: Sin descuento -->
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar7.png" class="card-img-top" alt="Guitarra Acústica color natural" />
-                            <div class="card-body">
-                              <div class="texto-precio">
+                        <div class="card h-100 position-relative" role="article">
+                            <img src="/assets/images/guitar7.png" class="card-img-top img-fluid img-producto" alt="Guitarra Acústica color natural" style="max-height:250px; width:auto; object-fit:contain;" />
+                            <div class="card-body d-flex flex-column">
                                 <h2 class="card-title h5">Guitarra Acústica</h2>
-                                <p class="card-text">Perfecta para tocar en cualquier lugar, sonido brillante.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">249&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Acústica" href="product-detail.html?id=1">Ver
-                                    detalles</a>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Acústica a la cesta" data-id="1">Añadir a la
-                                    cesta</button>
+                                <p class="card-text">Guitarra acústica de alta calidad.</p>
+                                <p class="card-text fw-bold precio" aria-label="Precio"><span class="text-muted">Precio: </span>180&nbsp;€</p>
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Acústica" href="product-detail.html?id=1">Ver detalles</a>
+                                    <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir Guitarra Acústica a la cesta" data-id="1">Añadir a la cesta</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Card 4: Con descuento -->
                     <div class="col" data-category="Eléctrica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar4.png" class="card-img-top" alt="Guitarra Eléctrica" />
-                            <div class="card-body">
-                              <div class="texto-precio">
+                        <div class="card h-100 position-relative" role="article">
+                            <div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">🔥 En oferta</div>
+                            <img src="/assets/images/guitar4.png" class="card-img-top img-fluid img-producto" alt="Guitarra Eléctrica" style="max-height:250px; width:auto; object-fit:contain;" />
+                            <div class="card-body d-flex flex-column">
                                 <h2 class="card-title h5">Guitarra Eléctrica</h2>
                                 <p class="card-text">Sonido potente, ideal para rock y metal.</p>
-                                <p class="card-text precio">
-                                    <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
-                                    <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
-                                </p>
-                                </div>
-                                <div class="mt-auto">
-                                  <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Eléctrica" href="product-detail.html?id=21">Ver
-                                    detalles</a>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="21">Añadir a la
-                                    cesta</button>
+                                <p class="card-text precio"><span class="text-muted">Precio: </span><span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span><span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span></p>
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Eléctrica" href="product-detail.html?id=21">Ver detalles</a>
+                                    <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="21">Añadir a la cesta</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Card 5: Sin descuento -->
                     <div class="col" data-category="Clásica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar12.png" class="card-img-top" alt="Guitarra Clásica" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Clásica</h2>
-                                <p class="card-text">Cuerpo de madera, cuerdas de nylon. Ideal para principiantes.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">199&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Clásica" href="product-detail.html?id=4">Ver
-                                    detalles</a>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Clásica a la cesta" data-id="4">Añadir a la
-                                    cesta</button>
+                        <div class="card h-100 position-relative" role="article">
+                            <img src="/assets/images/guitar12.png" class="card-img-top img-fluid img-producto" alt="Guitarra Clásica" style="max-height:250px; width:auto; object-fit:contain;" />
+                            <div class="card-body d-flex flex-column">
+                                <h2 class="card-title h5">Guitarra Flamenca</h2>
+                                <p class="card-text">Guitarra flamenca con un diseño tradicional.</p>
+                                <p class="card-text fw-bold precio" aria-label="Precio"><span class="text-muted">Precio: </span>200&nbsp;€</p>
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Flamenca" href="product-detail.html?id=4">Ver detalles</a>
+                                    <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir Guitarra Flamenca a la cesta" data-id="4">Añadir a la cesta</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Card 6: Con descuento -->
                     <div class="col" data-category="Eléctrica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar1.png" class="card-img-top" alt="Guitarra Eléctrica" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Eléctrica</h2>
-                                <p class="card-text">Sonido potente, ideal para rock y metal.</p>
-                                <p class="card-text precio">
-                                    <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
-                                    <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
-                                </p>
-                                </div>
-                                <div class="mt-auto">
-                                  <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Clásica" href="product-detail.html?id=9">Ver
-                                    detalles</a>
-                                </div>
-                                <div class="mt-auto">
-                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="8">Añadir a la
-                                    cesta</button>
+                        <div class="card h-100 position-relative" role="article">
+                            <div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">🔥 En oferta</div>
+                            <img src="/assets/images/guitar1.png" class="card-img-top img-fluid img-producto" alt="Guitarra Eléctrica" style="max-height:250px; width:auto; object-fit:contain;" />
+                            <div class="card-body d-flex flex-column">
+                                <h2 class="card-title h5">Guitarra Les Paul</h2>
+                                <p class="card-text">Guitarra eléctrica estilo Les Paul.</p>
+                                <p class="card-text precio"><span class="text-muted">Precio: </span><span class="text-muted text-decoration-line-through" aria-label="Precio anterior">700&nbsp;€</span><span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">650&nbsp;€</span></p>
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Les Paul" href="product-detail.html?id=8">Ver detalles</a>
+                                    <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir Guitarra Les Paul a la cesta" data-id="8">Añadir a la cesta</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Card 7: Sin descuento -->
                     <div class="col" data-category="Acústica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar7.png" class="card-img-top" alt="Guitarra Acústica de madera clara" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Acústica Clara</h2>
-                                <p class="card-text">Perfecta para tocar en cualquier lugar, sonido brillante.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">199&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Acústica Clara" href="product-detail.html?id=1">Ver
-                                    detalles</a>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Acústica Clara a la cesta" data-id="1">Añadir a la
-                                    cesta</button>
+                        <div class="card h-100 position-relative" role="article">
+                            <img src="/assets/images/guitar7.png" class="card-img-top img-fluid img-producto" alt="Guitarra Acústica de madera clara" style="max-height:250px; width:auto; object-fit:contain;" />
+                            <div class="card-body d-flex flex-column">
+                                <h2 class="card-title h5">Guitarra Acústica Premium</h2>
+                                <p class="card-text">Guitarra acústica con acabados de lujo.</p>
+                                <p class="card-text fw-bold precio" aria-label="Precio"><span class="text-muted">Precio: </span>800&nbsp;€</p>
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Acústica Premium" href="product-detail.html?id=7">Ver detalles</a>
+                                    <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir Guitarra Acústica Premium a la cesta" data-id="7">Añadir a la cesta</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Card 8: Con descuento -->
                     <div class="col" data-category="Eléctrica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar8.png" class="card-img-top" alt="Guitarra Eléctrica" />
-                            <div class="card-body">
-                              <div class="texto-precio">
+                        <div class="card h-100 position-relative" role="article">
+                            <div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">🔥 En oferta</div>
+                            <img src="/assets/images/guitar8.png" class="card-img-top img-fluid img-producto" alt="Guitarra Eléctrica" style="max-height:250px; width:auto; object-fit:contain;" />
+                            <div class="card-body d-flex flex-column">
                                 <h2 class="card-title h5">Guitarra Eléctrica</h2>
                                 <p class="card-text">Sonido potente, ideal para rock y metal.</p>
-                                <p class="card-text precio">
-                                    <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
-                                    <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
-                                </p>
-                                </div>
-                                <div class="mt-auto">
-                                  <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Eléctrica" href="product-detail.html?id=22">Ver
-                                    detalles</a>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctricaa la cesta" data-id="22">Añadir a la
-                                    cesta</button>
+                                <p class="card-text precio"><span class="text-muted">Precio: </span><span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span><span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span></p>
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Eléctrica" href="product-detail.html?id=22">Ver detalles</a>
+                                    <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="22">Añadir a la cesta</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Card 9: Sin descuento -->
-                    <div class="col" data-category="electrica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitarr11.png" class="card-img-top" alt="Guitarra      de madera clara" />
-                            <div class="card-body">
-                              <div class="texto-precio">
+                    <div class="col" data-category="Clásica">
+                        <div class="card h-100 position-relative" role="article">
+                            <img src="/assets/images/guitar11.png" class="card-img-top img-fluid img-producto" alt="Guitarra Clásica Clara" style="max-height:250px; width:auto; object-fit:contain;" />
+                            <div class="card-body d-flex flex-column">
                                 <h2 class="card-title h5">Guitarra Clásica Clara</h2>
-                                <p class="card-text">Cuerpo de madera clara, cuerdas de nylon. Ideal para principiantes.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">199&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Clásica Clara" href="product-detail.html?id=4">Ver
-                                    detalles</a>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra eléctrica Clara a la cesta" data-id="22">Añadir a la
-                                    cesta</button>
+                                <p class="card-text">Cuerpo de madera clara, cuerda de nylon. Ideal para principiantes.</p>
+                                <p class="card-text fw-bold precio" aria-label="Precio"><span class="text-muted">Precio: </span>199&nbsp;€</p>
+                                <div class="d-flex flex-column gap-2 align-items-center">
+                                    <a class="btn btn-outline-dark w-100 mb-2" aria-label="Ver detalles de la Guitarra Clásica Clara" href="product-detail.html?id=23">Ver detalles</a>
+                                    <button class="btn btn-primary agregar-carrito w-100" aria-label="Añadir Guitarra Clásica Clara a la cesta" data-id="23">Añadir a la cesta</button>
                                 </div>
                             </div>
                         </div>
@@ -400,7 +338,7 @@
 
 
 <script>
-    // Añadir el año actual automáticamente
+    // Añadir el año currentYear automáticamente
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
 
