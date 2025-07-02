@@ -1,47 +1,6 @@
 {
-  "guest": [
-    {
-      "id": 9,
-      "cantidad": 3
-    },
-    {
-      "id": 5,
-      "cantidad": 2
-    },
-    {
-      "id": 21,
-      "cantidad": 1
-    },
-    {
-      "id": 22,
-      "cantidad": 1
-    },
-    {
-      "id": 1,
-      "cantidad": 1
-    }
-  ],
-  "David": [
-    {
-      "id": 9,
-      "cantidad": 1
-    },
-    {
-      "id": 5,
-      "cantidad": 1
-    },
-    {
-      "id": 1,
-      "cantidad": 2
-    }
-  ],
-  "PabloEmilio": [],
-  "prueba3": [],
-  "DavidE": [
-    {
-      "id": 4,
-      "cantidad": 1
-    }
-  ],
+  "guest": [],
+  "{\"message\":\"Login exitoso.\",\"user\":{\"username\":\"PabloEmilio\",\"email\":\"pachepatat@gmail.com\"}}": [],
+  "David": [],
   "nombreFicticio": []
 }

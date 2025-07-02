@@ -571,16 +571,20 @@ footer {
   flex-direction: column;
   justify-content: space-between;
 }
-.texto-precio {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    min-height: 120px;
+.card-title {
+  min-height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  min-height: 80px; /* ajusta según líneas deseadas */
+  overflow-y: auto; /* scroll si se pasa */
+  scrollbar-width: thin; /* para Firefox */
 }
 .precio {
     margin-top: auto;
 }
-
 /*Para colocaar footer al final independientemente del tamaño de pantalla */
 html, body {
     height: 100%;
@@ -605,7 +609,7 @@ main {
 .filtros-lateral {
     position: relative;
     flex: 0 1 280px;
-    max-width: 280px;
+    max-width: 220px;
     min-width: 220px;
     box-sizing: content-box;
     padding: 1.5rem 2rem 2rem;

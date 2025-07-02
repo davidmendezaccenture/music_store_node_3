@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ordenValoracionSelect = document.getElementById('orden-valoracion');
     const checkboxOferta = document.getElementById('checkbox-oferta'); // Nuevo
 
+    //Para obtener los productos resultados de la búsqueda
     function buscarYMostrar(query, category) {
         fetch(`/buscar?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`)
             .then(res => res.json())
@@ -28,40 +29,54 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(err => console.error('Error al obtener productos:', err));
     }
-
+    //Para obtener las estrellas que hemos marcado como filtro
     function obtenerEstrellasSeleccionadas() {
         const checkboxes = document.querySelectorAll('#filtro-estrellas input[type="checkbox"]');
         return Array.from(checkboxes)
             .filter(cb => cb.checked)
             .map(cb => parseInt(cb.value));
     }
-
+    //Para mostrar los resultados de la búsqueda
     function mostrarResultados(productos) {
         const contenedor = document.getElementById('resultados');
         if (!contenedor) return;
+        //Ordenamos los precios
+productos.sort((a, b) => {
+    // Validar y elegir precio correcto según enOferta
+    const precioA = (a.enOferta === 'sí') ? Number(a.offerPrice) : Number(a.price);
+    const precioB = (b.enOferta === 'sí') ? Number(b.offerPrice) : Number(b.price);
 
-        productos.sort((a, b) => {
-            const precioA = a.offerPrice ?? a.price;
-            const precioB = b.offerPrice ?? b.price;
-            let ordenPrecio;
-            if (ordenPrecioSelect.value === 'asc') {
-                ordenPrecio = precioA - precioB;
-            } else {
-                ordenPrecio = precioB - precioA;
-            }
-            if (ordenPrecio !== 0) {
-                return ordenPrecio;
-            }
-            if (ordenValoracionSelect.value === 'asc') {
-                return a.rating - b.rating;
-            } else {
-                return b.rating - a.rating;
-            }
-        });
+    // Por si algún precio es NaN, poner 0 para no romper ordenación
+    const pA = isNaN(precioA) ? 0 : precioA;
+    const pB = isNaN(precioB) ? 0 : precioB;
+
+    let ordenPrecio;
+    if (ordenPrecioSelect.value === 'asc') {
+        ordenPrecio = pA - pB;
+    } else {
+        ordenPrecio = pB - pA;
+    }
+
+    if (ordenPrecio !== 0) {
+        return ordenPrecio;
+    }
+
+    if (ordenValoracionSelect.value === 'asc') {
+        return a.rating - b.rating;
+    } else {
+        return b.rating - a.rating;
+    }
+});
+
 
         contenedor.innerHTML = '';
         if (productos.length === 0) {
-            contenedor.innerHTML = '<p class="no-encontrado">No se encontraron productos.</p>';
+            contenedor.innerHTML = `
+                <div class="no-encontrado" role="alert" aria-live="polite" style="text-align:center; padding: 2rem;">
+                    <img src="../assets/images/sin-datos.gif" alt="Lupa buscando archivo" style="width:64px; height:64px; display:block; margin:0 auto 1rem auto;">
+                    <p>No se encontraron productos.</p>
+                    <p>Prueba a cambiar los filtros o los términos de búsqueda.</p>
+                </div>`;
             return;
         }
 
@@ -74,28 +89,25 @@ document.addEventListener('DOMContentLoaded', () => {
             col.innerHTML = `
                 <div class="card h-100 position-relative" role="article">
                     ${producto.enOferta === "sí"
-                        ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">
-                               🔥 En oferta
-                           </div>`
+                        ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">🔥 En oferta</div>`
                         : ""
                     }
                     <img src="${producto.image.replace('..', '')}" class="card-img-top" alt="${producto.name}">
                     <div class="card-body">
-                        <div class="texto-precio">
                             <h2 class="card-title h5">${producto.name}</h2>
-                            <p class="card-text">${producto.description}</p>
-                            ${
-                                producto.enOferta === "sí"
-                                ? `<p class="card-text precio">
-                                     <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
-                                     <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
-                                   </p>`
-                                : `<p class="card-text fw-bold precio">${producto.price}&nbsp;€</p>`
-                            }
-                            <p class="valoracion" aria-label="Valoración del producto">
-                                ${estrellas}
-                            </p>
-                        </div>
+                                <p class="card-text">${producto.description}</p>
+                                ${
+                                    producto.enOferta === "sí"
+                                    ? `<span class="precio">
+                                            <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
+                                            <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
+                                        </span>`
+                                    : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`
+                                }
+                                <p class="valoracion" aria-label="Valoración del producto">
+                                    ${estrellas}
+                                </p>
+
                         <div class="mt-auto">
                           <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Clásica" href="product-detail.html?id=${producto.id}">Ver
                             detalles</a>
