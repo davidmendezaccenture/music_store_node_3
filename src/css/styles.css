@@ -501,7 +501,7 @@ footer {
 .texto-precio {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     min-height: 120px;
 }
 .precio {
@@ -532,7 +532,7 @@ main {
 .filtros-lateral {
     position: relative;
     flex: 0 1 280px;
-    max-width: 280px;
+    max-width: 220px;
     min-width: 220px;
     box-sizing: content-box;
     padding: 1.5rem 2rem 2rem;
