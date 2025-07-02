@@ -97,6 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             </p>
                         </div>
                         <div class="mt-auto">
+                          <a class="btn btn-secondary" aria-label="Ver detalles de la Guitarra Clásica" href="product-detail.html?id=${producto.id}">Ver
+                            detalles</a>
+                        </div>
+                        <div class="mt-auto">
                             <button class="btn btn-primary agregar-carrito" aria-label="Añadir ${producto.name} a la cesta" data-id="${producto.id}">
                                 Añadir a la cesta
                             </button>
