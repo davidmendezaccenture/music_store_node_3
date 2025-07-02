@@ -94,21 +94,20 @@ productos.sort((a, b) => {
                     }
                     <img src="${producto.image.replace('..', '')}" class="card-img-top" alt="${producto.name}">
                     <div class="card-body">
-                        <div class="texto-precio">
                             <h2 class="card-title h5">${producto.name}</h2>
-                            <p class="card-text">${producto.description}</p>
-                            ${
-                                producto.enOferta === "sí"
-                                ? `<p class="card-text precio">
-                                        <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
-                                        <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
-                                   </p>`
-                                : `<p class="card-text fw-bold precio">${producto.price}&nbsp;€</p>`
-                            }
-                            <p class="valoracion" aria-label="Valoración del producto">
-                                ${estrellas}
-                            </p>
-                        </div>
+                                <p class="card-text">${producto.description}</p>
+                                ${
+                                    producto.enOferta === "sí"
+                                    ? `<span class="precio">
+                                            <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
+                                            <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
+                                        </span>`
+                                    : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`
+                                }
+                                <p class="valoracion" aria-label="Valoración del producto">
+                                    ${estrellas}
+                                </p>
+
                         <div class="mt-auto">
                             <button class="btn btn-primary agregar-carrito" aria-label="Añadir ${producto.name} a la cesta" data-id="${producto.id}">
                                 Añadir a la cesta
