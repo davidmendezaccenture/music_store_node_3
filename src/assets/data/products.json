@@ -132,7 +132,7 @@
         "offerPrice": 750,
         "image": "../assets/images/drum1.png",
         "description": "Batería acústica de alta calidad.",
-        "category": "drums"
+        "category": "acoustic-drums"
     },
     {
         "id": 16,
@@ -141,7 +141,7 @@
         "offerPrice": 550,
         "image": "../assets/images/drum5.png",
         "description": "Batería electrónica compacta y versátil.",
-        "category": "drums"
+        "category": "electronic-drums"
     },
     {
         "id": 17,
@@ -150,7 +150,7 @@
         "offerPrice": 350,
         "image": "../assets/images/drum3.png",
         "description": "Set de platillos de alta calidad para bateristas profesionales.",
-        "category": "drums"
+        "category": "set-platillos"
     },
     {
         "id": 18,
@@ -159,7 +159,7 @@
         "offerPrice": 200,
         "image": "../assets/images/drum4.png",
         "description": "Caja de madera con un sonido cálido y resonante.",
-        "category": "drums"
+        "category": "acoustic-drums"
     },
     {
         "id": 19,
@@ -168,7 +168,7 @@
         "offerPrice": 130,
         "image": "../assets/images/drum5.png",
         "description": "Pedal de bombo con acción suave y precisa.",
-        "category": "drums"
+        "category": "electronic-drums"
     },
     {
         "id": 20,
@@ -177,7 +177,7 @@
         "offerPrice": 950,
         "image": "../assets/images/drum5.png",
         "description": "Set completo de batería para principiantes y avanzados.",
-        "category": "drums"
+        "category": "set-platillos"
     },
         {
         "id": 21,
