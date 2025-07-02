@@ -19,13 +19,13 @@ function mostrarBotonLogout(username) {
   const userActions = document.getElementById('user-actions');
   if (!userActions) return;
 userActions.innerHTML = `
-  <a href="/pages/cart.html" class="btn btn-outline-dark position-relative me-3">
+  <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
     <i class="bi bi-cart3"></i>
-    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
+    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
   </a>
-  <span class="me-3 fw-bold align-self-center">${username}</span>
-  <button class="btn btn-danger me-3" id="logoutBtn">
-    <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+  <span class="fw-bold user-name mx-3 text-truncate">${username}</span>
+  <button class="btn btn-danger" id="logoutBtn">
+    <i class="bi bi-box-arrow-right me-1"></i> Logout
   </button>
 `;
   document.getElementById('logoutBtn').addEventListener('click', function() {
@@ -163,7 +163,7 @@ function mostrarModalBienvenida(mensaje) {
           <div class="modal-body">
             <i class="bi bi-person-check text-primary" style="font-size: 3rem; margin-bottom:15px;"></i>
             <p class="fs-5 mb-2">${mensaje}</p>
-            <button class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
+            <button id="btnCerrarModal" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
           </div>
         </div>
       </div>
@@ -174,18 +174,30 @@ function mostrarModalBienvenida(mensaje) {
   const contenedor = document.getElementById('modals-container');
   contenedor.innerHTML = modalHTML;
 
-  // Mostrar la modal
-  const modal = new bootstrap.Modal(document.getElementById('modalBienvenida'));
+  // Crear modal de bootstrap
+  const modalElement = document.getElementById('modalBienvenida');
+  const modal = new bootstrap.Modal(modalElement);
+
+  // Mostrar modal
   modal.show();
-  //Redirigir tras cerrar la modal
-  document.getElementById('modalBienvenida').addEventListener('hidden.bs.modal', function () {
-  if (window.location.pathname.includes('login.html')) {
-    window.location.href = "/pages/index.html";
-  } else {
-    location.reload();
-  }
-});
+
+  // Añadir evento para el botón que cierra modal
+  document.getElementById('btnCerrarModal').addEventListener('click', () => {
+    modal.hide();
+  });
+
+  // Al cerrar modal, actualizar carrito y eliminar backdrop
+  modalElement.addEventListener('hidden.bs.modal', () => {
+      if (window.location.pathname.includes('login.html')) {
+    window.location.href = "/pages/cart.html";
+      }else{
+      mostrarCarrito();
+      const backdrop = document.querySelector('.modal-backdrop');
+      if (backdrop) backdrop.remove();
+      }
+  });
 }
+
 //Modal de confirmacion de pago
 function mostrarModalPago() {
   const modalHTML = `
@@ -195,7 +207,7 @@ function mostrarModalPago() {
           <div class="modal-body">
             <i class="bi bi-check-circle text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
             <p class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
-            <button class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
+            <button id="btnCerrarModal" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
           </div>
         </div>
       </div>
@@ -209,9 +221,10 @@ function mostrarModalPago() {
   // Mostrar la modal
   const modal = new bootstrap.Modal(document.getElementById('modalPagoConfirmado'));
   modal.show();
-  //Recargar tras mostrar la modal
-  document.getElementById('modalPagoConfirmado').addEventListener('hidden.bs.modal', function () {
-    location.reload();
+
+  // Añadir evento para el botón que cierra modal
+  document.getElementById('btnCerrarModal').addEventListener('click', () => {
+    modal.hide();
   });
 }
 //Modal de confirmacion de borrado de elementos

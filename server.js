@@ -285,3 +285,60 @@ if (require.main === module) {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
   });
 }
+//Búsquedas dentro de la web
+// Ruta de búsqueda
+const productosPath = path.join(__dirname, 'src', 'assets', 'data', 'products.json');
+const reseñasPath = path.join(__dirname, 'src', 'assets', 'data', 'clients.json'); // <- tu archivo real
+
+app.get('/buscar', (req, res) => {
+  const query = req.query.q?.toLowerCase() || '';
+  const category = req.query.category?.toLowerCase() || '';
+
+  fs.readFile(productosPath, 'utf8', (errProductos, dataProductos) => {
+    if (errProductos) return res.status(500).send('Error al leer productos');
+
+    fs.readFile(reseñasPath, 'utf8', (errReviews, dataReviews) => {
+      if (errReviews) return res.status(500).send('Error al leer opiniones');
+
+      try {
+        const productos = JSON.parse(dataProductos);
+        const reseñas = JSON.parse(dataReviews);
+
+        // Calcular promedio de estrellas por producto
+        const ratingMap = {};
+        reseñas.forEach(r => {
+          if (!ratingMap[r.producto]) {
+            ratingMap[r.producto] = { total: 0, count: 0 };
+          }
+          const estrellasTexto = r.estrellas || '';
+const estrellasNum = estrellasTexto.split('').filter(e => e === '⭐').length;
+ratingMap[r.producto].total += estrellasNum;
+
+          ratingMap[r.producto].count++;
+        });
+
+        // Añadir campo rating a cada producto
+        productos.forEach(p => {
+          const datos = ratingMap[p.id];
+          if (datos) {
+            p.rating = Math.round(datos.total / datos.count);
+          } else {
+            p.rating = 0;
+          }
+        });
+
+        // Filtrar por búsqueda
+        const resultados = productos.filter(p => {
+          const nombreIncluye = !query || p.name?.toLowerCase().includes(query);
+          const categoriaCoincide = !category || p.category?.toLowerCase() === category;
+          return nombreIncluye && categoriaCoincide;
+        });
+
+        res.json(resultados);
+      } catch (e) {
+        res.status(500).send('Error al procesar datos');
+      }
+    });
+  });
+});
+

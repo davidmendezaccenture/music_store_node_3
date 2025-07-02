@@ -69,6 +69,8 @@ $(document).on('submit', '#form-login', function(e) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ user: usuario, items: carritoFinal })
           }).then(() => {
+            //Actualizamos el carrito
+            carrito=carritoFinal;
             //Modal de bienvenida
             mostrarModalBienvenida(`Bienvenido ${usuario}`);
           });

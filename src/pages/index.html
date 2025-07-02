@@ -17,54 +17,71 @@
     <!-- Encabezado -->
     <header class="bg-white shadow-sm sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
+            <div class="container-fluid">
                 <!-- Logo + Nombre -->
-                <a class="navbar-brand d-flex align-items-center me-4" href="/pages/index.html">
+                <a class="navbar-brand d-flex align-items-center" href="/pages/index.html">
                     <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="30" class="me-2">
                     <span class="fw-bold">RaiRock</span>
                 </a>
-        
                 <!-- Menú Hamburguesa (mobile) -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-        
                 <!-- Menú Principal -->
                 <div class="collapse navbar-collapse" id="navbarMain">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/pages/index.html">
-                                <i class="bi bi-house-door me-1"></i> Inicio
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#services">
-                                <i class="bi bi-gear me-1"></i> Servicios
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/pages/sobre_nosotros.html">
-                                <i class="bi bi-people me-1"></i> Sobre Nosotros
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/pages/contact.html">
-                                <i class="bi bi-envelope me-1"></i> Contacto
-                            </a>
-                        </li>
-                    </ul>
-        
-                    <!-- Carrito + Login -->
-                    <div class="d-flex ms-auto" id="user-actions">
-                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative me-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/index.html">
+                            <i class="bi bi-house-door me-1"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">
+                            <i class="bi bi-gear me-1"></i> Servicios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/sobre_nosotros.html">
+                            <i class="bi bi-people me-1"></i> Sobre Nosotros
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/contact.html">
+                            <i class="bi bi-envelope me-1"></i> Contacto
+                        </a>
+                    </li>
+                </ul>
+                    <!--Barra de búsqueda-->
+                    <form id="form-busqueda" class="d-flex me-3 mb-3 mb-lg-0" action="/pages/search.html" method="GET" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <select class="form-select" name="category" style="max-width: 120px;">
+                                <option value="">Todas</option>
+                                <option value="acoustic-guitars">Guitarras acústica</option>
+                                <option value="classical-guitars">Guitarras clásicas</option>
+                                <option value="electric-guitars">Guitarras eléctrica</option>
+                                <option value="basses">Bajos</option>
+                                <option value="amplifiers">Amplificadores</option>
+                                <option value="effect-pedals">Pedales</option>
+                                <option value="drums">Baterías</option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                <!-- Carrito + Login -->
+                    <div class="d-flex align-items-center ms-auto" id="user-actions">
+                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
                             <i class="bi bi-cart3"></i>
                             <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
                         </a>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                          <span class="fw-bold user-name mx-3 text-truncate" title="Nombre de usuario">Invitado</span>
+                        <button class="btn btn-primary btnLogin" data-bs-toggle="modal" data-bs-target="#loginModal">
                             <i class="bi bi-person-fill me-1"></i> Login
                         </button>
                     </div>
-                </div>
+              </div>
             </div>
         </nav>
     </header>
@@ -324,6 +341,7 @@
 <script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
 <script src="../js/app.js"></script>
+<script src="../js/search.js"></script>
 
 </body>
 </html>
