@@ -1,20 +1,23 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('form-busqueda');
+$(document).ready(function () {
+    const $form = $('#form-busqueda');
     const esSearchPage = window.location.pathname.endsWith('search.html');
-    const precioMinInput = document.getElementById('precio-min');
-    const precioMaxInput = document.getElementById('precio-max');
-    const ordenPrecioSelect = document.getElementById('orden-precio');
-    const ordenValoracionSelect = document.getElementById('orden-valoracion');
-    const ordenPrioridadSelect = document.getElementById('orden-prioridad');
-    const checkboxOferta = document.getElementById('checkbox-oferta');
+    const $precioMinInput = $('#precio-min');
+    const $precioMaxInput = $('#precio-max');
+    const $ordenPrecioSelect = $('#orden-precio');
+    const $ordenValoracionSelect = $('#orden-valoracion');
+    const $ordenPrioridadSelect = $('#orden-prioridad');
+    const $checkboxOferta = $('#checkbox-oferta');
+    const $selectorPaginacion = $('#selector-paginacion');
+    const $contenedor = $('#resultados');
+    const $paginacion = $('#paginacion');
+
     let productosFiltradosGlobal = [];
     let paginaActual = 1;
     let productosPorPagina = 6;
-    //Para modificar los items por página. Si es 0 muestra todos, si no, crea el número de página solicitado
-    const selectorPaginacion = document.getElementById('selector-paginacion');
-    if (selectorPaginacion) {
-        selectorPaginacion.addEventListener('change', () => {
-            const valor = parseInt(selectorPaginacion.value);
+
+    if ($selectorPaginacion.length) {
+        $selectorPaginacion.on('change', function () {
+            const valor = parseInt($(this).val());
             productosPorPagina = valor === 0 ? productosFiltradosGlobal.length : valor;
             paginaActual = 1;
             mostrarResultados(productosFiltradosGlobal);
@@ -22,13 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buscarYMostrar(query, category) {
-        fetch(`/buscar?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`)
-            .then(res => res.json())
-            .then(productos => {
+        $.getJSON(`/buscar`, { q: query, category: category })
+            .done(function (productos) {
                 const estrellasSeleccionadas = obtenerEstrellasSeleccionadas();
-                const minPrecio = parseFloat(precioMinInput.value);
-                const maxPrecio = parseFloat(precioMaxInput.value);
-                const soloEnOferta = checkboxOferta.checked;
+                const minPrecio = parseFloat($precioMinInput.val());
+                const maxPrecio = parseFloat($precioMaxInput.val());
+                const soloEnOferta = $checkboxOferta.is(':checked');
 
                 let productosFiltrados = productos.filter(producto => {
                     const ratingOk = estrellasSeleccionadas.length === 0 || estrellasSeleccionadas.includes(producto.rating);
@@ -38,17 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     return ratingOk && precioOk && ofertaOk;
                 });
 
-                // ORDENAMIENTO CON PRIORIDAD
                 productosFiltrados.sort((a, b) => {
-                    const precioA = a.enOferta === 'sí' ? Number(a.offerPrice) : Number(a.price);
-                    const precioB = b.enOferta === 'sí' ? Number(b.offerPrice) : Number(b.price);
-                    const pA = isNaN(precioA) ? 0 : precioA;
-                    const pB = isNaN(precioB) ? 0 : precioB;
+                    const pA = Number(a.enOferta === 'sí' ? a.offerPrice : a.price) || 0;
+                    const pB = Number(b.enOferta === 'sí' ? b.offerPrice : b.price) || 0;
+                    const ordenPrecio = $ordenPrecioSelect.val() === 'asc' ? pA - pB : pB - pA;
+                    const ordenValoracion = $ordenValoracionSelect.val() === 'asc' ? a.rating - b.rating : b.rating - a.rating;
 
-                    const ordenPrecio = ordenPrecioSelect.value === 'asc' ? pA - pB : pB - pA;
-                    const ordenValoracion = ordenValoracionSelect.value === 'asc' ? a.rating - b.rating : b.rating - a.rating;
-
-                    if (ordenPrioridadSelect.value === 'precio') {
+                    if ($ordenPrioridadSelect.val() === 'precio') {
                         return ordenPrecio !== 0 ? ordenPrecio : ordenValoracion;
                     } else {
                         return ordenValoracion !== 0 ? ordenValoracion : ordenPrecio;
@@ -57,32 +55,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 mostrarResultados(productosFiltrados);
             })
-            .catch(err => console.error('Error al obtener productos:', err));
+            .fail(function (err) {
+                console.error('Error al obtener productos:', err);
+            });
     }
 
     function obtenerEstrellasSeleccionadas() {
-        const checkboxes = document.querySelectorAll('#filtro-estrellas input[type="checkbox"]');
-        return Array.from(checkboxes)
-            .filter(cb => cb.checked)
-            .map(cb => parseInt(cb.value));
+        return $('#filtro-estrellas input[type="checkbox"]:checked')
+            .map(function () {
+                return parseInt(this.value);
+            }).get();
     }
 
     function mostrarResultados(productos) {
         productosFiltradosGlobal = productos;
-        const contenedor = document.getElementById('resultados');
-        const paginacion = document.getElementById('paginacion');
-        if (!contenedor || !paginacion) return;
-
-        contenedor.innerHTML = '';
-        paginacion.innerHTML = '';
+        $contenedor.empty();
+        $paginacion.empty();
 
         if (productos.length === 0) {
-            contenedor.innerHTML = `
+            $contenedor.html(`
                 <div class="no-encontrado" role="alert" aria-live="polite" style="text-align:center; padding: 2rem;">
                     <img src="../assets/images/sin-datos.gif" alt="Lupa buscando archivo" style="width:64px; height:64px; display:block; margin:0 auto 1rem auto;">
                     <p>No se encontraron productos.</p>
                     <p>Prueba a cambiar los filtros o los términos de búsqueda.</p>
-                </div>`;
+                </div>`);
             return;
         }
 
@@ -92,66 +88,60 @@ document.addEventListener('DOMContentLoaded', () => {
         const productosPagina = productos.slice(inicio, fin);
 
         productosPagina.forEach(producto => {
-            const col = document.createElement('div');
-            col.className = 'col producto-animado';
-            col.setAttribute('data-category', producto.category);
             const estrellas = '★'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
+            const ofertaBadge = producto.enOferta === "sí"
+                ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">🔥 En oferta</div>`
+                : "";
 
-            col.innerHTML = `
-                <div class="card h-100 position-relative" role="article">
-                    ${producto.enOferta === "sí"
-                        ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">🔥 En oferta</div>`
-                        : ""
-                    }
-                    <img src="${producto.image.replace('..', '')}" class="card-img-top" alt="${producto.name}">
-                    <div class="card-body">
-                        <h2 class="card-title h5">${producto.name}</h2>
-                        <p class="card-text">${producto.description}</p>
-                        ${
-                            producto.enOferta === "sí"
-                            ? `<span class="precio">
-                                    <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
-                                    <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
-                                </span>`
-                            : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`
-                        }
-                        <p class="valoracion" aria-label="Valoración del producto">
-                            ${estrellas}
-                        </p>
-                        <div class="mt-auto">
-                            <button class="btn btn-primary agregar-carrito" aria-label="Añadir ${producto.name} a la cesta" data-id="${producto.id}">
-                                Añadir a la cesta
-                            </button>
+            const precioHTML = producto.enOferta === "sí"
+                ? `<span class="precio">
+                        <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
+                        <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
+                    </span>`
+                : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`;
+
+            const $col = $(`
+                <div class="col producto-animado" data-category="${producto.category}">
+                    <div class="card h-100 position-relative" role="article">
+                        ${ofertaBadge}
+                        <img src="${producto.image.replace('..', '')}" class="card-img-top" alt="${producto.name}">
+                        <div class="card-body">
+                            <h2 class="card-title h5">${producto.name}</h2>
+                            <p class="card-text">${producto.description}</p>
+                            ${precioHTML}
+                            <p class="valoracion" aria-label="Valoración del producto">${estrellas}</p>
+                            <div class="mt-auto">
+                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir ${producto.name} a la cesta" data-id="${producto.id}">
+                                    Añadir a la cesta
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            `;
-            contenedor.appendChild(col);
-            setTimeout(() => {
-                void col.offsetWidth;
-                col.classList.add('visible');
-            }, 100);
+            `);
+
+            $contenedor.append($col);
+            setTimeout(() => $col.addClass('visible'), 100);
         });
 
         for (let i = 1; i <= totalPaginas; i++) {
-            const btn = document.createElement('button');
-            btn.textContent = i;
-            btn.className = `btn btn-sm ${i === paginaActual ? 'btn-primary' : 'btn-outline-primary'} mx-1`;
-            btn.addEventListener('click', () => {
+            const $btn = $(`<button class="btn btn-sm mx-1 ${i === paginaActual ? 'btn-primary' : 'btn-outline-primary'}">${i}</button>`);
+            $btn.on('click', () => {
                 paginaActual = i;
                 mostrarResultados(productosFiltradosGlobal);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            paginacion.appendChild(btn);
+            $paginacion.append($btn);
         }
     }
 
     if (esSearchPage) {
-        form.addEventListener('submit', e => {
+        $form.on('submit', function (e) {
             e.preventDefault();
-            const query = form.q.value.trim();
-            const category = form.category.value;
+            const query = $form.find('[name="q"]').val().trim();
+            const category = $form.find('[name="category"]').val();
             buscarYMostrar(query, category);
+
             const newUrl = `${window.location.pathname}?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`;
             window.history.replaceState(null, '', newUrl);
             localStorage.setItem('ultimaPagina', newUrl);
@@ -160,52 +150,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const params = new URLSearchParams(window.location.search);
         const q = params.get('q') || '';
         const cat = params.get('category') || '';
-        form.q.value = q;
-        form.category.value = cat;
+        $form.find('[name="q"]').val(q);
+        $form.find('[name="category"]').val(cat);
         buscarYMostrar(q, cat);
     }
 
-    const estrellaCheckboxes = document.querySelectorAll('#filtro-estrellas input[type="checkbox"]');
-    estrellaCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            const query = form.q.value.trim();
-            const category = form.category.value;
-            buscarYMostrar(query, category);
-        });
-    });
-
-    precioMinInput.addEventListener('input', actualizarYFiltrar);
-    precioMaxInput.addEventListener('input', actualizarYFiltrar);
-
-    ordenPrecioSelect.addEventListener('change', () => {
-        const query = form.q.value.trim();
-        const category = form.category.value;
+    $('#filtro-estrellas input[type="checkbox"]').on('change', () => {
+        const query = $form.find('[name="q"]').val().trim();
+        const category = $form.find('[name="category"]').val();
         buscarYMostrar(query, category);
     });
 
-    ordenValoracionSelect.addEventListener('change', () => {
-        const query = form.q.value.trim();
-        const category = form.category.value;
-        buscarYMostrar(query, category);
-    });
+    $precioMinInput.on('input', actualizarYFiltrar);
+    $precioMaxInput.on('input', actualizarYFiltrar);
 
-    ordenPrioridadSelect.addEventListener('change', () => {
-        const query = form.q.value.trim();
-        const category = form.category.value;
-        buscarYMostrar(query, category);
-    });
-
-    checkboxOferta.addEventListener('change', () => {
-        const query = form.q.value.trim();
-        const category = form.category.value;
-        buscarYMostrar(query, category);
-    });
+    $ordenPrecioSelect.on('change', actualizarYFiltrar);
+    $ordenValoracionSelect.on('change', actualizarYFiltrar);
+    $ordenPrioridadSelect.on('change', actualizarYFiltrar);
+    $checkboxOferta.on('change', actualizarYFiltrar);
 
     function actualizarYFiltrar() {
-        document.getElementById('min-valor').textContent = precioMinInput.value;
-        document.getElementById('max-valor').textContent = precioMaxInput.value;
-        const query = form.q.value.trim();
-        const category = form.category.value;
+        $('#min-valor').text($precioMinInput.val());
+        $('#max-valor').text($precioMaxInput.val());
+        const query = $form.find('[name="q"]').val().trim();
+        const category = $form.find('[name="category"]').val();
         buscarYMostrar(query, category);
     }
 });
