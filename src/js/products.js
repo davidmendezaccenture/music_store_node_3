@@ -36,7 +36,7 @@ $(document).ready(function () {
 
   const categoriaMap = mapasPorPagina[paginaActual] || {};
 
-  // 🔧 Mostrar productos según filtro
+  // Mostrar productos según filtro
   function mostrarProductos(filtro = "Todas") {
     $.ajax({
       url: '/api/products',
@@ -54,22 +54,30 @@ $(document).ready(function () {
         });
 
         productosFiltrados.forEach(producto => {
+          //  Generar tarjeta HTML con botón "Ver detalle"
           const card = `
             <div class="col">
               <div class="card h-100 shadow-sm">
                 <img src="${producto.image}" class="card-img-top" alt="${producto.name}">
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                   <h5 class="card-title">${producto.name}</h5>
                   <p class="card-text">${producto.description}</p>
-                  <p class="card-text fw-bold text-success">${producto.offerPrice}€ 
+                  <p class="card-text fw-bold text-success">
+                    ${producto.offerPrice}€ 
                     <span class="text-muted text-decoration-line-through fs-6">${producto.price}€</span>
                   </p>
-                  <button class="btn btn-primary w-100 add-to-cart" data-id="${producto.id}">
+                  <!-- Botón para añadir al carrito -->
+                  <button class="btn btn-primary w-100 add-to-cart mt-auto" data-id="${producto.id}">
                     <i class="bi bi-cart-plus"></i> Añadir al carrito
                   </button>
+                  <!-- Botón para ir al detalle del producto -->
+                  <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-outline-secondary mt-2 w-100">
+                    Ver detalle
+                  </a>
                 </div>
               </div>
             </div>`;
+          
           container.append(card);
         });
       },
@@ -80,16 +88,16 @@ $(document).ready(function () {
     });
   }
 
-  // Inicial
+  //  Carga inicial de productos al abrir la página
   mostrarProductos();
 
-  // Al cambiar filtro
+  //  Al cambiar filtro de categoría
   $('#categoria').on('change', function () {
     const filtro = $(this).val();
     mostrarProductos(filtro);
   });
 
-  // Añadir al carrito
+  //  Evento: Añadir al carrito desde botón
   container.on('click', '.add-to-cart', function () {
     const id = $(this).data('id');
     addToCart(id);
