@@ -51,7 +51,7 @@
                     <!--Barra de búsqueda-->
                     <form id="form-busqueda" class="d-flex me-3 mb-3 mb-lg-0" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar" aria-label="Buscar productos">
                             <select class="form-select" name="category" style="max-width: 120px;">
                                 <option value="">Todas</option>
                                 <option value="acoustic-guitars">Guitarras acústica</option>
@@ -104,8 +104,8 @@
 
         <div class="d-flex gap-4 busquedas">
         <!-- Filtros al lado izquierdo -->
-            <aside id="filtros" class="filtros-lateral">
-                <h3 class="d-flex align-items-center mb-4">
+            <aside id="filtros" class="filtros-lateral" aria-labelledby="titulo-filtros">
+                <h3 class="d-flex align-items-center mb-4" id="titulo-filtros">
                     <img src="/assets/images/filter.svg" class="icono-nav" alt="imagen filtro">  Filtros
                 </h3>
                 <label for="orden-prioridad">Ordenar primero por:</label>
@@ -135,23 +135,23 @@
                 <h4 class="mt-4">Filtrar por valoraciones</h4>
                 <div id="filtro-estrellas" class="form-check mt-2">
                     <div class="festrellas">
-                        <input class="form-check-input" type="checkbox" value="5" id="estrella-5">
+                        <input class="form-check-input" type="checkbox" value="5" id="estrella-5" aria-label="5 estrellas">
                         <label class="form-check-label" for="estrella-5">⭐⭐⭐⭐⭐</label>
                     </div>
                     <div class="estrellas">
-                        <input class="form-check-input" type="checkbox" value="4" id="estrella-4">
+                        <input class="form-check-input" type="checkbox" value="4" id="estrella-4" aria-label="4 estrellas">
                         <label class="form-check-label" for="estrella-4">⭐⭐⭐⭐☆</label>
                     </div>
                     <div class="estrellas">
-                        <input class="form-check-input" type="checkbox" value="3" id="estrella-3">
+                        <input class="form-check-input" type="checkbox" value="3" id="estrella-3" aria-label="3 estrellas">
                         <label class="form-check-label" for="estrella-3">⭐⭐⭐☆☆</label>
                     </div>
                     <div class="estrellas">
-                        <input class="form-check-input" type="checkbox" value="2" id="estrella-2">
+                        <input class="form-check-input" type="checkbox" value="2" id="estrella-2" aria-label="2 estrellas">
                         <label class="form-check-label" for="estrella-2">⭐⭐☆☆☆</label>
                     </div>
                     <div class="estrellas">
-                        <input class="form-check-input" type="checkbox" value="1" id="estrella-1">
+                        <input class="form-check-input" type="checkbox" value="1" id="estrella-1" aria-label="1 estrellas">
                         <label class="form-check-label" for="estrella-2">⭐☆☆☆☆</label>
                     </div>
                 </div>
