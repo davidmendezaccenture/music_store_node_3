@@ -18,12 +18,12 @@
                 <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="30" class="me-2">
                 <span class="fw-bold">RaiRock</span>
               </a>
-        
+
                 <!-- Menú Hamburguesa (mobile) -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-        
+
               <!-- Menú Principal -->
               <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -33,7 +33,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#services">
+                    <a class="nav-link" href="#services.html">
                       <i class="bi bi-gear me-1"></i> Servicios
                     </a>
                   </li>
@@ -124,18 +124,26 @@
   <div class="container">
     <div class="row g-4">
       <!-- Columna 1: Métodos de pago -->
-      <div class="col-md-4 mb-4 mb-md-0">
-        <div class="pre-footer-card h-100 p-4">
-          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
-          <div class="payment-methods d-flex flex-wrap gap-3">
-            <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" width="80">
-            <img src="../assets/images/icons8-visa-48 (1).png" alt="Visa" width="80">
-            <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" width="80">
-            <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" width="80">
-          </div>
+<div class="col-md-4 mb-4 mb-md-0">
+    <div class="pre-footer-card h-100 p-4">
+        <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
+        <div class="payment-methods d-flex flex-wrap gap-3 align-items-center">
+            <a href="#" class="payment-icon" aria-label="Pagar con PayPal">
+                <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" class="payment-img grayscale">
+            </a>
+            <a href="#" class="payment-icon" aria-label="Pagar con Visa">
+                <img src="../assets/images/icons8-visa-48 (1).png" alt="Visa" class="payment-img grayscale">
+            </a>
+            <a href="#" class="payment-icon" aria-label="Pagar con MasterCard">
+                <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" class="payment-img grayscale">
+            </a>
+            <a href="#" class="payment-icon" aria-label="Pagar con American Express">
+                <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" class="payment-img grayscale">
+            </a>
         </div>
-      </div>
-      
+    </div>
+</div>
+
       <!-- Columna 2: Ventajas -->
       <div class="col-md-4 mb-4 mb-md-0">
         <div class="pre-footer-card h-100 p-4">
@@ -148,7 +156,7 @@
           </ul>
         </div>
       </div>
-      
+
       <!-- Columna 3: Redes sociales -->
       <div class="col-md-4">
         <div class="pre-footer-card h-100 p-4">
@@ -172,7 +180,7 @@
     </div>
   </div>
 </section>
-                
+
     <!-- Footer -->
     <footer class="bg-dark text-white py-3">
         <div class="container text-center">
@@ -192,7 +200,7 @@
 
 
 <script>
-    // Añadir el año actual automáticamente
+    // Añadir el año currentYear automáticamente
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
 
@@ -210,6 +218,6 @@
     <script src="../js/app.js"></script>
     <script src="../js/login-ui.js"></script>
     <script src="../js/index.js"></script>
-    <script src="../js/products.js"></script>
+    <script src="../js/product-detail.js"></script>
 </body>
 </html>
