@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const precioMaxInput = document.getElementById('precio-max');
     const ordenPrecioSelect = document.getElementById('orden-precio');
     const ordenValoracionSelect = document.getElementById('orden-valoracion');
-    const ordenPrioridadSelect = document.getElementById('orden-prioridad'); // NUEVO
+    const ordenPrioridadSelect = document.getElementById('orden-prioridad');
     const checkboxOferta = document.getElementById('checkbox-oferta');
     let productosFiltradosGlobal = [];
     let paginaActual = 1;
     let productosPorPagina = 6;
-
+    //Para modificar los items por página. Si es 0 muestra todos, si no, crea el número de página solicitado
     const selectorPaginacion = document.getElementById('selector-paginacion');
     if (selectorPaginacion) {
         selectorPaginacion.addEventListener('change', () => {
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 void col.offsetWidth;
                 col.classList.add('visible');
-            }, 10);
+            }, 100);
         });
 
         for (let i = 1; i <= totalPaginas; i++) {
