@@ -240,7 +240,7 @@
         "name": "Sintetizador Korg Minilogue XD",
         "price": 650,
         "offerPrice": 599,
-        "image": "../assets/images/sintet2.jfif",
+        "image": "../assets/images/sintet2.png",
         "description": "Sintetizador analógico-polifónico con secuenciador integrado.",
         "category": "synthesizers"
     },
@@ -249,7 +249,7 @@
         "name": "Sintetizador Moog Subsequent 25",
         "price": 1100,
         "offerPrice": 999,
-        "image": "../assets/images/sintet1.jfif",
+        "image": "../assets/images/sintet1.png",
         "description": "Sintetizador analógico compacto con gran potencia sonora.",
         "category": "synthesizers"
     },
@@ -258,7 +258,7 @@
         "name": "Sintetizador Arturia MicroFreak",
         "price": 350,
         "offerPrice": 329,
-        "image": "../assets/images/sintet3.jfif",
+        "image": "../assets/images/sintet3.png",
         "description": "Sintetizador digital experimental con teclado táctil.",
         "category": "synthesizers"
     }

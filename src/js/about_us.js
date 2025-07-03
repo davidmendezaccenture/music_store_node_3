@@ -16,7 +16,7 @@ $(document).ready(function () {
     {
       nombre: "Angélica Libreros",
       descripcion: "Especialista en guitarra eléctrica. Productora musical apasionada del metal alternativo y efectos analógicos.",
-      imagen: "../assets/images/team_4.jfif",
+      imagen: "../assets/images/team_4.jpg",
     },
     {
       nombre: "Antonio Fernández",
