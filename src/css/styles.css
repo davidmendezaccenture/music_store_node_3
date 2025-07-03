@@ -1,3 +1,4 @@
+
 /*reset css*/
 * {
     margin: 0;
@@ -42,7 +43,6 @@ header {
 .input-group.rounded-pill:focus-within {
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
-
 /* Elementos del menú */
 .nav-item {
     margin: 0 0.5rem;
@@ -50,7 +50,7 @@ header {
 }
 
 .nav-link {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
 }
@@ -59,6 +59,9 @@ header {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
+.nav-link i {
+    font-size: 0.9rem;
+}
 
 /* Botón de login */
 .btn-primary {
@@ -69,7 +72,6 @@ header {
     --bs-btn-active-bg: #0a58ca;
     padding: 0.5rem 1.25rem;
 }
-
 /* Responsive */
 @media (max-width: 991.98px) {
     .navbar-collapse {
@@ -78,52 +80,16 @@ header {
         margin-top: 0.5rem;
         padding: 1rem;
     }
-
+    
     .nav-item {
         margin: 0.2rem 0;
     }
-
+    
     .input-group.rounded-pill {
         margin-top: 1rem;
         width: 100%;
     }
 }
-header nav.navbar {
-  white-space: nowrap; /* Evita salto de línea en los hijos */
-  overflow-x: auto;    /* Permite scroll horizontal si no cabe */
-}
-
-#user-actions {
-  white-space: nowrap; /* No permitir salto de línea en el contenido */
-  flex-shrink: 0;      /* Que no se reduzca el tamaño */
-  align-items: center; /* Centrar verticalmente */
-}
-#user-actions span.me-3 {
-  white-space: nowrap; /* Que el texto no se divida */
-  margin-right: 1rem;  /* Separación con el botón */
-}
-/*Estilo para botones y user name, para que se mantengan independientemente del tamaño del nombre del usuario*/
-.btnLogin,
-#logoutBtn {
-    width: 120px; /* o el ancho máximo que necesita "Cerrar sesión" */
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem; /* espacio entre ícono y texto */
-}
-.user-name {
-    display: inline-block;
-    width: 100px;          /* ancho fijo */
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-shrink: 0;        /* impide que se reduzca */
-}
-
-
-
 /* Menú hamburguesa - solo para items de navegación */
 .navbar-collapse {
     background-color: #f8f9fa;
@@ -151,7 +117,7 @@ header nav.navbar {
         margin-top: 1rem;
         padding: 1rem;
     }
-
+    
     .nav-link {
         margin: 2px 0;
     }
@@ -162,11 +128,11 @@ header nav.navbar {
         flex-direction: column;
         padding: 10px;
     }
-
+    
     .logo-text {
         font-size: 1.2rem;
     }
-
+    
     .logo-img {
         height: 30px;
     }
@@ -242,8 +208,8 @@ a:hover .icono-nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    color: black;
+    gap: 5px;                     
+    color: black;               
     text-decoration: none;
     font-weight: bold;
     border: none;
@@ -318,7 +284,7 @@ a:hover .icono-nav {
     opacity: 1;
     transform: scale(1.3);
 }
-/*28/06 igualamos trajetas de opinion e imagen */
+/*Igualamos trajetas de opinion e imagen */
 .carruselGlide {
     padding-left: 50px;
     padding-right: 50px;
@@ -431,7 +397,6 @@ a:hover .icono-nav {
     filter: grayscale(0%) brightness(1);
     transform: scale(1.1);
 }
-
 /* PayPal - Color específico al pasar el ratón */
 .payment-icon:hover:nth-child(1) .payment-img,
 .payment-icon:focus:nth-child(1) .payment-img {
@@ -465,8 +430,8 @@ footer {
     opacity: 0;
 }
 #total {
-    transition: transform 0.3s ease;
-    will-change: transform;
+    transition: transform 0.3s ease !important;
+    will-change: transform !important;
 }
 
 /*Para eliminar defecto del navegador con la animación al eliminar elementos del carrito.*/
@@ -498,14 +463,14 @@ footer {
 
 
 /* Estilo para botones, para que sean iguales en tamaño*/
-#seguir-comprando,
-#confirmar-pago {
-    display: inline-flex;       /* inline para que el botón se adapte al contenido */
-    align-items: center;        /* alinear verticalmente texto e imagen */
-    gap: 8px;                   /* separación entre icono y texto */
-    justify-content: flex-start; /* texto pegado a la izquierda junto al icono */
-    min-width: auto;            /* eliminar ancho mínimo fijo */
-    padding: 0.375rem 0.75rem;  /* ajusta el padding para que quede mejor */
+#seguir-comprando
+{
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+    min-width: auto !important;
+    padding: 0.375rem 0.75rem !important;
 }
 
 #seguir-comprando {
@@ -518,11 +483,32 @@ footer {
   transform: scale(1.05);
 }
 
-#confirmar-pago:hover {
+.boton-confirmar-pago:hover {
     background-color: #004085;
     border-color: #004085;
     transform: scale(1.05);
 }
+.boton-confirmar-pago {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #0d6efd; /* Azul Bootstrap primario */
+  color: white;
+  border: 1px solid #0d6efd;
+  border-radius: 0.375rem; /* Igual que btn */
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  margin-bottom: 1.5rem; /* mb-4 ≈ 24px */
+}
+
+.boton-confirmar-pago:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5); /* Bootstrap-style focus */
+}
+
 
 /* Icono dentro del botón. Añadimos pequeño efecto de rotación*/
 
@@ -585,6 +571,7 @@ footer {
 .precio {
     margin-top: auto;
 }
+
 /*Para colocaar footer al final independientemente del tamaño de pantalla */
 html, body {
     height: 100%;
@@ -599,7 +586,6 @@ body {
 main {
     flex: 1;
 }
-
 /* Estilos para caja de filtros */
 
 .busquedas {
@@ -624,7 +610,6 @@ main {
     transition: box-shadow 0.3s ease;
     width: 100%;
 }
-
 .filtros-lateral:hover {
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 0.15);
 }
@@ -684,7 +669,6 @@ main {
 .filtros-lateral input[type="range"]:hover::-webkit-slider-thumb {
     background: #084ecf;
 }
-
 .filtros-lateral select {
     width: 100%;
     padding: 0.375rem 0.75rem;
@@ -769,13 +753,30 @@ main {
         margin-bottom: 1.5rem;
     }
 }
-
-/* Ajuste específico para inputs checkbox (sin !important) */
+/* Ajuste específico para inputs checkbox*/
 
 .form-check-input[type="checkbox"] {
     border-color: #555;
 }
+/*Botones de paginación*/
+#paginacion button {
+    min-width: 2rem;
+    transition: all 0.2s ease;
+}
+#paginacion button:hover {
+    transform: scale(1.05);
+}
+.filter-bar {
+  transition: box-shadow 0.2s ease-in-out;
+}
 
+.filter-bar:hover {
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.05);
+}
+
+#selector-paginacion {
+  min-width: 90px;
+}
 
 /* Estilos para la barra de búsqueda responsive */
 @media (min-width: 992px) {
@@ -785,13 +786,13 @@ main {
         flex-wrap: nowrap;
         align-items: center;
     }
-
+    
     .navbar > .container-fluid {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
     }
-
+    
     .navbar .w-100.my-2 {
         width: auto !important;
         margin: 0 !important;
@@ -799,11 +800,11 @@ main {
         max-width: 500px;
         margin: 0 auto !important;
     }
-
+    
     .navbar .d-flex.w-100 {
         display: none !important;
     }
-
+    
     .navbar-collapse {
         flex-grow: 0;
     }
@@ -814,19 +815,19 @@ main {
     nav.navbar {
         flex-direction: column;
     }
-
+    
     .navbar > .container-fluid {
         flex-direction: column;
     }
-
+    
     .navbar .d-flex.w-100 {
         width: 100% !important;
     }
-
+    
     .navbar .w-100.my-2 {
         order: 2;
     }
-
+    
     .navbar-collapse {
         order: 3;
         width: 100%;
@@ -842,7 +843,6 @@ main {
     flex-grow: 1;
     min-width: 120px;
 }
-
 /* ===== ESTILOS GENERALES ===== */
 header {
     background-color: #f8f9fa !important;
@@ -865,27 +865,28 @@ header {
         align-items: center;
         width: 100%;
     }
-
+    
     .user-actions-mobile {
         display: flex;
         gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
     }
-
+    
     .search-bar-mobile {
         width: 100%;
         margin: 0.5rem 0;
     }
-
+    
     .navbar-nav {
         padding-top: 1rem;
     }
-
+    
     .nav-item {
         border-bottom: 1px solid #eee;
         padding: 0.5rem 0;
     }
 }
-
 /* ===== VERSIÓN DESKTOP ===== */
 @media (min-width: 1200px) {
     .desktop-nav-container {
@@ -893,23 +894,25 @@ header {
         width: 100%;
         align-items: center;
     }
-
+    
     .nav-links-desktop {
         flex-shrink: 0;
     }
-
+    
     .search-bar-desktop {
         flex: 0 1 500px;
         margin: 0 auto;
+        /*Estas propiedades descuadran la barra
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+        */
     }
-
-
 
     .user-actions-desktop {
         margin-left: auto;
+        justify-content: center;
+        align-items: center;
         flex-shrink: 0;
     }
 }
@@ -917,7 +920,7 @@ header {
 /* ===== ESTILOS DE HOVER ORIGINALES ===== */
 /* Estilos para los enlaces de navegación */
 .nav-link {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 0.5rem;
     transition: all 0.2s ease;
 }
@@ -949,42 +952,36 @@ header {
     transform: translateY(-2px);
 }
 
+
 /* Estilos para la barra de búsqueda */
-.search-bar-desktop .input-group,
-.search-bar-mobile .input-group {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+
+/*Prueba para unificar boton con barra */
+
+.search-bar-desktop .input-group {
+  display: flex;
+  align-items: stretch;
 }
 
-.search-bar-desktop .form-control,
-.search-bar-mobile .form-control {
-    border-radius: 0 50rem 50rem 0 !important;
-    border-left: none;
+/* Input */
+.search-bar-desktop input.form-control {
+  border-radius: 50rem 0 0 50rem !important;
+  border-right: none;
+  min-width: 160px;
 }
 
-.search-bar-desktop .input-group-text,
-.search-bar-mobile .input-group-text {
-    border-radius: 50rem 0 0 50rem !important;
-    border-right: none;
-    background-color: white;
+/* Select */
+.search-bar-desktop select.form-select {
+  border-radius: 0 !important;
+  border-left: 1px solid #ced4da;
+  border-right: none;
+  min-width: 150px !important;
+  flex-shrink: 0;
 }
 
-.search-bar-desktop .btn:hover,
-.search-bar-mobile .btn:hover {
-    background-color: #f8f9fa;
+/* Botón */
+.search-bar-desktop .btn {
+  border-left: 1px solid #0d6efd; /* esta es la "barra" visible */
+  border-radius: 0 50rem 50rem 0 !important;
 }
-
-/* Corrección para el offcanvas y menú lateral */
-.offcanvas-start {
-    width: 280px;
-    top: 112px !important;
-    height: auto !important;
-    bottom: 0;
-    border-right: 1px solid rgba(0,0,0,0.1);
-}
-
-/* Ajuste de posición para el header */
-header.sticky-top {
-    z-index: 1030;
-}
-
 

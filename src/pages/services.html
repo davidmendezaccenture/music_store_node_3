@@ -22,7 +22,7 @@
     </div>
 
     <!-- 2ª línea - navegación y acciones -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-2 px-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 px-3">
         <div class="container-fluid p-0">
             <!-- Versión mobile -->
             <div class="d-lg-none w-100">
@@ -33,22 +33,35 @@
                     <div class="user-actions-mobile">
                         <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
                             <i class="bi bi-heart"></i>
-                            <span id="favoritesCounter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                            <span id="favoritesCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                         </a>
                         <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
                             <i class="bi bi-cart3"></i>
-                            <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                            <span id="cartCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                         </a>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            <i class="bi bi-person-fill me-1"></i>Login
-                        </button>
+<div id="user-auth-mobile" class="d-flex align-items-center">
+  <span id="username-mobile" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
+  <div id="auth-button-mobile"></div>
+</div>
                     </div>
                 </div>
                 <div class="search-bar-mobile">
-                    <form class="w-100" role="search">
+                    <form id="form-busqueda-mobile" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
-                            <span class="input-group-text bg-white border-end-0 rounded-start-pill"><i class="bi bi-search"></i></span>
-                            <input class="form-control border-start-0 rounded-end-pill" type="search" placeholder="Buscar productos..." aria-label="Buscar">
+                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <select class="form-select" name="category" style="max-width: 120px;">
+                                <option value="">Todas</option>
+                                <option value="acoustic-guitars">Guitarras acústica</option>
+                                <option value="classical-guitars">Guitarras clásicas</option>
+                                <option value="electric-guitars">Guitarras eléctrica</option>
+                                <option value="basses">Bajos</option>
+                                <option value="amplifiers">Amplificadores</option>
+                                <option value="effect-pedals">Pedales</option>
+                                <option value="drums">Baterías</option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -73,24 +86,39 @@
                     </ul>
                 </div>
                 <div class="search-bar-desktop">
-                    <form class="w-100" role="search">
+                    <form id="form-busqueda-desktop" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
-                            <span class="input-group-text bg-white border-end-0 rounded-start-pill"><i class="bi bi-search"></i></span>
-                            <input class="form-control border-start-0 rounded-end-pill" type="search" placeholder="Buscar productos..." aria-label="Buscar">
+                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <select class="form-select" name="category" style="max-width: 120px;">
+                                <option value="">Todas</option>
+                                <option value="acoustic-guitars">Guitarras acústica</option>
+                                <option value="classical-guitars">Guitarras clásicas</option>
+                                <option value="electric-guitars">Guitarras eléctrica</option>
+                                <option value="basses">Bajos</option>
+                                <option value="amplifiers">Amplificadores</option>
+                                <option value="effect-pedals">Pedales</option>
+                                <option value="drums">Baterías</option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
                         </div>
                     </form>
+
                 </div>
                 <div class="user-actions-desktop d-flex gap-2">
-                   <a href="/pages/favorites.html" class="btn btn-outline-dark">
-                         <i class="bi bi-heart"></i>
+                    <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
+                        <i class="bi bi-heart icono-contador"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                     </a>
                     <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
-                        <i class="bi bi-cart3"></i>
-                        <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        <i class="bi bi-cart3 icono-contador"></i>
+                        <span id="cartCounterDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                     </a>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-                        <i class="bi bi-person-fill me-1"></i>Login
-                    </button>
+<div id="user-auth-desktop" class="d-flex align-items-center">
+  <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
+  <div id="auth-button-desktop"></div>
+</div>
                 </div>
             </div>
         </div>
