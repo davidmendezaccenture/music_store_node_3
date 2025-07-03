@@ -146,7 +146,7 @@
         "offerPrice": 750,
         "image": "../assets/images/drum1.png",
         "description": "Batería acústica de alta calidad.",
-        "category": "drums",
+        "category": "acoustic-drums",
         "enOferta": "sí"
     },
     {
@@ -156,7 +156,7 @@
         "offerPrice": 550,
         "image": "../assets/images/drum5.png",
         "description": "Batería electrónica compacta y versátil.",
-        "category": "drums",
+        "category": "electronic-drums",
         "enOferta": "sí"
     },
     {
@@ -166,7 +166,7 @@
         "offerPrice": 350,
         "image": "../assets/images/drum3.png",
         "description": "Set de platillos de alta calidad para bateristas profesionales.",
-        "category": "drums",
+        "category": "set-platillos",
         "enOferta": "no"
     },
     {
@@ -176,7 +176,7 @@
         "offerPrice": 200,
         "image": "../assets/images/drum4.png",
         "description": "Caja de madera con un sonido cálido y resonante.",
-        "category": "drums",
+        "category": "acoustic-drums",
         "enOferta": "sí"
     },
     {
@@ -186,7 +186,7 @@
         "offerPrice": 130,
         "image": "../assets/images/drum5.png",
         "description": "Pedal de bombo con acción suave y precisa.",
-        "category": "drums",
+        "category": "electronic-drums",
         "enOferta": "no"
     },
     {
@@ -196,7 +196,7 @@
         "offerPrice": 950,
         "image": "../assets/images/drum5.png",
         "description": "Set completo de batería para principiantes y avanzados.",
-        "category": "drums",
+        "category": "set-platillos",
         "enOferta": "sí"
     },
     {
@@ -227,6 +227,68 @@
         "image": "../assets/images/guitar11.png",
         "description": "Cuerpo de madera clara, cuerda de nylon. Ideal para principiantes.",
         "category": "classical-guitars",
+        "enOferta": "no"
+    },
+
+    {
+        "id": 24,
+        "name": "Teclado",
+        "price": 1000,
+        "offerPrice": 899,
+        "image": "../assets/images/key1.png",
+        "description": "Teclado digital sonidos profesionales y y memoria de grabacion.",
+        "category": "keyboards",
+        "enOferta": "no"
+    },
+
+    {
+        "id": 25,
+        "name": "Teclado Yamaha PSR-E373",
+        "price": 350,
+        "offerPrice": 299,
+        "image": "../assets/images/key2.jpg",
+        "description": "Teclado portátil con 61 teclas y funciones educativas.",
+        "category": "keyboards",
+        "enOferta": "no"
+    },
+    {
+        "id": 26,
+        "name": "Teclado Roland GO:KEYS",
+        "price": 420,
+        "offerPrice": 389,
+        "image": "../assets/images/key3.jpg",
+        "description": "Teclado digital con conectividad Bluetooth y sonidos profesionales.",
+        "category": "keyboards",
+        "enOferta": "no"
+    },
+    {
+        "id": 27,
+        "name": "Sintetizador Korg Minilogue XD",
+        "price": 650,
+        "offerPrice": 599,
+        "image": "../assets/images/sintet2.png",
+        "description": "Sintetizador analógico-polifónico con secuenciador integrado.",
+        "category": "synthesizers",
+        "enOferta": "no"
+    },
+    {
+        "id": 28,
+        "name": "Sintetizador Moog Subsequent 25",
+        "price": 1100,
+        "offerPrice": 999,
+        "image": "../assets/images/sintet1.png",
+        "description": "Sintetizador analógico compacto con gran potencia sonora.",
+        "category": "synthesizers",
+        "enOferta": "no"
+    },
+    {
+        "id": 29,
+        "name": "Sintetizador Arturia MicroFreak",
+        "price": 350,
+        "offerPrice": 329,
+        "image": "../assets/images/sintet3.png",
+        "description": "Sintetizador digital experimental con teclado táctil.",
+        "category": "synthesizers",
         "enOferta": "no"
     }
 ]
