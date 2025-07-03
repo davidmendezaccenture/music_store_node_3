@@ -1,22 +1,5 @@
 {
-  "guest": [
-    {
-      "id": 9,
-      "cantidad": 2
-    },
-    {
-      "id": 3,
-      "cantidad": 1
-    },
-    {
-      "id": 5,
-      "cantidad": 2
-    },
-    {
-      "id": 1,
-      "cantidad": 2
-    }
-  ],
+  "guest": [],
   "{\"message\":\"Login exitoso.\",\"user\":{\"username\":\"PabloEmilio\",\"email\":\"pachepatat@gmail.com\"}}": [],
   "David": [],
   "prueba2": [],
