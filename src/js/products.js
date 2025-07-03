@@ -2,17 +2,17 @@ $(document).ready(function () {
   const container = $('#productosContainer');
   const paginaActual = window.location.pathname.split('/').pop();
 
-  // ✅ Categorías permitidas por página
+  // Categorías permitidas por página
   const categoriasPorPagina = {
     'guitar.html': ['acoustic-guitars', 'classical-guitars', 'electric-guitars', 'basses'],
     'drums.html': ['acoustic-drums', 'electronic-drums', 'set-platillos'],
     'keyboard.html': ['keyboards', 'synthesizers']
   };
 
-  // ⚠️ Categorías válidas para esta página
+  // Categorías válidas para esta página
   const categoriasValidas = categoriasPorPagina[paginaActual] || [];
 
-  // 🧠 Mapeo de filtros según página actual
+  // Mapeo de filtros según página actual
   const mapasPorPagina = {
     'guitar.html': {
       "Acústica": "acoustic-guitars",
