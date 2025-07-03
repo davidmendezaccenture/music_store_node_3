@@ -697,8 +697,28 @@ main {
     }
 }
 
-/* Ajuste específico para inputs checkbox (sin !important) */
+/* Ajuste específico para inputs checkbox*/
 
 .form-check-input[type="checkbox"] {
     border-color: #555;
 }
+/*Botones de paginación*/
+#paginacion button {
+    min-width: 2rem;
+    transition: all 0.2s ease;
+}
+#paginacion button:hover {
+    transform: scale(1.05);
+}
+.filter-bar {
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.filter-bar:hover {
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.05);
+}
+
+#selector-paginacion {
+  min-width: 90px;
+}
+

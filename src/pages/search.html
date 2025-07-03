@@ -85,6 +85,22 @@
 
     <!-- Contenido principal -->
     <main class="container my-4" role="main" id="main-search">
+<div id="cabecera-resultados" class="filter-bar d-flex justify-content-between align-items-center flex-wrap gap-3 p-3 mb-4 bg-white border rounded shadow-sm">
+  <h2 class="h5 mb-0 text-secondary">
+    <i class="bi bi-box-seam me-2"></i> Resultados
+  </h2>
+  
+  <div class="d-flex align-items-center">
+    <label for="selector-paginacion" class="form-label mb-0 me-2 text-muted">Mostrar:</label>
+    <select id="selector-paginacion" class="form-select form-select-sm w-auto">
+      <option value="6" selected>6</option>
+      <option value="12">12</option>
+      <option value="24">24</option>
+      <option value="0">Todos</option>
+    </select>
+  </div>
+</div>
+
         <div class="d-flex gap-4 busquedas">
         <!-- Filtros al lado izquierdo -->
             <aside id="filtros" class="filtros-lateral">
@@ -134,11 +150,19 @@
                     </div>
                 </div>
             </aside>
+            
             <!-- Resultados -->
-            <section class="row row-cols-1 row-cols-md-3 g-4 flex-grow-1" id="resultados" aria-label="Listado de productos">
-            <!-- Contenedor para tarjetas -->
-            </section>
-        </div>
+        <div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <!-- selector de productos por página -->
+  </div>
+
+  <section class="row row-cols-1 row-cols-md-3 g-4" id="resultados">
+    <!-- tarjetas -->
+  </section>
+
+  <nav id="paginacion" class="mt-4 d-flex justify-content-center flex-wrap gap-2"></nav>
+</div>
         <!-- Modal de notificación producto añadido -->
         <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
             <div id="toastAdd" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
