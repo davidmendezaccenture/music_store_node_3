@@ -281,7 +281,7 @@ function calcularTotalItems(carrito) {
 // Guardar posiciones para animaciones
 function guardarPosiciones() {
   const posiciones = [];
-  $('.item-carrito, #total h4, #total button, #seguir-comprando, .pie-de-pagina ').each(function () {
+  $('.item-carrito, #total h4, #total button, #seguir-comprando, .pie-de-pagina, .pre-footer ').each(function () {
     const $el = $(this);
     posiciones.push({ el: $el, top: $el.offset().top });
   });
