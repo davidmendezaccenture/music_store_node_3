@@ -238,7 +238,7 @@
         "image": "../assets/images/key1.png",
         "description": "Teclado digital sonidos profesionales y y memoria de grabacion.",
         "category": "keyboards",
-        "enOferta": "no"
+        "enOferta": "sí"
     },
 
     {
@@ -259,7 +259,7 @@
         "image": "../assets/images/key3.jpg",
         "description": "Teclado digital con conectividad Bluetooth y sonidos profesionales.",
         "category": "keyboards",
-        "enOferta": "no"
+        "enOferta": "sí"
     },
     {
         "id": 27,
@@ -279,7 +279,7 @@
         "image": "../assets/images/sintet1.png",
         "description": "Sintetizador analógico compacto con gran potencia sonora.",
         "category": "synthesizers",
-        "enOferta": "no"
+        "enOferta": "sí"
     },
     {
         "id": 29,
