@@ -53,32 +53,43 @@ $(document).ready(function () {
           return p.category === categoriaSeleccionada;
         });
 
-        productosFiltrados.forEach(producto => {
-          //  Generar tarjeta HTML con botón "Ver detalle"
-          const card = `
-            <div class="col">
-              <div class="card h-100 shadow-sm">
-                <img src="${producto.image}" class="card-img-top" alt="${producto.name}">
+        productosFiltrados.forEach((producto, i) => {
+          const estrellas = '★'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
+          const ofertaBadge = producto.enOferta === "sí"
+            ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>`
+            : "";
+          const precioHTML = producto.enOferta === "sí"
+            ? `<span class="precio">
+                  <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
+                  <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
+               </span>`
+            : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`;
+
+          const $col = $(`
+            <div class="col producto-animado" data-category="${producto.category}">
+              <div class="card h-100 position-relative" role="article">
+                ${ofertaBadge}
+                <img src="${producto.image.replace('..', '')}" class="card-img-top" alt="${producto.name}">
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">${producto.name}</h5>
+                  <h2 class="card-title h5">${producto.name}</h2>
                   <p class="card-text">${producto.description}</p>
-                  <p class="card-text fw-bold text-success">
-                    ${producto.offerPrice}€ 
-                    <span class="text-muted text-decoration-line-through fs-6">${producto.price}€</span>
-                  </p>
-                  <!-- Botón para añadir al carrito -->
-                  <button class="btn btn-primary w-100 add-to-cart mt-auto" data-id="${producto.id}">
-                    <i class="bi bi-cart-plus"></i> Añadir al carrito
-                  </button>
-                  <!-- Botón para ir al detalle del producto -->
-                  <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-outline-secondary mt-2 w-100">
-                    Ver detalle
-                  </a>
+                  ${precioHTML}
+                  <p class="valoracion" aria-label="Valoración del producto">${estrellas}</p>
+                  <div class="mt-auto">
+                    <button class="btn btn-primary agregar-carrito" data-id="${producto.id}">
+                      Añadir a la cesta
+                    </button>
+                    <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-outline-secondary mt-2 w-100">
+                      Ver detalle
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>`;
-          
-          container.append(card);
+            </div>
+          `);
+
+          container.append($col);
+          setTimeout(() => $col.addClass('visible'), 100 + i * 100); // animación progresiva
         });
       },
       error: function (xhr, status, error) {
@@ -88,20 +99,14 @@ $(document).ready(function () {
     });
   }
 
-  //  Carga inicial de productos al abrir la página
+  // Carga inicial de productos al abrir la página
   mostrarProductos();
 
-  //  Al cambiar filtro de categoría
+  // Al cambiar filtro de categoría
   $('#categoria').on('change', function () {
     const filtro = $(this).val();
     mostrarProductos(filtro);
   });
 
-  //  Evento: Añadir al carrito desde botón
-  container.on('click', '.add-to-cart', function () {
-    const id = $(this).data('id');
-    addToCart(id);
-    const toast = new bootstrap.Toast($('#toastAdd'));
-    toast.show();
-  });
+
 });
