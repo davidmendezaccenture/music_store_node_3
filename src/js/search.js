@@ -90,7 +90,7 @@ $(document).ready(function () {
 
         productosPagina.forEach((producto, i) => {
             console.log(producto);
-            const estrellas = '★'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
+            const estrellas = '⭐'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
             const ofertaBadge = producto.enOferta === "sí"
                 ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>`
                 : "";

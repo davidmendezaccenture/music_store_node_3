@@ -110,7 +110,7 @@ function mostrarCarrito() {
           </div>
           <div class="text-end flex-shrink-0" style="min-width: 120px;">
             <strong>Subtotal: </strong>
-            <span>$${subtotal.toFixed(2)}</span>
+            <span>${subtotal.toFixed(2)} €</span>
           </div>
         </li>
       `;

@@ -65,7 +65,7 @@ $(document).ready(function () {
 
         productosFiltrados.forEach((producto, i) => {
           const rating = producto.rating !== undefined ? producto.rating : 0;
-          const estrellas = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+          const estrellas = '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
           const ofertaBadge = producto.enOferta === "sí"
             ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>`
             : "";
