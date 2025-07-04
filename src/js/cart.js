@@ -43,32 +43,36 @@ $(document).ready(function () {
 
 // Función para actualizar el contador solo si cambia
 function actualizarContadorCarrito(cantidad) {
-  const $contador = $('#cartCounter');
-  const textoActual = $contador.text();
-  if (textoActual !== cantidad.toString()) {
-    $contador.text(cantidad);
+  const $contadorMobile = $('#cartCounterMobile');
+  const $contadorDesktop = $('#cartCounterDesktop');
+
+  if ($contadorMobile.length && $contadorMobile.text() !== cantidad.toString()) {
+    $contadorMobile.text(cantidad);
+  }
+  if ($contadorDesktop.length && $contadorDesktop.text() !== cantidad.toString()) {
+    $contadorDesktop.text(cantidad);
   }
 }
 
-// Evento: agregar producto al carrito
-$(document).on('click', '.agregar-carrito', function () {
-  const id = $(this).data('id');
-
-  // Buscamos si ya existe el producto
+// ✅ Función modular para añadir producto al carrito (desde cualquier archivo externo)
+function addToCart(id) {
   const productoExistente = carrito.find(p => p.id === id);
-
   if (productoExistente) {
     productoExistente.cantidad += 1;
   } else {
     carrito.push({ id, cantidad: 1 });
   }
-  const toastElement = document.getElementById('toastAdd');
-const toast = new bootstrap.Toast(toastElement);
 
   mostrarToastAgregar();
   guardarCarrito();
   actualizarContadorCarrito(calcularTotalItems(carrito));
   mostrarCarrito();
+}
+
+// Evento: agregar producto al carrito (solo para botones dentro de páginas del carrito)
+$(document).on('click', '.agregar-carrito', function () {
+  const id = $(this).data('id');
+  addToCart(id);
 });
 
 // Mostrar carrito en pantalla
@@ -271,7 +275,7 @@ function calcularTotalItems(carrito) {
 // Guardar posiciones para animaciones
 function guardarPosiciones() {
   const posiciones = [];
-  $('.item-carrito, #total h4, #total button, #seguir-comprando, .pie-de-pagina').each(function () {
+  $('.item-carrito, #total h4, #total button, #seguir-comprando, .pie-de-pagina ').each(function () {
     const $el = $(this);
     posiciones.push({ el: $el, top: $el.offset().top });
   });

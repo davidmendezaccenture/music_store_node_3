@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RaiRock Music Store</title>
+    <title>Servicios - RaiRock Music Store</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
-
 </head>
 <body>
     <!-- Encabezado -->
@@ -138,126 +133,190 @@
     </nav>
 </header>
 
-    <!-- Resto del contenido se mantiene igual -->
-    <main role="main">
-        <!-- Encabezado -->
-        <h2 class="text-center mt-4 pb-3">Productos Disponibles</h2>
-        <!-- Barra de navegación secundaria -->
-        <nav class="navbar bg-light py-2 mb-4" role="navigation" aria-label="Menú de categorías de productos">
-            <div class="container-fluid justify-content-center" id="navbarNav">
-                <ul class="navbar-nav flex-row flex-wrap justify-content-center text-center">
-                    <li class="nav-item p-0">
-                        <a class="nav-link fw-bold text-dark" href="/pages/guitar.html">
-                            <img src="/assets/images/guitar-svgrepo-com.svg" alt="Icono guitarra" class="icono-nav">Guit/Bajos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-dark" href="/pages/drums.html">
-                            <img src="/assets/images/drum-set-svgrepo-com.svg" alt="Icono bateria" class="icono-nav">Baterías
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-dark" href="/pages/keyboard.html">
-                            <img src="/assets/images/piano-svgrepo-com.svg" alt="Icono teclado" class="icono-nav">Teclados
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-dark" href="#">
-                            <img src="/assets/images/mixing-pad-svgrepo-com.svg" alt="Icono mezclador" class="icono-nav">Estudio
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-dark" href="/pages/guitar.html">
-                            <img src="/assets/images/laptop-player-svgrepo-com.svg" alt="Icono ordenador portátil" class="icono-nav">Software
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-dark" href="#">
-                            <img src="/assets/images/speakers-speaker-svgrepo-com.svg" alt="Icono Sistema de sonido" class="icono-nav">Pa
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-dark" href="#">
-                            <img src="/assets/images/lights-svgrepo-com.svg" alt="Icono foco de luz" class="icono-nav">Luces
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-dark" href="#">
-                            <img src="/assets/images/dj-dj-svgrepo-com.svg" alt="Icono mano DJ" class="icono-nav">Dj
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-dark" href="#">
-                            <img src="/assets/images/video-camera-svgrepo-com.svg" alt="Icono cámara de video" class="icono-nav">Video
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-dark" href="#">
-                            <img src="/assets/images/microphone-part-2-svgrepo-com.svg" alt="Icono micrófono" class="icono-nav">Micros
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- Sección de productos -->
-            <!-- Carrusel de imágenes -->
-        <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" aria-label="Galería de productos destacados">
-            <!--Indicadores del carrusel-->
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <!--La descripción de los productos destacados no puede ser precisa si en el futuro queremos que estos productos se seleccionen al azar-->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/assets/images/imagen1.png" class="d-block mx-auto w-100" alt="Producto destacado 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/images/imagen2.png" class="d-block mx-auto w-100" alt="Producto destacado 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/images/imagen3.png" class="d-block mx-auto w-100" alt="Producto destacado 3">
-                </div>
-            </div>
+    <!-- Botón para activar el offcanvas -->
+    <button class="btn btn-primary d-lg-none fixed-bottom m-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#servicesOffcanvas">
+        <i class="bi bi-list"></i> Contacto 
+    </button>
 
-            <!-- Controles del carrusel -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span>Prev</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span>Next</span>
-            </button>
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="servicesOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Ponte en contacto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/contact.html">
+                        <i class="bi bi-envelope me-2"></i> Contacto
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/newsletter.html">
+                        <i class="bi bi-mailbox me-2"></i> Newsletter
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/media.html">
+                        <i class="bi bi-camera-reels me-2"></i> Media
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/faq.html">
+                        <i class="bi bi-question-circle me-2"></i> FAQ
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-        <!-- Aquí se mostrarán los productos -->
-        <!-- Creo contenedor vacío para mostrar productos-->
-        <div id="products-list"></div>
-
-        <!-- opinion clientes -->
-        <!-- Creo un carrusel para opiniones de clientes. Están agrupadas de 3 en 3, y cada grupo de 3 está metido en una slide del carrusel-->
-        <section class="py-5">
-            <div class="container position-relative carruselGlide">
-                <h2 class="text-center mb-5">Opiniones de nuestros clientes</h2>
-                <!-- Glide wrapper -->
-                <div class="glide">
-                    <div class="glide__track" data-glide-el="track">
-                        <ul class="glide__slides">
+    <!-- Contenido principal -->
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-lg-3 d-none d-lg-block">
+                <!-- Menú lateral para desktop -->
+                <div class="card shadow-sm sticky-top" style="top: 260px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Ponte en contacto</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/contact.html">
+                                    <i class="bi bi-envelope me-2"></i> Contacto
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/newsletter.html">
+                                    <i class="bi bi-mailbox me-2"></i> Newsletter
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/media.html">
+                                    <i class="bi bi-camera-reels me-2"></i> Media
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/faq.html">
+                                    <i class="bi bi-question-circle me-2"></i> FAQ
+                                </a>
+                            </li>
                         </ul>
                     </div>
-                                    <!-- Flechas personalizadas -->
-                <button class="glide__arrow--custom glide__arrow--left" aria-label="Anterior">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
-                <button class="glide__arrow--custom glide__arrow--right" aria-label="Siguiente">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
                 </div>
-
             </div>
-        </section>
+
+            <div class="col-lg-9">
+                <h1 class="mb-4">Nuestros Servicios</h1>
+                
+                <!-- Servicio Técnico -->
+                <section class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <i class="bi bi-tools text-primary me-2"></i>
+                                Servicio Técnico y Reparación
+                            </h2>
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h4>Diagnóstico Profesional</h4>
+                                    <p>Nuestros técnicos certificados realizan un diagnóstico completo de tu instrumento para identificar cualquier problema de funcionamiento.</p>
+                                    <ul>
+                                        <li>Análisis electrónico</li>
+                                        <li>Revisión estructural</li>
+                                        <li>Evaluación de componentes</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Reparaciones Especializadas</h4>
+                                    <p>Reparamos todo tipo de instrumentos musicales con los más altos estándares de calidad.</p>
+                                    <ul>
+                                        <li>Cambio de pastillas y electrónica</li>
+                                        <li>Ajuste de trastes y mástil</li>
+                                        <li>Reparación de amplificadores</li>
+                                        <li>Soldaduras profesionales</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mantenimiento -->
+                <section class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <i class="bi bi-gear text-primary me-2"></i>
+                                Mantenimiento Preventivo
+                            </h2>
+                            <div class="row mt-4">
+                                <div class="col-md-4">
+                                    <h4>Guitarras y Bajos</h4>
+                                    <ul>
+                                        <li>Ajuste de acción y octavación</li>
+                                        <li>Lubricación de trastes y cejilla</li>
+                                        <li>Limpieza y pulido profesional</li>
+                                        <li>Cambio de cuerdas</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4>Amplificadores</h4>
+                                    <ul>
+                                        <li>Limpieza de circuitos</li>
+                                        <li>Reemplazo de válvulas/tubos</li>
+                                        <li>Prueba de componentes</li>
+                                        <li>Calibración</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4>Instrumentos Acústicos</h4>
+                                    <ul>
+                                        <li>Humidificación</li>
+                                        <li>Ajuste de alma</li>
+                                        <li>Reparación de barniz</li>
+                                        <li>Cambio de puentes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Garantía y Post-Venta -->
+                <section>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <i class="bi bi-shield-check text-primary me-2"></i>
+                                Garantía y Post-Venta
+                            </h2>
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h4>Nuestra Garantía</h4>
+                                    <p>Todos nuestros productos incluyen garantía de 2 años contra defectos de fabricación.</p>
+                                    <ul>
+                                        <li>Cobertura en piezas y mano de obra</li>
+                                        <li>Reparación o reemplazo</li>
+                                        <li>Válida en toda la red de tiendas</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Servicio Post-Venta</h4>
+                                    <p>Te acompañamos después de tu compra para asegurar tu satisfacción.</p>
+                                    <ul>
+                                        <li>Asesoramiento técnico gratuito</li>
+                                        <li>Primer mantenimiento sin costo</li>
+                                        <li>Acceso prioritario a reparaciones</li>
+                                        <li>Descuentos en accesorios</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </main>
 
     <!-- Pre-footer -->
@@ -321,15 +380,13 @@
     </div>
   </div>
 </section>
-
+                
     <!-- Footer -->
     <footer class="bg-dark text-white py-3">
         <div class="container text-center">
             <p class="mb-0">&copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <!-- Aquí estaba la modal de login duplicada, eliminada para evitar conflictos. -->
 
 <div id="modals-container"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -396,18 +453,11 @@
     // Añadir el año currentYear automáticamente
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
-<script>
-    //Función para guardar ultima página
-  document.addEventListener('DOMContentLoaded', () => {
-    localStorage.setItem('ultimaPagina', window.location.pathname);
-  });
-</script>
 <script src="../js/login-ui.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
 <script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
 <script src="../js/app.js"></script>
-<script src="../js/search.js"></script>
 
 </body>
 </html>

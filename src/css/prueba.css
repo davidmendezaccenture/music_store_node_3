@@ -1,0 +1,276 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Foco accesible */
+:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+    border-radius: 0.2rem;
+    background-color: transparent;
+    color: black;
+}
+
+/* Tipografía */
+h2 {
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #f8f9fa !important;
+}
+
+/* Logo */
+.navbar-brand {
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.03);
+}
+
+/* Barra de navegación */
+/* Estilos para el navbar */
+.navbar-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-left: 0;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    width: 100%;
+}
+
+.nav-item {
+    margin: 0 0.25rem !important; /* Reducimos el margen entre elementos */
+    white-space: nowrap;
+}
+
+.nav-link {
+    color: #495057 !important; /* Color gris oscuro en lugar de azul */
+    padding: 0.5rem 0.75rem !important; /* Padding reducido */
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: none !important; /* Eliminamos cualquier transición */
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #0d6efd !important; /* Azul solo al hover */
+    background-color: transparent !important;
+    border-bottom-color: #0d6efd;
+}
+
+.nav-link.active {
+    color: #0d6efd !important;
+    border-bottom-color: #0d6efd;
+}
+
+/* Eliminamos el fondo al hacer hover */
+.nav-link:hover {
+    background-color: transparent !important;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .nav-item {
+        margin: 0.25rem 0 !important;
+        width: 100%;
+    }
+    
+    .nav-link {
+        padding: 0.75rem 1rem !important;
+        border-left: 2px solid transparent;
+        border-bottom: none;
+    }
+    
+    .nav-link:hover,
+    .nav-link:focus {
+        border-left-color: #0d6efd;
+    }
+}
+
+/* Contenedor del navbar */
+.navbar-collapse {
+    justify-content: flex-start !important;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Barra de búsqueda */
+.input-group.rounded-pill {
+    border: 1px solid #dee2e6;
+    background-color: white;
+    padding: 0.3rem;
+    transition: all 0.3s ease;
+}
+
+.input-group.rounded-pill:focus-within {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.input-group.rounded-pill .form-control {
+    border: none;
+    background: transparent;
+}
+
+.input-group.rounded-pill .btn {
+    border: none;
+}
+
+/* Botones */
+.btn-primary {
+    --bs-btn-bg: #0d6efd;
+    --bs-btn-border-color: #0d6efd;
+    --bs-btn-hover-bg: #0b5ed7;
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-active-bg: #0a58ca;
+    padding: 0.5rem 1.25rem;
+}
+
+/* Menú hamburguesa */
+.navbar-toggler {
+    border: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.navbar-collapse {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Contenido principal */
+.service-card {
+    transition: transform 0.3s ease;
+    border-left: 4px solid #0d6efd;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Pre-footer */
+.pre-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    padding: 3rem 0;
+}
+
+.pre-footer-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Footer */
+footer {
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    background-color: transparent !important;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* Tarjetas de productos */
+.card.h-100 {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        margin-top: 1rem;
+    }
+    
+    .nav-link {
+        margin: 0.2rem 0;
+    }
+    
+    .input-group.rounded-pill {
+        margin-top: 1rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 30px;
+    }
+    
+    .navbar-brand span {
+        font-size: 1.2rem;
+    }
+    
+    .glide__arrow--left,
+    .glide__arrow--right {
+        transform: translate(0, -50%) !important;
+    }
+}
+
+/* Offcanvas */
+.offcanvas-start {
+    width: 280px;
+}
+
+/* Menú sticky en desktop */
+.sticky-menu {
+    position: sticky;
+    top: 120px;
+}
+
+@media (max-width: 992px) {
+    .sticky-menu {
+        position: static;
+    }
+}

@@ -10,47 +10,43 @@
 </head>
 <body>
     <!-- Encabezado -->
-    <header class="bg-white shadow-sm sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-              <!-- Logo + Nombre -->
-              <a class="navbar-brand d-flex align-items-center" href="/pages/index.html">
-                <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="30" class="me-2">
-                <span class="fw-bold">RaiRock</span>
-              </a>
-        
-                <!-- Menú Hamburguesa (mobile) -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-        
-              <!-- Menú Principal -->
-              <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pages/index.html">
-                      <i class="bi bi-house-door me-1"></i> Inicio
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#services">
-                      <i class="bi bi-gear me-1"></i> Servicios
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pages/sobre_nosotros.html">
-                      <i class="bi bi-people me-1"></i> Sobre Nosotros
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pages/contact.html">
-                      <i class="bi bi-envelope me-1"></i> Contacto
-                    </a>
-                  </li>
-                </ul>
-                    <!--Barra de búsqueda-->
-                    <!--Barra de búsqueda-->
-                    <form id="form-busqueda" class="d-flex me-3 mb-3 mb-lg-0" action="/pages/search.html" method="GET" role="search">
+<header class="sticky-top bg-light shadow-sm">
+    <!-- 1ª línea - logo centrado -->
+    <div class="border-bottom py-2 bg-light">
+        <div class="text-center">
+            <a class="navbar-brand d-inline-flex align-items-center" href="/pages/index.html">
+                <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="50" class="me-2">
+                <span class="fw-bold fs-3">RaiRock</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 2ª línea - navegación y acciones -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 px-3">
+        <div class="container-fluid p-0">
+            <!-- Versión mobile -->
+            <div class="d-lg-none w-100">
+                <div class="mobile-top-bar">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="user-actions-mobile">
+                        <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
+                            <i class="bi bi-heart"></i>
+                            <span id="favoritesCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                        </a>
+                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
+                            <i class="bi bi-cart3"></i>
+                            <span id="cartCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                        </a>
+<div id="user-auth-mobile" class="d-flex align-items-center">
+  <span id="username-mobile" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
+  <div id="auth-button-mobile"></div>
+</div>
+                    </div>
+                </div>
+                <div class="search-bar-mobile">
+                    <form id="form-busqueda-mobile" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
                             <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
                             <select class="form-select" name="category" style="max-width: 120px;">
@@ -68,21 +64,70 @@
                             </button>
                         </div>
                     </form>
-                <!-- Carrito + Login -->
-                    <div class="d-flex align-items-center ms-auto" id="user-actions">
-                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
-                            <i class="bi bi-cart3"></i>
-                            <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
-                        </a>
-                          <span class="fw-bold user-name mx-3 text-truncate" title="Nombre de usuario">Invitado</span>
-                        <button class="btn btn-primary btnLogin" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            <i class="bi bi-person-fill me-1"></i> Login
-                        </button>
-                    </div>
-              </div>
+                </div>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                    </ul>
+                </div>
             </div>
-        </nav>
-    </header>
+
+            <!-- Versión desktop -->
+            <div class="d-none d-lg-flex desktop-nav-container">
+                <div class="nav-links-desktop">
+                    <ul class="navbar-nav d-flex flex-row">
+                        <li class="nav-item me-3"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                        <li class="nav-item me-3"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
+                        <li class="nav-item me-3"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="search-bar-desktop">
+                    <form id="form-busqueda-desktop" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <select class="form-select" name="category" style="max-width: 120px;">
+                                <option value="">Todas</option>
+                                <option value="acoustic-guitars">Guitarras acústica</option>
+                                <option value="classical-guitars">Guitarras clásicas</option>
+                                <option value="electric-guitars">Guitarras eléctrica</option>
+                                <option value="basses">Bajos</option>
+                                <option value="amplifiers">Amplificadores</option>
+                                <option value="effect-pedals">Pedales</option>
+                                <option value="acoustic-drums">Baterías acustica</option>
+                                <option value="electronic-drums">Baterías electronica</option>
+                                <option value="set-platillos">Platillos</option>
+                                <option value="keyboards">Teclados</option>
+                                <option value="synthesizers">Sintetizadores</option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="user-actions-desktop d-flex gap-2">
+                    <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
+                        <i class="bi bi-heart icono-contador"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                    </a>
+                    <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
+                        <i class="bi bi-cart3 icono-contador"></i>
+                        <span id="cartCounterDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                    </a>
+<div id="user-auth-desktop" class="d-flex align-items-center">
+  <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
+  <div id="auth-button-desktop"></div>
+</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
 
     <!-- Contenido principal -->
     <main class="container mt-4" role="main">
@@ -100,178 +145,21 @@
                         <option value="Clásica">Clásica</option>
                         <option value="Eléctrica">Eléctrica</option>
                         <option value="Acústica">Acústica</option>
+                        <option value="Bajos">Bajos</option>
+                        <option value="amplifiers">Amplificadores</option>
+                        <option value="effect-pedals">Pedales</option>
+                        <option value="acoustic-drums">Baterías acustica</option>
+                        <option value="electronic-drums">Baterías electronica</option>
+                        <option value="set-platillos">Platillos</option>
+                        <option value="keyboards">Teclados</option>
+                        <option value="synthesizers">Sintetizadores</option>
                     </select>
                   </div>
               </form>
             </div>
-                <!-- Tarjetas existentes -->
-                <section class="row row-cols-1 row-cols-md-3 g-4" aria-label="Listado de productos">
-                    <div class="col" data-category="Clásica">
-                        <!-- Card 1: Sin descuento -->
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar6.png" class="card-img-top" alt="Guitarra Clásica de madera natural" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Clásica</h2>
-                                <p class="card-text">Cuerpo de madera, cuerdas de nylon. Ideal para principiantes.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">199&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Clásica a la cesta" data-id="9">Añadir a la
-                                    cesta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col" data-category="Eléctrica">
-                        <!-- Card 2: Con descuento -->
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar2.png" class="card-img-top" alt="Guitarra Eléctrica color rojo" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Eléctrica</h2>
-                                <p class="card-text">Sonido potente, ideal para rock y metal.</p>
-                                <p class="card-text precio">
-                                    <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
-                                    <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
-                                </p>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="5">Añadir a la
-                                    cesta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col" data-category="Acústica">
-                        <!-- Card 3: Sin descuento -->
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar7.png" class="card-img-top" alt="Guitarra Acústica color natural" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Acústica</h2>
-                                <p class="card-text">Perfecta para tocar en cualquier lugar, sonido brillante.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">249&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Acústica a la cesta" data-id="1">Añadir a la
-                                    cesta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 4: Con descuento -->
-                    <div class="col" data-category="Eléctrica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar4.png" class="card-img-top" alt="Guitarra Eléctrica" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Eléctrica</h2>
-                                <p class="card-text">Sonido potente, ideal para rock y metal.</p>
-                                <p class="card-text precio">
-                                    <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
-                                    <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
-                                </p>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="21">Añadir a la
-                                    cesta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 5: Sin descuento -->
-                    <div class="col" data-category="Clásica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar12.png" class="card-img-top" alt="Guitarra Clásica" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Clásica</h2>
-                                <p class="card-text">Cuerpo de madera, cuerdas de nylon. Ideal para principiantes.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">199&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Clásica a la cesta" data-id="4">Añadir a la
-                                    cesta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 6: Con descuento -->
-                    <div class="col" data-category="Eléctrica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar1.png" class="card-img-top" alt="Guitarra Eléctrica" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Eléctrica</h2>
-                                <p class="card-text">Sonido potente, ideal para rock y metal.</p>
-                                <p class="card-text precio">
-                                    <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
-                                    <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
-                                </p>
-                                </div>
-                                <div class="mt-auto">
-                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctrica a la cesta" data-id="8">Añadir a la
-                                    cesta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 7: Sin descuento -->
-                    <div class="col" data-category="Acústica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar7.png" class="card-img-top" alt="Guitarra Acústica de madera clara" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Acústica Clara</h2>
-                                <p class="card-text">Perfecta para tocar en cualquier lugar, sonido brillante.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">199&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Acústica Clara a la cesta" data-id="1">Añadir a la
-                                    cesta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 8: Con descuento -->
-                    <div class="col" data-category="Eléctrica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitar8.png" class="card-img-top" alt="Guitarra Eléctrica" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Eléctrica</h2>
-                                <p class="card-text">Sonido potente, ideal para rock y metal.</p>
-                                <p class="card-text precio">
-                                    <span class="text-muted text-decoration-line-through" aria-label="Precio anterior">349&nbsp;€</span>
-                                    <span class="fw-bold text-danger ms-2" aria-label="Precio con descuento">299&nbsp;€</span>
-                                </p>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra Eléctricaa la cesta" data-id="22">Añadir a la
-                                    cesta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 9: Sin descuento -->
-                    <div class="col" data-category="electrica">
-                        <div class="card h-100" role="article">
-                            <img src="/assets/images/guitarr11.png" class="card-img-top" alt="Guitarra      de madera clara" />
-                            <div class="card-body">
-                              <div class="texto-precio">
-                                <h2 class="card-title h5">Guitarra Clásica Clara</h2>
-                                <p class="card-text">Cuerpo de madera clara, cuerdas de nylon. Ideal para principiantes.</p>
-                                <p class="card-text fw-bold precio" aria-label="Precio">199&nbsp;€</p>
-                                </div>
-                                <div class="mt-auto">
-                                  <button class="btn btn-primary agregar-carrito" aria-label="Añadir Guitarra eléctrica Clara a la cesta" data-id="22">Añadir a la
-                                    cesta</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+            <!-- contenedor para añadir los productos dinamicamente-->
+            <section id="productosContainer" class="row row-cols-1 row-cols-md-3 g-4" aria-label="Listado de productos"></section>
+           
                 <!--Notificacion de producto añadido-->
                 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
                   <div id="toastAdd" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
@@ -288,17 +176,25 @@
   <div class="container">
     <div class="row g-4">
       <!-- Columna 1: Métodos de pago -->
-      <div class="col-md-4 mb-4 mb-md-0">
-        <div class="pre-footer-card h-100 p-4">
-          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
-          <div class="payment-methods d-flex flex-wrap gap-3">
-            <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" width="80">
-            <img src="../assets/images/icons8-visa-48 (1).png" alt="Visa" width="80">
-            <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" width="80">
-            <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" width="80">
-          </div>
+<div class="col-md-4 mb-4 mb-md-0">
+    <div class="pre-footer-card h-100 p-4">
+        <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
+        <div class="payment-methods d-flex flex-wrap gap-3 align-items-center">
+            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con PayPal">
+                <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" class="payment-img grayscale">
+            </a>
+            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con Visa">
+                <img src="../assets/images/icons8-visa-48 (1).png" alt="Visa" class="payment-img grayscale">
+            </a>
+            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con MasterCard">
+                <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" class="payment-img grayscale">
+            </a>
+            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con American Express">
+                <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" class="payment-img grayscale">
+            </a>
         </div>
-      </div>
+    </div>
+</div>
       
       <!-- Columna 2: Ventajas -->
       <div class="col-md-4 mb-4 mb-md-0">
@@ -336,7 +232,6 @@
     </div>
   </div>
 </section>
-                
     <!-- Footer -->
     <footer class="bg-dark text-white py-3">
         <div class="container text-center">
@@ -356,7 +251,7 @@
 
 
 <script>
-    // Añadir el año actual automáticamente
+    // Añadir el año currentYear automáticamente
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
 
@@ -374,5 +269,7 @@
     <script src="../js/app.js"></script>
     <script src="../js/login-ui.js"></script>
     <script src="../js/index.js"></script>
+    <script src="../js/products.js"></script>
+   
 </body>
 </html>

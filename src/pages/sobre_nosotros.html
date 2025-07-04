@@ -12,53 +12,146 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="bg-white shadow-sm sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="Volver a la página principal">
-          <i class="bi bi-arrow-left-circle me-2 fs-4" role="img" aria-hidden="true"></i>
-          Volver
-        </a>
-
-        <a class="navbar-brand d-flex align-items-center" href="index.html" tabindex="-1">
-          <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="30" class="me-2" />
-          <span class="fw-bold">RaiRock</span>
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-          aria-controls="navbarMain" aria-expanded="false" aria-label="Alternar menú principal">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarMain">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i> Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="#services"><i class="bi bi-gear me-1"></i> Servicios</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i> Sobre Nosotros</a></li>
-            <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i> Contacto</a></li>
-          </ul>
-
-          <div class="d-flex">
-            <a href="cart.html" class="btn btn-outline-dark position-relative me-2">
-              <i class="bi bi-cart3"></i>
-              <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill">0</span>
+<header class="sticky-top bg-light shadow-sm">
+    <!-- 1ª línea - logo centrado -->
+    <div class="border-bottom py-2 bg-light">
+        <div class="text-center">
+            <a class="navbar-brand d-inline-flex align-items-center" href="/pages/index.html">
+                <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="50" class="me-2">
+                <span class="fw-bold fs-3">RaiRock</span>
             </a>
-            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
-              <i class="bi bi-person-fill me-1"></i> Login
-            </button>
-          </div>
         </div>
-      </div>
+    </div>
+
+    <!-- 2ª línea - navegación y acciones -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 px-3">
+        <div class="container-fluid p-0">
+            <!-- Versión mobile -->
+            <div class="d-lg-none w-100">
+                <div class="mobile-top-bar">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="user-actions-mobile">
+                        <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
+                            <i class="bi bi-heart"></i>
+                            <span id="favoritesCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                        </a>
+                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
+                            <i class="bi bi-cart3"></i>
+                            <span id="cartCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                        </a>
+<div id="user-auth-mobile" class="d-flex align-items-center">
+  <span id="username-mobile" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
+  <div id="auth-button-mobile"></div>
+</div>
+                    </div>
+                </div>
+                <div class="search-bar-mobile">
+                    <form id="form-busqueda-mobile" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <select class="form-select" name="category" style="max-width: 120px;">
+                                <option value="">Todas</option>
+                                <option value="acoustic-guitars">Guitarras acústica</option>
+                                <option value="classical-guitars">Guitarras clásicas</option>
+                                <option value="electric-guitars">Guitarras eléctrica</option>
+                                <option value="basses">Bajos</option>
+                                <option value="amplifiers">Amplificadores</option>
+                                <option value="effect-pedals">Pedales</option>
+                                <option value="acoustic-drums">Baterías acustica</option>
+                                <option value="electronic-drums">Baterías electronica</option>
+                                <option value="set-platillos">Platillos</option>
+                                <option value="keyboards">Teclados</option>
+                                <option value="synthesizers">Sintetizadores</option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Versión desktop -->
+            <div class="d-none d-lg-flex desktop-nav-container">
+                <div class="nav-links-desktop">
+                    <ul class="navbar-nav d-flex flex-row">
+                        <li class="nav-item me-3"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                        <li class="nav-item me-3"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
+                        <li class="nav-item me-3"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="search-bar-desktop">
+                    <form id="form-busqueda-desktop" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <select class="form-select" name="category" style="max-width: 120px;">
+                                <option value="">Todas</option>
+                                <option value="acoustic-guitars">Guitarras acústica</option>
+                                <option value="classical-guitars">Guitarras clásicas</option>
+                                <option value="electric-guitars">Guitarras eléctrica</option>
+                                <option value="basses">Bajos</option>
+                                <option value="amplifiers">Amplificadores</option>
+                                <option value="effect-pedals">Pedales</option>
+                                <option value="acoustic-drums">Baterías acustica</option>
+                                <option value="electronic-drums">Baterías electronica</option>
+                                <option value="set-platillos">Platillos</option>
+                                <option value="keyboards">Teclados</option>
+                                <option value="synthesizers">Sintetizadores</option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="user-actions-desktop d-flex gap-2">
+                    <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
+                        <i class="bi bi-heart icono-contador"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                    </a>
+                    <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
+                        <i class="bi bi-cart3 icono-contador"></i>
+                        <span id="cartCounterDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                    </a>
+<div id="user-auth-desktop" class="d-flex align-items-center">
+  <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
+  <div id="auth-button-desktop"></div>
+</div>
+                </div>
+            </div>
+        </div>
     </nav>
-  </header>
+</header>
 
   <!-- Contenido principal -->
   <main class="container my-5" role="main">
-    <h1 class="text-center mb-4">Sobre Nosotros</h1>
-    <p class="lead text-center mb-5">
-      En RaiRock Music Store somos un equipo apasionado por la música y la tecnología. Nuestro
-      objetivo es ofrecer los mejores productos y el mejor servicio a nuestros clientes.
-    </p>
+    <section class="mb-5">
+      <h1 class="text-center mb-4">Sobre Nosotros</h1>
+      <div class="mx-auto" style="max-width: 700px; text-align: justify;">
+        <p>
+          En <strong>RaiRock Music Store</strong> compartimos una pasión: la música. Nuestro equipo, formado por músicos y expertos del sector, está comprometido con ofrecer los mejores instrumentos, accesorios y tecnología musical.
+        </p>
+        <p>
+          Nos esforzamos en brindar una atención cercana, asesoramiento honesto y productos de calidad para todo tipo de músicos, desde principiantes hasta profesionales.
+        </p>
+        <p>
+          Además, colaboramos con artistas locales y apoyamos el desarrollo musical en nuestra comunidad. <strong>RaiRock</strong> es más que una tienda: es tu espacio para sonar fuerte.
+        </p>
+      </div>
+    </section>
+
 
     <section aria-label="Equipo de trabajo" class="mb-5">
       <h2 class="mb-4 text-center">Nuestro Equipo</h2>
@@ -69,9 +162,79 @@
 
     <section aria-label="Ubicación de RaiRock Music Store" class="mb-5">
       <h2 class="mb-4 text-center">Dónde Estamos</h2>
+      <div class="mx-auto text-center" style="max-width: 300px;">
+        <h6 class="mb-1">RaiRock Music Store</h6>
+        <p class="mb-0"><strong>Dirección:</strong> Calle ACDC, Leganés<br>
+        <strong>Horario:</strong> Lunes a Sábado, 10:00 - 20:00<br>
+        <strong>Tel:</strong> 911 123 456</p>
+      </div>
+      <div class="p-3 shadow-lg border border-3 border-primary rounded-4" style="overflow: hidden; background-color: #f8f9fa;">
       <div id="map" style="width: 100%; height: 400px;" role="region" aria-label="Mapa de ubicación de RaiRock Music Store"></div>
+      </div>
     </section>
   </main>
+
+   <!-- Pre-footer -->
+    <section class="pre-footer py-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Columna 1: Métodos de pago -->
+<div class="col-md-4 mb-4 mb-md-0">
+    <div class="pre-footer-card h-100 p-4">
+        <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
+        <div class="payment-methods d-flex flex-wrap gap-3 align-items-center">
+            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con PayPal">
+                <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" class="payment-img grayscale">
+            </a>
+            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con Visa">
+                <img src="../assets/images/icons8-visa-48 (1).png" alt="Visa" class="payment-img grayscale">
+            </a>
+            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con MasterCard">
+                <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" class="payment-img grayscale">
+            </a>
+            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con American Express">
+                <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" class="payment-img grayscale">
+            </a>
+        </div>
+    </div>
+</div>
+      
+      <!-- Columna 2: Ventajas -->
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="pre-footer-card h-100 p-4">
+          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Ventajas RaiRock</h3>
+          <ul class="list-unstyled">
+            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Garantía de 2 años</li>
+            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Devoluciones fáciles</li>
+            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Servicio técnico especializado</li>
+            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Asesoramiento profesional</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Columna 3: Redes sociales -->
+      <div class="col-md-4">
+        <div class="pre-footer-card h-100 p-4">
+          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Síguenos</h3>
+          <div class="social-links d-flex flex-wrap gap-3">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <i class="bi bi-facebook fs-3"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <i class="bi bi-twitter-x fs-3"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <i class="bi bi-instagram fs-3"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <i class="bi bi-youtube fs-3"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="bg-dark text-white py-3">

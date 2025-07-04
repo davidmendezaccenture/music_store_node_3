@@ -311,7 +311,7 @@ app.get('/buscar', (req, res) => {
             ratingMap[r.producto] = { total: 0, count: 0 };
           }
           const estrellasTexto = r.estrellas || '';
-const estrellasNum = estrellasTexto.split('').filter(e => e === '⭐').length;
+          const estrellasNum = estrellasTexto.split('').filter(e => e === '⭐').length;
 ratingMap[r.producto].total += estrellasNum;
 
           ratingMap[r.producto].count++;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guitarras y Bajos - RaiRock Music Store</title>
+    <title>Newsletter - RaiRock Music Store</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/styles.css">
@@ -132,26 +132,182 @@
         </div>
     </nav>
 </header>
-     <main class="container mt-4" role="main">
 
-    <div class="mb-3 text-center">
-      <h2 style="margin-bottom: 4px;">Tu Carrito</h2>
-      <div class="text-start">
-        <a id="seguir-comprando" href="#" class="btn btn-primary fw-bold">
-        <i class="bi bi-arrow-left-circle me-2" aria-hidden="true"></i> Seguir comprando
-        </a>
-      </div>
-    </div>
-    <ul class="container-fluid px-3" id="contenedor-carrito"></ul>
-    <div class="container-fluid px-3" id="total">
-        <h4 class="text-end">Total: <span id="total-carrito"></span> €</h4>
-        <div class="botones-carrito text-end mt-2">
-          <button id="confirmar-pago" class="boton-confirmar-pago" aria-label="Confirmar y proceder al pago"><span class="icono">🛒</span>Confirmar pago</button>
+    <!-- Botón para activar el offcanvas -->
+    <button class="btn btn-primary d-lg-none fixed-bottom m-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#servicesOffcanvas">
+        <i class="bi bi-list"></i> Contacto 
+    </button>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="servicesOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Ponte en contacto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </div>
-  </main>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        <i class="bi bi-envelope me-2"></i> Contacto
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="newsletter.html">
+                        <i class="bi bi-mailbox me-2"></i> Newsletter
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="media.html">
+                        <i class="bi bi-camera-reels me-2"></i> Media
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="faq.html">
+                        <i class="bi bi-question-circle me-2"></i> FAQ
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
- <!-- Pre-footer -->
+    <!-- Contenido principal -->
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-lg-3 d-none d-lg-block">
+                <!-- Menú lateral para desktop -->
+                <div class="card shadow-sm sticky-top" style="top: 260px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Ponte en contacto</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">
+                                    <i class="bi bi-envelope me-2"></i> Contacto
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="newsletter.html">
+                                    <i class="bi bi-mailbox me-2"></i> Newsletter
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="media.html">
+                                    <i class="bi bi-camera-reels me-2"></i> Media
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="faq.html">
+                                    <i class="bi bi-question-circle me-2"></i> FAQ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <h1 class="mb-4">Newsletter</h1>
+                
+                <div class="card shadow-sm mb-5">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="bi bi-envelope-open text-primary me-2"></i>
+                            Suscríbete a nuestro boletín
+                        </h2>
+                        <p class="lead">Recibe las últimas novedades, ofertas exclusivas y consejos musicales directamente en tu correo.</p>
+                        
+                        <form class="mt-4">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="apellido" class="form-label">Apellido</label>
+                                    <input type="text" class="form-control" id="apellido" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Correo electrónico</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ofertas">
+                                        <label class="form-check-label" for="ofertas">
+                                            Recibir ofertas especiales
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="novedades" checked>
+                                        <label class="form-check-label" for="novedades">
+                                            Recibir novedades de productos
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="consejos" checked>
+                                        <label class="form-check-label" for="consejos">
+                                            Recibir consejos y tutoriales
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-envelope-plus me-1"></i> Suscribirse
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div class="alert alert-info mt-4">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Respetamos tu privacidad. Puedes darte de baja en cualquier momento.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <i class="bi bi-patch-question text-primary me-2"></i>
+                            ¿Por qué suscribirse?
+                        </h2>
+                        <div class="row mt-4">
+                            <div class="col-md-4 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-tag fs-3 text-primary me-3"></i>
+                                    <div>
+                                        <h4>Ofertas exclusivas</h4>
+                                        <p class="mb-0">Descuentos especiales solo para suscriptores y acceso anticipado a promociones.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-music-note-list fs-3 text-primary me-3"></i>
+                                    <div>
+                                        <h4>Novedades</h4>
+                                        <p class="mb-0">Sé el primero en conocer nuestros nuevos productos y lanzamientos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="bi bi-lightbulb fs-3 text-primary me-3"></i>
+                                    <div>
+                                        <h4>Contenido exclusivo</h4>
+                                        <p class="mb-0">Tutoriales, consejos de mantenimiento y técnicas de los mejores músicos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+     <!-- Pre-footer -->
     <section class="pre-footer py-5">
   <div class="container">
     <div class="row g-4">
@@ -212,57 +368,18 @@
     </div>
   </div>
 </section>
-
+                
     <!-- Footer -->
-    <footer class="bg-dark text-white py-3 pie-de-pagina">
-        <div class="container text-center ">
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
             <p class="mb-0">&copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <!-- Modal de inicio de sesión -->
-    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login Icon" style="width:60px; margin-bottom:15px;">
-                <p>¿Tienes cuenta?</p>
-                <p>Inicia sesión para continuar.</p>
-                <a href="/pages/login.html" class="btn btn-primary">Iniciar sesión</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-<script>
-    // Añadir el año actual automáticamente
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
     <script>
-        //script para volver a la página guardada anterior. Si no hay, devuelve a home
-        document.addEventListener('DOMContentLoaded', () => {
-        const regreso = localStorage.getItem('ultimaPagina') || '/pages/index.html';
-        document.getElementById('seguir-comprando').href = regreso;
-        });
+        // Añadir el año currentYear automáticamente
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- Modales de login y error importados dinámicamente -->
-    <div id="modals-container"></div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-      // Importa dinámicamente los modales desde partials/modals.html usando jQuery
-      $(function() {
-        $('#modals-container').load('../partials/modals.html');
-      });
-    </script>
-    
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/cart.js"></script>
-  <script src="../js/auth.js"></script>  
-  <script src="../js/app.js"></script>
-  <script src="../js/login-ui.js"></script>
-  <script src="../js/search.js"></script>
-    <!-- Eliminada lógica duplicada de apertura automática del modal de login, ahora centralizada en login-ui.js -->
+    <script src="../js/app.js"></script>
 </body>
 </html>

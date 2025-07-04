@@ -16,23 +16,65 @@ function ocultarErrorLoginPassword() {
 }
 
 function mostrarBotonLogout(username) {
-  const userActions = document.getElementById('user-actions');
-  if (!userActions) return;
-userActions.innerHTML = `
-  <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
-    <i class="bi bi-cart3"></i>
-    <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge bg-danger rounded-pill"></span>
-  </a>
-  <span class="fw-bold user-name mx-3 text-truncate">${username}</span>
-  <button class="btn btn-danger" id="logoutBtn">
-    <i class="bi bi-box-arrow-right me-1"></i> Logout
-  </button>
-`;
-  document.getElementById('logoutBtn').addEventListener('click', function() {
-    localStorage.removeItem('usuario');
-    location.reload();
-  });
+  // Nombre de usuario
+  const usernameMobile = document.getElementById('username-mobile');
+  const usernameDesktop = document.getElementById('username-desktop');
+  if (usernameMobile) usernameMobile.textContent = username;
+  if (usernameDesktop) usernameDesktop.textContent = username;
+
+  // Contenedores de botones
+  const btnContainerMobile = document.getElementById('auth-button-mobile');
+  const btnContainerDesktop = document.getElementById('auth-button-desktop');
+
+  // HTML del botón logout
+  const logoutHTML = `
+    <button class="btn btn-danger" id="logoutBtn">
+      <i class="bi bi-box-arrow-right me-1"></i>Logout
+    </button>
+  `;
+
+  // Insertar logout en mobile
+  if (btnContainerMobile) {
+    btnContainerMobile.innerHTML = logoutHTML;
+    const logoutBtn = btnContainerMobile.querySelector('#logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('usuario');
+      location.reload();
+    });
+  }
+
+  // Insertar logout en desktop
+  if (btnContainerDesktop) {
+    btnContainerDesktop.innerHTML = logoutHTML;
+    const logoutBtn = btnContainerDesktop.querySelector('#logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('usuario');
+      location.reload();
+    });
+  }
 }
+//Añado botón login y evento al cargar la página para evitar parpadeo entre páginas
+function mostrarBotonLogin() {
+  const btnContainerMobile = document.getElementById('auth-button-mobile');
+  const btnContainerDesktop = document.getElementById('auth-button-desktop');
+
+  const loginHTML = `
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+      <i class="bi bi-person-fill me-1"></i>Login
+    </button>
+  `;
+
+  if (btnContainerMobile) btnContainerMobile.innerHTML = loginHTML;
+  if (btnContainerDesktop) btnContainerDesktop.innerHTML = loginHTML;
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+  if (usuario && usuario.nombre) {
+    mostrarBotonLogout(usuario.nombre);
+  } else {
+    mostrarBotonLogin();
+  }
+});
 
 function esperarYMostrarLoginModal() {
   function showModal() {

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const $form = $('#form-busqueda');
+    const $form = $('#form-busqueda-mobile, #form-busqueda-desktop');
     const esSearchPage = window.location.pathname.endsWith('search.html');
     const $precioMinInput = $('#precio-min');
     const $precioMaxInput = $('#precio-max');
@@ -41,6 +41,7 @@ $(document).ready(function () {
                 });
 
                 productosFiltrados.sort((a, b) => {
+                    
                     const pA = Number(a.enOferta === 'sí' ? a.offerPrice : a.price) || 0;
                     const pB = Number(b.enOferta === 'sí' ? b.offerPrice : b.price) || 0;
                     const ordenPrecio = $ordenPrecioSelect.val() === 'asc' ? pA - pB : pB - pA;
@@ -74,8 +75,8 @@ $(document).ready(function () {
 
         if (productos.length === 0) {
             $contenedor.html(`
-                <div class="no-encontrado" role="alert" aria-live="polite" style="text-align:center; padding: 2rem;">
-                    <img src="../assets/images/sin-datos.gif" alt="Lupa buscando archivo" style="width:64px; height:64px; display:block; margin:0 auto 1rem auto;">
+                <div class="no-encontrado text-center p-4" role="alert" aria-live="polite">
+                    <img src="../assets/images/sin-datos.gif" alt="Sin resultados" style="width:64px;height:64px;margin-bottom:1rem;">
                     <p>No se encontraron productos.</p>
                     <p>Prueba a cambiar los filtros o los términos de búsqueda.</p>
                 </div>`);
@@ -87,17 +88,17 @@ $(document).ready(function () {
         const fin = inicio + productosPorPagina;
         const productosPagina = productos.slice(inicio, fin);
 
-        productosPagina.forEach(producto => {
+        productosPagina.forEach((producto, i) => {
+            console.log(producto);
             const estrellas = '★'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
             const ofertaBadge = producto.enOferta === "sí"
-                ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2 shadow-sm" style="z-index: 1;">🔥 En oferta</div>`
+                ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>`
                 : "";
-
             const precioHTML = producto.enOferta === "sí"
                 ? `<span class="precio">
                         <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
                         <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
-                    </span>`
+                   </span>`
                 : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`;
 
             const $col = $(`
@@ -105,15 +106,19 @@ $(document).ready(function () {
                     <div class="card h-100 position-relative" role="article">
                         ${ofertaBadge}
                         <img src="${producto.image.replace('..', '')}" class="card-img-top" alt="${producto.name}">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <h2 class="card-title h5">${producto.name}</h2>
                             <p class="card-text">${producto.description}</p>
                             ${precioHTML}
                             <p class="valoracion" aria-label="Valoración del producto">${estrellas}</p>
                             <div class="mt-auto">
-                                <button class="btn btn-primary agregar-carrito" aria-label="Añadir ${producto.name} a la cesta" data-id="${producto.id}">
+                                <button class="btn btn-primary agregar-carrito" data-id="${producto.id}">
                                     Añadir a la cesta
                                 </button>
+                                <!-- Botón para ir al detalle del producto -->
+                                <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-outline-secondary mt-2 w-100">
+                            Ver detalle
+                            </a>
                             </div>
                         </div>
                     </div>
@@ -121,7 +126,7 @@ $(document).ready(function () {
             `);
 
             $contenedor.append($col);
-            setTimeout(() => $col.addClass('visible'), 100);
+            setTimeout(() => $col.addClass('visible'), 100 + i * 100); // animación progresiva
         });
 
         for (let i = 1; i <= totalPaginas; i++) {
@@ -137,9 +142,11 @@ $(document).ready(function () {
 
     if (esSearchPage) {
         $form.on('submit', function (e) {
+            console.log("query:", query);
+console.log("category:", category);
             e.preventDefault();
-            const query = $form.find('[name="q"]').val().trim();
-            const category = $form.find('[name="category"]').val();
+    const query = $(this).find('[name="q"]').val().trim();
+    const category = $(this).find('[name="category"]').val();
             buscarYMostrar(query, category);
 
             const newUrl = `${window.location.pathname}?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`;
@@ -163,7 +170,6 @@ $(document).ready(function () {
 
     $precioMinInput.on('input', actualizarYFiltrar);
     $precioMaxInput.on('input', actualizarYFiltrar);
-
     $ordenPrecioSelect.on('change', actualizarYFiltrar);
     $ordenValoracionSelect.on('change', actualizarYFiltrar);
     $ordenPrioridadSelect.on('change', actualizarYFiltrar);

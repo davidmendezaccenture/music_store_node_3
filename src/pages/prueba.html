@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guitarras y Bajos - RaiRock Music Store</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <title>FUZZR</title>
+
+    <!-- Bootstrap core & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Estilos propios -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <!-- Encabezado -->
+
+<!-- Encabezado -->
 <header class="sticky-top bg-light shadow-sm">
     <!-- 1ª línea - logo centrado -->
     <div class="border-bottom py-2 bg-light">
@@ -57,11 +62,7 @@
                                 <option value="basses">Bajos</option>
                                 <option value="amplifiers">Amplificadores</option>
                                 <option value="effect-pedals">Pedales</option>
-                                <option value="acoustic-drums">Baterías acustica</option>
-                                <option value="electronic-drums">Baterías electronica</option>
-                                <option value="set-platillos">Platillos</option>
-                                <option value="keyboards">Teclados</option>
-                                <option value="synthesizers">Sintetizadores</option>
+                                <option value="drums">Baterías</option>
                             </select>
                             <button class="btn btn-outline-primary" type="submit">
                                 <i class="bi bi-search"></i>
@@ -101,11 +102,7 @@
                                 <option value="basses">Bajos</option>
                                 <option value="amplifiers">Amplificadores</option>
                                 <option value="effect-pedals">Pedales</option>
-                                <option value="acoustic-drums">Baterías acustica</option>
-                                <option value="electronic-drums">Baterías electronica</option>
-                                <option value="set-platillos">Platillos</option>
-                                <option value="keyboards">Teclados</option>
-                                <option value="synthesizers">Sintetizadores</option>
+                                <option value="drums">Baterías</option>
                             </select>
                             <button class="btn btn-outline-primary" type="submit">
                                 <i class="bi bi-search"></i>
@@ -132,137 +129,37 @@
         </div>
     </nav>
 </header>
-     <main class="container mt-4" role="main">
 
-    <div class="mb-3 text-center">
-      <h2 style="margin-bottom: 4px;">Tu Carrito</h2>
-      <div class="text-start">
-        <a id="seguir-comprando" href="#" class="btn btn-primary fw-bold">
-        <i class="bi bi-arrow-left-circle me-2" aria-hidden="true"></i> Seguir comprando
-        </a>
-      </div>
-    </div>
-    <ul class="container-fluid px-3" id="contenedor-carrito"></ul>
-    <div class="container-fluid px-3" id="total">
-        <h4 class="text-end">Total: <span id="total-carrito"></span> €</h4>
-        <div class="botones-carrito text-end mt-2">
-          <button id="confirmar-pago" class="boton-confirmar-pago" aria-label="Confirmar y proceder al pago"><span class="icono">🛒</span>Confirmar pago</button>
-        </div>
-      </div>
-  </main>
+<main class="container my-5">
+    <h2 class="text-center">Contenido de prueba</h2>
+    <p class="lead text-center">Prueba.</p>
+</main>
 
- <!-- Pre-footer -->
-    <section class="pre-footer py-5">
-  <div class="container">
-    <div class="row g-4">
-      <!-- Columna 1: Métodos de pago -->
-<div class="col-md-4 mb-4 mb-md-0">
-    <div class="pre-footer-card h-100 p-4">
-        <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
-        <div class="payment-methods d-flex flex-wrap gap-3 align-items-center">
-            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con PayPal">
-                <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" class="payment-img grayscale">
-            </a>
-            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con Visa">
-                <img src="../assets/images/icons8-visa-48 (1).png" alt="Visa" class="payment-img grayscale">
-            </a>
-            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con MasterCard">
-                <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" class="payment-img grayscale">
-            </a>
-            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con American Express">
-                <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" class="payment-img grayscale">
-            </a>
-        </div>
-    </div>
-</div>
-      
-      <!-- Columna 2: Ventajas -->
-      <div class="col-md-4 mb-4 mb-md-0">
-        <div class="pre-footer-card h-100 p-4">
-          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Ventajas RaiRock</h3>
-          <ul class="list-unstyled">
-            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Garantía de 2 años</li>
-            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Devoluciones fáciles</li>
-            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Servicio técnico especializado</li>
-            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Asesoramiento profesional</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Columna 3: Redes sociales -->
-      <div class="col-md-4">
-        <div class="pre-footer-card h-100 p-4">
-          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Síguenos</h3>
-          <div class="social-links d-flex flex-wrap gap-3">
-            <a href="#" class="social-icon" aria-label="Facebook">
-              <i class="bi bi-facebook fs-3"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Twitter">
-              <i class="bi bi-twitter-x fs-3"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Instagram">
-              <i class="bi bi-instagram fs-3"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="YouTube">
-              <i class="bi bi-youtube fs-3"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-3 pie-de-pagina">
-        <div class="container text-center ">
-            <p class="mb-0">&copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <!-- Modal de inicio de sesión -->
-    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login Icon" style="width:60px; margin-bottom:15px;">
-                <p>¿Tienes cuenta?</p>
-                <p>Inicia sesión para continuar.</p>
-                <a href="/pages/login.html" class="btn btn-primary">Iniciar sesión</a>
-                </div>
+<!-- Modal de login -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="loginLabel">Iniciar sesión</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="loginEmail" required placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="loginPassword" required placeholder="Contraseña">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-
-<script>
-    // Añadir el año actual automáticamente
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
-    <script>
-        //script para volver a la página guardada anterior. Si no hay, devuelve a home
-        document.addEventListener('DOMContentLoaded', () => {
-        const regreso = localStorage.getItem('ultimaPagina') || '/pages/index.html';
-        document.getElementById('seguir-comprando').href = regreso;
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- Modales de login y error importados dinámicamente -->
-    <div id="modals-container"></div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-      // Importa dinámicamente los modales desde partials/modals.html usando jQuery
-      $(function() {
-        $('#modals-container').load('../partials/modals.html');
-      });
-    </script>
-    
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/cart.js"></script>
-  <script src="../js/auth.js"></script>  
-  <script src="../js/app.js"></script>
-  <script src="../js/login-ui.js"></script>
-  <script src="../js/search.js"></script>
-    <!-- Eliminada lógica duplicada de apertura automática del modal de login, ahora centralizada en login-ui.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
