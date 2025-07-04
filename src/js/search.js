@@ -113,6 +113,10 @@ $(document).ready(function () {
                                 <button class="btn btn-primary agregar-carrito" data-id="${producto.id}">
                                     Añadir a la cesta
                                 </button>
+                                <!-- Botón para ir al detalle del producto -->
+                                <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-outline-secondary mt-2 w-100">
+                            Ver detalle
+                            </a>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,12 @@
 {
   "guest": [],
   "{\"message\":\"Login exitoso.\",\"user\":{\"username\":\"PabloEmilio\",\"email\":\"pachepatat@gmail.com\"}}": [],
-  "David": [],
+  "David": [
+    {
+      "id": 1,
+      "cantidad": 2
+    }
+  ],
   "prueba2": [],
   "nombreFicticio": []
 }

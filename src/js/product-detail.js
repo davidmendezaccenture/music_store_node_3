@@ -49,7 +49,7 @@ async function loadProductDetail() {
               <button id="btnAgregarAlCarrito" class="btn btn-primary" aria-label="Añadir ${product.name} a la cesta" data-id="${product.id}">
                 Añadir a la cesta
               </button>
-              <a href="guitar.html" class="btn btn-outline-dark">Seguir comprando</a>
+              <a href="#" class="btn btn-outline-dark">Seguir comprando</a>
             </div>
             <div class="d-flex gap-4 mt-2 align-items-center">
               <span><i class="bi bi-truck fs-4 text-primary"></i><br><small>Envío gratuito</small></span>
