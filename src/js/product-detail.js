@@ -49,7 +49,7 @@ async function loadProductDetail() {
               <button id="btnAgregarAlCarrito" class="btn btn-primary" aria-label="Añadir ${product.name} a la cesta" data-id="${product.id}">
                 Añadir a la cesta
               </button>
-              <a href="#" class="btn btn-outline-dark">Seguir comprando</a>
+              <a id="seguir-comprando" href="#" class="btn btn-outline-dark">Seguir comprando</a>
             </div>
             <div class="d-flex gap-4 mt-2 align-items-center">
               <span><i class="bi bi-truck fs-4 text-primary"></i><br><small>Envío gratuito</small></span>
@@ -61,15 +61,30 @@ async function loadProductDetail() {
       </div>
     `;
 
-    // ✅ Esperamos a que DOM inserte el botón, y luego añadimos el event listener
+    // ✅ Esperamos a que DOM inserte el botón, y luego añadimos los event listeners
+
+    // Añadir al carrito
     const btn = document.getElementById('btnAgregarAlCarrito');
     if (btn) {
       btn.addEventListener('click', () => {
-        // ✅ Usamos la función global de cart.js
         if (typeof addToCart === 'function') {
           addToCart(product.id);
         } else {
           console.error('❌ No se encontró la función global addToCart.');
+        }
+      });
+    }
+
+    // Seguir comprando
+    const seguirComprandoBtn = document.getElementById("seguir-comprando");
+    if (seguirComprandoBtn) {
+      seguirComprandoBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const ultima = localStorage.getItem("ultimaPagina");
+        if (ultima) {
+          window.location.href = ultima;
+        } else {
+          window.history.back();
         }
       });
     }
@@ -84,4 +99,3 @@ async function loadProductDetail() {
 
 // ✅ Ejecutamos al cargar la página
 document.addEventListener('DOMContentLoaded', loadProductDetail);
-
