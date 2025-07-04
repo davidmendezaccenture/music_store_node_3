@@ -3,7 +3,11 @@
   "{\"message\":\"Login exitoso.\",\"user\":{\"username\":\"PabloEmilio\",\"email\":\"pachepatat@gmail.com\"}}": [],
   "David": [
     {
-      "id": 1,
+      "id": 20,
+      "cantidad": 3
+    },
+    {
+      "id": 15,
       "cantidad": 1
     }
   ],

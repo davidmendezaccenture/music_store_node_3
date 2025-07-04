@@ -164,29 +164,10 @@ a:hover .icono-nav {
     filter: grayscale(0%) brightness(1.2) contrast(120%) saturate(150%) drop-shadow(0 0 2px #000);
 }
 
-/* Estilo para las flechas del carrusel */
-.icono-carrusel {
-    width: 50px;
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-.icono-carrusel:hover {
-    transform: scale(1.2);
-}
-
-.carousel-control-prev span,
-.carousel-control-next span {
-    display: block;
-    font-size: 14px;
-    pointer-events: none;
-    position: relative;
-    z-index: 1;
-}
 /*Imagenes del carrusel princpal*/
 .carousel-item img {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     height: auto;
     margin: 0 auto;
 }
@@ -217,15 +198,16 @@ a:hover .icono-nav {
     background-color: transparent !important;
 
 }
-.carousel-control-prev
-{
-    left: 5%;
+/*Ajustamos para que no queden los controles demasiado separados ni se metan dentro de la imagen al reducir la pantalla*/
+
+.carousel-control-prev {
+    left: calc(50% - 550px);
 }
 .carousel-control-next {
-    right: 5%
+    right: calc(50% - 550px);
 }
 /*Visualizacion responsive de controles carrusel principal*/
-@media (max-width: 991px) {
+@media (max-width: 1080px) {
     .carousel-control-prev,
     .glide__arrow--left {
         left: 2px;
@@ -284,7 +266,7 @@ a:hover .icono-nav {
     opacity: 1;
     transform: scale(1.3);
 }
-/*Igualamos trajetas de opinion e imagen */
+
 .carruselGlide {
     padding-left: 50px;
     padding-right: 50px;

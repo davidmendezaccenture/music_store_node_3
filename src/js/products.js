@@ -86,12 +86,10 @@ $(document).ready(function () {
                   <p class="card-text">${producto.description}</p>
                   ${precioHTML}
                   <p class="valoracion" aria-label="Valoración del producto">${estrellas}</p>
-                  <div class="mt-auto">
-                    <button class="btn btn-primary agregar-carrito" data-id="${producto.id}">
-                      Añadir a la cesta
+                  <div class="mt-auto d-flex gap-2">
+                    <button class="btn btn-primary agregar-carrito flex-fill" data-id="${producto.id}">Añadir
                     </button>
-                    <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-outline-secondary mt-2 w-100">
-                      Ver detalle
+                    <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-outline-secondary flex-fill">Detalle
                     </a>
                   </div>
                 </div>
