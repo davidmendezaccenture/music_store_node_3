@@ -41,6 +41,7 @@ $(document).ready(function () {
                 });
 
                 productosFiltrados.sort((a, b) => {
+                    
                     const pA = Number(a.enOferta === 'sí' ? a.offerPrice : a.price) || 0;
                     const pB = Number(b.enOferta === 'sí' ? b.offerPrice : b.price) || 0;
                     const ordenPrecio = $ordenPrecioSelect.val() === 'asc' ? pA - pB : pB - pA;
@@ -88,6 +89,7 @@ $(document).ready(function () {
         const productosPagina = productos.slice(inicio, fin);
 
         productosPagina.forEach((producto, i) => {
+            console.log(producto);
             const estrellas = '★'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
             const ofertaBadge = producto.enOferta === "sí"
                 ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>`

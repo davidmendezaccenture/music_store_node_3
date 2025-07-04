@@ -226,6 +226,13 @@
     // Añadir el año actual automáticamente
     document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
+  <script>
+        //script para volver a la página guardada anterior. Si no hay, devuelve a home
+        document.addEventListener('DOMContentLoaded', () => {
+        const regreso = localStorage.getItem('ultimaPagina') || '/pages/index.html';
+        document.getElementById('seguir-comprando').href = regreso;
+        });
+    </script>
 
   <script>
     //Función para guardar ultima página

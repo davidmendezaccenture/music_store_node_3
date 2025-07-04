@@ -38,23 +38,34 @@ $(document).ready(function () {
 
   // Mostrar productos según filtro
   function mostrarProductos(filtro = "Todas") {
+    // Obtenemos la categoría para el filtro
+    const categoriaSeleccionada = categoriaMap[filtro];
+
+    // Para "Todas" o "all", enviamos categoría vacía para que el backend no filtre por categoría
+    const categoriaQuery = (categoriaSeleccionada === 'all') ? '' : categoriaSeleccionada;
+
     $.ajax({
-      url: '/api/products',
+      url: '/buscar',
       method: 'GET',
       dataType: 'json',
+      data: {
+        q: '', // si quieres que haya búsqueda por texto, ajusta aquí
+        category: categoriaQuery
+      },
       success: function (data) {
         container.empty();
-        const categoriaSeleccionada = categoriaMap[filtro];
 
+        // Aquí filtramos localmente por las categorías válidas para la página, en caso que backend no filtre
         const productosFiltrados = data.filter(p => {
-          if (categoriaSeleccionada === 'all') {
+          if (categoriaSeleccionada === 'all' || categoriaSeleccionada === '') {
             return categoriasValidas.includes(p.category);
           }
           return p.category === categoriaSeleccionada;
         });
 
         productosFiltrados.forEach((producto, i) => {
-          const estrellas = '★'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
+          const rating = producto.rating !== undefined ? producto.rating : 0;
+          const estrellas = '★'.repeat(rating) + '☆'.repeat(5 - rating);
           const ofertaBadge = producto.enOferta === "sí"
             ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>`
             : "";
@@ -107,6 +118,5 @@ $(document).ready(function () {
     const filtro = $(this).val();
     mostrarProductos(filtro);
   });
-
 
 });
