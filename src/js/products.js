@@ -78,7 +78,7 @@ $(document).ready(function () {
 
           const $col = $(`
   <div class="col producto-animado" data-category="${producto.category}">
-    <div class="card-product h-100 d-flex flex-column" role="article">
+    <div class="card-product h-100 d-flex flex-column position-relative" role="article">
       ${ofertaBadge}
       <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="${producto.name}" style="height: 130px; object-fit: cover;">
       <div class="card-body d-flex flex-column" style="padding: 0.5rem;">

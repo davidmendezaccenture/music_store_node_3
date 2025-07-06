@@ -726,7 +726,7 @@ main {
 
 /* Badges */
 
-.card .badge {
+.card-product .badge {
     font-size: 0.9rem;
     border-radius: 0.5rem;
     padding: 0.4em 0.8em;

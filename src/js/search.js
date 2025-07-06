@@ -102,7 +102,7 @@ $(document).ready(function () {
 
             const $col = $(`
                 <div class="col producto-animado" data-category="${producto.category}">
-                    <div class="card-product h-100 d-flex flex-column" role="article">${ofertaBadge}
+                    <div class="card-product h-100 d-flex flex-column position-relative" role="article">${ofertaBadge}
                         <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="${producto.name}" style="height: 130px; object-fit: cover;">
                         <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
                             <h2 class="card-title" style="font-size: 0.95rem; margin-bottom: 0.3rem; min-height: 2.5em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}
