@@ -95,7 +95,7 @@ $(document).ready(function () {
           </p>
           <div class="d-flex gap-1 mt-2">
             <button class="btn btn-sm btn-primary flex-fill agregar-carrito" data-id="${producto.id}">Añadir</button>
-            <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary flex-fill">Detalle</a>
+            <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary flex-fill d-flex justify-content-center align-items-center boton-detalle">Detalle</a>
           </div>
         </div>
       </div>
