@@ -444,52 +444,26 @@
     </div>
 </footer>
 
-<!-- Modal de inicio de sesión -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <form id="loginForm">
-                    <div class="mb-3">
-                        <label for="loginEmail" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="loginEmail" required 
-                               aria-describedby="emailHelp" placeholder="tucorreo@ejemplo.com">
-                    </div>
-                    <div class="mb-3">
-                        <label for="loginPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="loginPassword" required 
-                               placeholder="Introduce tu contraseña">
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Recordar sesión</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-                </form>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <p class="mb-0">¿No tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" 
-                   data-bs-dismiss="modal">Regístrate aquí</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
+<div id="modals-container"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
 <script>
-    // Añadir el año actual automáticamente
+    // Añadir el año currentYear automáticamente
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/contact.js"></script>
-<script src="../js/cart.js"></script>
+<script>
+    //Función para guardar ultima página
+  document.addEventListener('DOMContentLoaded', () => {
+    localStorage.setItem('ultimaPagina', window.location.pathname);
+  });
+</script>
 <script src="../js/login-ui.js"></script>
-<script src="../js/auth.js"></script>  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/cart.js"></script>
 <script src="../js/app.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/glide.js"></script>
 
 
 </body>
