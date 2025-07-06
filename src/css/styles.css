@@ -1022,3 +1022,7 @@ header {
     color: white;
     border-color: #0d6efd;
 }
+/*Centrado de nombre de usuario*/
+#username-desktop {
+    width: 70px;
+}
