@@ -89,7 +89,6 @@ $(document).ready(function () {
         const productosPagina = productos.slice(inicio, fin);
 
         productosPagina.forEach((producto, i) => {
-            console.log(producto);
             const estrellas = '⭐'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
             const ofertaBadge = producto.enOferta === "sí"
                 ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>`
@@ -140,8 +139,6 @@ $(document).ready(function () {
 
     if (esSearchPage) {
         $form.on('submit', function (e) {
-            console.log("query:", query);
-console.log("category:", category);
             e.preventDefault();
     const query = $(this).find('[name="q"]').val().trim();
     const category = $(this).find('[name="category"]').val();
