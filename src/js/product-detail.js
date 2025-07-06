@@ -78,11 +78,11 @@ async function loadProductDetail() {
     `;
 
     // ✅ Asignamos el enlace correcto al botón "Seguir comprando"
-    const enlace = document.getElementById('seguir-comprando');
-    if (enlace) {
-      const pagina = obtenerPaginaPorCategoria(product.category);
-      enlace.href = pagina;
-    }
+  const enlace = document.getElementById('seguir-comprando');
+if (enlace) {
+  const ultimaPagina = localStorage.getItem('ultimaPagina');
+  enlace.href = ultimaPagina || obtenerPaginaPorCategoria(product.category);
+}
 
     // ✅ Añadimos el event listener para agregar al carrito
     const btn = document.getElementById('btnAgregarAlCarrito');
