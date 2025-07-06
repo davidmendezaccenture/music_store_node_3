@@ -198,108 +198,45 @@ if (document.getElementById('modals-container')) {
 }
 //Modal de bienvenida de usuario
 function mostrarModalBienvenida(mensaje) {
-  const modalHTML = `
-    <div class="modal fade" id="modalBienvenida" tabindex="-1" aria-labelledby="modalBienvenidaLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content text-center">
-          <div class="modal-body">
-            <i class="bi bi-person-check text-primary" style="font-size: 3rem; margin-bottom:15px;"></i>
-            <p class="fs-5 mb-2">${mensaje}</p>
-            <button id="btnCerrarModal" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
+  document.getElementById('mensajeBienvenida').innerText = mensaje;
 
-  // Insertar en el contenedor
-  const contenedor = document.getElementById('modals-container');
-  contenedor.innerHTML = modalHTML;
-
-  // Crear modal de bootstrap
   const modalElement = document.getElementById('modalBienvenida');
   const modal = new bootstrap.Modal(modalElement);
-
-  // Mostrar modal
   modal.show();
 
-  // Añadir evento para el botón que cierra modal
-  document.getElementById('btnCerrarModal').addEventListener('click', () => {
+  document.getElementById('btnCerrarModalBienvenida').addEventListener('click', () => {
     modal.hide();
   });
 
-  // Al cerrar modal, actualizar carrito y eliminar backdrop
   modalElement.addEventListener('hidden.bs.modal', () => {
-      if (window.location.pathname.includes('login.html')) {
-    window.location.href = "/pages/cart.html";
-      }else{
+    if (window.location.pathname.includes('login.html')) {
+      window.location.href = "/pages/cart.html";
+    } else {
       mostrarCarrito();
       const backdrop = document.querySelector('.modal-backdrop');
       if (backdrop) backdrop.remove();
-      }
+    }
   });
 }
 
 //Modal de confirmacion de pago
 function mostrarModalPago() {
-  const modalHTML = `
-    <div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-labelledby="modalPagoConfirmadoLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content text-center">
-          <div class="modal-body">
-            <i class="bi bi-check-circle text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
-            <p class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
-            <button id="btnCerrarModal" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-
-  // Insertar en el contenedor
-  const contenedor = document.getElementById('modals-container');
-  contenedor.innerHTML = modalHTML;
-
-  // Mostrar la modal
   const modal = new bootstrap.Modal(document.getElementById('modalPagoConfirmado'));
   modal.show();
 
-  // Añadir evento para el botón que cierra modal
-  document.getElementById('btnCerrarModal').addEventListener('click', () => {
+  document.getElementById('btnCerrarModalPago').addEventListener('click', () => {
     modal.hide();
   });
 }
+
 //Modal de confirmacion de borrado de elementos
-let modalEliminar=null;
+let modalEliminar = null;
+
 function mostrarModalConfirmarEliminacion() {
-  const modalHTML = `
-  <div class="modal fade" id="modalConfirmarEliminacion" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Confirmar eliminación</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          ¿Estás seguro de que quieres eliminar este producto del carrito?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button id="btn-confirmar-eliminar" type="button" class="btn btn-danger">Eliminar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  `;
-
-  // Insertar en el contenedor
-  const contenedor = document.getElementById('modals-container');
-  contenedor.innerHTML = modalHTML;
-
-  // Mostrar la modal
   modalEliminar = new bootstrap.Modal(document.getElementById('modalConfirmarEliminacion'));
   modalEliminar.show();
 }
+
 
 
 
