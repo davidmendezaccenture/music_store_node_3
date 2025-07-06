@@ -1,6 +1,6 @@
 //logica pagina de contacto
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
+    const contactForm = document.getElementById('form-contacto');
     
     // Validación al enviar el formulario
     contactForm.addEventListener('submit', function(event) {
