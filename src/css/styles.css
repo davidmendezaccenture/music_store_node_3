@@ -285,6 +285,8 @@ a:hover .icono-nav {
     justify-content: space-evenly;
     height: auto;
     box-sizing: border-box;
+    margin: 1px 1px;
+
 }
 
 .foto-usuario {
