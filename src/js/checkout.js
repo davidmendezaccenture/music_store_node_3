@@ -156,6 +156,13 @@ function mostrarMensajeCarritoVacio() {
       No tienes artículos en el carrito.
     </li>
   `);
+    //Reseteamos los precios por si hubiese algún cupón aplicado
+    $('#envio').text('0.00 €');
+    $('#totalSinEnvio').text('0.00 €');
+    $('#total').text('0.00 €');
+
+  // También resetea el descuento aplicado para evitar que quede activo
+  descuentoAplicado = 0;
 }
 
 let descuentoAplicado = 0;  // Porcentaje aplicado, 0 = sin descuento
