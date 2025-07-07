@@ -92,29 +92,37 @@ function mostrarCarrito() {
       totalCarrito += subtotal;
 
       const itemHTML = `
-        <li class="item-carrito list-group-item border rounded-3 shadow-sm p-3 mb-3 w-100 d-flex flex-wrap align-items-center gap-5" data-id="${item.id}">
-          <div class="d-flex align-items-center justify-content-center flex-shrink-0 mx-5" style="width: 80px;">
+        <li class="item-carrito list-group-item border rounded-3 shadow-sm p-3 mb-3 d-flex align-items-center mx-auto"
+          style="max-width: 700px; width: 100%;" data-id="${item.id}">
+          <div style="width: 80px; flex-shrink: 0;">
             <img src="${image}" alt="${name}" style="max-width: 100%; height: auto;">
           </div>
-          <div class="flex-grow-1">
-            <strong>${name}</strong><br>
-            <small class="text-muted">Precio: $${offerPrice.toFixed(2)}</small>
-            <div class="d-flex align-items-center mt-2">
-              <button class="btn btn-outline-secondary btn-sm btn-restar me-2">−</button>
-              <span>${cantidad}</span>
-              <button class="btn btn-outline-secondary btn-sm btn-sumar ms-2">+</button>
-            </div>
-            <div class="mt-2">
-              <button class="btn btn-danger btn-sm btn-eliminar">Eliminar</button>
+          <div class="flex-grow-1 d-flex justify-content-center">
+            <div class="d-flex gap-4 align-items-center" style="max-width: 400px;">
+              <div class="d-flex flex-column align-items-center gap-2" style="min-width: 150px;">
+                <strong class="text-center">${name}</strong> 
+                <div class="d-flex align-items-center gap-2">
+                  <button class="btn btn-outline-secondary btn-sm btn-restar">−</button>
+                  <span class="cantidad">${cantidad}</span>
+                  <button class="btn btn-outline-secondary btn-sm btn-sumar">+</button>
+                </div>
+              </div>
+              <div class="item-precio">
+                <div class="precio">
+                  <span>Precio:</span> ${offerPrice.toFixed(2)} €
+                </div>
+                <div id="subtotal" class="subtotal-container">
+                  <strong>Subtotal:</strong>
+                  <span class="subtotal-amount">${subtotal.toFixed(2)} €</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="text-end flex-shrink-0" style="min-width: 120px;">
-            <strong>Subtotal: </strong>
-            <span>$${subtotal.toFixed(2)}</span>
-          </div>
+          <button class="btn btn-sm btn-outline-danger btn-eliminar ms-auto" title="Eliminar" style="font-size: 1.25rem; line-height: 1;">
+            <i class="bi bi-trash"></i>
+          </button>
         </li>
       `;
-
       $contenedor.append(itemHTML);
     } else {
       $contenedor.append(`<li><em>Producto con ID ${item.id} no encontrado</em></li>`);
@@ -139,6 +147,14 @@ $(document).on('click', '.btn-sumar', function () {
     guardarCarrito();
     actualizarContadorCarrito(calcularTotalItems(carrito));
     mostrarCarrito();
+        setTimeout(() => {
+      const itemElem = $(`li[data-id="${id}"]`);
+      const subtotalElem = itemElem.find('#subtotal');
+
+      subtotalElem.removeClass('subtotal-anim'); // reset animation
+      void subtotalElem[0].offsetWidth; // force reflow
+      subtotalElem.addClass('subtotal-anim');
+    }, 50);
   }
 });
 
@@ -161,6 +177,14 @@ $(document).on('click', '.btn-restar', function () {
       guardarCarrito();
       actualizarContadorCarrito(calcularTotalItems(carrito));
       mostrarCarrito();
+          setTimeout(() => {
+      const itemElem = $(`li[data-id="${id}"]`);
+      const subtotalElem = itemElem.find('#subtotal');
+
+      subtotalElem.removeClass('subtotal-anim'); // reset animation
+      void subtotalElem[0].offsetWidth; // force reflow
+      subtotalElem.addClass('subtotal-anim');
+    }, 50);
     }
   }
 });
@@ -275,7 +299,7 @@ function calcularTotalItems(carrito) {
 // Guardar posiciones para animaciones
 function guardarPosiciones() {
   const posiciones = [];
-  $('.item-carrito, #total h4, #total button, #seguir-comprando, .pie-de-pagina ').each(function () {
+  $('.item-carrito, #total h4, #total button, #seguir-comprando, .pie-de-pagina, .pre-footer ').each(function () {
     const $el = $(this);
     posiciones.push({ el: $el, top: $el.offset().top });
   });

@@ -125,10 +125,11 @@
                         <i class="bi bi-cart3 icono-contador"></i>
                         <span id="cartCounterDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                     </a>
-<div id="user-auth-desktop" class="d-flex align-items-center">
-  <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
-  <div id="auth-button-desktop"></div>
-</div>
+                    <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate text-center">Invitado</span>
+                    <div id="user-auth-desktop" class="d-flex align-items-center">
+
+                        <div id="auth-button-desktop"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -259,72 +260,28 @@
     </div>
   </div>
 
-
-  <!-- Modal de inicio de sesión -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <form id="loginForm">
-            <div class="mb-3">
-              <label for="loginEmail" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="loginEmail" required placeholder="tucorreo@ejemplo.com" />
-            </div>
-            <div class="mb-3">
-              <label for="loginPassword" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="loginPassword" required placeholder="Introduce tu contraseña" />
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="rememberMe" />
-              <label class="form-check-label" for="rememberMe">Recordar sesión</label>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-          </form>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0">¿No tienes cuenta? <a href="#" id="enlace-registro">Regístrate aquí</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Año actual -->
-  <script>
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
-  </script>
-
-  <!-- Librerías -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script src="../js/about_us.js"></script>
-  <script src="../js/utils.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/cart.js"></script>
-  <script src="../js/app.js"></script>
+<div id="modals-container"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+<script>
+    // Añadir el año currentYear automáticamente
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+<script>
+    //Función para guardar ultima página
+  document.addEventListener('DOMContentLoaded', () => {
+    localStorage.setItem('ultimaPagina', window.location.pathname);
+  });
+</script>
+<script src="../js/login-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/search.js"></script>
 
   <!-- Google Maps API con mi clave real) -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5F5tAirDf5wsL_K9oLu-lGVVEDM6gEIs&callback=initMap"></script>
 
-  <!-- Añdo una animacion para dar tiempo a redirigir a la pagina de registro antes de cerrar el modal de login-->
-  <script>
-    $('#enlace-registro').on('click', function (e) {
-      e.preventDefault();
-
-    // Añade una clase de animación de salida al modal
-      $('#loginModal .modal-content').addClass('animate__animated animate__fadeOutUp');
-
-    // Espera la animación (500 ms aprox), luego cierra el modal y redirige
-      setTimeout(() => {
-        const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-        modal.hide(); // Cierra el modal programáticamente
-        window.location.href = 'registro.html'; // Redirige a la página de registro
-      }, 600); // Delay algo mayor a la duración de la animación
-    });
-  </script>
 </body>
 </html>

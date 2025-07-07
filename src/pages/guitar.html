@@ -57,7 +57,11 @@
                                 <option value="basses">Bajos</option>
                                 <option value="amplifiers">Amplificadores</option>
                                 <option value="effect-pedals">Pedales</option>
-                                <option value="drums">Baterías</option>
+                                <option value="acoustic-drums">Baterías acustica</option>
+                                <option value="electronic-drums">Baterías electronica</option>
+                                <option value="set-platillos">Platillos</option>
+                                <option value="keyboards">Teclados</option>
+                                <option value="synthesizers">Sintetizadores</option>
                             </select>
                             <button class="btn btn-outline-primary" type="submit">
                                 <i class="bi bi-search"></i>
@@ -119,10 +123,11 @@
                         <i class="bi bi-cart3 icono-contador"></i>
                         <span id="cartCounterDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                     </a>
-<div id="user-auth-desktop" class="d-flex align-items-center">
-  <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
-  <div id="auth-button-desktop"></div>
-</div>
+                    <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate text-center">Invitado</span>
+                    <div id="user-auth-desktop" class="d-flex align-items-center">
+
+                        <div id="auth-button-desktop"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -142,23 +147,18 @@
                   <div class="col-auto">
                     <select id="categoria" class="form-select" aria-label="Seleccionar categoría">
                         <option value="Todas" selected>Todas</option>
-                        <option value="Clásica">Clásica</option>
-                        <option value="Eléctrica">Eléctrica</option>
-                        <option value="Acústica">Acústica</option>
+                        <option value="Acústica">Acústicas</option>
+                        <option value="Clásica">Clásicas</option>
+                        <option value="Eléctrica">Eléctricas</option>
                         <option value="Bajos">Bajos</option>
-                        <option value="amplifiers">Amplificadores</option>
-                        <option value="effect-pedals">Pedales</option>
-                        <option value="acoustic-drums">Baterías acustica</option>
-                        <option value="electronic-drums">Baterías electronica</option>
-                        <option value="set-platillos">Platillos</option>
-                        <option value="keyboards">Teclados</option>
-                        <option value="synthesizers">Sintetizadores</option>
                     </select>
                   </div>
               </form>
             </div>
             <!-- contenedor para añadir los productos dinamicamente-->
-            <section id="productosContainer" class="row row-cols-1 row-cols-md-3 g-4" aria-label="Listado de productos"></section>
+            <div class="container">
+                <section id="productosContainer" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3"></section>
+            </div>
            
                 <!--Notificacion de producto añadido-->
                 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
@@ -270,6 +270,7 @@
     <script src="../js/login-ui.js"></script>
     <script src="../js/index.js"></script>
     <script src="../js/products.js"></script>
+    <script src="../js/category.js"></script>
    
 </body>
 </html>

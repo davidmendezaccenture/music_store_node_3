@@ -123,10 +123,11 @@
                         <i class="bi bi-cart3 icono-contador"></i>
                         <span id="cartCounterDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                     </a>
-<div id="user-auth-desktop" class="d-flex align-items-center">
-  <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
-  <div id="auth-button-desktop"></div>
-</div>
+                    <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate text-center">Invitado</span>
+                    <div id="user-auth-desktop" class="d-flex align-items-center">
+
+                        <div id="auth-button-desktop"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -146,7 +147,7 @@
     <div class="container-fluid px-3" id="total">
         <h4 class="text-end">Total: <span id="total-carrito"></span> €</h4>
         <div class="botones-carrito text-end mt-2">
-          <button id="confirmar-pago" class="boton-confirmar-pago" aria-label="Confirmar y proceder al pago"><span class="icono">🛒</span>Confirmar pago</button>
+          <button id="confirmar-pago" class="boton-confirmar-pago" aria-label="Confirmar y proceder al pago"><i class="bi bi-cart3 icono-contador"></i>Confirmar pago</button>
         </div>
       </div>
   </main>
@@ -220,21 +221,6 @@
         </div>
     </footer>
 
-    <!-- Modal de inicio de sesión -->
-    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login Icon" style="width:60px; margin-bottom:15px;">
-                <p>¿Tienes cuenta?</p>
-                <p>Inicia sesión para continuar.</p>
-                <a href="/pages/login.html" class="btn btn-primary">Iniciar sesión</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 <script>
     // Añadir el año actual automáticamente
     document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -247,7 +233,7 @@
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- Modales de login y error importados dinámicamente -->
+    <!-- Modales de login y error importados dinámicamente -->
     <div id="modals-container"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>

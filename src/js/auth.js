@@ -6,7 +6,8 @@ $(document).ready(function () {
 $(document).on('submit', '#form-login', function(e) {
   console.log("Submit capturado");
   e.preventDefault();
-  const username = $('#username').val().trim();
+  //Quitamos trim() del username, ya que si añadimos espacios lo da por válido, pero da inicialmente error aunque se conecta
+  const username = $('#username').val();
   const password = $('#password').val();
 
   if (!username || !password) {
@@ -78,8 +79,7 @@ $(document).on('submit', '#form-login', function(e) {
     })
     .catch(err => {
       console.error("Error en el proceso de login o carrito:", err);
-      var myModal = new bootstrap.Modal(document.getElementById('loginErrorModal'));
-      myModal.show();
+      loginErrorModal.show();
     });
 
   //Función para unificar el contenido de los carritos
@@ -184,5 +184,7 @@ $(document).on('submit', '#form-login', function(e) {
       }
     });
   });
+  //Modal de error fuera del bloque catch. Si no, no se cierra del todo
+  const loginErrorModal = new bootstrap.Modal(document.getElementById('loginErrorModal'));
 
 });

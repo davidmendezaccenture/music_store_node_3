@@ -57,3 +57,65 @@
     </div>
   </div>
 </div>
+
+    <!-- Modal de aviso al cambiar modificar carrito como invitado-->
+<div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login Icon" style="width:60px; margin-bottom:15px;">
+        <h5>¿Tienes una cuenta?</h5>
+        <p>Inicia sesión para continuar</p>
+        <button class="btn btn-primary mt-2" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
+          Iniciar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal Bienvenida -->
+  <div class="modal fade" id="modalBienvenida" tabindex="-1" aria-labelledby="modalBienvenidaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <div class="modal-body">
+          <i class="bi bi-person-check text-primary" style="font-size: 3rem; margin-bottom:15px;"></i>
+          <p id="mensajeBienvenida" class="fs-5 mb-2"></p>
+          <button id="btnCerrarModalBienvenida" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Confirmación de Pago -->
+  <div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-labelledby="modalPagoConfirmadoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <div class="modal-body">
+          <i class="bi bi-check-circle text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
+          <p class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
+          <button id="btnCerrarModalPago" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Confirmación de Eliminación -->
+  <div class="modal fade" id="modalConfirmarEliminacion" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmar eliminación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de que quieres eliminar este producto del carrito?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="btn-confirmar-eliminar" type="button" class="btn btn-danger">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

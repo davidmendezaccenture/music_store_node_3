@@ -89,8 +89,7 @@ $(document).ready(function () {
         const productosPagina = productos.slice(inicio, fin);
 
         productosPagina.forEach((producto, i) => {
-            console.log(producto);
-            const estrellas = '★'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
+            const estrellas = '⭐'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
             const ofertaBadge = producto.enOferta === "sí"
                 ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>`
                 : "";
@@ -98,39 +97,37 @@ $(document).ready(function () {
                 ? `<span class="precio">
                         <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
                         <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
-                   </span>`
+                    </span>`
                 : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`;
 
             const $col = $(`
                 <div class="col producto-animado" data-category="${producto.category}">
-                    <div class="card h-100 position-relative" role="article">
-                        ${ofertaBadge}
-                        <img src="${producto.image.replace('..', '')}" class="card-img-top" alt="${producto.name}">
-                        <div class="card-body d-flex flex-column">
-                            <h2 class="card-title h5">${producto.name}</h2>
-                            <p class="card-text">${producto.description}</p>
-                            ${precioHTML}
-                            <p class="valoracion" aria-label="Valoración del producto">${estrellas}</p>
-                            <div class="mt-auto">
-                                <button class="btn btn-primary agregar-carrito" data-id="${producto.id}">
-                                    Añadir a la cesta
-                                </button>
-                                <!-- Botón para ir al detalle del producto -->
-                                <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-outline-secondary mt-2 w-100">
-                            Ver detalle
-                            </a>
+                    <div class="card-product h-100 d-flex flex-column position-relative" role="article">${ofertaBadge}
+                        <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="${producto.name}" style="height: 130px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
+                            <h2 class="card-title" style="font-size: 0.95rem; margin-bottom: 0.3rem; min-height: 2.5em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}
+                            </h2>
+                            <p class="card-text" style="font-size: 0.85rem; min-height: 60px; max-height: 60px; overflow-y: auto; margin-bottom: 0.5rem; scrollbar-width: thin;">${producto.description}
+                            </p>
+                            <div class="espacio-inferior mt-auto d-flex flex-column gap-1">
+                                <div class="precio fw-bold">${precioHTML}</div>
+                                <p class="valoracion" style="font-size: 0.8rem; margin: 0;" aria-label="Valoración del producto">${estrellas}
+                                </p>
+                                <div class="d-flex gap-1 mt-2">
+                                    <button class="btn btn-sm btn-primary flex-fill agregar-carrito" data-id="${producto.id}">Añadir</button>
+                                    <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary flex-fill d-flex justify-content-center align-items-center boton-detalle">Detalle</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             `);
-
             $contenedor.append($col);
             setTimeout(() => $col.addClass('visible'), 100 + i * 100); // animación progresiva
         });
 
         for (let i = 1; i <= totalPaginas; i++) {
-            const $btn = $(`<button class="btn btn-sm mx-1 ${i === paginaActual ? 'btn-primary' : 'btn-outline-primary'}">${i}</button>`);
+            const $btn = $(`<button class="btn btn-sm mx-1 btn-outline-primary ${i === paginaActual ? 'pagina-activa' : ''}">${i}</button>`);
             $btn.on('click', () => {
                 paginaActual = i;
                 mostrarResultados(productosFiltradosGlobal);
@@ -142,8 +139,6 @@ $(document).ready(function () {
 
     if (esSearchPage) {
         $form.on('submit', function (e) {
-            console.log("query:", query);
-console.log("category:", category);
             e.preventDefault();
     const query = $(this).find('[name="q"]').val().trim();
     const category = $(this).find('[name="category"]').val();
