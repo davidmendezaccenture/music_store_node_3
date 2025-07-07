@@ -180,22 +180,24 @@ function actualizarGastosYTotal() {
     totalUnidades += item.cantidad;
   });
 
-  // Calculamos gastos de envío
-  let gastosEnvioNormal = 0;
-  if (totalUnidades > 0) {
-    gastosEnvioNormal = 10 + (totalUnidades - 1) * 5;
-  }
+// Aplicar descuento sobre subtotal (totalPedido)
+const descuento = (totalPedido * descuentoAplicado) / 100;
+const totalConDescuento = totalPedido - descuento;
 
-  let gastosEnvioFinal = 0;
-  if (metodoEnvio === 'tienda' || totalPedido > 500) {
-    gastosEnvioFinal = 0;
-  } else {
-    gastosEnvioFinal = gastosEnvioNormal;
-  }
+// Calculamos gastos de envío
+let gastosEnvioNormal = 0;
+if (totalUnidades > 0) {
+  gastosEnvioNormal = 10 + (totalUnidades - 1) * 5;
+}
 
-  // Aplicar descuento sobre subtotal (totalPedido)
-  const descuento = (totalPedido * descuentoAplicado) / 100;
-  const totalConDescuento = totalPedido - descuento;
+// ✅ Aquí usamos totalConDescuento
+let gastosEnvioFinal = 0;
+if (metodoEnvio === 'tienda' || totalConDescuento > 500) {
+  gastosEnvioFinal = 0;
+} else {
+  gastosEnvioFinal = gastosEnvioNormal;
+}
+
 
   // Mostrar gastos de envío
   if (gastosEnvioFinal === 0 && gastosEnvioNormal > 0) {
