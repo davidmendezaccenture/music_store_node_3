@@ -93,32 +93,34 @@ function mostrarCarrito() {
 
       const itemHTML = `
         <li class="item-carrito list-group-item border rounded-3 shadow-sm p-3 mb-3 d-flex align-items-center mx-auto"
-        style="max-width: 700px; width: 100%;" data-id="${item.id}">
-          <!-- Imagen -->
+          style="max-width: 700px; width: 100%;" data-id="${item.id}">
           <div style="width: 80px; flex-shrink: 0;">
             <img src="${image}" alt="${name}" style="max-width: 100%; height: auto;">
           </div>
-          <!-- Contenedor centrado horizontalmente que incluye las dos columnas -->
           <div class="flex-grow-1 d-flex justify-content-center">
             <div class="d-flex gap-4 align-items-center" style="max-width: 400px;">
-              <!-- Columna izquierda: controles + nombre centrado encima -->
               <div class="d-flex flex-column align-items-center gap-2" style="min-width: 150px;">
                 <strong class="text-center">${name}</strong> 
                 <div class="d-flex align-items-center gap-2">
                   <button class="btn btn-outline-secondary btn-sm btn-restar">−</button>
-                  <span>${cantidad}</span>
+                  <span class="cantidad">${cantidad}</span>
                   <button class="btn btn-outline-secondary btn-sm btn-sumar">+</button>
                 </div>
               </div>
-              <!-- Columna derecha: precio y subtotal uno encima de otro -->
-              <div class="text-muted small" style="min-width: 120px;">
-                <div><strong>Precio:</strong> ${offerPrice.toFixed(2)} €</div>
-                <div><strong>Subtotal:</strong> ${subtotal.toFixed(2)} €</div>
+              <div class="item-precio">
+                <div class="precio">
+                  <span>Precio:</span> ${offerPrice.toFixed(2)} €
+                </div>
+                <div id="subtotal" class="subtotal-container">
+                  <strong>Subtotal:</strong>
+                  <span class="subtotal-amount">${subtotal.toFixed(2)} €</span>
+                </div>
               </div>
             </div>
           </div>
-          <!-- Botón eliminar alineado a la derecha -->
-          <button class="btn btn-sm btn-outline-danger btn-eliminar ms-auto">Eliminar</button>
+          <button class="btn btn-sm btn-outline-danger btn-eliminar ms-auto" title="Eliminar" style="font-size: 1.25rem; line-height: 1;">
+            <i class="bi bi-trash"></i>
+          </button>
         </li>
       `;
       $contenedor.append(itemHTML);
@@ -145,6 +147,14 @@ $(document).on('click', '.btn-sumar', function () {
     guardarCarrito();
     actualizarContadorCarrito(calcularTotalItems(carrito));
     mostrarCarrito();
+        setTimeout(() => {
+      const itemElem = $(`li[data-id="${id}"]`);
+      const subtotalElem = itemElem.find('#subtotal');
+
+      subtotalElem.removeClass('subtotal-anim'); // reset animation
+      void subtotalElem[0].offsetWidth; // force reflow
+      subtotalElem.addClass('subtotal-anim');
+    }, 50);
   }
 });
 
@@ -167,6 +177,14 @@ $(document).on('click', '.btn-restar', function () {
       guardarCarrito();
       actualizarContadorCarrito(calcularTotalItems(carrito));
       mostrarCarrito();
+          setTimeout(() => {
+      const itemElem = $(`li[data-id="${id}"]`);
+      const subtotalElem = itemElem.find('#subtotal');
+
+      subtotalElem.removeClass('subtotal-anim'); // reset animation
+      void subtotalElem[0].offsetWidth; // force reflow
+      subtotalElem.addClass('subtotal-anim');
+    }, 50);
     }
   }
 });

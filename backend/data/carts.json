@@ -3,6 +3,10 @@
   "{\"message\":\"Login exitoso.\",\"user\":{\"username\":\"PabloEmilio\",\"email\":\"pachepatat@gmail.com\"}}": [],
   "David": [
     {
+      "id": 1,
+      "cantidad": 10
+    },
+    {
       "id": 2,
       "cantidad": 1
     },

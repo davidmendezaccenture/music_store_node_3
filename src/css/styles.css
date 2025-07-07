@@ -432,6 +432,10 @@ footer {
     margin-bottom: 8px !important;
     padding-top: 15.5px !important;
     padding-bottom: 15.5px !important;
+  display: flex;
+  flex-wrap: wrap; /* <- permite que los bloques bajen si no caben */
+  align-items: center;
+  gap: 1rem;
 }
 
 .item-carrito img {
@@ -443,6 +447,11 @@ footer {
 .item-carrito img:hover {
     transform: scale(1.5);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+.item-carrito .cantidad {
+  display: inline-block;
+  width: 2.5ch; /* ancho para 2-3 dígitos */
+  text-align: center;
 }
 
 
@@ -1026,3 +1035,75 @@ header {
 #username-desktop {
     width: 70px;
 }
+/*Carrito*/
+#subtotal{
+    padding: 6px 8px; 
+    margin-top: 6px; 
+    background-color: #e9ecef; 
+    border-radius: 6px; 
+    font-weight: 600; 
+    color: #212529; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+.subtotal-anim {
+    animation: scaleSubtotal 0.3s ease;
+}
+
+@keyframes scaleSubtotal {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Animación papelera */
+.btn-eliminar i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btn-eliminar:hover i {
+    animation: swing 0.6s ease infinite;
+}
+
+@keyframes swing {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(15deg); }
+    50%  { transform: rotate(-15deg); }
+    75%  { transform: rotate(15deg); }
+    100% { transform: rotate(0deg); }
+}
+.btn-restar, .btn-sumar {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+
+.item-precio {
+    flex: 0 0 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+    font-size: 0.875rem; 
+    color: #6c757d;
+    font-family: inherit;
+}
+
+
+.item-precio .precio {
+    padding: 5px 8px;
+    font-weight: normal;
+}
+
+.subtotal-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 6px;
+}
+
+
+
