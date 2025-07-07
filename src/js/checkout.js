@@ -188,7 +188,7 @@ function actualizarGastosYTotal() {
       <span style="text-decoration: line-through; color: #888; margin-right: 8px;">
         ${gastosEnvioNormal.toFixed(2)} €
       </span>
-      <strong>0.00 €</strong>
+      <strong style="color:red;">0.00 €</strong>
     `);
   } else {
     $('#envio').text(`${gastosEnvioFinal.toFixed(2)} €`);
