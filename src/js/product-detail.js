@@ -28,12 +28,12 @@ async function loadProductDetail() {
   if (!id) return;
 
   try {
-    const res = await fetch('../assets/data/products.json');
+    const res = await fetch("../assets/data/products.json");
     const products = await res.json();
-    const product = products.find(p => p.id === id);
+    const product = products.find((p) => p.id === id);
 
     if (!product) {
-      document.getElementById('product-detail-container').innerHTML = `
+      document.getElementById("product-detail-container").innerHTML = `
         <div class="alert alert-danger">Producto no encontrado.</div>
       `;
       return;
@@ -42,8 +42,13 @@ async function loadProductDetail() {
     // ✅ Renderizado del detalle del producto
     document.getElementById("product-detail-container").innerHTML = `
       <div class="card flex-row shadow-lg" style="max-width:900px;margin:auto;">
-        <div class="d-flex align-items-stretch" style="width:300px;min-width:300px;padding:0.5rem;">
-          <img src="${product.image}" alt="${product.name}" class="img-fluid rounded" style="object-fit:cover;height:100%;width:100%;">
+        <div class="d-flex align-items-stretch position-relative" style="width:300px;min-width:300px;padding:0.5rem;">
+          <img src="${product.image}" alt="${
+      product.name
+    }" class="img-fluid rounded" style="object-fit:cover;height:100%;width:100%;">
+          <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-3" id="btnZoomImg" aria-label="Ampliar imagen">
+            <i class="bi bi-search"></i>
+          </button>
         </div>
         <div class="card-body d-flex flex-column justify-content-between">
           <div>
@@ -85,30 +90,48 @@ async function loadProductDetail() {
     `;
 
     // ✅ Asignamos el enlace correcto al botón "Seguir comprando"
-  const enlace = document.getElementById('seguir-comprando');
-if (enlace) {
-  const ultimaPagina = localStorage.getItem('ultimaPagina');
-  enlace.href = ultimaPagina || obtenerPaginaPorCategoria(product.category);
-}
+    const enlace = document.getElementById("seguir-comprando");
+    if (enlace) {
+      const ultimaPagina = localStorage.getItem("ultimaPagina");
+      enlace.href = ultimaPagina || obtenerPaginaPorCategoria(product.category);
+    }
 
     // ✅ Añadimos el event listener para agregar al carrito
-    const btn = document.getElementById('btnAgregarAlCarrito');
+    const btn = document.getElementById("btnAgregarAlCarrito");
     if (btn) {
-      btn.addEventListener('click', () => {
-        if (typeof addToCart === 'function') {
+      btn.addEventListener("click", () => {
+        if (typeof addToCart === "function") {
           addToCart(product.id);
         } else {
-          console.error('❌ No se encontró la función global addToCart.');
+          console.error("❌ No se encontró la función global addToCart.");
         }
       });
     }
-
   } catch (error) {
     console.error("❌ Error cargando producto:", error);
-    document.getElementById('product-detail-container').innerHTML = `
+    document.getElementById("product-detail-container").innerHTML = `
       <div class="alert alert-danger">Error al cargar el producto.</div>
     `;
   }
+
+  // ✅ Añado modal para ampliar imagen
+    document.addEventListener("click", function (e) {
+      // Detecta clic en el botón de la lupa
+      if (e.target.closest("#btnZoomImg")) {
+        // Obtiene la ruta de la imagen mostrada en la card
+        const imgSrc = document.querySelector(
+          "#product-detail-container img"
+        ).src;
+        // Asigna la ruta al modal
+        document.getElementById("imgZoomModal").src = imgSrc;
+        // Muestra el modal usando Bootstrap
+        const modal = new bootstrap.Modal(
+          document.getElementById("modalZoomImg")
+        );
+        modal.show();
+      }
+    });
+
 }
 
 // ✅ Ejecutamos al cargar la página
