@@ -335,9 +335,9 @@ function mostrarMensajeCarritoVacio() {
           <p class="mb-0">Tu carrito está vacío.</p>
         </li>
       `);
-    $('#confirmar-pago').prop('disabled', true);
+    $('#hacer-checkout').prop('disabled', true);
   } else {
-    $('#confirmar-pago').prop('disabled', false);
+    $('#chacer-chekout').prop('disabled', false);
   }
 }
 //Para cargar el carrito tras el loguin
