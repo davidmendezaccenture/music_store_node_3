@@ -4,15 +4,15 @@
   "David": [
     {
       "id": 1,
-      "cantidad": 10
+      "cantidad": 2
     },
     {
       "id": 2,
-      "cantidad": 1
+      "cantidad": 4
     },
     {
       "id": 3,
-      "cantidad": 1
+      "cantidad": 3
     }
   ],
   "prueba2": [],

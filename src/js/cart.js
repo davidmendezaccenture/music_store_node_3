@@ -32,6 +32,7 @@ $(document).ready(function () {
           carrito = respuesta;
           actualizarContadorCarrito(calcularTotalItems(carrito));
           mostrarCarrito();
+          guardarCarrito();
         }
       },
       error: function () {
@@ -377,4 +378,8 @@ const toast = new bootstrap.Toast(toastElement, {
 function mostrarToastAgregar() {
   toast.show();
 }
+//Dirigir a checkout
+document.getElementById('hacer-checkout').addEventListener('click', function() {
+  window.location.href = '/pages/checkout.html';
+});
 

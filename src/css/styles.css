@@ -476,12 +476,12 @@ footer {
   transform: scale(1.05);
 }
 
-.boton-confirmar-pago:hover {
+.hacer-checkout:hover {
     background-color: #004085;
     border-color: #004085;
     transform: scale(1.05);
 }
-.boton-confirmar-pago {
+.hacer-checkout {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -497,12 +497,12 @@ footer {
   margin-bottom: 1.5rem; /* mb-4 ≈ 24px */
 }
 
-.boton-confirmar-pago:focus {
+.hacer-checkout:focus {
   outline: none;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5); /* Bootstrap-style focus */
 }
 
-.boton-confirmar-pago:disabled {
+.hacer-checkout:disabled {
   background-color: #6c757d;
   border-color: #6c757d;
   cursor: not-allowed;
@@ -510,7 +510,7 @@ footer {
   transform: none;
 }
 
-.boton-confirmar-pago:disabled:hover {
+.hacer-checkout:disabled:hover {
   background-color: #6c757d;
   border-color: #6c757d;
   transform: none;
@@ -518,15 +518,15 @@ footer {
 
 
 
-/* Icono dentro del botón. Añadimos pequeño efecto de rotación*/
+/* Icono dentro del botón. Añadimos pequeño efecto de rotación. No  sirve de momento*/
 
-#confirmar-pago .icono {
+#hacer-checkout .icono {
     transition: transform 0.2s ease;
     display: inline-block;
     vertical-align: middle;
 }
 
-#confirmar-pago:hover .icono {
+#hacer-checkout:hover .icono {
     transform: translateX(2px) rotate(-4deg);
 }
 
@@ -1105,5 +1105,4 @@ header {
     padding: 4px 6px;
 }
 
-
-
+/*Checkout, resumen del pedido */
