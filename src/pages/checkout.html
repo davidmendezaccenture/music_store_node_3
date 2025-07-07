@@ -38,39 +38,65 @@
                         </a>
                         <h2 class="h4 mb-4">Datos de envío y pago</h2>
                         <!-- Formulario -->
-                        <form>
-                            <!-- Dirección -->
-                            <div class="mb-3">
-                                <label for="direccion" class="form-label">Dirección</label>
-                                <input type="text" class="form-control" id="direccion" required>
-                            </div>
+<form id="form-checkout" novalidate>
+  <!-- Nombre y Apellidos -->
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="apellidos" class="form-label">Apellidos</label>
+      <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+    </div>
+  </div>
 
-                            <!-- Ciudad y CP -->
-                            <div class="row">
-                                <div class="col-md-8 mb-3">
-                                    <label for="ciudad" class="form-label">Ciudad</label>
-                                    <input type="text" class="form-control" id="ciudad" required>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="cp" class="form-label">Código Postal</label>
-                                    <input type="text" class="form-control" id="cp" required>
-                                </div>
-                            </div>
+  <!-- Dirección -->
+  <div class="mb-3">
+    <label for="direccion" class="form-label">Dirección</label>
+    <input type="text" class="form-control" id="direccion" name="direccion" required>
+  </div>
 
-                            <!-- Método de pago -->
-                            <div class="mb-3">
-                                <label class="form-label">Método de pago</label>
-                                <select class="form-select" required>
-                                    <option value="">Selecciona un método</option>
-                                    <option>Tarjeta de crédito</option>
-                                    <option>PayPal</option>
-                                    <option>Transferencia bancaria</option>
-                                </select>
-                            </div>
+  <!-- Ciudad y Código Postal -->
+  <div class="row">
+    <div class="col-md-8 mb-3">
+      <label for="ciudad" class="form-label">Ciudad</label>
+      <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="cp" class="form-label">Código Postal</label>
+      <input type="text" class="form-control" id="cp" name="cp" required pattern="\\d{5}" title="Debe contener 5 dígitos">
+    </div>
+  </div>
 
-                            <!-- Botón para avanzar o confirmar -->
-                            <button type="submit" class="btn btn-primary mt-3">Continuar con el pago</button>
-                        </form>
+  <!-- Teléfono -->
+  <div class="mb-3">
+    <label for="telefono" class="form-label">Teléfono</label>
+    <input type="tel" class="form-control" id="telefono" name="telefono" pattern="\d{9}" required title="Debe contener 9 dígitos">
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="email" class="form-label">Correo electrónico</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+  </div>
+
+  <!-- Método de pago -->
+  <div class="mb-3">
+    <label for="metodoPago" class="form-label">Método de pago</label>
+    <select class="form-select" id="metodoPago" name="metodoPago" required>
+      <option value="">Selecciona un método</option>
+      <option value="tarjeta">Tarjeta de crédito</option>
+      <option value="paypal">PayPal</option>
+      <option value="transferencia">Transferencia bancaria</option>
+    </select>
+  </div>
+
+  <!-- Botón -->
+  <button type="submit" class="btn btn-primary mt-3 w-100">Continuar con el pago</button>
+</form>
+
+
                     </div>
                 </div>
 

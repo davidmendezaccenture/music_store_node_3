@@ -180,10 +180,17 @@ app.post("/api/login", (req, res) => {
       return res.status(401).json({ error: "Credenciales inválidas." });
     }
     // Si las credenciales son correctas, devolver el usuario
-    res.status(200).json({
-      message: "Login exitoso.",
-      user: { username: user.username, email: user.email },
-    });
+res.status(200).json({
+  message: "Login exitoso.",
+  user: {
+    username: user.username,
+    email: user.email,
+    phone: user.phone,
+    birthdate: user.birthdate,
+    postalcode: user.postalcode,
+    city: user.city
+  },
+});
   });
 });
 

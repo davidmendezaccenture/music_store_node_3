@@ -337,7 +337,7 @@ function mostrarMensajeCarritoVacio() {
       `);
     $('#hacer-checkout').prop('disabled', true);
   } else {
-    $('#chacer-chekout').prop('disabled', false);
+    $('#hacer-checkout').prop('disabled', false);
   }
 }
 //Para cargar el carrito tras el loguin

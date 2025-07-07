@@ -196,6 +196,47 @@ function actualizarGastosYTotal() {
   $('#totalSinEnvio').text(`${(totalPedido).toFixed(2)} €`);
   $('#total').text(`${(totalPedido + gastosEnvioFinal).toFixed(2)} €`);
 }
+//Validacion básica
+$('#form-checkout').on('submit', function (e) {
+  e.preventDefault();
+
+  if (!this.checkValidity()) {
+    this.classList.add('was-validated');
+    return;
+  }
+
+  const datos = {
+    direccion: $('#direccion').val(),
+    ciudad: $('#ciudad').val(),
+    cp: $('#cp').val(),
+    email: $('#email').val(),
+    metodoPago: $('#metodoPago').val()
+  };
+
+  console.log('Datos del formulario:', datos);
+  // Aquí podrías hacer un POST a tu backend
+});
+
+$(document).ready(() => {
+  const usuarioStr = localStorage.getItem('datosUsuario');
+  if (usuarioStr) {
+    try {
+      const usuario = JSON.parse(usuarioStr);
+
+      // Carga de campos si existen
+      if (usuario.username) $('#nombre').val(usuario.username);
+      if (usuario.apellidos) $('#apellidos').val(usuario.apellidos); // si lo añades más adelante
+      if (usuario.phone) $('#telefono').val(usuario.phone);
+      if (usuario.email) $('#email').val(usuario.email);
+      if (usuario.city) $('#ciudad').val(usuario.city);
+      if (usuario.postalcode) $('#cp').val(usuario.postalcode);
+      console.log("Valor cargado desde localStorage:", usuario.phone)
+
+    } catch (e) {
+      console.error('Error al parsear el usuario en localStorage', e);
+    }
+  }
+});
 
 
 $.get('/api/products', function (data) {
