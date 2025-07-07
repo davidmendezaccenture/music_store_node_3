@@ -348,4 +348,15 @@ ratingMap[r.producto].total += estrellasNum;
     });
   });
 });
+//Endpoint de cupones de descuento
+app.get('/api/coupons', (req, res) => {
+  const rutaCupones = path.join(__dirname, 'src', 'assets', 'data', 'coupons.json');
+  console.log('Enviando archivo:', rutaCupones);
+  res.sendFile(rutaCupones, err => {
+    if (err) {
+      console.error('Error enviando coupons.json:', err);
+      res.status(500).json({ error: 'No se pudo cargar el archivo de cupones' });
+    }
+  });
+});
 

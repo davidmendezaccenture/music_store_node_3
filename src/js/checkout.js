@@ -158,7 +158,9 @@ function mostrarMensajeCarritoVacio() {
   `);
 }
 
-//Actualizar total y gastos de envio sin recargar
+let descuentoAplicado = 0;  // Porcentaje aplicado, 0 = sin descuento
+
+// Función para actualizar los totales, con descuento si lo hay
 function actualizarGastosYTotal() {
   let totalPedido = 0;
   let totalUnidades = 0;
@@ -171,6 +173,7 @@ function actualizarGastosYTotal() {
     totalUnidades += item.cantidad;
   });
 
+  // Calculamos gastos de envío
   let gastosEnvioNormal = 0;
   if (totalUnidades > 0) {
     gastosEnvioNormal = 10 + (totalUnidades - 1) * 5;
@@ -183,6 +186,11 @@ function actualizarGastosYTotal() {
     gastosEnvioFinal = gastosEnvioNormal;
   }
 
+  // Aplicar descuento sobre subtotal (totalPedido)
+  const descuento = (totalPedido * descuentoAplicado) / 100;
+  const totalConDescuento = totalPedido - descuento;
+
+  // Mostrar gastos de envío
   if (gastosEnvioFinal === 0 && gastosEnvioNormal > 0) {
     $('#envio').html(`
       <span style="text-decoration: line-through; color: #888; margin-right: 8px;">
@@ -193,9 +201,53 @@ function actualizarGastosYTotal() {
   } else {
     $('#envio').text(`${gastosEnvioFinal.toFixed(2)} €`);
   }
-  $('#totalSinEnvio').text(`${(totalPedido).toFixed(2)} €`);
-  $('#total').text(`${(totalPedido + gastosEnvioFinal).toFixed(2)} €`);
+
+  // Mostrar subtotal con descuento si se aplicó
+  if (descuentoAplicado > 0) {
+    $('#totalSinEnvio').html(`
+      <span style="text-decoration: line-through; color: #888; margin-right: 8px;">
+        ${totalPedido.toFixed(2)} €
+      </span>
+      <strong>${totalConDescuento.toFixed(2)} €</strong>
+    `);
+  } else {
+    $('#totalSinEnvio').text(`${totalPedido.toFixed(2)} €`);
+  }
+
+  // Mostrar total final (subtotal con descuento + gastos de envío)
+  $('#total').text(`${(totalConDescuento + gastosEnvioFinal).toFixed(2)} €`);
 }
+
+// Evento para aplicar el cupón cuando el usuario pulse el botón
+$('#btn-aplicar-cupon').on('click', async function () {
+  const codigo = $('#input-cupon').val().trim();
+  if (!codigo) {
+    $('#mensaje-cupon').css('color', 'red').text('Introduce un código de cupón.');
+    return;
+  }
+
+  // Obtener el subtotal sin descuentos
+  let subtotal = 0;
+  carrito.forEach(item => {
+    const producto = productosDisponibles.find(p => p.id === item.id);
+    if (!producto) return;
+    subtotal += producto.offerPrice * item.cantidad;
+  });
+
+  // Llamar a la función aplicarCupon que ya tienes
+  const resultado = await aplicarCupon(codigo, subtotal);
+
+if (resultado.valido) {
+  descuentoAplicado = resultado.descuento || 0; // Usa el valor que viene en resultado
+  $('#mensaje-cupon').css('color', 'green').text(resultado.mensaje);
+} else {
+  descuentoAplicado = 0;
+  $('#mensaje-cupon').css('color', 'red').text(resultado.mensaje);
+}
+
+  actualizarGastosYTotal();
+});
+
 //Validacion básica
 $('#form-checkout').on('submit', function (e) {
   e.preventDefault();
@@ -216,7 +268,7 @@ $('#form-checkout').on('submit', function (e) {
   console.log('Datos del formulario:', datos);
   // Aquí podrías hacer un POST a tu backend
 });
-
+//Cargar datos disponibles en el formulario de pago
 $(document).ready(() => {
   const usuarioStr = localStorage.getItem('datosUsuario');
   if (usuarioStr) {
@@ -237,6 +289,38 @@ $(document).ready(() => {
     }
   }
 });
+
+//Función para aplicar cupones de descuento
+async function aplicarCupon(codigoCupón, subtotal) {
+  try {
+    const response = await fetch('/api/coupons');
+
+    const cupones = await response.json();
+        console.log(cupones);
+
+    const cupón = cupones.find(c => c.codigo.toLowerCase() === codigoCupón.toLowerCase());
+
+    if (!cupón) {
+      return { valido: false, mensaje: 'Cupón inválido', total: subtotal };
+    }
+
+    const descuento = (subtotal * cupón.descuento) / 100;
+    const totalConDescuento = subtotal - descuento;
+
+    return {
+      valido: true,
+      descuento: cupón.descuento,
+      mensaje: `Cupón válido. Has aplicado un ${cupón.descuento}% de descuento.`,
+      total: totalConDescuento.toFixed(2)
+    };
+
+  } catch (error) {
+    console.error('Error al aplicar cupón:', error);
+    return { valido: false, mensaje: 'Error al validar el cupón', total: subtotal };
+  }
+}
+
+
 
 
 $.get('/api/products', function (data) {
