@@ -193,7 +193,7 @@ function actualizarGastosYTotal() {
   } else {
     $('#envio').text(`${gastosEnvioFinal.toFixed(2)} €`);
   }
-
+  $('#totalSinEnvio').text(`${(totalPedido).toFixed(2)} €`);
   $('#total').text(`${(totalPedido + gastosEnvioFinal).toFixed(2)} €`);
 }
 
