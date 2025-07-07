@@ -42,8 +42,8 @@ async function loadProductDetail() {
     // ✅ Renderizado del detalle del producto
     document.getElementById("product-detail-container").innerHTML = `
       <div class="card flex-row shadow-lg" style="max-width:900px;margin:auto;">
-        <div class="d-flex align-items-stretch pe-10" style="width:300px;min-width:300px;">
-          <img src="${product.image}" alt="${product.name}" class="img-fluid rounded-start me-4" style="object-fit:cover;height:100%;width:100%;">
+        <div class="d-flex align-items-stretch" style="width:300px;min-width:300px;padding:0.5rem;">
+          <img src="${product.image}" alt="${product.name}" class="img-fluid rounded" style="object-fit:cover;height:100%;width:100%;">
         </div>
         <div class="card-body d-flex flex-column justify-content-between">
           <div>
