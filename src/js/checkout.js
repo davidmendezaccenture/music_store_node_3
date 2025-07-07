@@ -1,4 +1,3 @@
-// Supongamos que carrito está definido en algún lugar y productosDisponibles se carga con la llamada Ajax.
 let productosDisponibles = [];
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
@@ -8,56 +7,120 @@ function mostrarResumenPedido() {
 
   carrito.forEach(item => {
     const producto = productosDisponibles.find(p => p.id === item.id);
-    if (!producto) return; // si no se encuentra producto, ignorar
+    if (!producto) return;
 
     const subtotal = producto.offerPrice * item.cantidad;
 
     const $li = $(`
-  <li class="list-group-item d-flex justify-content-between align-items-center" data-id="${item.id}">
-    <div class="d-flex align-items-center gap-3">
-      <img src="${producto.image}" alt="${producto.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
-      <div>
-        <strong>${producto.name}</strong><br>
-        <small class="text-muted">${producto.description}</small><br>
-        Cantidad: ${item.cantidad}<br>
-        Precio unitario: ${producto.offerPrice.toFixed(2)} €
-      </div>
-    </div>
-    <div class="d-flex align-items-center gap-3">
-      <span><strong>${subtotal.toFixed(2)} €</strong></span>
-      <button class="btn btn-sm btn-outline-danger btn-eliminar-checkout" title="Eliminar producto">
-        <i class="bi bi-trash"></i>
-      </button>
-    </div>
-  </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center" data-id="${item.id}">
+        <div class="d-flex align-items-center gap-3">
+          <img src="${producto.image}" alt="${producto.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+          <div>
+            <strong>${producto.name}</strong><br>
+            <small class="text-muted">${producto.description}</small><br>
+            Cantidad: ${item.cantidad}<br>
+            Precio unitario: ${producto.offerPrice.toFixed(2)} €
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <span><strong>${subtotal.toFixed(2)} €</strong></span>
+          <button class="btn btn-sm btn-outline-danger btn-eliminar-checkout" title="Eliminar producto">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </li>
     `);
 
     $resumen.append($li);
   });
 }
-//Variable para almacenar el elemento que queremos borrar
-let itemPendienteEliminar = null; 
-// Escuchar clicks en botones eliminar (delegación de eventos)
-$('#resumen-pedido').on('click', '.btn-eliminar-checkout', function() {
-    //Obtenemos el id del producto que vamos a eliminar y mostramos la modal
-    itemPendienteEliminar = $(this).closest('li').data('id');
-    mostrarModalConfirmarEliminacion();
+
+let itemPendienteEliminar = null;
+let posicionesAntesEliminar = [];
+
+$('#resumen-pedido').on('click', '.btn-eliminar-checkout', function () {
+  const $li = $(this).closest('li');
+  itemPendienteEliminar = $li.data('id');
+  posicionesAntesEliminar = guardarPosiciones();
+  mostrarModalConfirmarEliminacion();
 });
 
-$(document).on('click', '#btn-confirmar-eliminar', function() {
+$(document).on('click', '#btn-confirmar-eliminar', function () {
+  if (!itemPendienteEliminar) return;
+  modalEliminar.hide();
 
-    if (!itemPendienteEliminar) return;
-    modalEliminar.hide();
-    // Eliminar producto del carrito
-    carrito = carrito.filter(item => item.id !== itemPendienteEliminar);
-    // Volver a mostrar resumen con carrito actualizado
-    mostrarResumenPedido();
-    // Guardamos el carrito de nuevo
-    guardarCarrito();
+  const $liEliminar = $(`#resumen-pedido li[data-id="${itemPendienteEliminar}"]`);
+  $liEliminar.addClass('removiendo');
 
+  const $contenedor = $('#resumen-pedido').closest('.p-4');
+  const alturaAntes = $contenedor.outerHeight();
+
+  // 🔧 Ajuste clave: quitar padding-bottom temporalmente
+  const paddingInferiorOriginal = $contenedor.css('padding-bottom');
+  $contenedor.css('padding-bottom', '0px');
+
+  carrito = carrito.filter(item => item.id !== itemPendienteEliminar);
+
+  setTimeout(() => {
+    $liEliminar.remove();
+
+    requestAnimationFrame(() => {
+      const posicionesDespues = guardarPosiciones();
+
+      posicionesDespues.forEach(pos => {
+        const antes = posicionesAntesEliminar.find(p => p.el.is(pos.el));
+        if (!antes) return;
+
+        const deltaY = antes.top - pos.top;
+        if (deltaY !== 0) {
+          pos.el.css('transform', `translateY(${deltaY}px)`);
+          pos.el[0].offsetHeight;
+          pos.el.css({
+            transition: 'transform 0.4s ease',
+            transform: 'translateY(0)'
+          });
+
+          setTimeout(() => {
+            pos.el.css({ transition: '', transform: '' });
+          }, 400);
+        }
+      });
+
+      const alturaDespues = $contenedor.outerHeight();
+      $contenedor.css({ height: alturaAntes, transition: 'height 0.4s ease' });
+      $contenedor[0].offsetHeight;
+      $contenedor.css('height', alturaDespues);
+
+      setTimeout(() => {
+        $contenedor.css({
+          transition: '',
+          height: '',
+          'padding-bottom': paddingInferiorOriginal // ✅ Restaurar padding original
+        });
+      }, 400);
+
+      guardarCarrito();
+
+      if (carrito.length === 0) {
+        mostrarResumenPedido();
+      }
+
+      itemPendienteEliminar = null;
+    });
+  }, 400);
 });
 
-// Función para guardar el carrito en backend y localStorage
+function guardarPosiciones() {
+  const posiciones = [];
+  $('#resumen-pedido li, .IVA').each(function () {
+    posiciones.push({
+      el: $(this),
+      top: $(this).offset().top
+    });
+  });
+  return posiciones;
+}
+
 function guardarCarrito() {
   const usuario = localStorage.getItem('usuario') || 'guest';
   localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -76,10 +139,7 @@ function guardarCarrito() {
   });
 }
 
-// Cuando ya tengas cargados los productos disponibles y el carrito, llamar a mostrarResumenPedido()
-
-
-$.get('/api/products', function(data) {
+$.get('/api/products', function (data) {
   productosDisponibles = data;
   mostrarResumenPedido();
 });
