@@ -89,5 +89,10 @@
     "phone": "627874197",
     "postalcode": "10664",
     "city": "MOHEDAS DE GRANADILLA"
+  },
+  {
+    "username": "probando",
+    "password": "$2b$10$DZ6/nFDdsNO9QNCPaf9GROMQkd4Jy/h43WBaFbMgtsWttufOqJ8Cm",
+    "email": "probando@1.com"
   }
 ]
