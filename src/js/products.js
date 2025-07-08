@@ -100,9 +100,8 @@ $(document).ready(function () {
         </div>
       </div>
     </div>
-  </div>
-
-          `);
+  </div>`
+);
 
           container.append($col);
           setTimeout(() => $col.addClass('visible'), 100 + i * 100); // animación progresiva
