@@ -125,8 +125,10 @@ app.post("/api/login", (req, res) => {
   if ((!username && !email) || !password) {
     return res.status(400).json({
       error: "Debes indicar usuario o email y la contraseña.",
+      error: "Debes indicar usuario o email y la contraseña.",
     });
   }
+
 
   // Ruta al archivo donde se almacenan los usuarios
   const usersPath = path.join(__dirname, "backend/data/users.json");
@@ -134,10 +136,12 @@ app.post("/api/login", (req, res) => {
   // Leer el archivo de usuarios
   fs.readFile(usersPath, "utf8", (err, data) => {
     // Si ocurre un error distinto a que el archivo no exista, devolver error
+    // Si ocurre un error distinto a que el archivo no exista, devolver error
     if (err && err.code !== "ENOENT") {
       console.error("Error al leer el archivo de usuarios:", err);
       return res.status(500).json({ error: "Error interno del servidor" });
     }
+
 
     if (!data) {
       return res.status(404).json({ error: "No hay usuarios registrados." });
@@ -146,14 +150,20 @@ app.post("/api/login", (req, res) => {
     let users = [];
     try {
       // Intentar parsear el JSON de usuarios
+      // Intentar parsear el JSON de usuarios
       users = JSON.parse(data);
     } catch (parseError) {
       // Si el JSON está corrupto, devolver error
       return res
         .status(500)
         .json({ error: "Error al procesar los datos de usuarios" });
+      // Si el JSON está corrupto, devolver error
+      return res
+        .status(500)
+        .json({ error: "Error al procesar los datos de usuarios" });
     }
 
+    // Buscar el usuario por email o nombre de usuario y contraseña
     // Buscar el usuario por email o nombre de usuario y contraseña
     const user = users.find(
       (u) =>
