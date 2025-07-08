@@ -51,8 +51,8 @@
                     <form id="form-busqueda-mobile" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
                             <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
-                            <label for="categorySelect" class="form-label visually-hidden">Categoría</label>
-                            <select class="form-select" name="category" style="max-width: 120px;">
+                            <label for="categorySelectMobile" class="form-label visually-hidden">Categoría</label>
+                            <select class="form-select" name="category" id="categorySelectMobile" style="max-width: 120px;">
                                 <option value="">Todas</option>
                                 <option value="acoustic-guitars">Guitarras acústica</option>
                                 <option value="classical-guitars">Guitarras clásicas</option>
@@ -276,6 +276,7 @@
 <script src="../js/app.js"></script>
 <script src="../js/search.js"></script>
 <script src="../js/about_us.js"></script>
+  <script src="../js/import-modals.js"></script>
 
   <!-- Google Maps API con mi clave real) -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5F5tAirDf5wsL_K9oLu-lGVVEDM6gEIs&callback=initMap"></script>

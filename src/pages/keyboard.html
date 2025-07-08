@@ -50,8 +50,8 @@
                     <form id="form-busqueda-mobile" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
                             <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
-                            <label for="categorySelect" class="form-label visually-hidden">Categoría</label>
-                            <select class="form-select" name="category" style="max-width: 120px;">
+                            <label for="categorySelectMobile" class="form-label visually-hidden">Categoría</label>
+                            <select class="form-select" name="category" id="categorySelectMobile" style="max-width: 120px;">
                                 <option value="">Todas</option>
                                 <option value="acoustic-guitars">Guitarras acústica</option>
                                 <option value="classical-guitars">Guitarras clásicas</option>
@@ -241,12 +241,6 @@
   <!-- Scripts -->
     <div id="modals-container"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      // Importa dinámicamente los modales desde partials/modals.html usando jQuery
-      $(function() {
-        $('#modals-container').load('../partials/modals.html');
-      });
-    </script>
 
 
 <script>
@@ -270,5 +264,6 @@
     <script src="../js/index.js"></script>
     <script src="../js/products.js"></script>
     <script src="../js/category.js"></script>
+    <script src="../js/import-modals.js"></script>
 </body>
 </html>
