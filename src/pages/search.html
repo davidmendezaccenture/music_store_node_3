@@ -49,9 +49,8 @@
                     <form id="form-busqueda-mobile" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
                             <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
-                            <label>
+                            <label for="categorySelect" class="form-label visually-hidden">Categoría</label>
                             <select class="form-select" name="category" style="max-width: 120px;">
-                            </label>
                                 <option value="">Todas</option>
                                 <option value="acoustic-guitars">Guitarras acústica</option>
                                 <option value="classical-guitars">Guitarras clásicas</option>
@@ -95,9 +94,8 @@
                     <form id="form-busqueda-desktop" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
                             <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
-                            <label>
-                            <select class="form-select" name="category" style="max-width: 120px;">
-                                </label>
+                            <label for="categorySelect" class="form-label visually-hidden">Categoría</label>
+                            <select class="form-select" name="category" id="categorySelect" style="max-width: 120px;">
                                 <option value="">Todas</option>
                                 <option value="acoustic-guitars">Guitarras acústica</option>
                                 <option value="classical-guitars">Guitarras clásicas</option>
@@ -166,16 +164,14 @@
                     <option value="valoracion">Valoración</option>
                 </select>
                 <h4 class="mt-4">Precio</h4>
-                <label>
+                <label for="orden-precio" class="visually-hidden">Orden de precio</label>
                 <select id="orden-precio" name="orden-precio">
-                </label>
                     <option value="asc">Menor a mayor</option>
                     <option value="desc">Mayor a menor</option>
                 </select>
                 <h4 class="mt-4">Valoraciones</h4>
-                <label>
+                <label for="orden-valoracion" class="visually-hidden">Orden de valoraciones</label>
                 <select id="orden-valoracion" name="orden-valoracion">
-                    </label>
                     <option value="desc">De mayor a menor</option>
                     <option value="asc">De menor a mayor</option>
                 </select>
