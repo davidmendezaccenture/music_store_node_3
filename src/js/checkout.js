@@ -313,36 +313,102 @@ async function aplicarCupon(codigoCupon, subtotal) {
   }
 }
 
+// Mostrar modal de confirmación de pago
 function mostrarModalConfirmarPago() {
-  const loginModal = new bootstrap.Modal(document.getElementById('confirmarPagoModal'));
-  loginModal.show();
+  const modal = new bootstrap.Modal(document.getElementById('confirmarPagoModal'));
+  modal.show();
 }
+
+// Mostrar modal de pago confirmado
 function mostrarModalPagoRealizado() {
-  const loginModal = new bootstrap.Modal(document.getElementById('modalPagoConfirmado'));
-  loginModal.show();
+  const modal = new bootstrap.Modal(document.getElementById('modalPagoConfirmado'));
+  modal.show();
 }
 
-$(document).on('click', '#btnConfirmarPago', function () {
-  console.log('Botón confirmar pago pulsado');
+// Mostrar modal de datos de pago según método seleccionado
+function mostrarModalDatosPago(metodo) {
+  const modal = new bootstrap.Modal(document.getElementById('modalDatosPago'));
 
-  // Oculta la modal de confirmación
+  // Oculta todos los formularios
+  $('#formPaypal, #formTarjeta, #formTransferencia').addClass('d-none');
+
+  // Mostrar formulario correspondiente
+  if (metodo === 'paypal') {
+    $('#formPaypal').removeClass('d-none');
+    $('#btnConfirmarPago').text('Pagar con PayPal').data('metodo', 'paypal');
+  } else if (metodo === 'tarjeta') {
+    $('#formTarjeta').removeClass('d-none');
+    $('#btnConfirmarPago').text('Pagar con tarjeta').data('metodo', 'tarjeta');
+  } else if (metodo === 'transferencia') {
+    $('#formTransferencia').removeClass('d-none');
+    $('#btnConfirmarPago').text('Entendido').data('metodo', 'transferencia');
+  }
+
+  modal.show();
+}
+
+// Evento click en botón "Pagar" de la modal confirmarPagoModal
+$(document).on('click', '#btnDatosPago', function () {
+  const metodoSeleccionado = $('#metodoPago').val(); // suponiendo que tienes un select con id metodoPago
+  if (!metodoSeleccionado) {
+    alert('Por favor, selecciona un método de pago.');
+    return;
+  }
+
+  // Cerrar modal de confirmación de pago
   const confirmarModalEl = document.getElementById('confirmarPagoModal');
   const confirmarModal = bootstrap.Modal.getInstance(confirmarModalEl);
   if (confirmarModal) confirmarModal.hide();
 
-  // Muestra la modal de pago realizado
-  const pagoConfirmadoEl = document.getElementById('modalPagoConfirmado');
-  let modalPago = bootstrap.Modal.getInstance(pagoConfirmadoEl);
-  if (!modalPago) modalPago = new bootstrap.Modal(pagoConfirmadoEl);
-  modalPago.show();
+  // Abrir modal para introducir datos de pago según método
+  mostrarModalDatosPago(metodoSeleccionado);
+});
 
-  // Al cerrar la modal, vaciar carrito y actualizar
-  $(pagoConfirmadoEl).one('hidden.bs.modal', function () {
+// Evento click en botón "Confirmar" de modalDatosPago
+$(document).on('click', '#btnConfirmarPago', function () {
+  const metodo = $(this).data('metodo');
+
+  // Validar si hay formulario visible y si es tarjeta o paypal, puedes agregar validaciones aquí
+  if (metodo === 'tarjeta') {
+    // Aquí podrías validar campos de tarjeta (opcional)
+    // Por ejemplo:
+    const numeroTarjeta = $('#numeroTarjeta').val().trim();
+    const fechaCaducidad = $('#fechaCaducidad').val().trim();
+    const cvvTarjeta = $('#cvvTarjeta').val().trim();
+
+    if (!numeroTarjeta || !fechaCaducidad || !cvvTarjeta) {
+      alert('Por favor, completa todos los datos de la tarjeta.');
+      return;
+    }
+    // Añade más validaciones si quieres...
+  }
+
+  // Cerrar modal de datos de pago
+  const modalDatosEl = document.getElementById('modalDatosPago');
+  const modalDatos = bootstrap.Modal.getInstance(modalDatosEl);
+  if (modalDatos) modalDatos.hide();
+
+  if (metodo === 'transferencia') {
+    // No mostrar modal de pago confirmado para transferencia, solo cerrar todo
+    return;
+  }
+
+  // Mostrar modal de pago confirmado
+  const modalPagoConfirmadoEl = document.getElementById('modalPagoConfirmado');
+  let modalPagoConfirmado = bootstrap.Modal.getInstance(modalPagoConfirmadoEl);
+  if (!modalPagoConfirmado) modalPagoConfirmado = new bootstrap.Modal(modalPagoConfirmadoEl);
+  modalPagoConfirmado.show();
+
+  // Al cerrar modal pago confirmado, vaciar carrito y actualizar resumen
+  $(modalPagoConfirmadoEl).one('hidden.bs.modal', function () {
     carrito = [];
     guardarCarrito();
     mostrarResumenPedido();
-    console.log('Modal de pago cerrada, funciones ejecutadas.');
+    console.log('Modal de pago cerrada, carrito actualizado.');
   });
 });
+
+
+
 
 
