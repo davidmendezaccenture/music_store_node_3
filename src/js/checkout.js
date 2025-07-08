@@ -22,23 +22,34 @@ function mostrarResumenPedido() {
     const subtotal = producto.offerPrice * item.cantidad;
 
     const $li = $(`
-      <li class="list-group-item d-flex justify-content-between align-items-center" data-id="${item.id}">
-        <div class="d-flex align-items-center gap-3">
-          <img src="${producto.image}" alt="${producto.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
-          <div>
-            <strong>${producto.name}</strong><br>
-            <small class="text-muted">${producto.description}</small><br>
-            Cantidad: ${item.cantidad}<br>
-            Precio unitario: ${producto.offerPrice.toFixed(2)} €
-          </div>
-        </div>
-        <div class="d-flex align-items-center gap-3">
-          <span><strong>${subtotal.toFixed(2)} €</strong></span>
-          <button class="btn btn-sm btn-outline-danger btn-eliminar-checkout" title="Eliminar producto">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
-      </li>
+  <li class="list-group-item mb-3" data-id="${item.id}">
+    <div class="d-flex flex-column gap-1">
+
+      <!-- Línea 1: Imagen + nombre -->
+      <div class="d-flex align-items-center gap-3">
+        <img src="${producto.image}" alt="${producto.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+        <strong class="mb-0">${producto.name}</strong>
+      </div>
+
+      <!-- Línea 2: Descripción -->
+      <div class="ms-5">
+        <small class="text-muted">${producto.description}</small>
+      </div>
+
+      <!-- Línea 3: cantidad x precio | Total | Papelera -->
+      <div class="d-flex justify-content-between align-items-center ms-5 mt-1 flex-wrap">
+        <span class="text-muted">${item.cantidad} unidad(es) × ${producto.offerPrice.toFixed(2)} €</span>
+        <span class="fw-bold">Total: ${subtotal.toFixed(2)} €</span>
+        <button class="btn btn-sm btn-outline-danger btn-eliminar-checkout" title="Eliminar producto">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+
+    </div>
+  </li>
+
+
+
     `);
 
     $resumen.append($li);
