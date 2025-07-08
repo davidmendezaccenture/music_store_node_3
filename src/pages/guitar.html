@@ -27,15 +27,15 @@
             <!-- Versión mobile -->
             <div class="d-lg-none w-100">
                 <div class="mobile-top-bar">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Expandir y contraer menú">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="user-actions-mobile">
-                        <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
+                        <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative" aria-label="Página de favoritos">
                             <i class="bi bi-heart"></i>
                             <span id="favoritesCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                         </a>
-                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
+                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative" aria-label="Ir al carrito de compra">
                             <i class="bi bi-cart3"></i>
                             <span id="cartCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                         </a>
@@ -49,6 +49,7 @@
                     <form id="form-busqueda-mobile" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
                             <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <label for="categoria"></label>
                             <select class="form-select" name="category" style="max-width: 120px;">
                                 <option value="">Todas</option>
                                 <option value="acoustic-guitars">Guitarras acústica</option>
@@ -63,7 +64,7 @@
                                 <option value="keyboards">Teclados</option>
                                 <option value="synthesizers">Sintetizadores</option>
                             </select>
-                            <button class="btn btn-outline-primary" type="submit">
+                            <button class="btn btn-outline-primary" type="submit" aria-label="Realizar búsqueda">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
@@ -71,10 +72,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/index.html" aria-label="Ir a inicio"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/services.html" aria-label="Ir a servicios"><i class="bi bi-gear me-1"></i>Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/sobre_nosotros.html" aria-label="Ir a sobre nosotros"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html" aria-label="Ir a contacto"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
                     </ul>
                 </div>
             </div>
@@ -83,16 +84,17 @@
             <div class="d-none d-lg-flex desktop-nav-container">
                 <div class="nav-links-desktop">
                     <ul class="navbar-nav d-flex flex-row">
-                        <li class="nav-item me-3"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
-                        <li class="nav-item me-3"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
-                        <li class="nav-item me-3"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                        <li class="nav-item me-3"><a class="nav-link" href="/pages/index.html" aria-label="Ir a inicio"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                        <li class="nav-item me-3"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1" aria-label="IR a servicios"></i>Servicios</a></li>
+                        <li class="nav-item me-3"><a class="nav-link" href="/pages/sobre_nosotros.html" aria-label="Ir a sobre nosotros"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html" aria-label="Ir a contacto"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
                     </ul>
                 </div>
                 <div class="search-bar-desktop">
                     <form id="form-busqueda-desktop" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
                             <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
+                            <label for="Categoría"></label>
                             <select class="form-select" name="category" style="max-width: 120px;">
                                 <option value="">Todas</option>
                                 <option value="acoustic-guitars">Guitarras acústica</option>
@@ -107,7 +109,7 @@
                                 <option value="keyboards">Teclados</option>
                                 <option value="synthesizers">Sintetizadores</option>
                             </select>
-                            <button class="btn btn-outline-primary" type="submit">
+                            <button class="btn btn-outline-primary" type="submit" aria-label="Realizar búsqueda">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
@@ -115,11 +117,11 @@
 
                 </div>
                 <div class="user-actions-desktop d-flex gap-2">
-                    <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
+                    <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative" aria-label="Ir a favoritos">
                         <i class="bi bi-heart icono-contador"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                     </a>
-                    <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
+                    <a href="/pages/cart.html" class="btn btn-outline-dark position-relative" aria-label="Ir al carrito">
                         <i class="bi bi-cart3 icono-contador"></i>
                         <span id="cartCounterDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                     </a>
@@ -145,6 +147,7 @@
                       <label for="categoria" class="col-form-label">Filtrar por tipo:</label>
                   </div>
                   <div class="col-auto">
+                    <label for="Categoría"></label>
                     <select id="categoria" class="form-select" aria-label="Seleccionar categoría">
                         <option value="Todas" selected>Todas</option>
                         <option value="Acústica">Acústicas</option>
@@ -253,13 +256,6 @@
 <script>
     // Añadir el año currentYear automáticamente
     document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
-
-<script>
-    //Función para guardar ultima página
-  document.addEventListener('DOMContentLoaded', () => {
-    localStorage.setItem('ultimaPagina', window.location.pathname);
-  });
 </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
