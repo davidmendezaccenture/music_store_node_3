@@ -241,7 +241,7 @@ $('#form-checkout').on('submit', function (e) {
     email: $('#email').val(),
     metodoPago: $('#metodoPago').val()
   };
-  
+   mostrarModalConfirmarPago();
   console.log('Datos del formulario:', datos);
 });
 
@@ -312,3 +312,37 @@ async function aplicarCupon(codigoCupon, subtotal) {
     return { valido: false, mensaje: 'Error al validar el cupón', total: subtotal };
   }
 }
+
+function mostrarModalConfirmarPago() {
+  const loginModal = new bootstrap.Modal(document.getElementById('confirmarPagoModal'));
+  loginModal.show();
+}
+function mostrarModalPagoRealizado() {
+  const loginModal = new bootstrap.Modal(document.getElementById('modalPagoConfirmado'));
+  loginModal.show();
+}
+
+$(document).on('click', '#btnConfirmarPago', function () {
+  console.log('Botón confirmar pago pulsado');
+
+  // Oculta la modal de confirmación
+  const confirmarModalEl = document.getElementById('confirmarPagoModal');
+  const confirmarModal = bootstrap.Modal.getInstance(confirmarModalEl);
+  if (confirmarModal) confirmarModal.hide();
+
+  // Muestra la modal de pago realizado
+  const pagoConfirmadoEl = document.getElementById('modalPagoConfirmado');
+  let modalPago = bootstrap.Modal.getInstance(pagoConfirmadoEl);
+  if (!modalPago) modalPago = new bootstrap.Modal(pagoConfirmadoEl);
+  modalPago.show();
+
+  // Al cerrar la modal, vaciar carrito y actualizar
+  $(pagoConfirmadoEl).one('hidden.bs.modal', function () {
+    carrito = [];
+    guardarCarrito();
+    mostrarResumenPedido();
+    console.log('Modal de pago cerrada, funciones ejecutadas.');
+  });
+});
+
+

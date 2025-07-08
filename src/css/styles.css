@@ -1113,7 +1113,7 @@ header {
     transform: scale(0.95);
     transition: all 0.4s ease;
 }
-/*Prueba animacion al cargar*/
+/*Animacion al cargar*/
 @keyframes fadeInSmooth {
     from {
         opacity: 0;
@@ -1128,3 +1128,5 @@ header {
 .fade-in-smooth {
     animation: fadeInSmooth 0.5s ease forwards;
 }
+
+

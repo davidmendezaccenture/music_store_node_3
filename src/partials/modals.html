@@ -95,24 +95,26 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
-          ¿Estás seguro de realizar el pago? Si tienes algún cupón de descuento debes aplicarlo antes...
+          Estás a punto de realizar el pago. Si tienes algún cupón de descuento debes aplicarlo antes.
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-secondary" id="btnCancelarPago" data-bs-dismiss="modal">Cancelar</button>
           <button type="button" id="btnConfirmarPago" class="btn btn-primary">Pagar</button>
         </div>
       </div>
     </div>
   </div>
   <!-- Modal Confirmación de Pago -->
-  <div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-labelledby="modalPagoConfirmadoLabel" aria-hidden="true">
+  <!-- Modal Confirmación de Pago -->
+<!-- Modal Confirmación de Pago -->
+  <div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content text-center">
         <div class="modal-body">
           <i class="bi bi-check-circle text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
-          <p class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
+          <p id="mensajePago" class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
           <button id="btnCerrarModalPago" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
-        </div>
+        <div>
       </div>
     </div>
   </div>
