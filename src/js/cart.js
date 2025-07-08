@@ -5,6 +5,8 @@ let productosDisponibles = [];
 
 // Al cargar la página, primero cargamos los productos y luego el carrito
 $(document).ready(function () {
+  //Animacion al cargar
+  $('#contenedor-carrito').addClass('fade-in-smooth');
   const usuario = localStorage.getItem('usuario') || 'guest';
 
   // Intentamos cargar carrito local para mostrar el contador rápido

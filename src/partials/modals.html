@@ -86,7 +86,24 @@
       </div>
     </div>
   </div>
-
+  <!-- Modal confirmar envío de datos para pagar-->
+  <div class="modal fade" id="confirmarPagoModal" tabindex="-1" aria-labelledby="confirmarPagoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmarPagoLabel">Confirmar pago</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de realizar el pago? Si tienes algún cupón de descuento debes aplicarlo antes...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" id="btnConfirmarPago" class="btn btn-primary">Pagar</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Modal Confirmación de Pago -->
   <div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-labelledby="modalPagoConfirmadoLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

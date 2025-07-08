@@ -27,115 +27,127 @@
             </div>
         </div>
     </header>
-    <main>
-        <div class="container my-5">
-            <div class="row g-4">
-            <!-- Columna izquierda: formulario de datos -->
-                <div class="col-lg-8">
-                    <div class="p-4 border rounded shadow-sm bg-white">
-                        <a href="/pages/cart.html" class="text-decoration-none mb-3 d-inline-block">
-                            ← Volver al carrito
-                        </a>
-                        <h2 class="h4 mb-4">Datos de envío y pago</h2>
-                        <!-- Formulario -->
-<form id="form-checkout" novalidate>
-  <!-- Nombre y Apellidos -->
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="nombre" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" required>
+<main>
+  <div class="container my-5">
+    <div class="row g-4">
+      <!-- Columna izquierda: formulario de datos -->
+      <div class="col-lg-8">
+        <div class="p-4 border rounded shadow-sm bg-white">
+          <a href="/pages/cart.html" class="text-decoration-none mb-3 d-inline-block">
+            ← Volver al carrito
+          </a>
+          <h2 class="h4 mb-4">Datos de envío y pago</h2>
+          <!-- Formulario -->
+          <form id="form-checkout" novalidate>
+            <!-- Nombre y Apellidos -->
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="apellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+              </div>
+            </div>
+            <!-- Método de entrega -->
+            <div class="mb-3">
+              <label for="metodoEnvio" class="form-label">Método de entrega</label>
+              <select class="form-select" id="metodoEnvio" name="metodoEnvio" required>
+                <option value="">Selecciona una opción</option>
+                <option value="domicilio">Envío a domicilio</option>
+                <option value="tienda">Recogida en tienda</option>
+              </select>
+            </div>
+
+            <!-- Dirección -->
+            <div id="datos-envio" style="display: none;">
+              <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="direccion" name="direccion">
+              </div>
+
+              <div class="row">
+                <div class="col-md-8 mb-3">
+                  <label for="ciudad" class="form-label">Ciudad</label>
+                  <input type="text" class="form-control" id="ciudad" name="ciudad">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="cp" class="form-label">Código Postal</label>
+                  <input type="text" class="form-control" id="cp" name="cp" pattern="\d{5}" title="Debe contener 5 dígitos">
+                </div>
+              </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="telefono" name="telefono" pattern="\d{9}" required title="Debe contener 9 dígitos">
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <!-- Método de pago -->
+            <div class="mb-3">
+              <label for="metodoPago" class="form-label">Método de pago</label>
+              <select class="form-select" id="metodoPago" name="metodoPago" required>
+                <option value="">Selecciona un método</option>
+                <option value="tarjeta">Tarjeta de crédito</option>
+                <option value="paypal">PayPal</option>
+                <option value="transferencia">Transferencia bancaria</option>
+              </select>
+            </div>
+
+            <!-- Botón -->
+            <button type="submit" class="btn btn-primary mt-3 w-100">Continuar con el pago</button>
+          </form>
+        </div>
+      </div>
+
+<!-- Columna derecha: resumen del pedido -->
+<div class="col-lg-4">
+  <div id="contenedor-resumen" class="p-4 border rounded shadow-sm bg-light">
+    <h2 class="h5 mb-4">Resumen del pedido</h2>
+    <ul id="resumen-pedido" class="list-group mb-3"></ul>
+    <p class="text-muted IVA">Impuestos incluidos. Envío gratuito a domicilio en pedidos a partir de 500€.</p>
+  </div>
+
+  <!-- Gastos y total -->
+  <div id="coste-pedido" class="mt-3">
+    <div class="d-flex justify-content-between">
+      <span>Subtotal</span>
+      <strong id="totalSinEnvio">0.00 €</strong>
     </div>
-    <div class="col-md-6 mb-3">
-      <label for="apellidos" class="form-label">Apellidos</label>
-      <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+    <div class="d-flex justify-content-between">
+      <span>Gastos de envío</span>
+      <strong id="envio">0.00 €</strong>
+    </div>
+    <div class="d-flex justify-content-between">
+      <span>Total</span>
+      <strong id="total">0.00 €</strong>
     </div>
   </div>
 
-  <!-- Dirección -->
-  <div class="mb-3">
-    <label for="direccion" class="form-label">Dirección</label>
-    <input type="text" class="form-control" id="direccion" name="direccion" required>
-  </div>
-
-  <!-- Ciudad y Código Postal -->
-  <div class="row">
-    <div class="col-md-8 mb-3">
-      <label for="ciudad" class="form-label">Ciudad</label>
-      <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+  <!-- Cupón de descuento -->
+  <div id="cupon-descuento" class="mt-4 p-3 border rounded bg-white">
+    <label for="input-cupon" class="form-label mb-2">¿Tienes un cupón de descuento?</label>
+    <div class="input-group">
+      <input type="text" id="input-cupon" class="form-control" placeholder="Introduce código de cupón">
+      <button id="btn-aplicar-cupon" class="btn btn-primary" type="button">Aplicar</button>
     </div>
-    <div class="col-md-4 mb-3">
-      <label for="cp" class="form-label">Código Postal</label>
-      <input type="text" class="form-control" id="cp" name="cp" required pattern="\d{5}" title="Debe contener 5 dígitos">
-    </div>
+    <div id="mensaje-cupon" class="mt-2" style="color: green; font-weight: 600;"></div>
   </div>
-
-  <!-- Teléfono -->
-  <div class="mb-3">
-    <label for="telefono" class="form-label">Teléfono</label>
-    <input type="tel" class="form-control" id="telefono" name="telefono" pattern="\d{9}" required title="Debe contener 9 dígitos">
-  </div>
-
-  <!-- Email -->
-  <div class="mb-3">
-    <label for="email" class="form-label">Correo electrónico</label>
-    <input type="email" class="form-control" id="email" name="email" required>
-  </div>
-  <!--Cupones de descuento-->
-<div id="cupon-descuento" class="mb-3">
-  <input type="text" id="input-cupon" placeholder="Introduce código de cupón" class="form-control" style="max-width: 250px; display: inline-block;">
-  <button id="btn-aplicar-cupon" class="btn btn-primary" type="button">Aplicar cupón</button>
-  <div id="mensaje-cupon" class="mt-2" style="color: green; font-weight: 600;"></div>
 </div>
 
-
-  <!-- Método de pago -->
-  <div class="mb-3">
-    <label for="metodoPago" class="form-label">Método de pago</label>
-    <select class="form-select" id="metodoPago" name="metodoPago" required>
-      <option value="">Selecciona un método</option>
-      <option value="tarjeta">Tarjeta de crédito</option>
-      <option value="paypal">PayPal</option>
-      <option value="transferencia">Transferencia bancaria</option>
-    </select>
-  </div>
-
-  <!-- Botón -->
-  <button type="submit" class="btn btn-primary mt-3 w-100">Continuar con el pago</button>
-</form>
-
-
-                    </div>
-                </div>
-
-                <!-- Columna derecha: resumen del pedido -->
-                <div class="col-lg-4">
-                    <div id="contenedor-resumen" class="p-4 border rounded shadow-sm bg-light">
-                        <h2 class="h5 mb-4">Resumen del pedido</h2>
-                        <ul id="resumen-pedido" class="list-group mb-3"></ul>
-                        <p class="text-muted IVA">Impuestos incluidos. Envío gratuito en pedidos a partir de 500€.</p>
-                    </div>
-
-                    <!-- Gastos y total -->
-                    <div id="coste-pedido" class="mt-3">
-                        <div class="d-flex justify-content-between">
-                            <span>Subtotal</span>
-                            <strong id="totalSinEnvio">0.00 €</strong>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span>Gastos de envío</span>
-                            <strong id="envio">0.00 €</strong>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span>Total</span>
-                            <strong id="total">0.00 €</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-
+  </div>
 </main>
+
  <!-- Pre-footer -->
     <section class="pre-footer py-5">
   <div class="container">

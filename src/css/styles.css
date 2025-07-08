@@ -1057,12 +1057,14 @@ header {
 }
 
 /* Animación papelera */
-.btn-eliminar i {
+.btn-eliminar i,
+.btn-eliminar-checkout i {
     display: inline-block;
     transition: transform 0.3s ease;
 }
 
-.btn-eliminar:hover i {
+.btn-eliminar:hover i,
+.btn-eliminar-checkout:hover i {
     animation: swing 0.6s ease infinite;
 }
 
@@ -1107,8 +1109,22 @@ header {
 
 /*Checkout, resumen del pedido */
 .removiendo {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 0.4s ease;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.4s ease;
+}
+/*Prueba animacion al cargar*/
+@keyframes fadeInSmooth {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+.fade-in-smooth {
+    animation: fadeInSmooth 0.5s ease forwards;
+}
