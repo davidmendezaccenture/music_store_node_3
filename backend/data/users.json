@@ -1,7 +1,4 @@
 [
-  {},
-  {},
-  {},
   {
     "username": "prueba2",
     "password": "Prueba222",
@@ -89,5 +86,10 @@
     "phone": "627874197",
     "postalcode": "10664",
     "city": "MOHEDAS DE GRANADILLA"
+  },
+  {
+    "username": "prueba10",
+    "password": "$2b$10$VyjdDnnxo9HkoyC/u3Duuue521KRQXUxQmqTGiKYEcpyQ95Wx.07e",
+    "email": "prueba@10.com"
   }
 ]

@@ -27,7 +27,7 @@ $(document).on('submit', '#form-login', function(e) {
     })
     .then(data => {
       carritoInvitado = data;
-      
+
     //Borramos el carrito del invitado para que al hacer logout esté vacío
       return fetch('/api/cart', {
         method: 'POST',
@@ -106,7 +106,7 @@ $(document).on('submit', '#form-login', function(e) {
   // === REGISTRO ===
   $('#form-registro').submit(function (e) {
     e.preventDefault(); // Previene envío clásico (con recarga)
-    
+
     const nuevoUsuario = {
       username: $('#username').val().trim(),
       email: $('#email').val().trim(),
@@ -174,7 +174,6 @@ $(document).on('submit', '#form-login', function(e) {
       contentType: 'application/json',
       data: JSON.stringify(nuevoUsuario),
       success: function (res) {
-        alert(res.message || 'Usuario registrado correctamente');// Mostramos el mensaje de éxito
         $('#form-registro')[0].reset();
         // Redirige a index.html y abre la modal de login automáticamente
         window.location.href = 'index.html?showLogin=1';
