@@ -391,25 +391,26 @@ $(document).on('click', '#btnConfirmarPago', function () {
 
   if (metodo === 'transferencia') {
     // No mostrar modal de pago confirmado para transferencia, guardar en backend y borrar todo
-    enviarPedido(obtenerDatosPedido(localizador));
+    enviarPedido(obtenerDatosPedido());
     carrito = [];
     guardarCarrito();
     mostrarResumenPedido();
     limpiarFormularioPago();
     actualizarEstadoBotonCheckout();
-
+    window.location.href = 'factura.html';
     return;
   }
     if (metodo === 'bizum') {
     // No mostrar modal de pago confirmado para transferencia, guardar en backend y borrar todo
-    enviarPedido(obtenerDatosPedido(localizador));
+    enviarPedido(obtenerDatosPedido());
     carrito = [];
     guardarCarrito();
     mostrarResumenPedido();
     limpiarFormularioPago();
     actualizarEstadoBotonCheckout();
-
+    window.location.href = 'factura.html';
     return;
+    //Creo que ya el return es opcional
   }
 
   if (metodoEnvio === 'tienda') {
@@ -419,7 +420,6 @@ $(document).on('click', '#btnConfirmarPago', function () {
 
   // Mostrar modal de pago confirmado, antes guardamos el pedido
   enviarPedido(obtenerDatosPedido(localizador));
-  console.log(obtenerDatosPedido(localizador));
   const modalPagoConfirmadoEl = document.getElementById('modalPagoConfirmado');
   let modalPagoConfirmado = bootstrap.Modal.getInstance(modalPagoConfirmadoEl);
   if (!modalPagoConfirmado) modalPagoConfirmado = new bootstrap.Modal(modalPagoConfirmadoEl);
@@ -434,6 +434,7 @@ $(document).on('click', '#btnConfirmarPago', function () {
     limpiarFormularioPago();
     actualizarEstadoBotonCheckout();
     console.log('Modal de pago cerrada, carrito actualizado.');
+    window.location.href = 'factura.html';
   });
 });
 
@@ -571,7 +572,19 @@ function enviarPedido(pedido) {
   .then(res => {
     if (!res.ok) throw new Error(`Error en la respuesta: ${res.status}`);
     return res.json();
-  });
+  })
+  .then(data => {
+  // Guardamos en localStorage para factura.html
+    localStorage.setItem("ultimoPedido", JSON.stringify({
+      id: data.id,
+      createdAt: data.createdAt,
+      user: pedido.user,
+      items: pedido.items,
+      precio: pedido.precio,
+      localizador: data.localizador || null,
+      status: data.status
+  }));
+  })
 }
 //Función para recopilar los datos del clientte
 function obtenerDatosClienteDesdeFormulario() {

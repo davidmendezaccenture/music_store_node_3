@@ -411,34 +411,53 @@ app.post("/api/orders", (req, res) => {
       }
     }
 
-    // Si existe id, modificar; si no, crear nuevo pedido
     if (id) {
+      // Modificar pedido existente
       const index = orders.findIndex(order => order.id === id);
       if (index !== -1) {
         orders[index] = { ...orders[index], items, status: status || orders[index].status };
+
+        fs.writeFile(ordersPath, JSON.stringify(orders, null, 2), err => {
+          if (err) {
+            console.error("Error al guardar pedidos:", err);
+            return res.status(500).json({ error: "No se pudo guardar el pedido." });
+          }
+          // Devolver el pedido modificado completo
+          res.status(200).json(orders[index]);
+        });
       } else {
         return res.status(404).json({ error: "Pedido no encontrado para modificar." });
       }
     } else {
- 
+      // Crear nuevo pedido
       const newOrder = {
-        id: Date.now(), // o usa una librería como uuid
+        id: Date.now(),
         user,
         items,
         precio,
         localizador,
-        status: status || ((user.metodoPago === 'transferencia') ? 'pendiente' : 'pagado'),
+        status: status || ((user.metodoPago === 'transferencia' || user.metodoPago === 'bizum') ? 'pendiente' : 'pagado'),
         createdAt: new Date().toISOString()
       };
       orders.push(newOrder);
+
+      fs.writeFile(ordersPath, JSON.stringify(orders, null, 2), err => {
+        if (err) {
+          console.error("Error al guardar pedidos:", err);
+          return res.status(500).json({ error: "No se pudo guardar el pedido." });
+        }
+        // Devolver datos relevantes del nuevo pedido
+        res.status(200).json({
+          message: "Pedido guardado correctamente.",
+          id: newOrder.id,
+          createdAt: newOrder.createdAt,
+          localizador: newOrder.localizador || null,
+          status: newOrder.status
+        });
+      });
     }
-    fs.writeFile(ordersPath, JSON.stringify(orders, null, 2), err => {
-      if (err) {
-        console.error("Error al guardar pedidos:", err);
-        return res.status(500).json({ error: "No se pudo guardar el pedido." });
-      }
-      res.status(200).json({ message: "Pedido guardado correctamente." });
-    });
   });
 });
+
+
 
