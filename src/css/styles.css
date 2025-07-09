@@ -543,15 +543,58 @@ footer {
 }
 /*Tarjetas de productos*/
 .card-product {
-    width: 250px;
+  /* elimina width fijo */
+  width: 100%;
+  max-width: 250px; /* para no exceder el tamaño máximo */
+  box-sizing: border-box;
 }
+/* Padre: contenedor de las columnas */
+.row-productos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* separa columnas y filas */
+}
+
+/* Cada columna */
+.col.producto-animado {
+  flex: 1 1 33.33%; /* 3 columnas por defecto */
+  max-width: 33.33%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+  .col.producto-animado {
+    flex: 1 1 50%; /* 2 columnas en este rango */
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .col.producto-animado {
+    flex: 1 1 100%; /* 1 columna en móvil */
+    max-width: 100%;
+  }
+}
+.card-product .d-flex {
+  display: flex;
+  flex-wrap: nowrap; /* evita que los botones se apilen */
+  gap: 0.5rem;       /* espacio entre botones */
+}
+
+.card-product .btn {
+  flex: 1 1 auto;    /* crecen y se encogen proporcionalmente */
+  min-width: 0;      /* evita que el botón tenga un ancho mínimo molesto */
+  box-sizing: border-box;
+}
+
+
 .card-body {
     display: flex;
     flex-direction: column;
     padding: 0.4rem;
 
 }
-
 .card-title {
     font-size: 0.95rem;
     margin-bottom: 0.3rem;
@@ -589,6 +632,9 @@ footer {
     padding: 0.25rem 0.5rem;
 }
 
+
+
+
 /*Para colocaar footer al final independientemente del tamaño de pantalla */
 html, body {
     height: 100%;
@@ -608,6 +654,11 @@ main {
 .busquedas {
     align-items: flex-start !important;
 }
+#resultados {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
 
 .filtros-lateral {
     position: relative;
