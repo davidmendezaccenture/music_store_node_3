@@ -179,16 +179,22 @@ function actualizarGastosYTotal() {
   let gastosEnvioNormal = totalUnidades > 0 ? 10 + (totalUnidades - 1) * 5 : 0;
   let gastosEnvioFinal = (metodoEnvio === 'tienda' || totalConDescuento > 500) ? 0 : gastosEnvioNormal;
 
-  if (gastosEnvioFinal === 0 && gastosEnvioNormal > 0) {
-    $('#envio').html(`
+// En vez de solo modificar el contenido visible, añade el valor real en data-envio:
+if (gastosEnvioFinal === 0 && gastosEnvioNormal > 0) {
+  $('#envio')
+    .html(`
       <span style="text-decoration: line-through; color: #888; margin-right: 8px;">
         ${gastosEnvioNormal.toFixed(2)} €
       </span>
       <strong style="color:red;">0.00 €</strong>
-    `);
-  } else {
-    $('#envio').text(`${gastosEnvioFinal.toFixed(2)} €`);
-  }
+    `)
+    .attr('data-envio', gastosEnvioFinal.toFixed(2));
+} else {
+  $('#envio')
+    .text(`${gastosEnvioFinal.toFixed(2)} €`)
+    .attr('data-envio', gastosEnvioFinal.toFixed(2));
+}
+
 
   if (descuentoAplicado > 0) {
     $('#totalSinEnvio').html(`
@@ -238,10 +244,8 @@ $('#form-checkout').on('submit', function (e) {
     $(this).addClass('was-validated');
     return;
   }
-
-  enviarPedido(obtenerDatosPedido());
    mostrarModalRealizarPago();
-  console.log('Datos del formulario:', datos);
+
 });
 
 $(document).ready(() => {
@@ -365,7 +369,7 @@ $(document).on('click', '#btnDatosPago', function () {
 $(document).on('click', '#btnConfirmarPago', function () {
   const metodo = $(this).data('metodo');
   const mensajeEl = document.getElementById('mensajePago');
-
+  let localizador= null;
   let valido = true;
   if (metodo === 'tarjeta') {
     valido = validarTarjeta();
@@ -384,21 +388,25 @@ $(document).on('click', '#btnConfirmarPago', function () {
   if (modalDatos) modalDatos.hide();
 
   if (metodo === 'transferencia') {
-    // No mostrar modal de pago confirmado para transferencia, solo cerrar todo
+    // No mostrar modal de pago confirmado para transferencia, guardar en backend y borrar todo
+    enviarPedido(obtenerDatosPedido(localizador));
     carrito = [];
     guardarCarrito();
     mostrarResumenPedido();
     limpiarFormularioPago();
     actualizarEstadoBotonCheckout();
+
     return;
   }
 
   if (metodoEnvio === 'tienda') {
-    const localizador = generarLocalizador(); // Función para generar el código
+    localizador = generarLocalizador(); // Función para generar el código
     mensajeEl.innerHTML = `✅ ¡Gracias por tu compra!<br>Ya puedes acudir a nuestra tienda con tu DNI y tu localizador <strong>${localizador}</strong>.`;
   }
 
-  // Mostrar modal de pago confirmado
+  // Mostrar modal de pago confirmado, antes guardamos el pedido
+  enviarPedido(obtenerDatosPedido(localizador));
+  console.log(obtenerDatosPedido(localizador));
   const modalPagoConfirmadoEl = document.getElementById('modalPagoConfirmado');
   let modalPagoConfirmado = bootstrap.Modal.getInstance(modalPagoConfirmadoEl);
   if (!modalPagoConfirmado) modalPagoConfirmado = new bootstrap.Modal(modalPagoConfirmadoEl);
@@ -406,6 +414,7 @@ $(document).on('click', '#btnConfirmarPago', function () {
 
   // Al cerrar modal pago confirmado, vaciar carrito y actualizar resumen
   $(modalPagoConfirmadoEl).one('hidden.bs.modal', function () {
+
     carrito = [];
     guardarCarrito();
     mostrarResumenPedido();
@@ -425,16 +434,6 @@ function generarLocalizador() {
   }
   return localizador;
 }
-//Para simular números de pedido
-function generarNumeroPedido() {
-  const fecha = new Date();
-  const yyyy = fecha.getFullYear();
-  const mm = String(fecha.getMonth() + 1).padStart(2, '0');
-  const dd = String(fecha.getDate()).padStart(2, '0');
-  const random = Math.floor(1000 + Math.random() * 9000); // 4 cifras aleatorias
-  return `RAI-${yyyy}${mm}${dd}-${random}`;
-}
-
 
 //Para limpiar el formulario tras el pago
 function limpiarFormularioPago() {
@@ -574,7 +573,7 @@ function obtenerDatosClienteDesdeFormulario() {
 
   if (metodoEnvio === 'domicilio') {
     datosCliente.direccion = {
-      direccion: document.getElementById('direccion').value.trim(),
+      calle: document.getElementById('direccion').value.trim(),
       ciudad: document.getElementById('ciudad').value.trim(),
       cp: document.getElementById('cp').value.trim()
     };
@@ -631,7 +630,7 @@ function obtenerProductosDelResumen() {
   return productos;
 }
 
-function obtenerDatosPedido() {
+function obtenerDatosPedido(localizador = null) {
   // Primero obtenemos los datos del cliente (puedes reutilizar tu función)
   const datosCliente = obtenerDatosClienteDesdeFormulario();
 
@@ -653,8 +652,8 @@ function obtenerDatosPedido() {
   subtotal = parseFloat(subtotalTexto.replace(/[^\d.,]/g, "").replace(",", "."));
 
   // Leemos los gastos de envío
-  const envioTexto = document.querySelector("#envio").textContent;
-  const gastosEnvio = parseFloat(envioTexto.replace(/[^\d.,]/g, "").replace(",", "."));
+  const gastosEnvio = parseFloat(document.querySelector("#envio").getAttribute("data-envio"));
+
 
   // Leemos el total final
   const totalTexto = document.querySelector("#total").textContent;
@@ -664,14 +663,22 @@ function obtenerDatosPedido() {
   // Por seguridad, la obtenemos de la variable global o si no 0
   const descuento = typeof descuentoAplicado === "number" ? descuentoAplicado : 0;
 
-  return {
+  const pedido = {
     user: datosCliente,
     items: productos,
-    descuentoAplicado: descuento,
-    subtotal,
-    gastosEnvio,
-    total
+    precio: {
+      subtotal,
+      descuentoAplicado: descuento,
+      gastosEnvio,
+      total
+    }
   };
+
+  if (localizador) {
+    pedido.localizador = localizador;
+  }
+
+    return pedido;
 }
 
 

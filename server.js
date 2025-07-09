@@ -388,7 +388,7 @@ app.get("/api/orders", (req, res) => {
 
 // Crear o modificar un pedido
 app.post("/api/orders", (req, res) => {
-  const { id, user, items, status } = req.body;
+  const { id, user, items, precio, localizador, status } = req.body;
 
   if (!user || !Array.isArray(items)) {
     return res.status(400).json({ error: "Faltan datos: usuario o items inválidos." });
@@ -421,12 +421,13 @@ app.post("/api/orders", (req, res) => {
       }
     } else {
  
-      const status = (user.metodoPago === 'transferencia') ? 'pendiente' : 'pagado';
       const newOrder = {
         id: Date.now(), // o usa una librería como uuid
         user,
         items,
-        status: status,
+        precio,
+        localizador,
+        status: status || ((user.metodoPago === 'transferencia') ? 'pendiente' : 'pagado'),
         createdAt: new Date().toISOString()
       };
       orders.push(newOrder);

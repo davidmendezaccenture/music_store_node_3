@@ -1,3 +1,99 @@
 [
-
+  {
+    "id": 1752072196844,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "localizador": "PED-QT0SUN",
+    "status": "pagado",
+    "createdAt": "2025-07-09T14:43:16.844Z"
+  },
+  {
+    "id": 1752072235846,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      },
+      {
+        "id": "4",
+        "nombre": "Guitarra Flamenca",
+        "descripcion": "Guitarra flamenca con un diseño tradicional.",
+        "cantidad": 1,
+        "precioUnitario": 180,
+        "total": 180
+      }
+    ],
+    "precio": {
+      "subtotal": 480,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 456
+    },
+    "localizador": "PED-9LQWQB",
+    "status": "pagado",
+    "createdAt": "2025-07-09T14:43:55.846Z"
+  },
+  {
+    "id": 1752072277830,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "transferencia"
+    },
+    "items": [
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 1,
+        "precioUnitario": 250,
+        "total": 250
+      }
+    ],
+    "precio": {
+      "subtotal": 250,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 250
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-09T14:44:37.830Z"
+  }
 ]
