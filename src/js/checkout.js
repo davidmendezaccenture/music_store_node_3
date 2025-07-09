@@ -347,8 +347,10 @@ function mostrarModalDatosPago(metodo) {
   } else if (metodo === 'transferencia') {
     $('#formTransferencia').removeClass('d-none');
     $('#btnConfirmarPago').text('Entendido').data('metodo', 'transferencia');
+  } else if (metodo === 'bizum') {
+    $('#formBizum').removeClass('d-none');
+    $('#btnConfirmarPago').text('Entendido').data('metodo', 'bizum');
   }
-
   modal.show();
 }
 
@@ -388,6 +390,17 @@ $(document).on('click', '#btnConfirmarPago', function () {
   if (modalDatos) modalDatos.hide();
 
   if (metodo === 'transferencia') {
+    // No mostrar modal de pago confirmado para transferencia, guardar en backend y borrar todo
+    enviarPedido(obtenerDatosPedido(localizador));
+    carrito = [];
+    guardarCarrito();
+    mostrarResumenPedido();
+    limpiarFormularioPago();
+    actualizarEstadoBotonCheckout();
+
+    return;
+  }
+    if (metodo === 'bizum') {
     // No mostrar modal de pago confirmado para transferencia, guardar en backend y borrar todo
     enviarPedido(obtenerDatosPedido(localizador));
     carrito = [];
