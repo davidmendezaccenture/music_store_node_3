@@ -1,0 +1,14 @@
+[
+    {
+        "codigo": "DESC5",
+        "descuento": 5
+    },
+    {
+        "codigo": "DESC10",
+        "descuento": 10
+    },
+    {
+        "codigo": "DESC15",
+        "descuento": 15
+    }
+]

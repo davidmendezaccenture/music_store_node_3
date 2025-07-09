@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1752086713212,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "localizador": "PED-F0WIZQ",
+    "status": "pagado",
+    "createdAt": "2025-07-09T18:45:13.212Z"
+  },
+  {
+    "id": 1752086793021,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "localizador": "PED-SA5MT2",
+    "status": "pagado",
+    "createdAt": "2025-07-09T18:46:33.021Z"
+  },
+  {
+    "id": 1752087254234,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "bizum"
+    },
+    "items": [
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 1,
+        "precioUnitario": 250,
+        "total": 250
+      }
+    ],
+    "precio": {
+      "subtotal": 250,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 250
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-09T18:54:14.234Z"
+  }
+]

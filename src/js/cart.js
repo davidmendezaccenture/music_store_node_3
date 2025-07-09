@@ -5,6 +5,8 @@ let productosDisponibles = [];
 
 // Al cargar la página, primero cargamos los productos y luego el carrito
 $(document).ready(function () {
+  //Animacion al cargar
+  $('#contenedor-carrito').addClass('fade-in-smooth');
   const usuario = localStorage.getItem('usuario') || 'guest';
 
   // Intentamos cargar carrito local para mostrar el contador rápido
@@ -32,6 +34,7 @@ $(document).ready(function () {
           carrito = respuesta;
           actualizarContadorCarrito(calcularTotalItems(carrito));
           mostrarCarrito();
+          guardarCarrito();
         }
       },
       error: function () {
@@ -334,9 +337,9 @@ function mostrarMensajeCarritoVacio() {
           <p class="mb-0">Tu carrito está vacío.</p>
         </li>
       `);
-    $('#confirmar-pago').prop('disabled', true);
+    $('#hacer-checkout').prop('disabled', true);
   } else {
-    $('#confirmar-pago').prop('disabled', false);
+    $('#hacer-checkout').prop('disabled', false);
   }
 }
 //Para cargar el carrito tras el loguin
@@ -377,4 +380,8 @@ const toast = new bootstrap.Toast(toastElement, {
 function mostrarToastAgregar() {
   toast.show();
 }
+//Dirigir a checkout
+document.getElementById('hacer-checkout').addEventListener('click', function() {
+  window.location.href = '/pages/checkout.html';
+});
 

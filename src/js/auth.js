@@ -50,7 +50,10 @@ $(document).on('submit', '#form-login', function(e) {
     .then(data => {
       //Guardamos los datos los datos del usuario
       const usuario = data.user.username;
+      const datosUsuario = data.user;
       localStorage.setItem('usuario', usuario);
+      localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario));
+
 
       //Obtenemos el carrito del usuario
       return fetch(`/api/cart?user=${usuario}`)

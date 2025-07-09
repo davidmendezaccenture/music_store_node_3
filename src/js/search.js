@@ -102,20 +102,20 @@ $(document).ready(function () {
 
             const $col = $(`
                 <div class="col producto-animado" data-category="${producto.category}">
-                    <div class="card-product h-100 d-flex flex-column position-relative" role="article">${ofertaBadge}
-                        <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="${producto.name}" style="height: 130px; object-fit: cover;">
+                    <div class="card-product d-flex flex-column position-relative" role="article aria-label="${producto.name}">${ofertaBadge} 
+                        <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="Imagen de ${producto.name}" style="height: 130px; object-fit: cover;">
                         <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
                             <h2 class="card-title" style="font-size: 0.95rem; margin-bottom: 0.3rem; min-height: 2.5em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}
                             </h2>
                             <p class="card-text" style="font-size: 0.85rem; min-height: 60px; max-height: 60px; overflow-y: auto; margin-bottom: 0.5rem; scrollbar-width: thin;">${producto.description}
                             </p>
                             <div class="espacio-inferior mt-auto d-flex flex-column gap-1">
-                                <div class="precio fw-bold">${precioHTML}</div>
+                                <div class="precio fw-bold" aria-label="Precio del producto">${precioHTML}</div>
                                 <p class="valoracion" style="font-size: 0.8rem; margin: 0;" aria-label="Valoración del producto">${estrellas}
                                 </p>
                                 <div class="d-flex gap-1 mt-2">
-                                    <button class="btn btn-sm btn-primary flex-fill agregar-carrito" data-id="${producto.id}">Añadir</button>
-                                    <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary flex-fill d-flex justify-content-center align-items-center boton-detalle">Detalle</a>
+                                    <button class="btn btn-sm btn-primary agregar-carrito" data-id="${producto.id}" aria-label="Añadir ${producto.name} al carrito">Añadir</button>
+                                    <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary d-flex justify-content-center align-items-center boton-detalle" aria-label="Ver detalle del producto ${producto.name}">Detalle</a>
                                 </div>
                             </div>
                         </div>

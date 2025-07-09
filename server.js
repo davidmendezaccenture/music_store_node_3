@@ -164,7 +164,6 @@ app.post("/api/login", (req, res) => {
     }
 
     // Buscar el usuario por email o nombre de usuario y contraseña
-    // Buscar el usuario por email o nombre de usuario y contraseña
     const user = users.find(
       (u) =>
         (username && u.username === username) || (email && u.email === email)
@@ -183,11 +182,18 @@ app.post("/api/login", (req, res) => {
         return res.status(401).json({ error: "Credenciales inválidas." });
       }
       // Si las credenciales son correctas, devolver el usuario
-      res.status(200).json({
-        message: "Login exitoso.",
-        user: { username: user.username, email: user.email },
+  res.status(200).json({
+    message: "Login exitoso.",
+    user: {
+    username: user.username,
+    email: user.email,
+    phone: user.phone,
+    birthdate: user.birthdate,
+    postalcode: user.postalcode,
+    city: user.city
+  },
       });
-    });
+});
   });
 });
 
@@ -360,3 +366,116 @@ app.get("/buscar", (req, res) => {
     });
   });
 });
+//Endpoint de cupones de descuento
+app.get('/api/coupons', (req, res) => {
+  const rutaCupones = path.join(__dirname, 'src', 'assets', 'data', 'coupons.json');
+  console.log('Enviando archivo:', rutaCupones);
+  res.sendFile(rutaCupones, err => {
+    if (err) {
+      console.error('Error enviando coupons.json:', err);
+      res.status(500).json({ error: 'No se pudo cargar el archivo de cupones' });
+    }
+  });
+});
+
+//Endpoint de pedidos
+// Obtener pedidos de un usuario
+app.get("/api/orders", (req, res) => {
+  const username = req.query.user;
+  if (!username) {
+    return res.status(400).json({ error: "Falta el parámetro 'user'." });
+  }
+  const ordersPath = path.join(__dirname, 'src', 'assets', 'data', 'orders.json');
+  fs.readFile(ordersPath, "utf8", (err, data) => {
+    if (err && err.code !== "ENOENT") {
+      console.error("Error al leer pedidos:", err);
+      return res.status(500).json({ error: "Error interno del servidor." });
+    }
+    let orders = [];
+    if (data) {
+      try {
+        orders = JSON.parse(data);
+      } catch (parseError) {
+        return res.status(500).json({ error: "Error al procesar los pedidos." });
+      }
+    }
+    const userOrders = orders.filter(order => order.user === username);
+    res.json(userOrders);
+  });
+});
+
+// Crear o modificar un pedido
+app.post("/api/orders", (req, res) => {
+  const { id, user, items, precio, localizador, status } = req.body;
+
+  if (!user || !Array.isArray(items)) {
+    return res.status(400).json({ error: "Faltan datos: usuario o items inválidos." });
+  }
+
+  const ordersPath = path.join(__dirname, 'src', 'assets', 'data', 'orders.json');
+
+  fs.readFile(ordersPath, "utf8", (err, data) => {
+    if (err && err.code !== "ENOENT") {
+      console.error("Error al leer pedidos:", err);
+      return res.status(500).json({ error: "Error interno del servidor." });
+    }
+
+    let orders = [];
+    if (data) {
+      try {
+        orders = JSON.parse(data);
+      } catch (parseError) {
+        return res.status(500).json({ error: "Error al procesar los pedidos." });
+      }
+    }
+
+    if (id) {
+      // Modificar pedido existente
+      const index = orders.findIndex(order => order.id === id);
+      if (index !== -1) {
+        orders[index] = { ...orders[index], items, status: status || orders[index].status };
+
+        fs.writeFile(ordersPath, JSON.stringify(orders, null, 2), err => {
+          if (err) {
+            console.error("Error al guardar pedidos:", err);
+            return res.status(500).json({ error: "No se pudo guardar el pedido." });
+          }
+          // Devolver el pedido modificado completo
+          res.status(200).json(orders[index]);
+        });
+      } else {
+        return res.status(404).json({ error: "Pedido no encontrado para modificar." });
+      }
+    } else {
+      // Crear nuevo pedido
+      const newOrder = {
+        id: Date.now(),
+        user,
+        items,
+        precio,
+        localizador,
+        status: status || ((user.metodoPago === 'transferencia' || user.metodoPago === 'bizum') ? 'pendiente' : 'pagado'),
+        createdAt: new Date().toISOString()
+      };
+      orders.push(newOrder);
+
+      fs.writeFile(ordersPath, JSON.stringify(orders, null, 2), err => {
+        if (err) {
+          console.error("Error al guardar pedidos:", err);
+          return res.status(500).json({ error: "No se pudo guardar el pedido." });
+        }
+        // Devolver datos relevantes del nuevo pedido
+        res.status(200).json({
+          message: "Pedido guardado correctamente.",
+          id: newOrder.id,
+          createdAt: newOrder.createdAt,
+          localizador: newOrder.localizador || null,
+          status: newOrder.status
+        });
+      });
+    }
+  });
+});
+
+
+
