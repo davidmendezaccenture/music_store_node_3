@@ -4,6 +4,10 @@ let metodoEnvio = 'domicilio'; // Valor por defecto
 
 let descuentoAplicado = 0; // Porcentaje de descuento
 
+document.addEventListener('DOMContentLoaded', function () {
+  actualizarEstadoBotonCheckout();
+});
+
 function mostrarResumenPedido() {
   const $resumen = $('#resumen-pedido');
   $resumen.empty();
@@ -115,6 +119,7 @@ $(document).on('click', '#btn-confirmar-eliminar', function () {
       if (carrito.length === 0) {
         mostrarResumenPedido();
         guardarCarrito();
+        actualizarEstadoBotonCheckout();
       }
       itemPendienteEliminar = null;
     });
@@ -241,7 +246,7 @@ $('#form-checkout').on('submit', function (e) {
     email: $('#email').val(),
     metodoPago: $('#metodoPago').val()
   };
-   mostrarModalConfirmarPago();
+   mostrarModalRealizarPago();
   console.log('Datos del formulario:', datos);
 });
 
@@ -314,8 +319,8 @@ async function aplicarCupon(codigoCupon, subtotal) {
 }
 
 // Mostrar modal de confirmación de pago
-function mostrarModalConfirmarPago() {
-  const modal = new bootstrap.Modal(document.getElementById('confirmarPagoModal'));
+function mostrarModalRealizarPago() {
+  const modal = new bootstrap.Modal(document.getElementById('realizarPagoModal'));
   modal.show();
 }
 
@@ -347,16 +352,12 @@ function mostrarModalDatosPago(metodo) {
   modal.show();
 }
 
-// Evento click en botón "Pagar" de la modal confirmarPagoModal
+// Evento click en botón "Pagar" de la modal realizarPagoModal
 $(document).on('click', '#btnDatosPago', function () {
-  const metodoSeleccionado = $('#metodoPago').val(); // suponiendo que tienes un select con id metodoPago
-  if (!metodoSeleccionado) {
-    alert('Por favor, selecciona un método de pago.');
-    return;
-  }
+  const metodoSeleccionado = $('#metodoPago').val();
 
   // Cerrar modal de confirmación de pago
-  const confirmarModalEl = document.getElementById('confirmarPagoModal');
+  const confirmarModalEl = document.getElementById('realizarPagoModal');
   const confirmarModal = bootstrap.Modal.getInstance(confirmarModalEl);
   if (confirmarModal) confirmarModal.hide();
 
@@ -367,6 +368,14 @@ $(document).on('click', '#btnDatosPago', function () {
 // Evento click en botón "Confirmar" de modalDatosPago
 $(document).on('click', '#btnConfirmarPago', function () {
   const metodo = $(this).data('metodo');
+  //Para depurar
+  console.log("el metodo de pago es: "+metodo);
+
+    // Cerrar modal de datos de pago
+  const modalDatosEl = document.getElementById('modalDatosPago');
+  const modalDatos = bootstrap.Modal.getInstance(modalDatosEl);
+  if (modalDatos) modalDatos.hide();
+  const mensajeEl = document.getElementById('mensajePago');
 
   // Validar si hay formulario visible y si es tarjeta o paypal, puedes agregar validaciones aquí
   if (metodo === 'tarjeta') {
@@ -380,17 +389,21 @@ $(document).on('click', '#btnConfirmarPago', function () {
       alert('Por favor, completa todos los datos de la tarjeta.');
       return;
     }
-    // Añade más validaciones si quieres...
   }
-
-  // Cerrar modal de datos de pago
-  const modalDatosEl = document.getElementById('modalDatosPago');
-  const modalDatos = bootstrap.Modal.getInstance(modalDatosEl);
-  if (modalDatos) modalDatos.hide();
 
   if (metodo === 'transferencia') {
     // No mostrar modal de pago confirmado para transferencia, solo cerrar todo
+    carrito = [];
+    guardarCarrito();
+    mostrarResumenPedido();
+    limpiarFormularioPago();
+    actualizarEstadoBotonCheckout();
     return;
+  }
+    if (metodoEnvio === 'tienda') {
+    const localizador = generarLocalizador(); // Función para generar el código
+ 
+    mensajeEl.innerHTML = `✅ ¡Gracias por tu compra!<br>Ya puedes acudir a nuestra tienda con tu DNI y tu localizador <strong>${localizador}</strong>.`;
   }
 
   // Mostrar modal de pago confirmado
@@ -404,9 +417,55 @@ $(document).on('click', '#btnConfirmarPago', function () {
     carrito = [];
     guardarCarrito();
     mostrarResumenPedido();
+    limpiarFormularioPago();
+    actualizarEstadoBotonCheckout();
     console.log('Modal de pago cerrada, carrito actualizado.');
   });
 });
+
+//Localizador simulado
+function generarLocalizador() {
+  const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let localizador = 'PED-';
+  for (let i = 0; i < 6; i++) {
+    localizador += letras.charAt(Math.floor(Math.random() * letras.length));
+  }
+  return localizador;
+}
+
+//Para limpiar el formulario tras el pago
+function limpiarFormularioPago() {
+  // Limpiar todos los campos de texto
+  $('#form-checkout input[type="text"], #form-checkout input[type="email"], #form-checkout input[type="tel"]').val('');
+
+  // Reiniciar selects a su primera opción
+  $('#form-checkout select').each(function () {
+    $(this).prop('selectedIndex', 0);
+  });
+
+  // Ocultar sección de dirección si estaba visible
+  $('#datos-envio').hide();
+
+  // Eliminar clases de validación de Bootstrap (si usas)
+  $('#form-checkout').removeClass('was-validated');
+
+  // También puedes eliminar manualmente clases de error si las aplicas campo a campo
+  $('#form-checkout input, #form-checkout select').removeClass('is-invalid is-valid');
+}
+//Paa deshabilitar boton de pago si el carrito está vacío
+function actualizarEstadoBotonCheckout() {
+  const boton = document.getElementById('btnSubmitCheckout');
+  
+  if (!boton) return;
+
+  if (carrito.length === 0) {
+    boton.disabled = true;
+    boton.classList.remove('btn-primary');
+  } else {
+    boton.disabled = false;
+    boton.classList.add('btn-primary');
+  }
+}
 
 
 
