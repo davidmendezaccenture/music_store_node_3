@@ -1,125 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Factura del Pedido</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      border: 1px solid #ddd;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      background-color: #fff;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      border-bottom: 3px solid #007BFF;
-      padding-bottom: 10px;
-      margin-bottom: 30px;
-    }
-    header img {
-      height: 60px;
-      margin-right: 20px;
-    }
-    header h1 {
-      font-size: 2.5em;
-      color: #007BFF;
-      margin: 0;
-      font-weight: 700;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    h1.resumen {
-      border-bottom: 2px solid #000;
-      padding-bottom: 10px;
-      margin-top: 0;
-    }
-    .info, .productos, .totales, .estado {
-      margin-top: 20px;
-    }
-    .productos div {
-      margin-bottom: 10px;
-    }
-    .resaltado {
-      font-weight: bold;
-    }
-    .pendiente {
-      color: #b35c00;
-    }
-    .pagado {
-      color: green;
-    }
-    .aviso {
-      background-color: #fff8e1;
-      padding: 10px;
-      border-left: 5px solid #ffc107;
-      margin-top: 20px;
-    }
-    .botones {
-      margin-top: 30px;
-    }
-    button {
-      padding: 10px 20px;
-      margin-right: 10px;
-      cursor: pointer;
-      border: none;
-      background-color: #007BFF;
-      color: white;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura del Pedido</title>
+    <link rel="stylesheet" href="../css/factura.css">
 </head>
 <body>
 
-  <header>
-    <img src="../assets/images/Rairock.png" alt="RaiRock Logo" />
-    <h1>RaiRock</h1>
-  </header>
+    <header>
+        <img src="../assets/images/Rairock.png" alt="RaiRock Logo" />
+        <h1>RaiRock</h1>
+    </header>
 
-  <h1 class="resumen">Resumen del Pedido</h1>
+    <h2 id="titulo-factura">Factura del pedido</h2>
 
-  <div class="info">
-    <p><span class="resaltado">Pedido:</span> <span id="pedido-id"></span></p>
-    <p><span class="resaltado">Fecha:</span> <span id="pedido-fecha"></span></p>
-    <p><span class="resaltado">Nombre:</span> <span id="cliente-nombre"></span></p>
-    <p><span class="resaltado">Email:</span> <span id="cliente-email"></span></p>
-    <p><span class="resaltado">Teléfono:</span> <span id="cliente-telefono"></span></p>
-    <p><span class="resaltado">Envío:</span> <span id="metodo-envio"></span></p>
-    <p><span class="resaltado">Pago:</span> <span id="metodo-pago"></span></p>
-    <p id="direccion-envio" style="display:none;"><span class="resaltado">Dirección:</span> <span id="direccion-completa"></span></p>
-  </div>
+    <h1 class="resumen">Resumen del Pedido</h1>
 
-  <div class="estado">
-    <p class="resaltado">Estado del pedido: <span id="estado-texto"></span></p>
-    <p id="localizador-linea" style="display: none;"><span class="resaltado">Localizador:</span> <span id="localizador"></span></p>
-    <div id="mensaje-pendiente" class="aviso" style="display: none;">
-      Este pedido está pendiente de confirmación de pago. Recibirás un correo cuando se confirme.
+    <div class="info">
+        <p><span class="resaltado">Pedido:</span> <span id="pedido-id"></span></p>
+        <p><span class="resaltado">Fecha:</span> <span id="pedido-fecha"></span></p>
+        <p><span class="resaltado">Nombre:</span> <span id="cliente-nombre"></span></p>
+        <p><span class="resaltado">Email:</span> <span id="cliente-email"></span></p>
+        <p><span class="resaltado">Teléfono:</span> <span id="cliente-telefono"></span></p>
+        <p><span class="resaltado">Envío:</span> <span id="metodo-envio"></span></p>
+        <p><span class="resaltado">Pago:</span> <span id="metodo-pago"></span></p>
+        <p id="direccion-envio" style="display:none;"><span class="resaltado">Dirección:</span> <span id="direccion-completa"></span></p>
     </div>
-  </div>
 
-  <div class="productos">
-    <h2>Productos</h2>
-    <div id="lista-productos"></div>
-  </div>
+    <div class="estado">
+        <p class="resaltado">Estado del pedido: <span id="estado-texto"></span></p>
+        <p id="localizador-linea" style="display: none;"><span class="resaltado">Localizador:</span> <span id="localizador"></span></p>
+        <div id="mensaje-pendiente" class="aviso" style="display: none;">
+        Este pedido está pendiente de confirmación de pago. Recibirás un correo cuando se confirme.
+        </div>
+    </div>
+    
 
-  <div class="totales">
-    <p><span class="resaltado">Subtotal:</span> <span id="subtotal"></span> €</p>
-    <p><span class="resaltado">Descuento:</span> <span id="descuento"></span>%</p>
-    <p><span class="resaltado">Gastos de envío:</span> <span id="envio"></span> €</p>
-    <p class="resaltado" style="font-size: 1.2em;">Total: <span id="total"></span> €</p>
-  </div>
+    <div class="productos">
+        <h2>Productos</h2>
+            <table id="tabla-productos" role="table" aria-labelledby="titulo-factura">
+                <caption class="sr-only">Lista detallada de productos incluidos en el pedido</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio unitario</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+            <tbody>
+            <!-- Se rellena de forma dináminca desde el js -->
+            </tbody>
+        </table>
 
-  <div class="botones">
-    <button onclick="window.print()">Imprimir</button>
-    <button onclick="window.location.href='index.html'">Volver a la tienda</button>
-  </div>
+        <div class="totales" role="region" aria-label="Resumen de totales">
+            <p><span class="resaltado">Subtotal:</span> <span id="subtotal"></span> €</p>
+            <p><span class="resaltado">Descuento:</span> <span id="descuento"></span>%</p>
+            <p><span class="resaltado">Gastos de envío:</span> <span id="envio"></span> €</p>
+            <p class="resaltado" style="font-size: 1.2em;">Total: <span id="total"></span> €</p>
+        </div>
+    </div>
+<p style="margin-top: 20px; font-weight: bold;">
+    Puedes mostrar este QR para recoger tu pedido
+</p>
+<div id="qr-container" aria-label="Código QR del pedido" role="img" style="margin-top: 10px;">  <span class="sr-only">Código QR</span></div>
 
-  <script src="../js/factura.js"></script>
+    <div class="botones">
+        <button id="btn-descargar-pdf" aria-label="Descargar factura en PDF">Descargar PDF</button>
+        <button onclick="window.location.href='index.html'" aria-label="Volver a la tienda">Volver a la tienda</button>
+    </div>
+
+    <script src="../js/factura.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
 </body>
 </html>

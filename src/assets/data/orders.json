@@ -304,5 +304,193 @@
     },
     "status": "pendiente",
     "createdAt": "2025-07-09T16:01:11.481Z"
+  },
+  {
+    "id": 1752077046892,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "domicilio",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "bizum",
+      "direccion": {
+        "calle": "C. Julio Romero de Torres, 49",
+        "ciudad": "Gines",
+        "cp": "41960"
+      }
+    },
+    "items": [
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 1,
+        "precioUnitario": 150,
+        "total": 150
+      },
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 450,
+      "descuentoAplicado": 10,
+      "gastosEnvio": 15,
+      "total": 420
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-09T16:04:06.892Z"
+  },
+  {
+    "id": 1752077115904,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "bizum"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-09T16:05:15.905Z"
+  },
+  {
+    "id": 1752078003352,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "domicilio",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta",
+      "direccion": {
+        "calle": "C. Julio Romero de Torres, 49",
+        "ciudad": "Gines",
+        "cp": "41960"
+      }
+    },
+    "items": [
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 1,
+        "precioUnitario": 150,
+        "total": 150
+      },
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 2,
+        "precioUnitario": 300,
+        "total": 600
+      },
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 1,
+        "precioUnitario": 250,
+        "total": 250
+      },
+      {
+        "id": "4",
+        "nombre": "Guitarra Flamenca",
+        "descripcion": "Guitarra flamenca con un diseño tradicional.",
+        "cantidad": 2,
+        "precioUnitario": 180,
+        "total": 360
+      }
+    ],
+    "precio": {
+      "subtotal": 1360,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 1292
+    },
+    "status": "pagado",
+    "createdAt": "2025-07-09T16:20:03.352Z"
+  },
+  {
+    "id": 1752078257638,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "bizum"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-09T16:24:17.638Z"
+  },
+  {
+    "id": 1752078769129,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "17",
+        "nombre": "Set de Platillos",
+        "descripcion": "Set de platillos de alta calidad para bateristas profesionales.",
+        "cantidad": 1,
+        "precioUnitario": 350,
+        "total": 350
+      }
+    ],
+    "precio": {
+      "subtotal": 350,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 350
+    },
+    "localizador": "PED-VUM4YZ",
+    "status": "pagado",
+    "createdAt": "2025-07-09T16:32:49.129Z"
   }
 ]
