@@ -67,14 +67,15 @@ function mostrarBotonLogin() {
   if (btnContainerMobile) btnContainerMobile.innerHTML = loginHTML;
   if (btnContainerDesktop) btnContainerDesktop.innerHTML = loginHTML;
 }
-document.addEventListener('DOMContentLoaded', () => {
-  const usuario = JSON.parse(localStorage.getItem('usuario'));
-  if (usuario && usuario.nombre) {
-    mostrarBotonLogout(usuario.nombre);
-  } else {
-    mostrarBotonLogin();
-  }
-});
+
+//document.addEventListener('DOMContentLoaded', () => {
+ // const usuario = JSON.parse(localStorage.getItem('usuario'));
+  //if (usuario && usuario.nombre) {
+   // mostrarBotonLogout(usuario.nombre);
+  //} else {
+   // mostrarBotonLogin();
+ // }
+//});
 
 function esperarYMostrarLoginModal() {
   function showModal() {
