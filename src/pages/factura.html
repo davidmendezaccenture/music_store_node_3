@@ -7,16 +7,13 @@
     <link rel="stylesheet" href="../css/factura.css">
 </head>
 <body>
-
     <header>
-        <img src="../assets/images/Rairock.png" alt="RaiRock Logo" />
+        <img id="logo-tienda" src="../assets/images/Rairock.png" alt="RaiRock Logo" />
         <h1>RaiRock</h1>
     </header>
 
     <h2 id="titulo-factura">Factura del pedido</h2>
-
     <h1 class="resumen">Resumen del Pedido</h1>
-
     <div class="info">
         <p><span class="resaltado">Pedido:</span> <span id="pedido-id"></span></p>
         <p><span class="resaltado">Fecha:</span> <span id="pedido-fecha"></span></p>
@@ -57,18 +54,20 @@
 
         <div class="totales" role="region" aria-label="Resumen de totales">
             <p><span class="resaltado">Subtotal:</span> <span id="subtotal"></span> €</p>
-            <p><span class="resaltado">Descuento:</span> <span id="descuento"></span>%</p>
+            <p><span class="resaltado">Descuento:</span> <span id="descuento"></span> €</p>
             <p><span class="resaltado">Gastos de envío:</span> <span id="envio"></span> €</p>
             <p class="resaltado" style="font-size: 1.2em;">Total: <span id="total"></span> €</p>
         </div>
     </div>
-<p style="margin-top: 20px; font-weight: bold;">
-    Puedes mostrar este QR para recoger tu pedido
-</p>
-<div id="qr-container" aria-label="Código QR del pedido" role="img" style="margin-top: 10px;">  <span class="sr-only">Código QR</span></div>
+    <p id="qr-text" style="margin-top: 20px; font-weight: bold; display: none;">Puedes mostrar este QR para recoger tu pedido
+    </p>
+    <div id="qr-container" aria-label="Código QR del pedido" role="img" style="margin-top: 10px;"> <span class="sr-only">Código QR</span>
+    </div>
 
     <div class="botones">
-        <button id="btn-descargar-pdf" aria-label="Descargar factura en PDF">Descargar PDF</button>
+        <button id="btn-descargar-pdf" class="btn btn-primary">Descargar PDF
+            <span id="spinner-pdf" class="spinner-border spinner-border-sm ms-2" style="display: none;" role="status" aria-hidden="true"></span>
+        </button>
         <button onclick="window.location.href='index.html'" aria-label="Volver a la tienda">Volver a la tienda</button>
     </div>
 

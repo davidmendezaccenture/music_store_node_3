@@ -1,6 +1,6 @@
 [
   {
-    "id": 1752076050144,
+    "id": 1752086713212,
     "user": {
       "nombre": "David",
       "apellidos": "Santos Belmonte",
@@ -25,195 +25,12 @@
       "gastosEnvio": 0,
       "total": 300
     },
-    "localizador": "PED-DYZ2EL",
+    "localizador": "PED-F0WIZQ",
     "status": "pagado",
-    "createdAt": "2025-07-09T15:47:30.144Z"
+    "createdAt": "2025-07-09T18:45:13.212Z"
   },
   {
-    "id": 1752076256927,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "tienda",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "tarjeta"
-    },
-    "items": [
-      {
-        "id": "3",
-        "nombre": "Bajo Eléctrico",
-        "descripcion": "Bajo eléctrico con diseño ergonómico.",
-        "cantidad": 1,
-        "precioUnitario": 250,
-        "total": 250
-      }
-    ],
-    "precio": {
-      "subtotal": 250,
-      "descuentoAplicado": 0,
-      "gastosEnvio": 0,
-      "total": 250
-    },
-    "localizador": "PED-KYCQJX",
-    "status": "pagado",
-    "createdAt": "2025-07-09T15:50:56.927Z"
-  },
-  {
-    "id": 1752076302927,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "domicilio",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "paypal",
-      "direccion": {
-        "calle": "C. Julio Romero de Torres, 49",
-        "ciudad": "Gines",
-        "cp": "41960"
-      }
-    },
-    "items": [
-      {
-        "id": "2",
-        "nombre": "Guitarra Eléctrica",
-        "descripcion": "Guitarra eléctrica para músicos avanzados.",
-        "cantidad": 1,
-        "precioUnitario": 300,
-        "total": 300
-      },
-      {
-        "id": "1",
-        "nombre": "Guitarra Acústica",
-        "descripcion": "Guitarra acústica de alta calidad.",
-        "cantidad": 3,
-        "precioUnitario": 150,
-        "total": 450
-      },
-      {
-        "id": "4",
-        "nombre": "Guitarra Flamenca",
-        "descripcion": "Guitarra flamenca con un diseño tradicional.",
-        "cantidad": 1,
-        "precioUnitario": 180,
-        "total": 180
-      },
-      {
-        "id": "3",
-        "nombre": "Bajo Eléctrico",
-        "descripcion": "Bajo eléctrico con diseño ergonómico.",
-        "cantidad": 2,
-        "precioUnitario": 250,
-        "total": 500
-      },
-      {
-        "id": "7",
-        "nombre": "Guitarra Acústica Premium",
-        "descripcion": "Guitarra acústica con acabados de lujo.",
-        "cantidad": 1,
-        "precioUnitario": 750,
-        "total": 750
-      }
-    ],
-    "precio": {
-      "subtotal": 2180,
-      "descuentoAplicado": 5,
-      "gastosEnvio": 0,
-      "total": 2071
-    },
-    "status": "pagado",
-    "createdAt": "2025-07-09T15:51:42.927Z"
-  },
-  {
-    "id": 1752076332997,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "tienda",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "bizum"
-    },
-    "items": [
-      {
-        "id": "2",
-        "nombre": "Guitarra Eléctrica",
-        "descripcion": "Guitarra eléctrica para músicos avanzados.",
-        "cantidad": 1,
-        "precioUnitario": 300,
-        "total": 300
-      }
-    ],
-    "precio": {
-      "subtotal": 300,
-      "descuentoAplicado": 0,
-      "gastosEnvio": 0,
-      "total": 300
-    },
-    "status": "pagado",
-    "createdAt": "2025-07-09T15:52:12.997Z"
-  },
-  {
-    "id": 1752076462637,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "tienda",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "bizum"
-    },
-    "items": [
-      {
-        "id": "2",
-        "nombre": "Guitarra Eléctrica",
-        "descripcion": "Guitarra eléctrica para músicos avanzados.",
-        "cantidad": 1,
-        "precioUnitario": 300,
-        "total": 300
-      }
-    ],
-    "precio": {
-      "subtotal": 300,
-      "descuentoAplicado": 0,
-      "gastosEnvio": 0,
-      "total": 300
-    },
-    "status": "pagado",
-    "createdAt": "2025-07-09T15:54:22.637Z"
-  },
-  {
-    "id": 1752076490974,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "tienda",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "bizum"
-    },
-    "items": [
-      {
-        "id": "2",
-        "nombre": "Guitarra Eléctrica",
-        "descripcion": "Guitarra eléctrica para músicos avanzados.",
-        "cantidad": 1,
-        "precioUnitario": 300,
-        "total": 300
-      }
-    ],
-    "precio": {
-      "subtotal": 300,
-      "descuentoAplicado": 0,
-      "gastosEnvio": 0,
-      "total": 300
-    },
-    "status": "pendiente",
-    "createdAt": "2025-07-09T15:54:50.974Z"
-  },
-  {
-    "id": 1752076519320,
+    "id": 1752086793021,
     "user": {
       "nombre": "David",
       "apellidos": "Santos Belmonte",
@@ -238,53 +55,19 @@
       "gastosEnvio": 0,
       "total": 300
     },
-    "localizador": "PED-81ILPR",
+    "localizador": "PED-SA5MT2",
     "status": "pagado",
-    "createdAt": "2025-07-09T15:55:19.320Z"
+    "createdAt": "2025-07-09T18:46:33.021Z"
   },
   {
-    "id": 1752076740343,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "domicilio",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "transferencia",
-      "direccion": {
-        "calle": "C. Julio Romero de Torres, 49",
-        "ciudad": "Gines",
-        "cp": "41960"
-      }
-    },
-    "items": [
-      {
-        "id": "2",
-        "nombre": "Guitarra Eléctrica",
-        "descripcion": "Guitarra eléctrica para músicos avanzados.",
-        "cantidad": 3,
-        "precioUnitario": 300,
-        "total": 900
-      }
-    ],
-    "precio": {
-      "subtotal": 900,
-      "descuentoAplicado": 0,
-      "gastosEnvio": 0,
-      "total": 900
-    },
-    "status": "pendiente",
-    "createdAt": "2025-07-09T15:59:00.343Z"
-  },
-  {
-    "id": 1752076871481,
+    "id": 1752087254234,
     "user": {
       "nombre": "David",
       "apellidos": "Santos Belmonte",
       "metodoEnvio": "tienda",
       "telefono": "653511423",
       "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "transferencia"
+      "metodoPago": "bizum"
     },
     "items": [
       {
@@ -303,194 +86,6 @@
       "total": 250
     },
     "status": "pendiente",
-    "createdAt": "2025-07-09T16:01:11.481Z"
-  },
-  {
-    "id": 1752077046892,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "domicilio",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "bizum",
-      "direccion": {
-        "calle": "C. Julio Romero de Torres, 49",
-        "ciudad": "Gines",
-        "cp": "41960"
-      }
-    },
-    "items": [
-      {
-        "id": "1",
-        "nombre": "Guitarra Acústica",
-        "descripcion": "Guitarra acústica de alta calidad.",
-        "cantidad": 1,
-        "precioUnitario": 150,
-        "total": 150
-      },
-      {
-        "id": "2",
-        "nombre": "Guitarra Eléctrica",
-        "descripcion": "Guitarra eléctrica para músicos avanzados.",
-        "cantidad": 1,
-        "precioUnitario": 300,
-        "total": 300
-      }
-    ],
-    "precio": {
-      "subtotal": 450,
-      "descuentoAplicado": 10,
-      "gastosEnvio": 15,
-      "total": 420
-    },
-    "status": "pendiente",
-    "createdAt": "2025-07-09T16:04:06.892Z"
-  },
-  {
-    "id": 1752077115904,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "tienda",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "bizum"
-    },
-    "items": [
-      {
-        "id": "2",
-        "nombre": "Guitarra Eléctrica",
-        "descripcion": "Guitarra eléctrica para músicos avanzados.",
-        "cantidad": 1,
-        "precioUnitario": 300,
-        "total": 300
-      }
-    ],
-    "precio": {
-      "subtotal": 300,
-      "descuentoAplicado": 0,
-      "gastosEnvio": 0,
-      "total": 300
-    },
-    "status": "pendiente",
-    "createdAt": "2025-07-09T16:05:15.905Z"
-  },
-  {
-    "id": 1752078003352,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "domicilio",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "tarjeta",
-      "direccion": {
-        "calle": "C. Julio Romero de Torres, 49",
-        "ciudad": "Gines",
-        "cp": "41960"
-      }
-    },
-    "items": [
-      {
-        "id": "1",
-        "nombre": "Guitarra Acústica",
-        "descripcion": "Guitarra acústica de alta calidad.",
-        "cantidad": 1,
-        "precioUnitario": 150,
-        "total": 150
-      },
-      {
-        "id": "2",
-        "nombre": "Guitarra Eléctrica",
-        "descripcion": "Guitarra eléctrica para músicos avanzados.",
-        "cantidad": 2,
-        "precioUnitario": 300,
-        "total": 600
-      },
-      {
-        "id": "3",
-        "nombre": "Bajo Eléctrico",
-        "descripcion": "Bajo eléctrico con diseño ergonómico.",
-        "cantidad": 1,
-        "precioUnitario": 250,
-        "total": 250
-      },
-      {
-        "id": "4",
-        "nombre": "Guitarra Flamenca",
-        "descripcion": "Guitarra flamenca con un diseño tradicional.",
-        "cantidad": 2,
-        "precioUnitario": 180,
-        "total": 360
-      }
-    ],
-    "precio": {
-      "subtotal": 1360,
-      "descuentoAplicado": 5,
-      "gastosEnvio": 0,
-      "total": 1292
-    },
-    "status": "pagado",
-    "createdAt": "2025-07-09T16:20:03.352Z"
-  },
-  {
-    "id": 1752078257638,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "tienda",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "bizum"
-    },
-    "items": [
-      {
-        "id": "2",
-        "nombre": "Guitarra Eléctrica",
-        "descripcion": "Guitarra eléctrica para músicos avanzados.",
-        "cantidad": 1,
-        "precioUnitario": 300,
-        "total": 300
-      }
-    ],
-    "precio": {
-      "subtotal": 300,
-      "descuentoAplicado": 0,
-      "gastosEnvio": 0,
-      "total": 300
-    },
-    "status": "pendiente",
-    "createdAt": "2025-07-09T16:24:17.638Z"
-  },
-  {
-    "id": 1752078769129,
-    "user": {
-      "nombre": "David",
-      "apellidos": "Santos Belmonte",
-      "metodoEnvio": "tienda",
-      "telefono": "653511423",
-      "email": "davidsantosbelmonte@gmail.com",
-      "metodoPago": "paypal"
-    },
-    "items": [
-      {
-        "id": "17",
-        "nombre": "Set de Platillos",
-        "descripcion": "Set de platillos de alta calidad para bateristas profesionales.",
-        "cantidad": 1,
-        "precioUnitario": 350,
-        "total": 350
-      }
-    ],
-    "precio": {
-      "subtotal": 350,
-      "descuentoAplicado": 0,
-      "gastosEnvio": 0,
-      "total": 350
-    },
-    "localizador": "PED-VUM4YZ",
-    "status": "pagado",
-    "createdAt": "2025-07-09T16:32:49.129Z"
+    "createdAt": "2025-07-09T18:54:14.234Z"
   }
 ]
