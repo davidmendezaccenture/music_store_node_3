@@ -16,8 +16,11 @@ $(function () {
         '../js/login-ui.js',
         '../js/index.js',
         '../js/products.js',
-        '../js/category.js'
-      ];
+        '../js/category.js',
+        '../js/glide.js',
+        '../js/search.js'
+          
+    ];
 
       let index = 0;
 

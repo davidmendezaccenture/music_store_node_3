@@ -11,130 +11,9 @@
   <link rel="stylesheet" href="../css/about_us.css" />
 </head>
 <body>
-  <!-- Header -->
-<header class="sticky-top bg-light shadow-sm">
-    <!-- 1ª línea - logo centrado -->
-    <div class="border-bottom py-2 bg-light">
-        <div class="text-center">
-            <a class="navbar-brand d-inline-flex align-items-center" href="/pages/index.html">
-                <img src="../assets/images/Rairock.png" alt="RaiRock Logo" height="50" class="me-2">
-                <span class="fw-bold fs-3">RaiRock</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- 2ª línea - navegación y acciones -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 px-3">
-        <div class="container-fluid p-0">
-            <!-- Versión mobile -->
-            <div class="d-lg-none w-100">
-                <div class="mobile-top-bar">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="user-actions-mobile">
-                        <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
-                            <i class="bi bi-heart"></i>
-                            <span id="favoritesCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
-                        </a>
-                        <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
-                            <i class="bi bi-cart3"></i>
-                            <span id="cartCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
-                        </a>
-<div id="user-auth-mobile" class="d-flex align-items-center">
-  <span id="username-mobile" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
-  <div id="auth-button-mobile"></div>
-</div>
-                    </div>
-                </div>
-                <div class="search-bar-mobile">
-                    <form id="form-busqueda-mobile" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
-                            <select class="form-select" name="category" style="max-width: 120px;">
-                                <option value="">Todas</option>
-                                <option value="acoustic-guitars">Guitarras acústica</option>
-                                <option value="classical-guitars">Guitarras clásicas</option>
-                                <option value="electric-guitars">Guitarras eléctrica</option>
-                                <option value="basses">Bajos</option>
-                                <option value="amplifiers">Amplificadores</option>
-                                <option value="effect-pedals">Pedales</option>
-                                <option value="acoustic-drums">Baterías acustica</option>
-                                <option value="electronic-drums">Baterías electronica</option>
-                                <option value="set-platillos">Platillos</option>
-                                <option value="keyboards">Teclados</option>
-                                <option value="synthesizers">Sintetizadores</option>
-                            </select>
-                            <button class="btn btn-outline-primary" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Versión desktop -->
-            <div class="d-none d-lg-flex desktop-nav-container">
-                <div class="nav-links-desktop">
-                    <ul class="navbar-nav d-flex flex-row">
-                        <li class="nav-item me-3"><a class="nav-link" href="/pages/index.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
-                        <li class="nav-item me-3"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1"></i>Servicios</a></li>
-                        <li class="nav-item me-3"><a class="nav-link" href="/pages/sobre_nosotros.html"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="search-bar-desktop">
-                    <form id="form-busqueda-desktop" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control flex-grow-1 ms-2" name="q" placeholder="Buscar">
-                            <select class="form-select" name="category" style="max-width: 120px;">
-                                <option value="">Todas</option>
-                                <option value="acoustic-guitars">Guitarras acústica</option>
-                                <option value="classical-guitars">Guitarras clásicas</option>
-                                <option value="electric-guitars">Guitarras eléctrica</option>
-                                <option value="basses">Bajos</option>
-                                <option value="amplifiers">Amplificadores</option>
-                                <option value="effect-pedals">Pedales</option>
-                                <option value="acoustic-drums">Baterías acustica</option>
-                                <option value="electronic-drums">Baterías electronica</option>
-                                <option value="set-platillos">Platillos</option>
-                                <option value="keyboards">Teclados</option>
-                                <option value="synthesizers">Sintetizadores</option>
-                            </select>
-                            <button class="btn btn-outline-primary" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-                    </form>
-
-                </div>
-                <div class="user-actions-desktop d-flex gap-2">
-                    <a href="/pages/favorites.html" class="btn btn-outline-dark position-relative">
-                        <i class="bi bi-heart icono-contador"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
-                    </a>
-                    <a href="/pages/cart.html" class="btn btn-outline-dark position-relative">
-                        <i class="bi bi-cart3 icono-contador"></i>
-                        <span id="cartCounterDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
-                    </a>
-                    <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate text-center">Invitado</span>
-                    <div id="user-auth-desktop" class="d-flex align-items-center">
-
-                        <div id="auth-button-desktop"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
+ 
+  <!-- HEADER DINÁMICO -->
+  <div id="header-container"></div>
 
   <!-- Contenido principal -->
   <main class="container my-5" role="main">
@@ -175,74 +54,14 @@
     </section>
   </main>
 
-   <!-- Pre-footer -->
-    <section class="pre-footer py-5">
-  <div class="container">
-    <div class="row g-4">
-      <!-- Columna 1: Métodos de pago -->
-<div class="col-md-4 mb-4 mb-md-0">
-    <div class="pre-footer-card h-100 p-4">
-        <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
-        <div class="payment-methods d-flex flex-wrap gap-3 align-items-center">
-            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con PayPal">
-                <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" class="payment-img grayscale">
-            </a>
-            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con Visa">
-                <img src="../assets/images/icons8-visa-48 (1).png" alt="Visa" class="payment-img grayscale">
-            </a>
-            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con MasterCard">
-                <img src="../assets/images/icons8-mastercard-48.png" alt="MasterCard" class="payment-img grayscale">
-            </a>
-            <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con American Express">
-                <img src="../assets/images/icons8-american-express-al-cuadrado-48.png" alt="American Express" class="payment-img grayscale">
-            </a>
-        </div>
-    </div>
-</div>
-      
-      <!-- Columna 2: Ventajas -->
-      <div class="col-md-4 mb-4 mb-md-0">
-        <div class="pre-footer-card h-100 p-4">
-          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Ventajas RaiRock</h3>
-          <ul class="list-unstyled">
-            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Garantía de 2 años</li>
-            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Devoluciones fáciles</li>
-            <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Servicio técnico especializado</li>
-            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Asesoramiento profesional</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Columna 3: Redes sociales -->
-      <div class="col-md-4">
-        <div class="pre-footer-card h-100 p-4">
-          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Síguenos</h3>
-          <div class="social-links d-flex flex-wrap gap-3">
-            <a href="#" class="social-icon" aria-label="Facebook">
-              <i class="bi bi-facebook fs-3"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Twitter">
-              <i class="bi bi-twitter-x fs-3"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Instagram">
-              <i class="bi bi-instagram fs-3"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="YouTube">
-              <i class="bi bi-youtube fs-3"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- PREFOOTER DINÁMICO -->
+  <div id="prefooter-container"></div>
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white py-3">
-    <div class="container text-center">
-      <p class="mb-0">&copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+  <!-- FOOTER DINÁMICO -->
+  <div id="footer-container"></div>
+
+  <!-- MODALES LOGIN -->
+  <div id="modals-container"></div>
 
 <!-- Modal para mostrar más información -->
   <div class="modal fade" id="modalIntegrante" tabindex="-1" aria-labelledby="modalIntegranteLabel" aria-hidden="true">
@@ -260,26 +79,15 @@
     </div>
   </div>
 
-<div id="modals-container"></div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
-<script>
-    // Añadir el año currentYear automáticamente
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
-<script>
-    //Función para guardar ultima página
-  document.addEventListener('DOMContentLoaded', () => {
-    localStorage.setItem('ultimaPagina', window.location.pathname);
-  });
-</script>
-<script src="../js/login-ui.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/auth.js"></script>
-<script src="../js/cart.js"></script>
-<script src="../js/app.js"></script>
-<script src="../js/search.js"></script>
-<script src="../js/about_us.js"></script>
+
+<!-- CARGA DE HEADER, PREFOOTER, FOOTER, MODALES, SCRIPTS -->
+  <script src="../js/loader.js"></script>
+
+    <!-- SCRIPT LOCAL DE ESTA PÁGINA -->
+  <script src="../js/about_us.js"></script>
 
   <!-- Google Maps API con mi clave real) -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5F5tAirDf5wsL_K9oLu-lGVVEDM6gEIs&callback=initMap"></script>
