@@ -241,5 +241,68 @@
     "localizador": "PED-81ILPR",
     "status": "pagado",
     "createdAt": "2025-07-09T15:55:19.320Z"
+  },
+  {
+    "id": 1752076740343,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "domicilio",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "transferencia",
+      "direccion": {
+        "calle": "C. Julio Romero de Torres, 49",
+        "ciudad": "Gines",
+        "cp": "41960"
+      }
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 3,
+        "precioUnitario": 300,
+        "total": 900
+      }
+    ],
+    "precio": {
+      "subtotal": 900,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 900
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-09T15:59:00.343Z"
+  },
+  {
+    "id": 1752076871481,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "transferencia"
+    },
+    "items": [
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 1,
+        "precioUnitario": 250,
+        "total": 250
+      }
+    ],
+    "precio": {
+      "subtotal": 250,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 250
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-09T16:01:11.481Z"
   }
 ]

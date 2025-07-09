@@ -54,10 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Totales
   document.getElementById('subtotal').textContent = pedido.precio.subtotal.toFixed(2);
   const descuentoValor = (pedido.precio.subtotal * (pedido.precio.descuentoAplicado / 100));
-  document.getElementById('descuento').textContent = descuentoValor.toFixed(2);
+  document.getElementById('descuento').textContent = descuentoValor;
   document.getElementById('envio').textContent = pedido.precio.gastosEnvio.toFixed(2);
   document.getElementById('total').textContent = pedido.precio.total.toFixed(2);
 
-  // Opcional: limpiar el pedido del localStorage tras cargarlo
-  // localStorage.removeItem('ultimoPedido');
+ localStorage.removeItem('ultimoPedido');
 });
