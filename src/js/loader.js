@@ -55,7 +55,7 @@ $(function () {
   // Cargar prefooter si corresponde
   const paginasConPrefooter = [
     'index.html', 'guitar.html', 'keyboard.html', 'drums.html',
-    'product-detail.html', 'services.html'
+    'product-detail.html', 'services.html', 'sobre_nosotros.html'
   ];
   const paginaActual = window.location.pathname.split('/').pop();
   if (paginasConPrefooter.includes(paginaActual)) {
