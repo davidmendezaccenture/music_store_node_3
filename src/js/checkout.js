@@ -239,13 +239,7 @@ $('#form-checkout').on('submit', function (e) {
     return;
   }
 
-  const datos = {
-    direccion: $('#direccion').val(),
-    ciudad: $('#ciudad').val(),
-    cp: $('#cp').val(),
-    email: $('#email').val(),
-    metodoPago: $('#metodoPago').val()
-  };
+  enviarPedido(obtenerDatosPedido());
    mostrarModalRealizarPago();
   console.log('Datos del formulario:', datos);
 });
@@ -373,7 +367,6 @@ $(document).on('click', '#btnConfirmarPago', function () {
   const mensajeEl = document.getElementById('mensajePago');
 
   let valido = true;
-console.log(metodo);
   if (metodo === 'tarjeta') {
     valido = validarTarjeta();
   } else if (metodo === 'paypal') {
@@ -554,6 +547,134 @@ function validarTarjeta() {
 
   return valido;
 }
+//Función para enviar al backend los datos del pedido:
+function enviarPedido(pedido) {
+
+    return fetch('/api/orders', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(pedido)
+      })
+    
+  .then(res => {
+    if (!res.ok) throw new Error(`Error en la respuesta: ${res.status}`);
+    return res.json();
+  });
+}
+//Función para recopilar los datos del clientte
+function obtenerDatosClienteDesdeFormulario() {
+  const nombre = document.getElementById('nombre').value.trim();
+  const apellidos = document.getElementById('apellidos').value.trim();
+  const metodoEnvio = document.getElementById('metodoEnvio').value;
+  const telefono = document.getElementById('telefono').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const metodoPago = document.getElementById('metodoPago').value;
+
+  const datosCliente = { nombre, apellidos, metodoEnvio, telefono, email, metodoPago };
+
+  if (metodoEnvio === 'domicilio') {
+    datosCliente.direccion = {
+      direccion: document.getElementById('direccion').value.trim(),
+      ciudad: document.getElementById('ciudad').value.trim(),
+      cp: document.getElementById('cp').value.trim()
+    };
+  }
+
+  return datosCliente;
+}
+//Función para obtener los productos del resumen
+function obtenerProductosDelResumen() {
+  const productos = [];
+  const lista = document.querySelectorAll("#resumen-pedido li.list-group-item");
+
+  lista.forEach(li => {
+    const id = li.getAttribute("data-id");
+
+    const nombre = li.querySelector("strong")?.textContent.trim() || "";
+    const descripcion = li.querySelector("small.text-muted")?.textContent.trim() || "";
+
+    // Buscar el span que contiene la cantidad y precio unitario
+    let cantidadPrecioTexto = "";
+    const spansTextMuted = li.querySelectorAll("span.text-muted");
+    spansTextMuted.forEach(span => {
+      if (span.textContent.includes("unidad(es) ×")) {
+        cantidadPrecioTexto = span.textContent;
+      }
+    });
+
+    const match = cantidadPrecioTexto.match(/(\d+)\s+unidad\(es\)\s+×\s+([\d.,]+)\s*€/);
+    let cantidad = 0;
+    let precioUnitario = 0;
+    if (match) {
+      cantidad = parseInt(match[1], 10);
+      precioUnitario = parseFloat(match[2].replace(',', '.'));
+    }
+
+    // Total del producto
+    const totalTexto = li.querySelector("span.fw-bold")?.textContent || "";
+    const totalMatch = totalTexto.match(/Total:\s*([\d.,]+)\s*€/);
+    let total = 0;
+    if (totalMatch) {
+      total = parseFloat(totalMatch[1].replace(',', '.'));
+    }
+
+    productos.push({
+      id,
+      nombre,
+      descripcion,
+      cantidad,
+      precioUnitario,
+      total
+    });
+  });
+
+  return productos;
+}
+
+function obtenerDatosPedido() {
+  // Primero obtenemos los datos del cliente (puedes reutilizar tu función)
+  const datosCliente = obtenerDatosClienteDesdeFormulario();
+
+  // Obtenemos el array de productos
+  const productos = obtenerProductosDelResumen();
+
+  // Leemos el subtotal sin envío (y sin descuento, está tachado si hay descuento)
+  // El valor real sin descuento está en el texto tachado (span anterior al strong)
+  let subtotalTexto = "";
+  let subtotal = 0;
+  const totalSinEnvioEl = document.querySelector("#totalSinEnvio");
+  if (totalSinEnvioEl.querySelector("span")) {
+    // Hay descuento: el subtotal original está tachado en el span
+    subtotalTexto = totalSinEnvioEl.querySelector("span").textContent;
+  } else {
+    // No hay descuento, el subtotal está directamente ahí
+    subtotalTexto = totalSinEnvioEl.textContent;
+  }
+  subtotal = parseFloat(subtotalTexto.replace(/[^\d.,]/g, "").replace(",", "."));
+
+  // Leemos los gastos de envío
+  const envioTexto = document.querySelector("#envio").textContent;
+  const gastosEnvio = parseFloat(envioTexto.replace(/[^\d.,]/g, "").replace(",", "."));
+
+  // Leemos el total final
+  const totalTexto = document.querySelector("#total").textContent;
+  const total = parseFloat(totalTexto.replace(/[^\d.,]/g, "").replace(",", "."));
+
+  // Añadimos el descuentoAplicado (usa la variable global o pásala)
+  // Por seguridad, la obtenemos de la variable global o si no 0
+  const descuento = typeof descuentoAplicado === "number" ? descuentoAplicado : 0;
+
+  return {
+    user: datosCliente,
+    items: productos,
+    descuentoAplicado: descuento,
+    subtotal,
+    gastosEnvio,
+    total
+  };
+}
+
+
 
 
 
