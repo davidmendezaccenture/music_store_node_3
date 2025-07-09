@@ -276,8 +276,10 @@ $(document).ready(() => {
 
     if (valor === 'domicilio') {
       $('#datos-envio').show();
+      $('#direccion, #ciudad, #cp').attr('required', true);
     } else {
       $('#datos-envio').hide();
+      $('#direccion, #ciudad, #cp').removeAttr('required');
     }
 
     actualizarGastosYTotal();
@@ -368,28 +370,25 @@ $(document).on('click', '#btnDatosPago', function () {
 // Evento click en botón "Confirmar" de modalDatosPago
 $(document).on('click', '#btnConfirmarPago', function () {
   const metodo = $(this).data('metodo');
-  //Para depurar
-  console.log("el metodo de pago es: "+metodo);
+  const mensajeEl = document.getElementById('mensajePago');
 
-    // Cerrar modal de datos de pago
+  let valido = true;
+console.log(metodo);
+  if (metodo === 'tarjeta') {
+    valido = validarTarjeta();
+  } else if (metodo === 'paypal') {
+    valido = validarPaypal();
+  }
+
+  if (!valido) {
+    // No cerrar la modal si hay errores
+    return;
+  }
+
+  // Aquí cerramos la modal solo si es válido
   const modalDatosEl = document.getElementById('modalDatosPago');
   const modalDatos = bootstrap.Modal.getInstance(modalDatosEl);
   if (modalDatos) modalDatos.hide();
-  const mensajeEl = document.getElementById('mensajePago');
-
-  // Validar si hay formulario visible y si es tarjeta o paypal, puedes agregar validaciones aquí
-  if (metodo === 'tarjeta') {
-    // Aquí podrías validar campos de tarjeta (opcional)
-    // Por ejemplo:
-    const numeroTarjeta = $('#numeroTarjeta').val().trim();
-    const fechaCaducidad = $('#fechaCaducidad').val().trim();
-    const cvvTarjeta = $('#cvvTarjeta').val().trim();
-
-    if (!numeroTarjeta || !fechaCaducidad || !cvvTarjeta) {
-      alert('Por favor, completa todos los datos de la tarjeta.');
-      return;
-    }
-  }
 
   if (metodo === 'transferencia') {
     // No mostrar modal de pago confirmado para transferencia, solo cerrar todo
@@ -400,9 +399,9 @@ $(document).on('click', '#btnConfirmarPago', function () {
     actualizarEstadoBotonCheckout();
     return;
   }
-    if (metodoEnvio === 'tienda') {
+
+  if (metodoEnvio === 'tienda') {
     const localizador = generarLocalizador(); // Función para generar el código
- 
     mensajeEl.innerHTML = `✅ ¡Gracias por tu compra!<br>Ya puedes acudir a nuestra tienda con tu DNI y tu localizador <strong>${localizador}</strong>.`;
   }
 
@@ -423,6 +422,7 @@ $(document).on('click', '#btnConfirmarPago', function () {
   });
 });
 
+
 //Localizador simulado
 function generarLocalizador() {
   const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -432,6 +432,16 @@ function generarLocalizador() {
   }
   return localizador;
 }
+//Para simular números de pedido
+function generarNumeroPedido() {
+  const fecha = new Date();
+  const yyyy = fecha.getFullYear();
+  const mm = String(fecha.getMonth() + 1).padStart(2, '0');
+  const dd = String(fecha.getDate()).padStart(2, '0');
+  const random = Math.floor(1000 + Math.random() * 9000); // 4 cifras aleatorias
+  return `RAI-${yyyy}${mm}${dd}-${random}`;
+}
+
 
 //Para limpiar el formulario tras el pago
 function limpiarFormularioPago() {
@@ -467,6 +477,83 @@ function actualizarEstadoBotonCheckout() {
   }
 }
 
+//Para validar los campos de las modales
+function mostrarError(inputSelector, mensaje) {
+  const input = $(inputSelector);
+  input.addClass('is-invalid');
+  input.next('.invalid-feedback').text(mensaje).show();
+}
+
+function limpiarError(inputSelector) {
+  const input = $(inputSelector);
+  input.removeClass('is-invalid');
+  input.next('.invalid-feedback').text('').hide();
+}
+function limpiarTodosErrores(formSelector) {
+  $(`${formSelector} .form-control`).each(function() {
+    limpiarError(this);
+  });
+}
+function validarPaypal() {
+  limpiarTodosErrores('#formPaypal');
+  let valido = true;
+
+  const email = $('#emailPaypal').val().trim();
+  const password = $('#passwordPaypal').val();
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email)) {
+    mostrarError('#emailPaypal', 'Introduce un correo electrónico válido.');
+    valido = false;
+  }
+
+  if (!password) {
+    mostrarError('#passwordPaypal', 'La contraseña no puede estar vacía.');
+    valido = false;
+  }
+
+  return valido;
+}
+function validarTarjeta() {
+  limpiarTodosErrores('#formTarjeta');
+  let valido = true;
+
+  const numeroTarjeta = $('#numeroTarjeta').val().replace(/\s+/g, '');
+  const fechaCaducidad = $('#fechaCaducidad').val().trim();
+  const cvvTarjeta = $('#cvvTarjeta').val().trim();
+
+  if (!/^\d{16}$/.test(numeroTarjeta)) {
+    mostrarError('#numeroTarjeta', 'La tarjeta debe tener exactamente 16 dígitos.');
+    valido = false;
+  }
+
+  if (!/^\d{2}\/\d{2}$/.test(fechaCaducidad)) {
+    mostrarError('#fechaCaducidad', 'La fecha debe tener formato MM/YY.');
+    valido = false;
+  } else {
+    const [mes, anio] = fechaCaducidad.split('/').map(str => parseInt(str));
+    const fechaActual = new Date();
+    const mesActual = fechaActual.getMonth() + 1;
+    const anioActual = fechaActual.getFullYear() % 100;
+
+    if (
+      isNaN(mes) || isNaN(anio) ||
+      mes < 1 || mes > 12 ||
+      anio < anioActual || (anio === anioActual && mes < mesActual)
+    ) {
+      mostrarError('#fechaCaducidad', 'La tarjeta está caducada o la fecha es inválida.');
+      valido = false;
+    }
+  }
+
+  if (!/^\d{3}$/.test(cvvTarjeta)) {
+    mostrarError('#cvvTarjeta', 'El CVV debe tener 3 dígitos.');
+    valido = false;
+  }
+
+  return valido;
+}
 
 
 
