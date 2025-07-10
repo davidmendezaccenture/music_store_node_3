@@ -34,6 +34,10 @@
                     <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
                 </form>
             </div>
+            <div class="text-center mt-2">
+              <a href="#" id="forgotPasswordLink" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">¿Has olvidado tu
+                contraseña?</a>
+            </div>
             <div class="modal-footer justify-content-center">
                 <p class="mb-0">¿No tienes cuenta? <a href="/pages/registro.html">Regístrate aquí</a></p>
             </div>
@@ -44,7 +48,30 @@
     </div>
 </div>
 
-
+<!-- Modal de recuperación de contraseña -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="forgotPasswordModalLabel">Recuperar contraseña</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-forgot-password">
+          <div class="mb-3">
+            <label for="forgotEmail" class="form-label">Introduce tu correo electrónico</label>
+            <input type="email" class="form-control" id="forgotEmail" name="email"
+              placeholder="usuario@correo.com" autocomplete="email">
+            <div id="forgotEmailError" class="invalid-feedback"></div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Enviar enlace de recuperación</button>
+        </form>
+        <div id="forgotPasswordSuccess" class="alert alert-success mt-3 visually-hidden" role="alert"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Modal de aviso al cambiar modificar carrito como invitado-->
 <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">

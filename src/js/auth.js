@@ -288,6 +288,42 @@ function ocultarErrorCampo(idInput) {
       }
     });
   });
+
+  $("#form-forgot-password").submit(function (e) {
+    e.preventDefault();
+    const email = $("#forgotEmail").val().trim();
+    $("#forgotEmail").removeClass("is-invalid");
+    $("#forgotEmailError").text("");
+    $("#forgotPasswordSuccess").addClass("visually-hidden").text("");
+
+    if (!email) {
+      $("#forgotEmail").addClass("is-invalid");
+      $("#forgotEmailError").text("El correo es obligatorio");
+      return;
+    }
+
+    // Aquí iría la llamada AJAX real al backend
+    $.ajax({
+      url: "/api/forgot-password",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ email }),
+      success: function () {
+        $("#forgotPasswordSuccess")
+          .removeClass("visually-hidden")
+          .text(
+            "Si el correo existe, recibirás un enlace para restablecer tu contraseña."
+          );
+      },
+      error: function () {
+        $("#forgotEmail").addClass("is-invalid");
+        $("#forgotEmailError").text(
+          "No se pudo enviar el correo. Inténtalo más tarde."
+        );
+      },
+    });
+  });
+
   //Modal de error fuera del bloque catch. Si no, no se cierra del todo
   const loginErrorModal = new bootstrap.Modal(document.getElementById('loginErrorModal'));
 
