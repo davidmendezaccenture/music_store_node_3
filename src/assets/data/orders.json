@@ -415,8 +415,9 @@
       "gastosEnvio": 0,
       "total": 250
     },
-    "status": "pendiente",
-    "createdAt": "2025-07-10T15:14:50.016Z"
+    "status": "pagado",
+    "createdAt": "2025-07-10T15:14:50.016Z",
+    "localizador": "PED-9CGIFK"
   },
   {
     "id": 1752160573113,
@@ -444,8 +445,9 @@
       "gastosEnvio": 0,
       "total": 250
     },
-    "status": "pendiente",
-    "createdAt": "2025-07-10T15:16:13.113Z"
+    "status": "pagado",
+    "createdAt": "2025-07-10T15:16:13.113Z",
+    "localizador": "PED-6OEL9C"
   },
   {
     "id": 1752160839197,
@@ -473,7 +475,8 @@
       "gastosEnvio": 0,
       "total": 300
     },
-    "status": "pendiente",
-    "createdAt": "2025-07-10T15:20:39.197Z"
+    "status": "pagado",
+    "createdAt": "2025-07-10T15:20:39.197Z",
+    "localizador": "PED-NWNNS2"
   }
 ]
