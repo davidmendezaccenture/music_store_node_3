@@ -89,5 +89,68 @@
     "phone": "627874197",
     "postalcode": "10664",
     "city": "MOHEDAS DE GRANADILLA"
+  },
+  {
+    "username": "prueba20",
+    "password": "Prueba2020",
+    "email": "prueba20@gmail.com",
+    "birthdate": "2025-07-02",
+    "phone": "654235478",
+    "postalcode": "15232",
+    "city": "Malaga"
+  },
+  {
+    "username": "prueba21",
+    "password": "Prueba2121",
+    "email": "prueba21@gmail.com",
+    "birthdate": "2025-07-03",
+    "phone": "658547896",
+    "postalcode": "28080",
+    "city": "Mostoles"
+  },
+  {
+    "username": "prueba22",
+    "password": "Prueba2222",
+    "email": "prueba22@gmail.com",
+    "birthdate": "2025-07-04",
+    "phone": "654823971",
+    "postalcode": "28080",
+    "city": "Lorca"
+  },
+  {
+    "username": "prueba23",
+    "password": "Prueba2323",
+    "email": "prueba23@gamil.com",
+    "birthdate": "2025-07-03",
+    "phone": "654781293",
+    "postalcode": "45689",
+    "city": "Madrid"
+  },
+  {
+    "username": "prueba24",
+    "password": "Prueba2424",
+    "email": "prueba24@gmail.com",
+    "birthdate": "2025-07-01",
+    "phone": "654781239",
+    "postalcode": "25468",
+    "city": "Madrid"
+  },
+  {
+    "username": "prueba25",
+    "password": "Prueba2525",
+    "email": "prueba25@gmail.com",
+    "birthdate": "2025-07-02",
+    "phone": "654127893",
+    "postalcode": "25467",
+    "city": "Madrid"
+  },
+  {
+    "username": "prueba26",
+    "password": "Prueba26",
+    "email": "prueba26@gmail.com",
+    "birthdate": "2025-07-02",
+    "phone": "654781278",
+    "postalcode": "45789",
+    "city": "Madrid"
   }
 ]

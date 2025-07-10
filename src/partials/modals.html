@@ -2,42 +2,45 @@
 
 <!-- Modal de inicio de sesión -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-login">
+          <div class="mb-3">
+            <label for="login-username" class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" id="login-username" name="username" required
+              placeholder="Tu nombre de usuario" autofocus autocomplete="username">
+          </div>
+          <div class="mb-3">
+            <label for="login-password" class="form-label">Contraseña</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="login-password" name="password" required
+                placeholder="Introduce tu contraseña" autocomplete="current-password"
+                aria-describedby="loginPasswordHelp">
+              <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="0"
+                aria-label="Mostrar contraseña">
+                <i class="bi bi-eye"></i>
+              </button>
             </div>
-            <div class="modal-body">
-                <form id="form-login">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="username" name="username" required
-                               placeholder="Tu nombre de usuario" autofocus autocomplete="username">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="password" name="password" required placeholder="Introduce tu contraseña" autocomplete="current-password" aria-describedby="loginPasswordHelp">
-                            <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="0" aria-label="Mostrar contraseña">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                        </div>
-                        <div id="loginPasswordHelp" class="form-text">Introduce tu contraseña de acceso.</div>
-                        <div id="loginPasswordError" class="text-danger visually-hidden" role="alert"></div>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Recordar sesión</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-                </form>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <p class="mb-0">¿No tienes cuenta? <a href="/pages/registro.html">Regístrate aquí</a></p>
-            </div>
-        </div>
+            <div id="loginPasswordHelp" class="form-text">Introduce tu contraseña de acceso.</div>
+            <div id="loginPasswordError" class="text-danger visually-hidden" role="alert"></div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Recordar sesión</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <p class="mb-0">¿No tienes cuenta? <a href="/pages/registro.html">Regístrate aquí</a></p>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Modal de error de login -->
@@ -58,15 +61,17 @@
   </div>
 </div>
 
-    <!-- Modal de aviso al cambiar modificar carrito como invitado-->
+<!-- Modal de aviso al cambiar modificar carrito como invitado-->
 <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content text-center">
       <div class="modal-body">
-        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login Icon" style="width:60px; margin-bottom:15px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login Icon"
+          style="width:60px; margin-bottom:15px;">
         <h5>¿Tienes una cuenta?</h5>
         <p>Inicia sesión para continuar</p>
-        <button class="btn btn-primary mt-2" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button class="btn btn-primary mt-2" data-bs-dismiss="modal" data-bs-toggle="modal"
+          data-bs-target="#loginModal">
           Iniciar sesión
         </button>
       </div>
@@ -74,48 +79,48 @@
   </div>
 </div>
 
-  <!-- Modal Bienvenida -->
-  <div class="modal fade" id="modalBienvenida" tabindex="-1" aria-labelledby="modalBienvenidaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-center">
-        <div class="modal-body">
-          <i class="bi bi-person-check text-primary" style="font-size: 3rem; margin-bottom:15px;"></i>
-          <p id="mensajeBienvenida" class="fs-5 mb-2"></p>
-          <button id="btnCerrarModalBienvenida" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
-        </div>
+<!-- Modal Bienvenida -->
+<div class="modal fade" id="modalBienvenida" tabindex="-1" aria-labelledby="modalBienvenidaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <i class="bi bi-person-check text-primary" style="font-size: 3rem; margin-bottom:15px;"></i>
+        <p id="mensajeBienvenida" class="fs-5 mb-2"></p>
+        <button id="btnCerrarModalBienvenida" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Modal Confirmación de Pago -->
-  <div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-labelledby="modalPagoConfirmadoLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-center">
-        <div class="modal-body">
-          <i class="bi bi-check-circle text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
-          <p class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
-          <button id="btnCerrarModalPago" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
-        </div>
+<!-- Modal Confirmación de Pago -->
+<div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-labelledby="modalPagoConfirmadoLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <i class="bi bi-check-circle text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
+        <p class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
+        <button id="btnCerrarModalPago" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Modal Confirmación de Eliminación -->
-  <div class="modal fade" id="modalConfirmarEliminacion" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Confirmar eliminación</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          ¿Estás seguro de que quieres eliminar este producto del carrito?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button id="btn-confirmar-eliminar" type="button" class="btn btn-danger">Eliminar</button>
-        </div>
+<!-- Modal Confirmación de Eliminación -->
+<div class="modal fade" id="modalConfirmarEliminacion" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmar eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que quieres eliminar este producto del carrito?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button id="btn-confirmar-eliminar" type="button" class="btn btn-danger">Eliminar</button>
       </div>
     </div>
   </div>
-
+</div>
