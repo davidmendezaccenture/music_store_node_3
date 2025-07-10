@@ -4,5 +4,14 @@
   "David": [],
   "prueba2": [],
   "nombreFicticio": [],
-  "probando": []
+  "prueba3": [
+    {
+      "id": 15,
+      "cantidad": 2
+    },
+    {
+      "id": 23,
+      "cantidad": 1
+    }
+  ]
 }
