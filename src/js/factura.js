@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //Redimensionamiento del logo
         doc.addImage(logoBase64, 'PNG', 7.5, 10, targetWidth, targetHeight);
 
-        let y = 10 + targetHeight + 5;
+        let y = 10 + targetHeight + 10;
         const lineHeight = 7;
 
         doc.setFontSize(18);
