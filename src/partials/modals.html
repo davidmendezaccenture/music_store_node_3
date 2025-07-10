@@ -87,22 +87,23 @@
   </div>
   <!-- Modal envío de datos para pagar-->
   <div class="modal fade" id="realizarPagoModal" tabindex="-1" aria-labelledby="realizarPagoLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="realizarPagoLabel">Realizar pago</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          Estás a punto de realizar el pago. Si tienes algún cupón de descuento debes aplicarlo antes.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="btnCancelarPago" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" id="btnDatosPago" class="btn btn-primary">Pagar</button>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center position-relative">
+        <h5 class="modal-title text-center w-100" id="realizarPagoLabel">Realizar pago</h5>
+        <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center">
+        Estás a punto de realizar el pago. Si tienes algún cupón de descuento debes aplicarlo antes.
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" id="btnCancelarPago" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" id="btnDatosPago" class="btn btn-primary">Pagar</button>
       </div>
     </div>
   </div>
+</div>
+
 
   <!-- Modal Confirmación de Eliminación -->
   <div class="modal fade" id="modalConfirmarEliminacion" tabindex="-1">
@@ -166,7 +167,7 @@
     <div class="modal-content text-center">
       <div class="modal-body">
         <i class="bi bi-check-circle text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
-        <p id="mensajePago" class="fs-5 mb-2">✅ ¡Pago realizado correctamente!</p>
+        <p id="mensajePago" class="fs-5 mb-2">¡Pago realizado correctamente!</p>
         <button id="btnCerrarModalPago" class="btn btn-primary mt-2" data-bs-dismiss="modal">Aceptar</button>
       </div>
     </div>

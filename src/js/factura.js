@@ -142,12 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         doc.autoTable({
-            startY: y + 5,
+            startY: y,
             head: [['Producto', 'Descripción', 'Cantidad', 'Precio unitario', 'Total']],
             body: productos,
             theme: 'grid',
             styles: { fontSize: 10 },
-            headStyles: { fillColor: [0, 102, 204], textColor: 255 }
+            headStyles: { fillColor: [0, 102, 204], textColor: 255 },
+            margin: { left: 10 }
         });
 
         y = doc.lastAutoTable.finalY + 10;
