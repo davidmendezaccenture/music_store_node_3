@@ -63,7 +63,8 @@ $(function () {
   const paginasConPrefooter = [
     'index.html', 'guitar.html', 'keyboard.html', 'drums.html',
     'product-detail.html', 'services.html', 'sobre_nosotros.html',
-    'search.html', 'registro.html'
+    'search.html', 'registro.html', 'payment-methods.html','newsletter.html',
+    'media.html', 'faq.html', 'contact', 'cart.html'
   ];
   if (paginasConPrefooter.includes(paginaActual)) {
     $('#prefooter-container').load('../partials/prefooter.html');
