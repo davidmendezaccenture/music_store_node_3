@@ -28,7 +28,7 @@ function mostrarBotonLogout(username) {
 
   // HTML del botón logout
   const logoutHTML = `
-    <button class="btn btn-danger" id="logoutBtn">
+    <button class="btn btn-danger btn-sm" id="logoutBtn">
       <i class="bi bi-box-arrow-right me-1"></i>Logout
     </button>
   `;
@@ -59,9 +59,9 @@ function mostrarBotonLogin() {
   const btnContainerDesktop = document.getElementById('auth-button-desktop');
 
   const loginHTML = `
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
-      <i class="bi bi-person-fill me-1"></i>Login
-    </button>
+  <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">
+    <i class="bi bi-person-fill me-1"></i>Login
+  </button>
   `;
 
   if (btnContainerMobile) btnContainerMobile.innerHTML = loginHTML;

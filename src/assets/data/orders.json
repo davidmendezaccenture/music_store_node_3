@@ -1,0 +1,261 @@
+[
+  {
+    "id": 1752086713212,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "localizador": "PED-F0WIZQ",
+    "status": "pagado",
+    "createdAt": "2025-07-09T18:45:13.212Z"
+  },
+  {
+    "id": 1752086793021,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "localizador": "PED-SA5MT2",
+    "status": "pagado",
+    "createdAt": "2025-07-09T18:46:33.021Z"
+  },
+  {
+    "id": 1752087254234,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "bizum"
+    },
+    "items": [
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 1,
+        "precioUnitario": 250,
+        "total": 250
+      }
+    ],
+    "precio": {
+      "subtotal": 250,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 250
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-09T18:54:14.234Z"
+  },
+  {
+    "id": 1752099257043,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "13",
+        "nombre": "Pedal de Distorsión",
+        "descripcion": "Pedal de efectos para un sonido potente.",
+        "cantidad": 2,
+        "precioUnitario": 100,
+        "total": 200
+      }
+    ],
+    "precio": {
+      "subtotal": 200,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 190
+    },
+    "localizador": "PED-BX7JPD",
+    "status": "pagado",
+    "createdAt": "2025-07-09T22:14:17.043Z"
+  },
+  {
+    "id": 1752140673785,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "domicilio",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta",
+      "direccion": {
+        "calle": "C. Julio Romero de Torres, 49",
+        "ciudad": "Gines",
+        "cp": "41960"
+      }
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      },
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 1,
+        "precioUnitario": 250,
+        "total": 250
+      },
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 3,
+        "precioUnitario": 150,
+        "total": 450
+      }
+    ],
+    "precio": {
+      "subtotal": 1000,
+      "descuentoAplicado": 15,
+      "gastosEnvio": 0,
+      "total": 850
+    },
+    "status": "pagado",
+    "createdAt": "2025-07-10T09:44:33.785Z"
+  },
+  {
+    "id": 1752140880109,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "localizador": "PED-C3X4A6",
+    "status": "pagado",
+    "createdAt": "2025-07-10T09:48:00.109Z"
+  },
+  {
+    "id": 1752141226400,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "13",
+        "nombre": "Pedal de Distorsión",
+        "descripcion": "Pedal de efectos para un sonido potente.",
+        "cantidad": 1,
+        "precioUnitario": 100,
+        "total": 100
+      }
+    ],
+    "precio": {
+      "subtotal": 100,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 100
+    },
+    "localizador": "PED-3RARPM",
+    "status": "pagado",
+    "createdAt": "2025-07-10T09:53:46.400Z"
+  },
+  {
+    "id": 1752141424136,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "localizador": "PED-0KTK5Z",
+    "status": "pagado",
+    "createdAt": "2025-07-10T09:57:04.136Z"
+  }
+]
