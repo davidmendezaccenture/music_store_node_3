@@ -257,5 +257,43 @@
     "localizador": "PED-0KTK5Z",
     "status": "pagado",
     "createdAt": "2025-07-10T09:57:04.136Z"
+  },
+  {
+    "id": 1752142943878,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 2,
+        "precioUnitario": 300,
+        "total": 600
+      },
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 1,
+        "precioUnitario": 150,
+        "total": 150
+      }
+    ],
+    "precio": {
+      "subtotal": 750,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 712.5
+    },
+    "localizador": "PED-3WMZDW",
+    "status": "pagado",
+    "createdAt": "2025-07-10T10:22:23.878Z"
   }
 ]
