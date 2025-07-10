@@ -22,7 +22,7 @@ $(document).ready(function () {
   function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
-  
+
   // Manejador de eventos para el formulario de login
 $(document).on('submit', '#form-login', function(e) {
   console.log("Submit capturado");
@@ -146,7 +146,7 @@ $(document).on('submit', '#form-login', function(e) {
     e.preventDefault(); // Previene envío clásico (con recarga)
 
     const nuevoUsuario = {
-      username: $('#username').val().trim(),
+      username: $('#regUsername').val().trim(),
       email: $('#email').val().trim(),
       birthdate: $('#birthdate').val(),
       phone: $('#phone').val().trim(),
