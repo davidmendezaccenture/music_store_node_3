@@ -149,10 +149,10 @@ function initLoginUI() {
         })
         .catch(err => {
           mostrarErrorLoginPassword(err.message);
-          // Mostrar modal de error si existe
-          if (window.$ && $('#loginErrorModal').length) {
-            $('#loginErrorModal').modal('show');
-          }
+          // Comento la modal de error
+          // if (window.$ && $('#loginErrorModal').length) {
+          //   $('#loginErrorModal').modal('show');
+          // }
         });
     });
   }

@@ -3,86 +3,121 @@
 $(document).ready(function () {
 
   // === LOGIN desde el modal===
+  function mostrarErrorLogin(campo, mensaje) {
+    const errorDiv = document.getElementById(`login${capitalize(campo)}Error`);
+    if (errorDiv) {
+      errorDiv.textContent = mensaje;
+      errorDiv.classList.remove("visually-hidden");
+    }
+  }
+
+  function ocultarErrorLogin(campo) {
+    const errorDiv = document.getElementById(`login${capitalize(campo)}Error`);
+    if (errorDiv) {
+      errorDiv.textContent = "";
+      errorDiv.classList.add("visually-hidden");
+    }
+  }
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  // Manejador de eventos para el formulario de login
 $(document).on('submit', '#form-login', function(e) {
   console.log("Submit capturado");
   e.preventDefault();
   //Quitamos trim() del username, ya que si añadimos espacios lo da por válido, pero da inicialmente error aunque se conecta
-  const username = $('#username').val();
-  const password = $('#password').val();
+  const username = $("#username").val();
+  const password = $("#password").val();
 
-  if (!username || !password) {
-    alert('Por favor, completa todos los campos');
-    return;
+  // Oculta errores previos
+  ocultarErrorLogin("username");
+  ocultarErrorLogin("password");
+
+  let hayError = false;
+  if (!username) {
+    mostrarErrorLogin("username", "El usuario es obligatorio");
+    hayError = true;
   }
+  if (!password) {
+    mostrarErrorLogin("password", "La contraseña es obligatoria");
+    hayError = true;
+  }
+  if (hayError) return;
 
   const body = { username, password };
   let carritoInvitado = [];
   let carritoUsuario = [];
 
   //Obtenemos el carrito del invitado
-  fetch('/api/cart?user=guest')
-    .then(res => {
-      if (!res.ok) throw new Error('Error al obtener el carrito del invitado');
+  fetch("/api/cart?user=guest")
+    .then((res) => {
+      if (!res.ok) throw new Error("Error al obtener el carrito del invitado");
       return res.json();
     })
-    .then(data => {
+    .then((data) => {
       carritoInvitado = data;
-      
-    //Borramos el carrito del invitado para que al hacer logout esté vacío
-      return fetch('/api/cart', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user: 'guest', items: [] })
+
+      //Borramos el carrito del invitado para que al hacer logout esté vacío
+      return fetch("/api/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user: "guest", items: [] }),
       });
     })
     .then(() => {
-    //Completamos el login
-      return fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+      //Completamos el login
+      return fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
     })
-    .then(res => {
-      if (!res.ok) throw new Error('Usuario o contraseña incorrectos');
+    .then((res) => {
+      if (!res.ok) throw new Error("Usuario o contraseña incorrectos");
       return res.json();
     })
-    .then(data => {
+    .then((data) => {
       //Guardamos los datos los datos del usuario
       const usuario = data.user.username;
       const datosUsuario = data.user;
-      localStorage.setItem('usuario', usuario);
-      localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario));
-
+      localStorage.setItem("usuario", usuario);
+      localStorage.setItem("datosUsuario", JSON.stringify(datosUsuario));
 
       //Obtenemos el carrito del usuario
       return fetch(`/api/cart?user=${usuario}`)
-        .then(res => {
-          if (!res.ok) throw new Error('Error al obtener el carrito del usuario');
+        .then((res) => {
+          if (!res.ok)
+            throw new Error("Error al obtener el carrito del usuario");
           return res.json();
         })
-        .then(data => {
+        .then((data) => {
           carritoUsuario = data;
           //Actualizamos el contador del carrito
-          const carritoFinal = unificarCarritos(carritoUsuario, carritoInvitado);
+          const carritoFinal = unificarCarritos(
+            carritoUsuario,
+            carritoInvitado
+          );
           actualizarContadorCarrito(calcularTotalItems(carritoFinal));
 
           // Guardamos el carrito unificado en el backend del usuario
-          return fetch('/api/cart', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ user: usuario, items: carritoFinal })
+          return fetch("/api/cart", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user: usuario, items: carritoFinal }),
           }).then(() => {
             //Actualizamos el carrito
-            carrito=carritoFinal;
+            carrito = carritoFinal;
             //Modal de bienvenida
             mostrarModalBienvenida(`Bienvenido ${usuario}`);
           });
         });
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Error en el proceso de login o carrito:", err);
-      loginErrorModal.show();
+      //comento modal de error para evitar que se muestre al hacer login
+      // loginErrorModal.show();
     });
 
   //Función para unificar el contenido de los carritos
@@ -90,12 +125,12 @@ $(document).on('submit', '#form-login', function(e) {
     const mapa = new Map();
 
     //Añadimos el carrito del usuario
-    carritoUsuario.forEach(item => {
+    carritoUsuario.forEach((item) => {
       mapa.set(item.id, { ...item });
     });
 
     //Añadimos el contenido del carrito de invitado. Si el elemento ya está, sumamos cantidades
-    carritoInvitado.forEach(item => {
+    carritoInvitado.forEach((item) => {
       if (mapa.has(item.id)) {
         mapa.get(item.id).cantidad += item.cantidad;
       } else {
@@ -109,9 +144,9 @@ $(document).on('submit', '#form-login', function(e) {
   // === REGISTRO ===
   $('#form-registro').submit(function (e) {
     e.preventDefault(); // Previene envío clásico (con recarga)
-    
+
     const nuevoUsuario = {
-      username: $('#username').val().trim(),
+      username: $('#regUsername').val().trim(),
       email: $('#email').val().trim(),
       birthdate: $('#birthdate').val(),
       phone: $('#phone').val().trim(),
@@ -177,7 +212,6 @@ $(document).on('submit', '#form-login', function(e) {
       contentType: 'application/json',
       data: JSON.stringify(nuevoUsuario),
       success: function (res) {
-        alert(res.message || 'Usuario registrado correctamente');// Mostramos el mensaje de éxito
         $('#form-registro')[0].reset();
         // Redirige a index.html y abre la modal de login automáticamente
         window.location.href = 'index.html?showLogin=1';
