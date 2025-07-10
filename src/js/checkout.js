@@ -204,7 +204,7 @@ if (gastosEnvioFinal === 0 && gastosEnvioNormal > 0) {
 
   $('#total').text(`${(totalConDescuento + gastosEnvioFinal).toFixed(2)} €`);
 }
-//Función para aplicar cupones de descuento. Los obtenemos del backend con la función aplicarCupon
+//Función para aplicar cupones de descuento. Los obtenemos del backend con la función validarCupon
 $('#btn-aplicar-cupon').on('click', async function () {
   const codigo = $('#input-cupon').val().trim();
   let subtotal = 0;
@@ -214,7 +214,7 @@ $('#btn-aplicar-cupon').on('click', async function () {
     subtotal += producto.offerPrice * item.cantidad;
   });
 
-  const resultado = await aplicarCupon(codigo, subtotal);
+  const resultado = await validarCupon(codigo, subtotal);
 
   if (resultado.valido) {
     descuentoAplicado = resultado.descuento || 0;
@@ -246,6 +246,7 @@ $('#form-checkout').on('submit', function (e) {
 $(document).ready(() => {
   //Animacion contenedor al cargar
     $('#contenedor-resumen').addClass('fade-in-smooth');
+    $('#columna-resumen').addClass('fade-in-smooth');
   // Cargar datos del usuario
   const usuarioStr = localStorage.getItem('datosUsuario');
   if (usuarioStr) {
@@ -285,32 +286,36 @@ $(document).ready(() => {
 });
 
 // Función de validación de cupones (con fetch, no jQuery)
-async function aplicarCupon(codigoCupon, subtotal) {
-  try {
-    const response = await fetch('/api/coupons');
-    const cupones = await response.json();
+function validarCupon(codigoCupon, subtotal) {
+  return new Promise((resolve, reject) => {
+    $.get('/api/coupons')
+      .done(cupones => {
         if (codigoCupon.trim() === '') {
-      // Cupón vacío, no válido, no aplicamos descuento
-      return { valido: false, total: subtotal, mensaje: '' };
-    }
+          resolve({ valido: false, total: subtotal, mensaje: '' });
+          return;
+        }
 
-    const cupon = cupones.find(c => c.codigo.toLowerCase() === codigoCupon.toLowerCase());
-    if (!cupon) {
-      return { valido: false, mensaje: 'Cupón inválido', total: subtotal };
-    }
+        const cupon = cupones.find(c => c.codigo.toLowerCase() === codigoCupon.toLowerCase());
+        if (!cupon) {
+          resolve({ valido: false, mensaje: 'Cupón inválido', total: subtotal });
+          return;
+        }
 
-    const descuento = (subtotal * cupon.descuento) / 100;
-    return {
-      valido: true,
-      descuento: cupon.descuento,
-      mensaje: `Cupón válido. Has aplicado un ${cupon.descuento}% de descuento.`,
-      total: (subtotal - descuento).toFixed(2)
-    };
-  } catch (error) {
-    console.error('Error al aplicar cupón:', error);
-    return { valido: false, mensaje: 'Error al validar el cupón', total: subtotal };
-  }
+        const descuento = (subtotal * cupon.descuento) / 100;
+        resolve({
+          valido: true,
+          descuento: cupon.descuento,
+          mensaje: `Cupón válido. Has aplicado un ${cupon.descuento}% de descuento.`,
+          total: (subtotal - descuento).toFixed(2)
+        });
+      })
+      .fail(err => {
+        console.error('Error al aplicar cupón:', err);
+        resolve({ valido: false, mensaje: 'Error al validar el cupón', total: subtotal });
+      });
+  });
 }
+
 
 // Mostrar modal de confirmación de pago
 function mostrarModalRealizarPago() {
@@ -409,7 +414,7 @@ $(document).on('click', '#btnConfirmarPago', function () {
 
   if (metodoEnvio === 'tienda') {
     localizador = generarLocalizador(); // Función para generar un localizador
-    mensajeEl.innerHTML = `✅ ¡Gracias por tu compra!<br>Ya puedes acudir a nuestra tienda con tu DNI y tu localizador <strong>${localizador}</strong>.`;
+    mensajeEl.innerHTML = `¡Gracias por tu compra!<br>Ya puedes acudir a nuestra tienda con tu DNI y tu localizador <strong>${localizador}</strong>.`;
   }
 
   // Mostrar modal de pago confirmado, antes guardamos el pedido en backend

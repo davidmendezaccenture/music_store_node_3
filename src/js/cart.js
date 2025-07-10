@@ -271,7 +271,7 @@ function actualizarTotal() {
       total += producto.offerPrice * item.cantidad;
     }
   });
-  $('#total-carrito').text(`$${total.toFixed(2)}`);
+  $('#total-carrito').text(`${total.toFixed(2)}`);
 }
 
 // Guardar carrito en backend y localStorage
