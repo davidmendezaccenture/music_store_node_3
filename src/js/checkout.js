@@ -345,10 +345,10 @@ function mostrarModalDatosPago(metodo) {
     $('#btnConfirmarPago').text('Pagar con tarjeta').data('metodo', 'tarjeta');
   } else if (metodo === 'transferencia') {
     $('#formTransferencia').removeClass('d-none');
-    $('#btnConfirmarPago').text('Entendido').data('metodo', 'transferencia');
+    $('#btnConfirmarPago').text('Confirmar pedido').data('metodo', 'transferencia');
   } else if (metodo === 'bizum') {
     $('#formBizum').removeClass('d-none');
-    $('#btnConfirmarPago').text('Entendido').data('metodo', 'bizum');
+    $('#btnConfirmarPago').text('Confirmar pedido').data('metodo', 'bizum');
   }
   modal.show();
 }
