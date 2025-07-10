@@ -137,80 +137,51 @@
     </nav>
 </header>
 
-    <!-- Botón para activar el offcanvas -->
-    <button class="btn btn-primary d-lg-none fixed-bottom m-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#servicesOffcanvas">
-        <i class="bi bi-list"></i> Contacto 
-    </button>
-
-    <!-- Offcanvas Menu -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="servicesOffcanvas">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Ponte en contacto</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">
-                        <i class="bi bi-envelope me-2"></i> Contacto
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="newsletter.html">
-                        <i class="bi bi-mailbox me-2"></i> Newsletter
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="media.html">
-                        <i class="bi bi-camera-reels me-2"></i> Media
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="faq.html">
-                        <i class="bi bi-question-circle me-2"></i> FAQ
-                    </a>
-                </li>
-            </ul>
-        </div>
+<!-- Botón para activar el offcanvas -->
+<button class="chatbot-like-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#servicesOffcanvas">
+    <div class="chatbot-button-content">
+        <i class="bi bi-compass-fill""></i>
+        <span>Conéctate</span>
     </div>
+</button>
 
-    <!-- Contenido principal -->
-    <main class="container my-5">
-        <div class="row">
-            <div class="col-lg-3 d-none d-lg-block">
-                <!-- Menú lateral para desktop -->
-                <div class="card shadow-sm sticky-top" style="top: 260px;">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Ponte en contacto</h5>
-                    </div>
-                    <div class="card-body">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">
-                                    <i class="bi bi-envelope me-2"></i> Contacto
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="newsletter.html">
-                                    <i class="bi bi-mailbox me-2"></i> Newsletter
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="media.html">
-                                    <i class="bi bi-camera-reels me-2"></i> Media
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="faq.html">
-                                    <i class="bi bi-question-circle me-2"></i> FAQ
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<!-- Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="servicesOffcanvas">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Ponte en contacto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="contact.html">
+                    <i class="bi bi-envelope me-2"></i> Contacto
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="newsletter.html">
+                    <i class="bi bi-mailbox me-2"></i> Newsletter
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="media.html">
+                    <i class="bi bi-camera-reels me-2"></i> Media
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="faq.html">
+                    <i class="bi bi-question-circle me-2"></i> FAQ
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 
-            <div class="col-lg-9">
+<!-- Contenido principal -->
+<main class="container my-5">
+    <div class="row">
+
+        <div class="col-12 col-lg-8 offset-lg-2">
                 <h1 class="mb-4">Galería Multimedia</h1>
                 
                 <div class="card shadow-sm mb-5">
@@ -332,14 +303,14 @@
         </div>
     </div>
 
-     <!-- Pre-footer -->
+ <!-- Pre-footer -->
     <section class="pre-footer py-5">
   <div class="container">
     <div class="row g-4">
       <!-- Columna 1: Métodos de pago -->
 <div class="col-md-4 mb-4 mb-md-0">
-    <div class="pre-footer-card h-100 p-4">
-        <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Pago seguro</h3>
+    <div class="pre-footer h-100 p-4">
+        <h3 class="h5 mb-4 text-uppercase fw-bold pb-2">Pago seguro</h3>
         <div class="payment-methods d-flex flex-wrap gap-3 align-items-center">
             <a href="/pages/payment-methods.html" class="payment-icon" aria-label="Pagar con PayPal">
                 <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" class="payment-img grayscale">
@@ -359,8 +330,8 @@
       
       <!-- Columna 2: Ventajas -->
       <div class="col-md-4 mb-4 mb-md-0">
-        <div class="pre-footer-card h-100 p-4">
-          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Ventajas RaiRock</h3>
+        <div class="pre-footer h-100 p-4">
+          <h3 class="h5 mb-4 text-uppercase fw-bold pb-2">Ventajas FUZZR</h3>
           <ul class="list-unstyled">
             <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Garantía de 2 años</li>
             <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Devoluciones fáciles</li>
@@ -372,8 +343,8 @@
       
       <!-- Columna 3: Redes sociales -->
       <div class="col-md-4">
-        <div class="pre-footer-card h-100 p-4">
-          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Síguenos</h3>
+        <div class="pre-footer h-100 p-4">
+          <h3 class="h5 mb-4 text-uppercase fw-bold pb-2">Síguenos</h3>
           <div class="social-links d-flex flex-wrap gap-3">
             <a href="#" class="social-icon" aria-label="Facebook">
               <i class="bi bi-facebook fs-3"></i>
@@ -393,24 +364,145 @@
     </div>
   </div>
 </section>
-                
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-3">
-        <div class="container text-center">
-            <p class="mb-0">&copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.</p>
+            
+<!-- Footer -->
+<footer class="bg-dark text-white py-5 position-relative">
+  <div class="container">
+    <div class="row g-4">
+      
+      <!-- Columna 1: Enlaces legales -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="text-uppercase  pb-2 mb-3">Legal</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/pages/privacy-policy.html" class="text-white-50 text-decoration-none hover-text-white">Política de privacidad</a></li>
+          <li class="mb-2"><a href="/pages/terms.html" class="text-white-50 text-decoration-none hover-text-white">Términos y condiciones</a></li>
+          <li class="mb-2"><a href="/pages/warranty.html" class="text-white-50 text-decoration-none hover-text-white">Garantías y devoluciones</a></li>
+          <li class="mb-2"><a href="/pages/cookies.html" class="text-white-50 text-decoration-none hover-text-white">Política de cookies</a></li>
+          <li><a href="/pages/legal.html" class="text-white-50 text-decoration-none hover-text-white">Aviso legal</a></li>
+        </ul>
+      </div>
+      
+      <!-- Columna 2: Servicios al cliente -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="text-uppercase pb-2 mb-3">Ayuda</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/pages/shipping.html" class="text-white-50 text-decoration-none hover-text-white">Envíos y entregas</a></li>
+          <li class="mb-2"><a href="/pages/returns.html" class="text-white-50 text-decoration-none hover-text-white">Devoluciones</a></li>
+          <li class="mb-2"><a href="/pages/payment-methods.html" class="text-white-50 text-decoration-none hover-text-white">Métodos de pago</a></li>
+          <li class="mb-2"><a href="/pages/faq.html" class="text-white-50 text-decoration-none hover-text-white">Preguntas frecuentes</a></li>
+          <li><a href="/pages/contact.html" class="text-white-50 text-decoration-none hover-text-white">Contacto</a></li>
+        </ul>
+      </div>
+      
+      <!-- Columna 3: Sobre nosotros y comunidad -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="text-uppercase pb-2 mb-3">Más Contenido</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/pages/about.html" class="text-white-50 text-decoration-none hover-text-white">Sobre nosotros</a></li>
+          <li class="mb-2"><a href="/pages/blog.html" class="text-white-50 text-decoration-none hover-text-white">Blog musical</a></li>
+          <li class="mb-2"><a href="/pages/classifieds.html" class="text-white-50 text-decoration-none hover-text-white">Clasificados</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-text-white" data-bs-toggle="modal" data-bs-target="#alertsModal">Alertas de stock</a></li>
+        </ul>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="col-12 text-center mt-4 pt-3 border-top">
+        <p class="mb-1"><small class="text-white-50">FUZZR Alternative Music Store - Tienda especializada en instrumentos musicales</small></p>
+        <p class="mb-0"><small>&copy; <span id="currentYear"></span> Todos los derechos reservados</small></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón flotante del chatbot -->
+  <button id="chatbotToggle" class="btn btn-primary rounded-pill position-fixed shadow-lg chatbot-toggle">
+    <i class="bi bi-chat-text fs-4 me-2"></i>¿Necesitas ayuda?
+  </button>
+  
+  <!-- Contenedor del chatbot -->
+  <div id="chatbotContainer" class="position-fixed shadow-lg rounded-top-4 overflow-hidden chatbot-container">
+    <div class="chatbot-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <i class="bi bi-chat-text-fill fs-4 me-2"></i>
+        <h5 class="mb-0">Asistente FUZZR</h5>
+      </div>
+      <button id="closeChatbot" class="btn btn-sm btn-outline-light">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    
+    <div id="chatbotBody" class="chatbot-body p-3">
+      <div class="chat-message bot-message mb-3">
+        <div class="message-bubble bg-white p-3 rounded-3 shadow-sm text-dark">
+          <p class="mb-0">¡Hola! 👋 Soy el asistente de FUZZR. ¿En qué puedo ayudarte?</p>
         </div>
-    </footer>
-    <script>
-        // Añadir el año currentYear automáticamente
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
-    <div id="modals-container"></div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
-    <script src="../js/login-ui.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
-    <script src="../js/auth.js"></script>
-    <script src="../js/cart.js"></script>
-    <script src="../js/app.js"></script>
+        <small class="text-muted d-block mt-1">Justo ahora</small>
+      </div>
+    </div>
+    
+    <div class="chatbot-input bg-light p-3 border-top">
+      <div class="input-group">
+        <input id="userMessage" type="text" class="form-control" placeholder="Escribe tu mensaje..." autocomplete="off">
+        <button id="sendMessage" class="btn btn-primary">
+          <i class="bi bi-send-fill"></i>
+        </button>
+      </div>
+      <small class="text-muted d-block mt-2">Presiona Enter para enviar</small>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal Alertas -->
+<div class="modal fade" id="alertsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="bi bi-bell-fill me-2"></i>Alertas de producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="alertsForm">
+          <div class="mb-3">
+            <label class="form-label">Recibir notificaciones sobre:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="newProductsAlert">
+              <label class="form-check-label" for="newProductsAlert">Nuevos productos</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="offersAlert">
+              <label class="form-check-label" for="offersAlert">Ofertas especiales</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="stockAlert">
+              <label class="form-check-label" for="stockAlert">Disponibilidad en stock</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="alertEmail" class="form-label">Tu email</label>
+            <input type="email" class="form-control" id="alertEmail" placeholder="tu@email.com" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Activar alertas</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modals-container"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+<script>
+    // Añadir el año currentYear automáticamente
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+<script src="../js/login-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/search.js"></script>
+  <script src="../js/import-modals.js"></script>
+  <script src="../js/chatbot.js"></script>
+
+
 </body>
 </html>
