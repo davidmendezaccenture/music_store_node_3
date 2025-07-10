@@ -148,32 +148,50 @@
           <div class="row g-3">
             <div class="col-md-6">
               <label for="regUsername" class="form-label">Nombre de usuario</label>
-              <input type="text" class="form-control" id="regUsername" name="username" placeholder="Tu nombre de usuario" required autocomplete="username" autofocus>
+              <input type="text" class="form-control " id="regUsername" name="username" placeholder="Tu nombre de usuario"  autocomplete="username" autofocus>
+              <div class="invalid-feedback">
+                El nombre de usuario es obligatorio.
+              </div>
             </div>
             <div class="col-md-6">
               <label for="email" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="usuario@correo.com" required autocomplete="email">
+              <input type="email" class="form-control " id="email" name="email" placeholder="usuario@correo.com"  autocomplete="email">
+              <div class="invalid-feedback">
+                El correo electrónico es obligatorio.
+              </div>
             </div>
             <div class="col-md-6">
               <label for="birthdate" class="form-label">Fecha de nacimiento</label>
-              <input type="date" class="form-control" id="birthdate" name="birthdate" required aria-required="true">
+              <input type="date" class="form-control " id="birthdate" name="birthdate"  aria-required="true">
+              <div class="invalid-feedback">
+                La fecha de nacimiento es obligatoria.
+              </div>
             </div>
             <div class="col-md-6">
               <label for="phone" class="form-label">Teléfono</label>
-              <input type="tel" class="form-control" id="phone" name="phone" placeholder="Ej: 600123456" required pattern="[0-9]{9}" aria-required="true" autocomplete="tel">
+              <input type="tel" class="form-control " id="phone" name="phone" placeholder="Ej: 600123456"  pattern="[0-9]{9}" aria-required="true" autocomplete="tel">
+              <div class="invalid-feedback">
+                El teléfono es obligatorio y debe tener 9 dígitos.
+              </div>
             </div>
             <div class="col-md-6">
               <label for="postalcode" class="form-label">Código Postal</label>
-              <input type="text" class="form-control" id="postalcode" name="postalcode" placeholder="Ej: 28001" required pattern="[0-9]{5}" aria-required="true" autocomplete="postal-code">
+              <input type="text" class="form-control " id="postalcode" name="postalcode" placeholder="Ej: 28001"  pattern="[0-9]{5}" aria-required="true" autocomplete="postal-code">
+              <div class="invalid-feedback">
+                El código postal es obligatorio y debe tener 5 dígitos.
+              </div>
             </div>
             <div class="col-md-6">
               <label for="city" class="form-label">Ciudad</label>
-              <input type="text" class="form-control" id="city" name="city" placeholder="Ej: Madrid" required autocomplete="address-level2" aria-required="true">
+              <input type="text" class="form-control " id="city" name="city" placeholder="Ej: Madrid"  autocomplete="address-level2" aria-required="true">
+              <div class="invalid-feedback">
+                La ciudad es obligatoria.
+              </div>
             </div>
             <div class="col-md-6">
               <label for="password" class="form-label">Contraseña</label>
               <div class="input-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="********" required autocomplete="new-password" aria-describedby="passwordHelp">
+                <input type="password" class="form-control" id="password" name="password" placeholder="********"  autocomplete="new-password" aria-describedby="passwordHelp">
                 <button class="btn btn-outline-secondary toggle-password" type="button" aria-label="Mostrar contraseña">
                   <i class="bi bi-eye"></i>
                 </button>
@@ -184,7 +202,7 @@
             <div class="col-md-6">
               <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
               <div class="input-group">
-                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="********" required autocomplete="new-password">
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="********"  autocomplete="new-password">
                 <button class="btn btn-outline-secondary toggle-password" type="button" aria-label="Mostrar contraseña">
                   <i class="bi bi-eye"></i>
                 </button>
