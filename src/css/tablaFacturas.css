@@ -1,0 +1,123 @@
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: separate;  /* para poder usar border-spacing */
+  border-spacing: 0 0.75rem;  /* separación vertical entre filas */
+  margin-top: 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Encabezado */
+th {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+/* Celdas */
+td {
+  background-color: #f9f9f9;
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+}
+
+/* Para que la primera celda de cada fila tenga bordes redondeados */
+tbody tr:first-child td:first-child {
+  border-top-left-radius: 8px;
+}
+tbody tr:first-child td:last-child {
+  border-top-right-radius: 8px;
+}
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+/* Selección */
+select {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+select:hover, select:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* Botones */
+button {
+  padding: 0.4rem 0.8rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+button:hover {
+  background-color: #357ABD;
+}
+
+/* Mensajes alert (si quieres personalizar) */
+.alert {
+  background-color: #e7f3fe;
+  color: #31708f;
+  border: 1px solid #bce8f1;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* Responsive simple */
+@media (max-width: 600px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead tr {
+    display: none;
+  }
+  tbody tr {
+    margin-bottom: 1rem;
+    background: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  tbody td {
+    padding-left: 50%;
+    position: relative;
+    text-align: right;
+  }
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: #555;
+    white-space: nowrap;
+  }
+}

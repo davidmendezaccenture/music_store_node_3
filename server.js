@@ -364,15 +364,14 @@ app.get('/api/coupons', (req, res) => {
 // Obtener pedidos de un usuario
 app.get("/api/orders", (req, res) => {
   const username = req.query.user;
-  if (!username) {
-    return res.status(400).json({ error: "Falta el parámetro 'user'." });
-  }
+
   const ordersPath = path.join(__dirname, 'src', 'assets', 'data', 'orders.json');
   fs.readFile(ordersPath, "utf8", (err, data) => {
     if (err && err.code !== "ENOENT") {
       console.error("Error al leer pedidos:", err);
       return res.status(500).json({ error: "Error interno del servidor." });
     }
+
     let orders = [];
     if (data) {
       try {
@@ -381,10 +380,17 @@ app.get("/api/orders", (req, res) => {
         return res.status(500).json({ error: "Error al procesar los pedidos." });
       }
     }
-    const userOrders = orders.filter(order => order.user === username);
-    res.json(userOrders);
+
+    if (username) {
+      const userOrders = orders.filter(order => order.user === username);
+      return res.json(userOrders);
+    }
+
+    // Si no se pasa ?user, devolver todos
+    res.json(orders);
   });
 });
+
 
 // Crear o modificar un pedido
 app.post("/api/orders", (req, res) => {
@@ -415,7 +421,7 @@ app.post("/api/orders", (req, res) => {
       // Modificar pedido existente
       const index = orders.findIndex(order => order.id === id);
       if (index !== -1) {
-        orders[index] = { ...orders[index], items, status: status || orders[index].status };
+        orders[index] = { ...orders[index], items, status: status || orders[index].status, localizador: localizador || orders[index].localizador };
 
         fs.writeFile(ordersPath, JSON.stringify(orders, null, 2), err => {
           if (err) {

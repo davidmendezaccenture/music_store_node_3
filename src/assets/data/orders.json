@@ -85,8 +85,9 @@
       "gastosEnvio": 0,
       "total": 250
     },
-    "status": "pendiente",
-    "createdAt": "2025-07-09T18:54:14.234Z"
+    "status": "pagado",
+    "createdAt": "2025-07-09T18:54:14.234Z",
+    "localizador": "PED-AN1XL5"
   },
   {
     "id": 1752099257043,
@@ -114,7 +115,6 @@
       "gastosEnvio": 0,
       "total": 190
     },
-    "localizador": "PED-BX7JPD",
     "status": "pagado",
     "createdAt": "2025-07-09T22:14:17.043Z"
   },
