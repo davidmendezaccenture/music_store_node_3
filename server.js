@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const bodyParser = require("body-parser");
-
+const bcrypt = require("bcrypt");
 const app = express();
 app.use(bodyParser.json());
 
@@ -93,16 +93,23 @@ app.post("/api/register", (req, res) => {
     }
 
     // Añadir el nuevo usuario al array
-    users.push({ username, password, email });
-    // Guardar el array actualizado en el archivo
-    fs.writeFile(usersPath, JSON.stringify(users, null, 2), (err) => {
+    bcrypt.hash(password, 10, (err, hash) => {
       if (err) {
         return res
           .status(500)
-          .json({ error: "No se pudo guardar el usuario." });
+          .json({ error: "Error al encriptar la contraseña." });
       }
-      // Responder con éxito
-      res.status(201).json({ message: "Usuario registrado correctamente." });
+      users.push({ username, password: hash, email });
+      // Guardar el array actualizado en el archivo
+      fs.writeFile(usersPath, JSON.stringify(users, null, 2), (err) => {
+        if (err) {
+          return res
+            .status(500)
+            .json({ error: "No se pudo guardar el usuario." });
+        }
+        // Responder con éxito
+        res.status(201).json({ message: "Usuario registrado correctamente." });
+      });
     });
   });
 });
@@ -156,17 +163,33 @@ app.post("/api/login", (req, res) => {
     // Buscar el usuario por email o nombre de usuario y contraseña
     const user = users.find(
       (u) =>
-        ((username && u.username === username) ||
-          (email && u.email === email)) &&
-        u.password === password
+        (username && u.username === username) || (email && u.email === email)
     );
     if (!user) {
       return res.status(401).json({ error: "Credenciales inválidas." });
     }
-    // Si las credenciales son correctas, devolver el usuario
-    res.status(200).json({
-      message: "Login exitoso.",
-      user: { username: user.username, email: user.email },
+
+    bcrypt.compare(password, user.password, (err, result) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ error: "Error al verificar la contraseña." });
+      }
+      if (!result) {
+        return res.status(401).json({ error: "Credenciales inválidas." });
+      }
+      // Si las credenciales son correctas, devolver el usuario
+      res.status(200).json({
+        message: "Login exitoso.",
+        user: {
+          username: user.username,
+          email: user.email,
+          phone: user.phone,
+          birthdate: user.birthdate,
+          postalcode: user.postalcode,
+          city: user.city,
+        },
+      });
     });
   });
 });
@@ -303,3 +326,185 @@ if (require.main === module) {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
   });
 }
+
+//Búsquedas dentro de la web
+// Ruta de búsqueda
+const productosPath = path.join(
+  __dirname,
+  "src",
+  "assets",
+  "data",
+  "products.json"
+);
+const reseñasPath = path.join(
+  __dirname,
+  "src",
+  "assets",
+  "data",
+  "clients.json"
+); // <- tu archivo real
+
+app.get("/buscar", (req, res) => {
+  const query = req.query.q?.toLowerCase() || "";
+  const category = req.query.category?.toLowerCase() || "";
+
+  fs.readFile(productosPath, "utf8", (errProductos, dataProductos) => {
+    if (errProductos) return res.status(500).send("Error al leer productos");
+
+    fs.readFile(reseñasPath, "utf8", (errReviews, dataReviews) => {
+      if (errReviews) return res.status(500).send("Error al leer opiniones");
+
+      try {
+        const productos = JSON.parse(dataProductos);
+        const reseñas = JSON.parse(dataReviews);
+
+        // Calcular promedio de estrellas por producto
+        const ratingMap = {};
+        reseñas.forEach((r) => {
+          if (!ratingMap[r.producto]) {
+            ratingMap[r.producto] = { total: 0, count: 0 };
+          }
+          const estrellasTexto = r.estrellas || "";
+          const estrellasNum = estrellasTexto
+            .split("")
+            .filter((e) => e === "⭐").length;
+          ratingMap[r.producto].total += estrellasNum;
+
+          ratingMap[r.producto].count++;
+        });
+
+        // Añadir campo rating a cada producto
+        productos.forEach((p) => {
+          const datos = ratingMap[p.id];
+          if (datos) {
+            p.rating = Math.round(datos.total / datos.count);
+          } else {
+            p.rating = 0;
+          }
+        });
+
+        // Filtrar por búsqueda
+        const resultados = productos.filter((p) => {
+          const nombreIncluye = !query || p.name?.toLowerCase().includes(query);
+          const categoriaCoincide =
+            !category || p.category?.toLowerCase() === category;
+          return nombreIncluye && categoriaCoincide;
+        });
+
+        res.json(resultados);
+      } catch (e) {
+        res.status(500).send("Error al procesar datos");
+      }
+    });
+  });
+});
+//Endpoint de cupones de descuento
+app.get('/api/coupons', (req, res) => {
+  const rutaCupones = path.join(__dirname, 'src', 'assets', 'data', 'coupons.json');
+  console.log('Enviando archivo:', rutaCupones);
+  res.sendFile(rutaCupones, err => {
+    if (err) {
+      console.error('Error enviando coupons.json:', err);
+      res.status(500).json({ error: 'No se pudo cargar el archivo de cupones' });
+    }
+  });
+});
+
+//Endpoint de pedidos
+// Obtener pedidos de un usuario
+app.get("/api/orders", (req, res) => {
+  const username = req.query.user;
+  if (!username) {
+    return res.status(400).json({ error: "Falta el parámetro 'user'." });
+  }
+  const ordersPath = path.join(__dirname, 'src', 'assets', 'data', 'orders.json');
+  fs.readFile(ordersPath, "utf8", (err, data) => {
+    if (err && err.code !== "ENOENT") {
+      console.error("Error al leer pedidos:", err);
+      return res.status(500).json({ error: "Error interno del servidor." });
+    }
+    let orders = [];
+    if (data) {
+      try {
+        orders = JSON.parse(data);
+      } catch (parseError) {
+        return res.status(500).json({ error: "Error al procesar los pedidos." });
+      }
+    }
+    const userOrders = orders.filter(order => order.user === username);
+    res.json(userOrders);
+  });
+});
+
+// Crear o modificar un pedido
+app.post("/api/orders", (req, res) => {
+  const { id, user, items, precio, localizador, status } = req.body;
+
+  if (!user || !Array.isArray(items)) {
+    return res.status(400).json({ error: "Faltan datos: usuario o items inválidos." });
+  }
+
+  const ordersPath = path.join(__dirname, 'src', 'assets', 'data', 'orders.json');
+
+  fs.readFile(ordersPath, "utf8", (err, data) => {
+    if (err && err.code !== "ENOENT") {
+      console.error("Error al leer pedidos:", err);
+      return res.status(500).json({ error: "Error interno del servidor." });
+    }
+
+    let orders = [];
+    if (data) {
+      try {
+        orders = JSON.parse(data);
+      } catch (parseError) {
+        return res.status(500).json({ error: "Error al procesar los pedidos." });
+      }
+    }
+
+    if (id) {
+      // Modificar pedido existente
+      const index = orders.findIndex(order => order.id === id);
+      if (index !== -1) {
+        orders[index] = { ...orders[index], items, status: status || orders[index].status };
+
+        fs.writeFile(ordersPath, JSON.stringify(orders, null, 2), err => {
+          if (err) {
+            console.error("Error al guardar pedidos:", err);
+            return res.status(500).json({ error: "No se pudo guardar el pedido." });
+          }
+          // Devolver el pedido modificado completo
+          res.status(200).json(orders[index]);
+        });
+      } else {
+        return res.status(404).json({ error: "Pedido no encontrado para modificar." });
+      }
+    } else {
+      // Crear nuevo pedido
+      const newOrder = {
+        id: Date.now(),
+        user,
+        items,
+        precio,
+        localizador,
+        status: status || ((user.metodoPago === 'transferencia' || user.metodoPago === 'bizum') ? 'pendiente' : 'pagado'),
+        createdAt: new Date().toISOString()
+      };
+      orders.push(newOrder);
+
+      fs.writeFile(ordersPath, JSON.stringify(orders, null, 2), err => {
+        if (err) {
+          console.error("Error al guardar pedidos:", err);
+          return res.status(500).json({ error: "No se pudo guardar el pedido." });
+        }
+        // Devolver datos relevantes del nuevo pedido
+        res.status(200).json({
+          message: "Pedido guardado correctamente.",
+          id: newOrder.id,
+          createdAt: newOrder.createdAt,
+          localizador: newOrder.localizador || null,
+          status: newOrder.status
+        });
+      });
+    }
+  });
+});
