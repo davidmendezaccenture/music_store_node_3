@@ -6,7 +6,7 @@ $(function () {
   const paginaActual = window.location.pathname.split('/').pop();
   if (paginaActual !== 'registro.html') {
     $('#modals-container').load('../partials/modals.html', function () {
-      // Cargar Bootstrap (una vez cargados los modales)
+      // ✅ Cargar Bootstrap (una vez cargados los modales)
       const bsScript = document.createElement('script');
       bsScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
       bsScript.onload = function () {
@@ -28,15 +28,16 @@ $(function () {
 
         function loadNextScript() {
           if (index >= scripts.length) {
-            // Al final, aseguramos que initLoginUI se llame (por si acaso)
+            // ✅ Mostrar cookies solo al final, cuando ya está todo cargado
+            $.getScript('../js/cookies.js');
+
+            // ✅ Asegurar login UI
             if (typeof initLoginUI === 'function') initLoginUI();
 
-            // Mostrar modal login si viene en URL (?showLogin=1)
+            // ✅ Mostrar modal login si viene con ?showLogin=1
             if (typeof esperarYMostrarLoginModal === 'function' && window.location.search.includes('showLogin=1')) {
-              // ✅ MODIFICACIÓN: pequeño delay para asegurar que los campos del modal ya están cargados
               setTimeout(() => {
                 esperarYMostrarLoginModal();
-                // Limpiar la URL después de usar el parámetro
                 window.history.replaceState({}, document.title, window.location.pathname);
               }, 200);
             }
@@ -64,15 +65,14 @@ $(function () {
     'index.html', 'guitar.html', 'keyboard.html', 'drums.html',
     'product-detail.html', 'services.html', 'sobre_nosotros.html',
     'search.html', 'registro.html', 'payment-methods.html','newsletter.html',
-    'media.html', 'faq.html', 'contact', 'cart.html'
+    'media.html', 'faq.html', 'contact', 'cart.html','politica-cookies.html'
   ];
   if (paginasConPrefooter.includes(paginaActual)) {
     $('#prefooter-container').load('../partials/prefooter.html');
   }
 
-  // Guardar última página visitada en localStorage
-  // Guardar última página visitada (pero no si es product-detail.html)
-if (!window.location.pathname.includes('product-detail.html')) {
-  localStorage.setItem('ultimaPagina', window.location.href);
-}
+  // Guardar última página visitada (excepto product-detail.html)
+  if (!window.location.pathname.includes('product-detail.html')) {
+    localStorage.setItem('ultimaPagina', window.location.href);
+  }
 });

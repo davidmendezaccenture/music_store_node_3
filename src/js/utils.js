@@ -48,3 +48,9 @@ function validarPassword(password) {
 function compararPasswords(pass1, pass2) {
   return pass1 === pass2;
 }
+
+function guardarPaginaAnterior() {
+  // Guardamos el path relativo, como 'guitar.html' o 'keyboard.html'
+  const actual = window.location.pathname.split('/').pop();
+  sessionStorage.setItem('paginaAnteriorCookies', actual);
+}

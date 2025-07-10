@@ -1,15 +1,12 @@
-// auth.js - Este archivo gestiona la autenticación de usuarios
-
+//auth.js
 $(document).ready(function () {
 
   // === LOGIN desde el modal ===
   $('#modals-container').on('submit', '#form-login', function (e) {
     e.preventDefault();
 
-    const username = $('#login-username').val(); // campo modificado
-    const password = $('#login-password').val(); // campo modificado
-
-   
+    const username = $('#login-username').val();
+    const password = $('#login-password').val();
 
     if (!username || !password) {
       alert('Por favor, completa todos los campos');
@@ -50,6 +47,14 @@ $(document).ready(function () {
       })
       .then(data => {
         const usuario = data.user.username;
+
+        // --- NUEVO: copiar aceptación de cookies de invitado a usuario ---
+        const invitadoAcepto = localStorage.getItem('cookies_accepted_guest');
+        if (invitadoAcepto === 'true') {
+          localStorage.setItem(`cookies_accepted_${usuario}`, 'true');
+        }
+        // --- FIN NUEVO ---
+
         localStorage.setItem('usuario', usuario);
 
         // Obtener carrito del usuario
@@ -199,7 +204,6 @@ $(document).ready(function () {
   });
 
 });
-
 
 /* ================================================
    ✅ MODIFICACIÓN AÑADIDA para mostrar el modal login automáticamente

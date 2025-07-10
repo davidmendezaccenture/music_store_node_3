@@ -111,8 +111,8 @@ function initLoginUI() {
       e.preventDefault();
       ocultarErrorLoginPassword();
 
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
       fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -124,6 +124,15 @@ function initLoginUI() {
         })
         .then(data => {
           localStorage.setItem('usuario', data.user.username);
+
+          // Copiar estado cookies de invitado a usuario logueado
+          const usuarioNuevo = data.user.username;
+          const invitadoAceptado = localStorage.getItem('cookies_accepted_guest');
+          if (invitadoAceptado === 'true') {
+            localStorage.setItem(`cookies_accepted_${usuarioNuevo}`, 'true');
+            localStorage.removeItem('cookies_accepted_guest');
+          }
+
           mostrarBotonLogout(data.user.username);
           if (typeof bootstrap !== 'undefined') {
             const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
@@ -175,6 +184,7 @@ function onModalsLoaded() {
     document.addEventListener('DOMContentLoaded', initLoginUI);
   }
 })();
+
 //Modal de bienvenida de usuario
 function mostrarModalBienvenida(mensaje) {
   document.getElementById('mensajeBienvenida').innerText = mensaje;
@@ -215,7 +225,3 @@ function mostrarModalConfirmarEliminacion() {
   modalEliminar = new bootstrap.Modal(document.getElementById('modalConfirmarEliminacion'));
   modalEliminar.show();
 }
-
-
-
-

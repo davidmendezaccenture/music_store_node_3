@@ -124,3 +124,27 @@
     </div>
   </div>
 </div>
+
+<!-- Modal de Cookies -->
+<div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-body py-4 px-4">
+        <i class="bi bi-cookie text-warning mb-3" style="font-size: 3rem;" aria-hidden="true"></i>
+        <h5 class="modal-title mb-3" id="cookieModalLabel">Este sitio usa cookies</h5>
+        <p class="mb-3">
+          Usamos cookies para mejorar tu experiencia en RaiRock Music Store. Al continuar navegando, aceptas nuestra
+          <a href="../pages/politica-cookies.html" onclick="guardarPaginaAnterior()">Política de cookies</a>.
+        </p>
+        <div class="d-flex flex-column flex-md-row justify-content-center gap-2 mt-3">
+          <button id="acceptCookiesBtn" type="button" class="btn btn-primary px-4">
+            Aceptar
+          </button>
+          <button id="postponeCookiesBtn" type="button" class="btn btn-outline-secondary px-4">
+            Más adelante
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
