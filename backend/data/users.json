@@ -61,15 +61,6 @@
     "city": "Madrid"
   },
   {
-    "username": "David",
-    "password": "Malvado1",
-    "email": "davidsantosbelmonte@gmail.com",
-    "birthdate": "1980-06-14",
-    "phone": "653511423",
-    "postalcode": "41960",
-    "city": "Gines"
-  },
-  {
     "username": "nombreFicticio",
     "password": "8Caracteres",
     "email": "correodeMentira@gmail.com",
@@ -96,5 +87,10 @@
     "username": "prueba10",
     "password": "$2b$10$VyjdDnnxo9HkoyC/u3Duuue521KRQXUxQmqTGiKYEcpyQ95Wx.07e",
     "email": "prueba@10.com"
+  },
+  {
+    "username": "David",
+    "password": "$2b$10$HdKLCs2pAuZCLPpAEc5T9uTdEFTHyRvl.virCfWkukJryKzczTiX.",
+    "email": "davidsantosbelmonte@gmail.com"
   }
 ]
