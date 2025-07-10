@@ -141,6 +141,24 @@ $(document).on('submit', '#form-login', function(e) {
   }
 });
 
+function mostrarErrorCampo(idInput, mensaje) {
+  const input = document.getElementById(idInput);
+  const feedback = input.nextElementSibling;
+  input.classList.add("is-invalid");
+  if (feedback && feedback.classList.contains("invalid-feedback")) {
+    feedback.textContent = mensaje;
+    feedback.classList.remove("visually-hidden");
+  }
+}
+function ocultarErrorCampo(idInput) {
+  const input = document.getElementById(idInput);
+  const feedback = input.nextElementSibling;
+  input.classList.remove("is-invalid");
+  if (feedback && feedback.classList.contains("invalid-feedback")) {
+    feedback.classList.add("visually-hidden");
+  }
+}
+
   // === REGISTRO ===
   $('#form-registro').submit(function (e) {
     e.preventDefault(); // Previene envío clásico (con recarga)
@@ -157,10 +175,59 @@ $(document).on('submit', '#form-login', function(e) {
 
     const confirmPassword = $('#confirmPassword').val();
     // Validación básica
-    if (!nuevoUsuario.username || !nuevoUsuario.email || !nuevoUsuario.birthdate || !nuevoUsuario.phone || !nuevoUsuario.postalcode || !nuevoUsuario.city || !nuevoUsuario.password) {
-      alert('Por favor, completa todos los campos');
-      return;
-    }
+    const campos = [
+      {
+        id: "regUsername",
+        value: nuevoUsuario.username,
+        msg: "El nombre de usuario es obligatorio.",
+      },
+      {
+        id: "email",
+        value: nuevoUsuario.email,
+        msg: "El correo electrónico es obligatorio.",
+      },
+      {
+        id: "birthdate",
+        value: nuevoUsuario.birthdate,
+        msg: "La fecha de nacimiento es obligatoria.",
+      },
+      {
+        id: "phone",
+        value: nuevoUsuario.phone,
+        msg: "El teléfono es obligatorio.",
+      },
+      {
+        id: "postalcode",
+        value: nuevoUsuario.postalcode,
+        msg: "El código postal es obligatorio.",
+      },
+      {
+        id: "city",
+        value: nuevoUsuario.city,
+        msg: "La ciudad es obligatoria.",
+      },
+      {
+        id: "password",
+        value: nuevoUsuario.password,
+        msg: "La contraseña es obligatoria.",
+      },
+      {
+        id: "confirmPassword",
+        value: confirmPassword,
+        msg: "Debes confirmar la contraseña.",
+      },
+    ];
+
+    let hayError = false;
+    campos.forEach((campo) => {
+      if (!campo.value) {
+        mostrarErrorCampo(campo.id, campo.msg);
+        hayError = true;
+      } else {
+        ocultarErrorCampo(campo.id);
+      }
+    });
+    if (hayError) return;
 
     // Validaciones con funciones de utils.js
     // Validar username
@@ -221,6 +288,42 @@ $(document).on('submit', '#form-login', function(e) {
       }
     });
   });
+
+  $("#form-forgot-password").submit(function (e) {
+    e.preventDefault();
+    const email = $("#forgotEmail").val().trim();
+    $("#forgotEmail").removeClass("is-invalid");
+    $("#forgotEmailError").text("");
+    $("#forgotPasswordSuccess").addClass("visually-hidden").text("");
+
+    if (!email) {
+      $("#forgotEmail").addClass("is-invalid");
+      $("#forgotEmailError").text("El correo es obligatorio");
+      return;
+    }
+
+    // Aquí iría la llamada AJAX real al backend
+    $.ajax({
+      url: "/api/forgot-password",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ email }),
+      success: function () {
+        $("#forgotPasswordSuccess")
+          .removeClass("visually-hidden")
+          .text(
+            "Si el correo existe, recibirás un enlace para restablecer tu contraseña."
+          );
+      },
+      error: function () {
+        $("#forgotEmail").addClass("is-invalid");
+        $("#forgotEmailError").text(
+          "No se pudo enviar el correo. Inténtalo más tarde."
+        );
+      },
+    });
+  });
+
   //Modal de error fuera del bloque catch. Si no, no se cierra del todo
   const loginErrorModal = new bootstrap.Modal(document.getElementById('loginErrorModal'));
 

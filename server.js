@@ -40,12 +40,10 @@ app.get("/api/products", (req, res) => {
 });
 
 // API para login y registro (usuarios en archivo JSON)
-
 // Registrar un nuevo usuario
 app.post("/api/register", (req, res) => {
   // Extraer los datos del body de la petición
-  const { username, password, email, birthdate, phone, postalcode, city } =
-    req.body;
+  const { username, password, email } = req.body;
 
   // Validar que todos los campos obligatorios estén presentes
   if (!username || !password || !email) {
@@ -125,10 +123,16 @@ app.post("/api/login", (req, res) => {
   if ((!username && !email) || !password) {
     return res.status(400).json({
       error: "Debes indicar usuario o email y la contraseña.",
-      error: "Debes indicar usuario o email y la contraseña.",
     });
   }
 
+  // // Validar formato de email simple, elimino al actualizar usando tambien nombre de usuario
+  // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // if (!emailRegex.test(email)) {
+  //   return res
+  //     .status(400)
+  //     .json({ error: "El Email no tiene un formato válido." });
+  // }
 
   // Ruta al archivo donde se almacenan los usuarios
   const usersPath = path.join(__dirname, "backend/data/users.json");
@@ -136,12 +140,10 @@ app.post("/api/login", (req, res) => {
   // Leer el archivo de usuarios
   fs.readFile(usersPath, "utf8", (err, data) => {
     // Si ocurre un error distinto a que el archivo no exista, devolver error
-    // Si ocurre un error distinto a que el archivo no exista, devolver error
     if (err && err.code !== "ENOENT") {
       console.error("Error al leer el archivo de usuarios:", err);
       return res.status(500).json({ error: "Error interno del servidor" });
     }
-
 
     if (!data) {
       return res.status(404).json({ error: "No hay usuarios registrados." });
@@ -150,13 +152,8 @@ app.post("/api/login", (req, res) => {
     let users = [];
     try {
       // Intentar parsear el JSON de usuarios
-      // Intentar parsear el JSON de usuarios
       users = JSON.parse(data);
     } catch (parseError) {
-      // Si el JSON está corrupto, devolver error
-      return res
-        .status(500)
-        .json({ error: "Error al procesar los datos de usuarios" });
       // Si el JSON está corrupto, devolver error
       return res
         .status(500)
@@ -182,18 +179,52 @@ app.post("/api/login", (req, res) => {
         return res.status(401).json({ error: "Credenciales inválidas." });
       }
       // Si las credenciales son correctas, devolver el usuario
-  res.status(200).json({
-    message: "Login exitoso.",
-    user: {
-    username: user.username,
-    email: user.email,
-    phone: user.phone,
-    birthdate: user.birthdate,
-    postalcode: user.postalcode,
-    city: user.city
-  },
+      res.status(200).json({
+        message: "Login exitoso.",
+        user: {
+          username: user.username,
+          email: user.email,
+          phone: user.phone,
+          birthdate: user.birthdate,
+          postalcode: user.postalcode,
+          city: user.city,
+        },
       });
+    });
+  });
 });
+
+// --- ENDPOINTS PARA RECUPERAR CONTRASEÑA ---
+
+// Endpoint para recuperación de contraseña
+app.post("/api/forgot-password", (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    return res.status(400).json({ error: "El correo es obligatorio." });
+  }
+
+  // Ruta al archivo donde se almacenan los usuarios
+  const usersPath = path.join(__dirname, "backend/data/users.json");
+
+  fs.readFile(usersPath, "utf8", (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: "Error interno del servidor." });
+    }
+    let users = [];
+    if (data) {
+      try {
+        users = JSON.parse(data);
+      } catch (parseError) {
+        return res.status(500).json({ error: "Error al procesar los datos de usuarios." });
+      }
+    }
+
+    const user = users.find(u => u.email === email);
+    // Por seguridad, siempre respondemos igual aunque el email no exista
+    // Aquí deberías generar un token y enviar el email real
+    return res.status(200).json({
+      message: "Si el correo existe, recibirás un enlace para restablecer tu contraseña."
+    });
   });
 });
 
@@ -295,6 +326,7 @@ if (require.main === module) {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
   });
 }
+
 //Búsquedas dentro de la web
 // Ruta de búsqueda
 const productosPath = path.join(
@@ -476,6 +508,3 @@ app.post("/api/orders", (req, res) => {
     }
   });
 });
-
-
-
