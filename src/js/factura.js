@@ -94,9 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const doc = new jsPDF();
 
         // Logo
-        doc.addImage(logoBase64, 'PNG', 10, 10, 30, 30);
+        const originalWidth = logoImg.naturalWidth;
+        const originalHeight = logoImg.naturalHeight;
 
-        let y = 45;
+        const targetWidth = 60; // en mm
+        const ratio = originalHeight / originalWidth;
+        const targetHeight = targetWidth * ratio;
+
+        //Redimensionamiento del logo
+        doc.addImage(logoBase64, 'PNG', 7.5, 10, targetWidth, targetHeight);
+
+        let y = 10 + targetHeight + 10;
         const lineHeight = 7;
 
         doc.setFontSize(18);
@@ -177,7 +185,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (localizadorLinea.style.display !== 'none' && localizador.trim() !== '') {
             doc.text(`Localizador: ${localizador}`, 10, y); y += lineHeight;
         }
-
+        if (estadoTexto.includes('pendiente')) {
+            y += lineHeight;
+            doc.setTextColor(255, 0, 0); // rojo
+            doc.setFontSize(11);
+            doc.text("Factura provisional. Te enviaremos la factura final una vez confirmemos la recepción del pago.", 10, y, { maxWidth: 190 });
+            doc.setTextColor(0, 0, 0); // restablecer a negro
+            doc.setFontSize(12);
+            y += lineHeight * 2;
+        }
+        
         // --- Código QR ---
         const qrImg = document.querySelector("#qr-container img");
         if (qrImg) {

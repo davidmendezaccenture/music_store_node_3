@@ -142,10 +142,10 @@
 <div class="modal fade" id="modalDatosPago" tabindex="-1" aria-labelledby="modalDatosPagoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-4">
-      <div class="modal-body">
+      <div class="modal-body text-center">
         <div id="formPaypal" class="d-none">
           <img src="../assets/images/icons8-paypal-48.png" alt="PayPal" class="d-block mx-auto">
-          <h5 class="mb-3 text-center" >Inicia sesión en PayPal</h5>
+          <h5 class="mb-3">Inicia sesión en PayPal</h5>
           <input type="email" class="form-control mb-2" placeholder="Correo de PayPal" id="emailPaypal">
           <div class="invalid-feedback"></div>
           <input type="password" class="form-control mb-3" placeholder="Contraseña" id="passwordPaypal">
@@ -153,12 +153,14 @@
         </div>
         <div id="formTarjeta" class="d-none">
           <h5 class="mb-3">Introduce los datos de tu tarjeta</h5>
-          <input type="text" class="form-control mb-2" placeholder="Número de tarjeta (16 dígitos)" maxlength="19" id="numeroTarjeta">
-          <div class="invalid-feedback"></div>
-          <input type="text" class="form-control mb-2" placeholder="MM/YY" maxlength="5" id="fechaCaducidad">
-          <div class="invalid-feedback"></div>
-          <input type="text" class="form-control mb-3" placeholder="CVV (3 dígitos)" maxlength="3" id="cvvTarjeta">
-          <div class="invalid-feedback"></div>
+          <div class="text-start">
+            <input type="text" class="form-control mb-2" placeholder="Número de tarjeta (16 dígitos)" maxlength="19" id="numeroTarjeta">
+            <div class="invalid-feedback"></div>
+            <input type="text" class="form-control mb-2" placeholder="MM/YY" maxlength="5" id="fechaCaducidad">
+            <div class="invalid-feedback"></div>
+            <input type="text" class="form-control mb-3" placeholder="CVV (3 dígitos)" maxlength="3" id="cvvTarjeta">
+            <div class="invalid-feedback"></div>
+          </div>
         </div>
         <div id="formTransferencia" class="d-none">
           <h5 class="mb-3">Pago por transferencia</h5>
@@ -166,7 +168,7 @@
           <p class="text-muted">Podemos tardar entre 24 y 48 horas en procesarla. Te enviaremos un email de confirmación.</p>
         </div>
         <div id="formBizum" class="d-none">
-          <img src="../assets/images/Bizum.svg" style="width: 100px; height: 100px;" alt="PayPal" class="d-block mx-auto">
+          <img src="../assets/images/Bizum.svg" style="width: 100px; height: 100px;" alt="Bizum" class="d-block mx-auto">
           <h5 class="mb-3">Pago por Bizum</h5>
           <p>Realiza un Bizum a: <strong>6XX XXX XXX</strong></p>
           <p class="text-muted">Podemos tardar entre 24 y 48 horas en comprobarlo. Te enviaremos un email de confirmación.</p>
@@ -176,6 +178,7 @@
     </div>
   </div>
 </div>
+
   <!-- Modal Confirmación de Pago -->
 <div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
