@@ -50,20 +50,12 @@
       "cantidad": 1
     }
   ],
-  "Angel": [
-    {
-      "id": 3,
-      "cantidad": 1
-    }
-  ],
-  "undefined": [],
-  "Malvado": [
-    {
-      "id": 2,
-      "cantidad": 1
-    }
-  ],
-  "prueba9": [],
-  "prueba30": [],
-  "prueba50": []
+  "Malvado": [],
+  "Josemanuel": [],
+  "Prueba91": [],
+  "Prueba92": [],
+  "prueba93": [],
+  "Prueba95": [],
+  "prueba97": [],
+  "Prueba99": []
 }

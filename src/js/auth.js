@@ -321,8 +321,6 @@ function ocultarErrorCampo(idInput) {
       },
     });
   });
-
-
 });
 
 /* ================================================
@@ -371,7 +369,7 @@ function esperarYMostrarLoginModal() {
     });
     return Array.from(mapa.values());
   }
-//Función reutilizable para login y registro. Guarda los datos que necesitamos en el backend y unifica los carritos
+
   function procesarPostLogin(username, datosUsuario) {
   const usuario = username;
   let carritoInvitado = [];
@@ -382,7 +380,6 @@ const invitadoAcepto = localStorage.getItem('cookies_accepted_guest');
 if (invitadoAcepto === 'true') {
   localStorage.setItem(`cookies_accepted_${usuario}`, 'true');
 
-  // Ocultar modal si aún está visible
   const modalEl = document.getElementById('cookieModal');
   if (modalEl) {
     const modalInstance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
@@ -390,18 +387,14 @@ if (invitadoAcepto === 'true') {
   }
 }
 
-
-
   localStorage.setItem('usuario', usuario);
   localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario));
 
-  // Obtener carrito del invitado
   fetch('/api/cart?user=guest')
     .then(res => res.json())
     .then(data => {
       carritoInvitado = data;
 
-      // Vaciar carrito invitado
       return fetch('/api/cart', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -416,7 +409,7 @@ if (invitadoAcepto === 'true') {
 });
     })
     .then(() => {
-      // Obtener carrito del usuario
+
       return fetch(`/api/cart?user=${usuario}`);
     })
     .then(res => res.json())
@@ -424,7 +417,6 @@ if (invitadoAcepto === 'true') {
       carritoUsuario = data;
       const carritoFinal = unificarCarritos(carritoUsuario, carritoInvitado);
 
-      // Subir carrito unificado
       return fetch('/api/cart', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -433,15 +425,37 @@ if (invitadoAcepto === 'true') {
         carrito = carritoFinal;
         actualizarContadorCarrito(calcularTotalItems(carritoFinal));
 
-        // Mostrar bienvenida
-        mostrarModalBienvenida(`Bienvenido ${usuario}`);
-        if (typeof initLoginUI === 'function') initLoginUI();
+        mostrarModalBienvenidaYRedirigir(`Bienvenido ${usuario}`);
 
-        // ✅ Redirigir ahora que todo ha terminado
-        window.location.href = "index.html";
       });
     })
     .catch(err => {
       console.error("Error en proceso post-login:", err);
     });
 }
+
+function mostrarModalBienvenidaYRedirigir(mensaje, redireccionUrl = "index.html") {
+
+  const modalElement = document.getElementById('modalBienvenidaRegistro');
+  if (!modalElement) {
+    console.error('No se encontró la modal con id modalBienvenidaRegistro');
+    return;
+  }
+
+  const modalsContainer = document.getElementById('modals-container');
+  modalsContainer.innerHTML = ''; // limpia el contenedor
+  modalsContainer.appendChild(modalElement); // mueve la modal al contenedor
+  document.getElementById('mensajeBienvenidaRegistro').textContent = mensaje;
+  const modal = new bootstrap.Modal(modalElement, {
+    backdrop: 'static',
+    keyboard: false
+  });
+
+  // Evento para redirigir al cerrar la modal (solo una vez)
+  modalElement.addEventListener('hidden.bs.modal', () => {
+    window.location.href = redireccionUrl;
+  }, { once: true });
+  modal.show();
+}
+
+
