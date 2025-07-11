@@ -117,7 +117,17 @@ app.post("/api/register", (req, res) => {
             .json({ error: "No se pudo guardar el usuario." });
         }
         // Responder con éxito
-        res.status(201).json({ message: "Usuario registrado correctamente." });
+        res.status(201).json({  
+          message: "Usuario registrado correctamente.",
+          usuario: {
+            username,
+            email,
+            birthdate,
+            phone,
+            postalcode,
+            city
+          }
+        });
       });
     });
   });

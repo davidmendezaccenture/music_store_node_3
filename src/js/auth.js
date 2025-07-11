@@ -133,25 +133,7 @@ $(document).on('submit', '#form-login', function(e) {
         }
       });
 
-    // Función para unificar los carritos
-    function unificarCarritos(carritoUsuario, carritoInvitado) {
-      const mapa = new Map();
 
-    //Añadimos el carrito del usuario
-    carritoUsuario.forEach((item) => {
-      mapa.set(item.id, { ...item });
-    });
-
-    //Añadimos el contenido del carrito de invitado. Si el elemento ya está, sumamos cantidades
-    carritoInvitado.forEach((item) => {
-      if (mapa.has(item.id)) {
-        mapa.get(item.id).cantidad += item.cantidad;
-      } else {
-        mapa.set(item.id, { ...item });
-      }
-    });
-    return Array.from(mapa.values());
-  }
 });
 
 function mostrarErrorCampo(idInput, mensaje) {
@@ -288,13 +270,16 @@ function ocultarErrorCampo(idInput) {
       contentType: 'application/json',
       data: JSON.stringify(nuevoUsuario),
       success: function (res) {
-        alert(res.message || 'Usuario registrado correctamente');
         $('#form-registro')[0].reset();
-
-        // Esperar un poco tras el alert antes de redirigir
-        setTimeout(() => {
-          window.location.href = '/pages/index.html';
-        }, 300);
+        localStorage.removeItem("usuario");
+        localStorage.removeItem("datosUsuario");
+        /*
+        localStorage.setItem("usuario", res.usuario.username);
+        localStorage.setItem("datosUsuario", JSON.stringify(res.usuario));
+        */
+       const username = nuevoUsuario.username;
+       const datosUsuario = res.usuario;
+        procesarPostLogin(username, datosUsuario);
       },
       error: function (xhr) {
         alert(xhr.responseJSON?.error || 'Error al registrar usuario');
@@ -364,4 +349,99 @@ function esperarYMostrarLoginModal() {
       loginModal.show();
     }
   }, 100);
+
+}
+
+    // Función para unificar los carritos
+    function unificarCarritos(carritoUsuario, carritoInvitado) {
+      const mapa = new Map();
+
+    //Añadimos el carrito del usuario
+    carritoUsuario.forEach((item) => {
+      mapa.set(item.id, { ...item });
+    });
+
+    //Añadimos el contenido del carrito de invitado. Si el elemento ya está, sumamos cantidades
+    carritoInvitado.forEach((item) => {
+      if (mapa.has(item.id)) {
+        mapa.get(item.id).cantidad += item.cantidad;
+      } else {
+        mapa.set(item.id, { ...item });
+      }
+    });
+    return Array.from(mapa.values());
+  }
+//Función reutilizable para login y registro. Guarda los datos que necesitamos en el backend y unifica los carritos
+  function procesarPostLogin(username, datosUsuario) {
+  const usuario = username;
+  let carritoInvitado = [];
+  let carritoUsuario = [];
+
+  // Copiar cookies si existían
+const invitadoAcepto = localStorage.getItem('cookies_accepted_guest');
+if (invitadoAcepto === 'true') {
+  localStorage.setItem(`cookies_accepted_${usuario}`, 'true');
+
+  // Ocultar modal si aún está visible
+  const modalEl = document.getElementById('cookieModal');
+  if (modalEl) {
+    const modalInstance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+    modalInstance.hide();
+  }
+}
+
+
+
+  localStorage.setItem('usuario', usuario);
+  localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario));
+
+  // Obtener carrito del invitado
+  fetch('/api/cart?user=guest')
+    .then(res => res.json())
+    .then(data => {
+      carritoInvitado = data;
+
+      // Vaciar carrito invitado
+      return fetch('/api/cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: 'guest', items: [] })
+      }).then(res => {
+  if (!res.ok) {
+    console.error("Error vaciando carrito invitado");
+  }
+  return res.json();
+}).then(data => {
+  console.log("Carrito invitado vaciado:", data);
+});
+    })
+    .then(() => {
+      // Obtener carrito del usuario
+      return fetch(`/api/cart?user=${usuario}`);
+    })
+    .then(res => res.json())
+    .then(data => {
+      carritoUsuario = data;
+      const carritoFinal = unificarCarritos(carritoUsuario, carritoInvitado);
+
+      // Subir carrito unificado
+      return fetch('/api/cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: usuario, items: carritoFinal })
+      }).then(() => {
+        carrito = carritoFinal;
+        actualizarContadorCarrito(calcularTotalItems(carritoFinal));
+
+        // Mostrar bienvenida
+        mostrarModalBienvenida(`Bienvenido ${usuario}`);
+        if (typeof initLoginUI === 'function') initLoginUI();
+
+        // ✅ Redirigir ahora que todo ha terminado
+        window.location.href = "index.html";
+      });
+    })
+    .catch(err => {
+      console.error("Error en proceso post-login:", err);
+    });
 }
