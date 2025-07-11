@@ -198,8 +198,8 @@ function mostrarModalBienvenida(mensaje) {
   });
 
   modalElement.addEventListener('hidden.bs.modal', () => {
-    if (window.location.pathname.includes('login.html')) {
-      window.location.href = "/pages/cart.html";
+    if (window.location.pathname.includes('registro.html')) {
+      window.location.href = "/pages/index.html";
     } else {
       mostrarCarrito();
       const backdrop = document.querySelector('.modal-backdrop');

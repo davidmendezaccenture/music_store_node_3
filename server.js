@@ -43,7 +43,7 @@ app.get("/api/products", (req, res) => {
 // Registrar un nuevo usuario
 app.post("/api/register", (req, res) => {
   // Extraer los datos del body de la petición
-  const { username, password, email } = req.body;
+  const { username, password, email, birthdate, phone, postalcode, city } = req.body;
 
   // Validar que todos los campos obligatorios estén presentes
   if (!username || !password || !email) {
@@ -99,7 +99,16 @@ app.post("/api/register", (req, res) => {
           .status(500)
           .json({ error: "Error al encriptar la contraseña." });
       }
-      users.push({ username, password: hash, email });
+      users.push({
+        username,
+        password: hash,
+        email,
+        birthdate,
+        phone,
+        postalcode,
+        city
+      });
+
       // Guardar el array actualizado en el archivo
       fs.writeFile(usersPath, JSON.stringify(users, null, 2), (err) => {
         if (err) {

@@ -119,9 +119,6 @@ $(document).on('submit', '#form-login', function(e) {
               mostrarModalBienvenida(`Bienvenido ${usuario}`);
               // ✅ Actualizar UI de login/logout
               if (typeof initLoginUI === 'function') initLoginUI();
-              if (window.location.pathname.endsWith('registro.html')) {
-              window.location.href = 'index.html';
-              }
             });
           });
       })
@@ -282,7 +279,6 @@ function ocultarErrorCampo(idInput) {
       alert('Las contraseñas no coinciden.');
       return;
     }
-
     // ✅ Registro exitoso con delay antes de redirigir
     $.ajax({
       url: '/api/register',
