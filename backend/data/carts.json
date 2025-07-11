@@ -26,11 +26,11 @@
   "prueba22": [],
   "Pablo": [],
   "Prueba500": [],
-  "Prueba600": [],
-  "Prueba700": [
+  "Prueba600": [
     {
-      "id": 16,
-      "cantidad": 1
+      "id": 17,
+      "cantidad": 4
     }
-  ]
+  ],
+  "Prueba700": []
 }

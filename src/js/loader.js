@@ -75,7 +75,10 @@ $(function () {
   }
 
   // Guardar última página visitada (excepto product-detail.html)
-  if (!window.location.pathname.includes('product-detail.html')) {
+  if (
+  !window.location.pathname.includes('product-detail.html') &&
+  !window.location.pathname.includes('cart.html')
+) {
     localStorage.setItem('ultimaPagina', window.location.href);
   }
 });
