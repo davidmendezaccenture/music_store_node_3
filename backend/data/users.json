@@ -131,5 +131,14 @@
     "phone": "600123456",
     "postalcode": "28001",
     "city": "Madrid"
+  },
+  {
+    "username": "Angel",
+    "password": "$2b$10$.R.P7ekCLAHQfr22vXMwEuzlNIhjyUbpwh4pKkKqx8VGZ3QmE50He",
+    "email": "angel@gmail.com",
+    "birthdate": "1209-10-12",
+    "phone": "600123456",
+    "postalcode": "28001",
+    "city": "Madrid"
   }
 ]

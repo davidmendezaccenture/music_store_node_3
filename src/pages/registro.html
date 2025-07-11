@@ -114,32 +114,6 @@
     <script src="../js/utils.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/import-modals.js"></script>
-
-
- <!--Scriopt toogle para registro porque no cargo login-ui.js -->
-    <script>
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('.toggle-password')) {
-      const btn = e.target.closest('.toggle-password');
-      const input = btn.parentElement.querySelector('input');
-      if (!input) return;
-      if (input.type === 'password') {
-        input.type = 'text';
-        btn.querySelector('i').classList.remove('bi-eye');
-        btn.querySelector('i').classList.add('bi-eye-slash');
-        btn.setAttribute('aria-label', 'Ocultar contraseña');
-      } else {
-        input.type = 'password';
-        btn.querySelector('i').classList.remove('bi-eye-slash');
-        btn.querySelector('i').classList.add('bi-eye');
-        btn.setAttribute('aria-label', 'Mostrar contraseña');
-      }
-    }
-  });
-</script>
-
-<script src="../js/chatbot.js"></script>
-<script src="../js/import-modals.js"></script>
 <script src="../js/cart.js"></script>
 
 
