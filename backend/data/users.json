@@ -117,5 +117,14 @@
     "username": "Prueba500",
     "password": "$2b$10$YjiJoVstGuEr0qftCngNdOrKJHLul1fdUXkCmsLZcuy3Se5V/hf9e",
     "email": "prueba500@gmail.com"
+  },
+  {
+    "username": "David",
+    "password": "Malvado1",
+    "email": "david@gmail.com",
+    "birthdate": "1980-06-14",
+    "phone": "600123456",
+    "postalcode": "28001",
+    "city": "Madrid"
   }
 ]

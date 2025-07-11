@@ -538,5 +538,34 @@
     },
     "status": "pagado",
     "createdAt": "2025-07-11T00:32:39.488Z"
+  },
+  {
+    "id": 1752205814017,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "transferencia"
+    },
+    "items": [
+      {
+        "id": "13",
+        "nombre": "Pedal de Distorsión",
+        "descripcion": "Pedal de efectos para un sonido potente.",
+        "cantidad": 1,
+        "precioUnitario": 100,
+        "total": 100
+      }
+    ],
+    "precio": {
+      "subtotal": 100,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 100
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-11T03:50:14.017Z"
   }
 ]

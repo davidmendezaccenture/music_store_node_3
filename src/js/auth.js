@@ -120,8 +120,8 @@ $(document).on('submit', '#form-login', function(e) {
               // ✅ Actualizar UI de login/logout
               if (typeof initLoginUI === 'function') initLoginUI();
               if (window.location.pathname.endsWith('registro.html')) {
-  window.location.href = 'index.html';
-}
+              window.location.href = 'index.html';
+              }
             });
           });
       })

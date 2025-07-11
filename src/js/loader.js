@@ -4,6 +4,7 @@ $(function () {
 
   // === Cargar MODALES SOLO si la página no es 'registro.html' ===
   const paginaActual = window.location.pathname.split('/').pop();
+  
     $('#modals-container').load('../partials/modals.html', function () {
       // ✅ Cargar Bootstrap (una vez cargados los modales)
       const bsScript = document.createElement('script');
