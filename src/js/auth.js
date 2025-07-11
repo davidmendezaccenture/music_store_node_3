@@ -27,8 +27,8 @@ $(document).on('submit', '#form-login', function(e) {
   console.log("Submit capturado");
   e.preventDefault();
   //Quitamos trim() del username, ya que si añadimos espacios lo da por válido, pero da inicialmente error aunque se conecta
-  const username = $("#username").val();
-  const password = $("#password").val();
+  const username = $("#login-username").val();
+  const password = $("#login-password").val();
 
   // Oculta errores previos
   ocultarErrorLogin("username");

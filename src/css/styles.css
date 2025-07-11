@@ -422,7 +422,7 @@ footer a.hover-text-white:hover {
   width: 380px;
   bottom: 80px;
   right: 30px;
-  z-index: 999;
+  z-index: 2000;
   background: rgb(255, 255, 255);
   display: none;
 }
@@ -437,7 +437,7 @@ footer a.hover-text-white:hover {
 }
 
 .chatbot-body {
-  height: 400px;
+  height: 250px;
   overflow-y: auto;
   background: #f8f9fa;
   padding: 1rem;

@@ -45,43 +45,8 @@
       </div>
     </div>
   </div>
-
-  <!-- Botón flotante del chatbot -->
-  <button id="chatbotToggle" class="btn btn-primary rounded-pill position-fixed shadow-lg chatbot-toggle">
-    <i class="bi bi-chat-text fs-4 me-2"></i>¿Necesitas ayuda?
-  </button>
-  
-  <!-- Contenedor del chatbot -->
-  <div id="chatbotContainer" class="position-fixed shadow-lg rounded-top-4 overflow-hidden chatbot-container">
-    <div class="chatbot-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center">
-        <i class="bi bi-chat-text-fill fs-4 me-2"></i>
-        <h5 class="mb-0">Asistente FUZZR</h5>
-      </div>
-      <button id="closeChatbot" class="btn btn-sm btn-outline-light">
-        <i class="bi bi-x-lg"></i>
-      </button>
-    </div>
-    
-    <div id="chatbotBody" class="chatbot-body p-3">
-      <div class="chat-message bot-message mb-3">
-        <div class="message-bubble bg-white p-3 rounded-3 shadow-sm text-dark">
-          <p class="mb-0">¡Hola! 👋 Soy el asistente de FUZZR. ¿En qué puedo ayudarte?</p>
-        </div>
-        <small class="text-muted d-block mt-1">Justo ahora</small>
-      </div>
-    </div>
-    
-    <div class="chatbot-input bg-light p-3 border-top">
-      <div class="input-group">
-        <input id="userMessage" type="text" class="form-control" placeholder="Escribe tu mensaje..." autocomplete="off">
-        <button id="sendMessage" class="btn btn-primary">
-          <i class="bi bi-send-fill"></i>
-        </button>
-      </div>
-      <small class="text-muted d-block mt-2">Presiona Enter para enviar</small>
-    </div>
-  </div>
+<div id="chatbotWrapper"></div>
+<script src="/js/chatbot.js"></script>
 </footer>
 
 <script>
