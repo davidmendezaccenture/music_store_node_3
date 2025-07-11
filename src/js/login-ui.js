@@ -23,7 +23,7 @@ function mostrarBotonLogout(username) {
   const btnContainerDesktop = document.getElementById('auth-button-desktop');
 
   const logoutHTML = `
-    <button class="btn btn-danger btn-sm" id="logoutBtn">
+    <button class="btn btn-danger" id="logoutBtn">
       <i class="bi bi-box-arrow-right me-1"></i>Logout
     </button>
   `;

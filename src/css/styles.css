@@ -1342,3 +1342,12 @@ header {
     justify-content: space-between;
     padding: 4px 6px;
 }
+.btnLogin,
+#logoutBtn {
+    width: 120px; /* o el ancho máximo que necesita "Cerrar sesión" */
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem; /* espacio entre ícono y texto */
+}
