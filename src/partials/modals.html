@@ -2,48 +2,45 @@
 
 <!-- Modal de inicio de sesión -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="loginModalLabel">Iniciar sesión</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-login">
+          <div class="mb-3">
+            <label for="login-username" class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" id="login-username" name="username" required
+              placeholder="Tu nombre de usuario" autofocus autocomplete="username">
+          </div>
+          <div class="mb-3">
+            <label for="login-password" class="form-label">Contraseña</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="login-password" name="password" required
+                placeholder="Introduce tu contraseña" autocomplete="current-password"
+                aria-describedby="loginPasswordHelp">
+              <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="0"
+                aria-label="Mostrar contraseña">
+                <i class="bi bi-eye"></i>
+              </button>
             </div>
-            <div class="modal-body">
-                <form id="form-login">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="username" name="username" required
-                               placeholder="Tu nombre de usuario" autofocus autocomplete="username">
-                              <div id="loginUsernameError" class="text-danger visually-hidden" role="alert"></div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="password" name="password" required placeholder="Introduce tu contraseña" autocomplete="current-password" aria-describedby="loginPasswordHelp">
-                            <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="0" aria-label="Mostrar contraseña">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                        </div>
-                        <div id="loginPasswordHelp" class="form-text">Introduce tu contraseña de acceso.</div>
-                        <div id="loginPasswordError" class="text-danger visually-hidden" role="alert"></div>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Recordar sesión</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-                </form>
-            </div>
-            <div class="text-center mt-2">
-              <a href="#" id="forgotPasswordLink" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">¿Has olvidado tu
-                contraseña?</a>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <p class="mb-0">¿No tienes cuenta? <a href="/pages/registro.html">Regístrate aquí</a></p>
-            </div>
-            <div class="modal-body"> </div>
-        </div>
+            <div id="loginPasswordHelp" class="form-text">Introduce tu contraseña de acceso.</div>
+            <div id="loginPasswordError" class="text-danger visually-hidden" role="alert"></div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Recordar sesión</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <p class="mb-0">¿No tienes cuenta? <a href="/pages/registro.html">Regístrate aquí</a></p>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Modal de recuperación de contraseña -->
@@ -71,15 +68,17 @@
   </div>
 </div>
 
-    <!-- Modal de aviso al cambiar modificar carrito como invitado-->
+<!-- Modal de aviso al cambiar modificar carrito como invitado-->
 <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content text-center">
       <div class="modal-body">
-        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login Icon" style="width:60px; margin-bottom:15px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login Icon"
+          style="width:60px; margin-bottom:15px;">
         <h5>¿Tienes una cuenta?</h5>
         <p>Inicia sesión para continuar</p>
-        <button class="btn btn-primary mt-2" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button class="btn btn-primary mt-2" data-bs-dismiss="modal" data-bs-toggle="modal"
+          data-bs-target="#loginModal">
           Iniciar sesión
         </button>
       </div>
@@ -177,6 +176,29 @@
   </div>
 </div>
 
+<!-- Modal de Cookies -->
+<div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-body py-4 px-4">
+        <i class="bi bi-cookie text-warning mb-3" style="font-size: 3rem;" aria-hidden="true"></i>
+        <h5 class="modal-title mb-3" id="cookieModalLabel">Este sitio usa cookies</h5>
+        <p class="mb-3">
+          Usamos cookies para mejorar tu experiencia en RaiRock Music Store. Al continuar navegando, aceptas nuestra
+          <a href="../pages/politica-cookies.html" onclick="guardarPaginaAnterior()">Política de cookies</a>.
+        </p>
+        <div class="d-flex flex-column flex-md-row justify-content-center gap-2 mt-3">
+          <button id="acceptCookiesBtn" type="button" class="btn btn-primary px-4">
+            Aceptar
+          </button>
+          <button id="postponeCookiesBtn" type="button" class="btn btn-outline-secondary px-4">
+            Más adelante
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- Modal Confirmación de Pago -->
 <div class="modal fade" id="modalPagoConfirmado" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">

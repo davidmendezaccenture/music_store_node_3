@@ -1,0 +1,90 @@
+<!-- Footer -->
+<footer class="bg-dark text-white py-5 position-relative">
+  <div class="container">
+    <div class="row g-4">
+      
+      <!-- Columna 1: Enlaces legales -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="text-uppercase  pb-2 mb-3">Legal</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/pages/privacy-policy.html" class="text-white-50 text-decoration-none hover-text-white">Política de privacidad</a></li>
+          <li class="mb-2"><a href="/pages/terms.html" class="text-white-50 text-decoration-none hover-text-white">Términos y condiciones</a></li>
+          <li class="mb-2"><a href="/pages/warranty.html" class="text-white-50 text-decoration-none hover-text-white">Garantías y devoluciones</a></li>
+          <li class="mb-2"><a href="/pages/cookies.html" class="text-white-50 text-decoration-none hover-text-white">Política de cookies</a></li>
+          <li><a href="/pages/legal.html" class="text-white-50 text-decoration-none hover-text-white">Aviso legal</a></li>
+        </ul>
+      </div>
+      
+      <!-- Columna 2: Servicios al cliente -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="text-uppercase pb-2 mb-3">Ayuda</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/pages/shipping.html" class="text-white-50 text-decoration-none hover-text-white">Envíos y entregas</a></li>
+          <li class="mb-2"><a href="/pages/returns.html" class="text-white-50 text-decoration-none hover-text-white">Devoluciones</a></li>
+          <li class="mb-2"><a href="/pages/payment-methods.html" class="text-white-50 text-decoration-none hover-text-white">Métodos de pago</a></li>
+          <li class="mb-2"><a href="/pages/faq.html" class="text-white-50 text-decoration-none hover-text-white">Preguntas frecuentes</a></li>
+          <li><a href="/pages/contact.html" class="text-white-50 text-decoration-none hover-text-white">Contacto</a></li>
+        </ul>
+      </div>
+      
+      <!-- Columna 3: Sobre nosotros y comunidad -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="text-uppercase pb-2 mb-3">Más Contenido</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/pages/about.html" class="text-white-50 text-decoration-none hover-text-white">Sobre nosotros</a></li>
+          <li class="mb-2"><a href="/pages/blog.html" class="text-white-50 text-decoration-none hover-text-white">Blog musical</a></li>
+          <li class="mb-2"><a href="/pages/classifieds.html" class="text-white-50 text-decoration-none hover-text-white">Clasificados</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-text-white" data-bs-toggle="modal" data-bs-target="#alertsModal">Alertas de stock</a></li>
+        </ul>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="col-12 text-center mt-4 pt-3 border-top">
+        <p class="mb-1"><small class="text-white-50">FUZZR Alternative Music Store - Tienda especializada en instrumentos musicales</small></p>
+        <p class="mb-0"><small>&copy; <span id="currentYear"></span> Todos los derechos reservados</small></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón flotante del chatbot -->
+  <button id="chatbotToggle" class="btn btn-primary rounded-pill position-fixed shadow-lg chatbot-toggle">
+    <i class="bi bi-chat-text fs-4 me-2"></i>¿Necesitas ayuda?
+  </button>
+  
+  <!-- Contenedor del chatbot -->
+  <div id="chatbotContainer" class="position-fixed shadow-lg rounded-top-4 overflow-hidden chatbot-container">
+    <div class="chatbot-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <i class="bi bi-chat-text-fill fs-4 me-2"></i>
+        <h5 class="mb-0">Asistente FUZZR</h5>
+      </div>
+      <button id="closeChatbot" class="btn btn-sm btn-outline-light">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    
+    <div id="chatbotBody" class="chatbot-body p-3">
+      <div class="chat-message bot-message mb-3">
+        <div class="message-bubble bg-white p-3 rounded-3 shadow-sm text-dark">
+          <p class="mb-0">¡Hola! 👋 Soy el asistente de FUZZR. ¿En qué puedo ayudarte?</p>
+        </div>
+        <small class="text-muted d-block mt-1">Justo ahora</small>
+      </div>
+    </div>
+    
+    <div class="chatbot-input bg-light p-3 border-top">
+      <div class="input-group">
+        <input id="userMessage" type="text" class="form-control" placeholder="Escribe tu mensaje..." autocomplete="off">
+        <button id="sendMessage" class="btn btn-primary">
+          <i class="bi bi-send-fill"></i>
+        </button>
+      </div>
+      <small class="text-muted d-block mt-2">Presiona Enter para enviar</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Añadir el año currentYear automáticamente
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>

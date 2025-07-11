@@ -92,5 +92,10 @@
     "username": "David",
     "password": "$2b$10$HdKLCs2pAuZCLPpAEc5T9uTdEFTHyRvl.virCfWkukJryKzczTiX.",
     "email": "davidsantosbelmonte@gmail.com"
+  },
+  {
+    "username": "Pablo",
+    "password": "$2b$10$zQsZDxJ8jyyAIKmUKNVO9.EhO24ANpUgYR6Y0RXZBnrHv9nO3Y0Yq",
+    "email": "pablo123@gmail.com"
   }
 ]
