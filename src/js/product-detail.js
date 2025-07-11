@@ -92,9 +92,15 @@ async function loadProductDetail() {
     // ✅ Asignamos el enlace correcto al botón "Seguir comprando"
     const enlace = document.getElementById("seguir-comprando");
     if (enlace) {
-      const ultimaPagina = localStorage.getItem("ultimaPagina");
-      enlace.href = ultimaPagina || obtenerPaginaPorCategoria(product.category);
-    }
+      const ultimaPagina = localStorage.getItem("ultimaPagina") || obtenerPaginaPorCategoria(product.category);
+  
+    // Reemplaza el comportamiento por navegación controlada
+    enlace.addEventListener("click", (e) => {
+      e.preventDefault(); // Previene navegación por defecto del <a>
+      window.location.href = ultimaPagina; // Navega a la URL guardada
+    });
+  }
+
 
     // ✅ Añadimos el event listener para agregar al carrito
     const btn = document.getElementById("btnAgregarAlCarrito");

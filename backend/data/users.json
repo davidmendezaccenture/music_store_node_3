@@ -1,7 +1,4 @@
 [
-  {},
-  {},
-  {},
   {
     "username": "prueba2",
     "password": "Prueba222",
@@ -64,15 +61,6 @@
     "city": "Madrid"
   },
   {
-    "username": "David",
-    "password": "Malvado1",
-    "email": "davidsantosbelmonte@gmail.com",
-    "birthdate": "1980-06-14",
-    "phone": "653511423",
-    "postalcode": "41960",
-    "city": "Gines"
-  },
-  {
     "username": "nombreFicticio",
     "password": "8Caracteres",
     "email": "correodeMentira@gmail.com",
@@ -89,5 +77,59 @@
     "phone": "627874197",
     "postalcode": "10664",
     "city": "MOHEDAS DE GRANADILLA"
+  },
+  {
+    "username": "probando",
+    "password": "$2b$10$DZ6/nFDdsNO9QNCPaf9GROMQkd4Jy/h43WBaFbMgtsWttufOqJ8Cm",
+    "email": "probando@1.com"
+  },
+  {
+    "username": "prueba10",
+    "password": "$2b$10$VyjdDnnxo9HkoyC/u3Duuue521KRQXUxQmqTGiKYEcpyQ95Wx.07e",
+    "email": "prueba@10.com"
+  },
+  {
+    "username": "Pablo",
+    "password": "$2b$10$zQsZDxJ8jyyAIKmUKNVO9.EhO24ANpUgYR6Y0RXZBnrHv9nO3Y0Yq",
+    "email": "pablo123@gmail.com"
+  },
+  {
+    "username": "Pepe",
+    "password": "$2b$10$ugD4fNnvTj8WiQxNVHXLRe2Z19BLeroshQ3PxDd3BkVX1tLDct9Lm",
+    "email": "usuario@correo.com"
+  },
+  {
+    "username": "fuzzr",
+    "password": "$2b$10$bz37zIdaVKpTMpLYC7Tb1.1uAdv4vOhnawBoD7WROjU96hELQ1M8S",
+    "email": "fuzzr@gmail.com"
+  },
+  {
+    "username": "prueba200",
+    "password": "$2b$10$Enru4x4XgE.9SIgGV/fBc.lbNdSsJQvKV9/yT9VLtIZyWsg4Nj27a",
+    "email": "prueba200@gmail.com"
+  },
+  {
+    "username": "Prueba300",
+    "password": "$2b$10$GuGBRLgcgibyopoFmH1IqOUdTfssOi6Yys7/WlZX765D78ZCG/jfu",
+    "email": "prueba300@gmail.com"
+  },
+  {
+    "username": "Prueba500",
+    "password": "$2b$10$YjiJoVstGuEr0qftCngNdOrKJHLul1fdUXkCmsLZcuy3Se5V/hf9e",
+    "email": "prueba500@gmail.com"
+  },
+  {
+    "username": "Prueba600",
+    "password": "$2b$10$ah9UwlLqRgqztq5MtjOTAefjMbAXuR7cO7bkSsj/n18QT9nWU2Nrq",
+    "email": "prueba600@gmail.com"
+  },
+  {
+    "username": "Prueba700",
+    "password": "$2b$10$OAaCkJ/Dcbt0NooUeQy.IO/QbNYeOk.xxu4LOdHfvrbzNR2EnIJP2",
+    "email": "prueba700@gmail.com",
+    "birthdate": "2020-10-10",
+    "phone": "600123456",
+    "postalcode": "28001",
+    "city": "Madrid"
   }
 ]

@@ -1,5 +1,3 @@
-// login-ui.js
-
 function mostrarErrorLoginPassword(msg) {
   const errorDiv = document.getElementById('loginPasswordError');
   if (errorDiv) {
@@ -16,24 +14,20 @@ function ocultarErrorLoginPassword() {
 }
 
 function mostrarBotonLogout(username) {
-  // Nombre de usuario
   const usernameMobile = document.getElementById('username-mobile');
   const usernameDesktop = document.getElementById('username-desktop');
   if (usernameMobile) usernameMobile.textContent = username;
   if (usernameDesktop) usernameDesktop.textContent = username;
 
-  // Contenedores de botones
   const btnContainerMobile = document.getElementById('auth-button-mobile');
   const btnContainerDesktop = document.getElementById('auth-button-desktop');
 
-  // HTML del botón logout
   const logoutHTML = `
-    <button class="btn btn-danger btn-sm" id="logoutBtn">
+    <button class="btn btn-danger" id="logoutBtn">
       <i class="bi bi-box-arrow-right me-1"></i>Logout
     </button>
   `;
 
-  // Insertar logout en mobile
   if (btnContainerMobile) {
     btnContainerMobile.innerHTML = logoutHTML;
     const logoutBtn = btnContainerMobile.querySelector('#logoutBtn');
@@ -43,7 +37,6 @@ function mostrarBotonLogout(username) {
     });
   }
 
-  // Insertar logout en desktop
   if (btnContainerDesktop) {
     btnContainerDesktop.innerHTML = logoutHTML;
     const logoutBtn = btnContainerDesktop.querySelector('#logoutBtn');
@@ -53,32 +46,24 @@ function mostrarBotonLogout(username) {
     });
   }
 }
-//Añado botón login y evento al cargar la página para evitar parpadeo entre páginas
+
 function mostrarBotonLogin() {
   const btnContainerMobile = document.getElementById('auth-button-mobile');
   const btnContainerDesktop = document.getElementById('auth-button-desktop');
 
   const loginHTML = `
-  <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">
-    <i class="bi bi-person-fill me-1"></i>Login
-  </button>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal" id="loginBtn">
+      <i class="bi bi-person-fill me-1"></i>Login
+    </button>
   `;
 
   if (btnContainerMobile) btnContainerMobile.innerHTML = loginHTML;
   if (btnContainerDesktop) btnContainerDesktop.innerHTML = loginHTML;
 }
-document.addEventListener('DOMContentLoaded', () => {
-  const usuario = JSON.parse(localStorage.getItem('usuario'));
-  if (usuario && usuario.nombre) {
-    mostrarBotonLogout(usuario.nombre);
-  } else {
-    mostrarBotonLogin();
-  }
-});
 
 function esperarYMostrarLoginModal() {
   function showModal() {
-    var modal = document.getElementById('loginModal');
+    const modal = document.getElementById('loginModal');
     if (modal && typeof bootstrap !== 'undefined') {
       new bootstrap.Modal(modal).show();
       return true;
@@ -86,7 +71,6 @@ function esperarYMostrarLoginModal() {
     return false;
   }
   if (!showModal()) {
-    // Si aún no está, observar hasta que aparezca
     const observer = new MutationObserver(() => {
       if (showModal()) observer.disconnect();
     });
@@ -94,7 +78,6 @@ function esperarYMostrarLoginModal() {
   }
 }
 
-// Delegación de eventos para mostrar/ocultar contraseña (funciona para login y registro, incluso si se cargan dinámicamente)
 document.addEventListener('click', function(e) {
   if (e.target.closest('.toggle-password')) {
     const btn = e.target.closest('.toggle-password');
@@ -115,19 +98,21 @@ document.addEventListener('click', function(e) {
 });
 
 function initLoginUI() {
-  // Revisar si hay usuario logeado
   const usuario = localStorage.getItem('usuario');
   if (usuario) {
     mostrarBotonLogout(usuario);
+  } else {
+    mostrarBotonLogin();
   }
 
-  // Lógica de submit del formulario de login
   const loginForm = document.getElementById('form-login');
   if (loginForm) {
     loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+      ocultarErrorLoginPassword();
+
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
       fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -138,18 +123,24 @@ function initLoginUI() {
           return res.json();
         })
         .then(data => {
-          // Acceso concedido: guardar usuario y cerrar modal
           localStorage.setItem('usuario', data.user.username);
+
+          // Copiar estado cookies de invitado a usuario logueado
+          const usuarioNuevo = data.user.username;
+          const invitadoAceptado = localStorage.getItem('cookies_accepted_guest');
+          if (invitadoAceptado === 'true') {
+            localStorage.setItem(`cookies_accepted_${usuarioNuevo}`, 'true');
+            localStorage.removeItem('cookies_accepted_guest');
+          }
+
           mostrarBotonLogout(data.user.username);
-          // Cerrar modal si existe
           if (typeof bootstrap !== 'undefined') {
-            var loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
             if (loginModal) loginModal.hide();
           }
         })
         .catch(err => {
           mostrarErrorLoginPassword(err.message);
-          // Mostrar modal de error si existe
           if (window.$ && $('#loginErrorModal').length) {
             $('#loginErrorModal').modal('show');
           }
@@ -157,7 +148,7 @@ function initLoginUI() {
     });
   }
 
-  // Asegurar que el botón de login siempre abre el modal aunque aún no esté cargado
+  // Asegurar que el botón de login siempre abre el modal aunque no esté en DOM al cargar
   const loginBtn = document.getElementById('loginBtn');
   if (loginBtn) {
     loginBtn.addEventListener('click', function (e) {
@@ -167,35 +158,33 @@ function initLoginUI() {
   }
 }
 
-// Accesibilidad: mostrar mensaje de error al abrir el modal de login si existe
-$(document).on('show.bs.modal', '#loginModal', function() {
-  var errorDiv = document.getElementById('loginPasswordError');
-  if (errorDiv && errorDiv.textContent.trim() !== '') {
-    errorDiv.classList.remove('visually-hidden');
-  }
-});
-
 function onModalsLoaded() {
   initLoginUI();
-  // Abrir modal automáticamente si la URL contiene ?showLogin=1
   if (window.location.search.includes('showLogin=1')) {
     esperarYMostrarLoginModal();
     window.history.replaceState({}, document.title, window.location.pathname);
   }
 }
 
-// Si los modales se cargan dinámicamente, esperar a que estén listos antes de inicializar login-ui.js
-if (document.getElementById('modals-container')) {
-  const observer = new MutationObserver(() => {
-    if (document.getElementById('loginModal')) {
-      onModalsLoaded();
-      observer.disconnect();
-    }
-  });
-  observer.observe(document.getElementById('modals-container'), { childList: true, subtree: true });
-} else {
-  document.addEventListener('DOMContentLoaded', initLoginUI);
-}
+(function () {
+  const modalsContainer = document.getElementById('modals-container');
+  const modalExists = document.getElementById('loginModal');
+
+  if (modalExists) {
+    onModalsLoaded();
+  } else if (modalsContainer) {
+    const observer = new MutationObserver((mutations, obs) => {
+      if (document.getElementById('loginModal')) {
+        onModalsLoaded();
+        obs.disconnect();
+      }
+    });
+    observer.observe(modalsContainer, { childList: true, subtree: true });
+  } else {
+    document.addEventListener('DOMContentLoaded', initLoginUI);
+  }
+})();
+
 //Modal de bienvenida de usuario
 function mostrarModalBienvenida(mensaje) {
   document.getElementById('mensajeBienvenida').innerText = mensaje;
@@ -209,8 +198,8 @@ function mostrarModalBienvenida(mensaje) {
   });
 
   modalElement.addEventListener('hidden.bs.modal', () => {
-    if (window.location.pathname.includes('login.html')) {
-      window.location.href = "/pages/cart.html";
+    if (window.location.pathname.includes('registro.html')) {
+      window.location.href = "/pages/index.html";
     } else {
       mostrarCarrito();
       const backdrop = document.querySelector('.modal-backdrop');
@@ -236,7 +225,3 @@ function mostrarModalConfirmarEliminacion() {
   modalEliminar = new bootstrap.Modal(document.getElementById('modalConfirmarEliminacion'));
   modalEliminar.show();
 }
-
-
-
-

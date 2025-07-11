@@ -595,6 +595,98 @@
       "total": 300
     },
     "status": "pendiente",
-    "createdAt": "2025-07-10T15:55:31.870Z"
+    "createdAt": "2025-07-10T15:20:39.197Z"
+  },
+  {
+    "id": 1752183779308,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "transferencia"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-10T21:42:59.308Z"
+  },
+  {
+    "id": 1752193959488,
+    "user": {
+      "nombre": "pablo",
+      "apellidos": "hernandez",
+      "metodoEnvio": "domicilio",
+      "telefono": "627874197",
+      "email": "pachepatat@gmail.com",
+      "metodoPago": "paypal",
+      "direccion": {
+        "calle": "San Ramón 1B",
+        "ciudad": "MOHEDAS DE GRANADILLA",
+        "cp": "10664"
+      }
+    },
+    "items": [
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 2,
+        "precioUnitario": 250,
+        "total": 500
+      }
+    ],
+    "precio": {
+      "subtotal": 500,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 15,
+      "total": 490
+    },
+    "status": "pagado",
+    "createdAt": "2025-07-11T00:32:39.488Z"
+  },
+  {
+    "id": 1752205814017,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "transferencia"
+    },
+    "items": [
+      {
+        "id": "13",
+        "nombre": "Pedal de Distorsión",
+        "descripcion": "Pedal de efectos para un sonido potente.",
+        "cantidad": 1,
+        "precioUnitario": 100,
+        "total": 100
+      }
+    ],
+    "precio": {
+      "subtotal": 100,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 100
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-11T03:50:14.017Z"
   }
 ]
