@@ -65,7 +65,8 @@ $(function () {
     'index.html', 'guitar.html', 'keyboard.html', 'drums.html',
     'product-detail.html', 'services.html', 'sobre_nosotros.html',
     'search.html', 'registro.html', 'payment-methods.html','newsletter.html',
-    'media.html', 'faq.html', 'contact', 'cart.html','politica-cookies.html'
+    'media.html', 'faq.html', 'contact.html', 'cart.html','politica-cookies.html',
+    'privacy-policy.html'
   ];
   if (paginasConPrefooter.includes(paginaActual)) {
     $('#prefooter-container').load('../partials/prefooter.html');
