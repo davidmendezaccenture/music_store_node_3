@@ -117,9 +117,11 @@ $(document).on('submit', '#form-login', function(e) {
 
               // ✅ Mostrar bienvenida
               mostrarModalBienvenida(`Bienvenido ${usuario}`);
-
               // ✅ Actualizar UI de login/logout
               if (typeof initLoginUI === 'function') initLoginUI();
+              if (window.location.pathname.endsWith('registro.html')) {
+  window.location.href = 'index.html';
+}
             });
           });
       })
@@ -293,7 +295,7 @@ function ocultarErrorCampo(idInput) {
 
         // Esperar un poco tras el alert antes de redirigir
         setTimeout(() => {
-          window.location.href = 'index.html?showLogin=1';
+          window.location.href = '/pages/index.html';
         }, 300);
       },
       error: function (xhr) {
