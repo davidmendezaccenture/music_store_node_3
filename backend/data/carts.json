@@ -40,5 +40,14 @@
       "cantidad": 1
     }
   ],
-  "Prueba700": []
+  "Prueba700": [
+    {
+      "id": 1,
+      "cantidad": 1
+    },
+    {
+      "id": 2,
+      "cantidad": 1
+    }
+  ]
 }

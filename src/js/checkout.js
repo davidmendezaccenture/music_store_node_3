@@ -251,6 +251,7 @@ $(document).ready(() => {
   const usuarioStr = localStorage.getItem('datosUsuario');
   if (usuarioStr) {
     try {
+      
       const usuario = JSON.parse(usuarioStr);
       if (usuario.username) $('#nombre').val(usuario.username);
       if (usuario.apellidos) $('#apellidos').val(usuario.apellidos);

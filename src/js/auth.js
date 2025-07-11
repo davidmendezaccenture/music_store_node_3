@@ -79,6 +79,7 @@ $(document).on('submit', '#form-login', function(e) {
       })
       .then(data => {
         const usuario = data.user.username;
+        const datosUsuario = data.user;
 
         // --- NUEVO: copiar aceptación de cookies de invitado a usuario ---
         const invitadoAcepto = localStorage.getItem('cookies_accepted_guest');
@@ -88,6 +89,7 @@ $(document).on('submit', '#form-login', function(e) {
         // --- FIN NUEVO ---
 
         localStorage.setItem('usuario', usuario);
+        localStorage.setItem('datosUsuario', JSON.stringify(data.user));
 
         // Obtener carrito del usuario
         return fetch(`/api/cart?user=${usuario}`)
