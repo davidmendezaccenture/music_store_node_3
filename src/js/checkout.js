@@ -34,7 +34,7 @@ function mostrarResumenPedido() {
           <div class="ms-5">
             <small class="text-muted">${producto.description}</small>
           </div>
-          <div class="d-flex justify-content-between align-items-center ms-5 mt-1 flex-wrap">
+          <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center ms-5 mt-1 gap-2">
             <span class="text-muted">${item.cantidad} unidad(es) × ${producto.offerPrice.toFixed(2)} €</span>
             <span class="fw-bold">Total: ${subtotal.toFixed(2)} €</span>
             <button class="btn btn-sm btn-outline-danger btn-eliminar-checkout" title="Eliminar producto">
