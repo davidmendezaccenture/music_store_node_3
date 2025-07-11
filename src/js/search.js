@@ -107,7 +107,7 @@ $(document).ready(function () {
                         <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
                             <h2 class="card-title" style="font-size: 0.95rem; margin-bottom: 0.3rem; min-height: 2.5em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}
                             </h2>
-                            <p class="card-text" style="font-size: 0.85rem; min-height: 60px; max-height: 60px; overflow-y: auto; margin-bottom: 0.5rem; scrollbar-width: thin;">${producto.description}
+                            <p class="card-text">${producto.description}
                             </p>
                             <div class="espacio-inferior mt-auto d-flex flex-column gap-1">
                                 <div class="precio fw-bold" aria-label="Precio del producto">${precioHTML}</div>

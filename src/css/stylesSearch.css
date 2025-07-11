@@ -545,8 +545,13 @@ footer {
     width: 100%;
     max-width: 250px;
     box-sizing: border-box;
+    border: solid 1px;
+    border-color: rgba(0, 0, 0, 0.176);
+    border-radius: 5px;
 }
-
+.card-product img{
+    border-radius: 5px 5px 0 0;
+}
 .row-productos {
     display: flex;
     flex-wrap: wrap;
@@ -595,18 +600,17 @@ footer {
 .card-title {
     font-size: 0.95rem;
     margin-bottom: 0.3rem;
-    min-height: 2.5em;
+    min-height: 3em;
 }
 
 .card-text {
     font-size: 1rem !important;
-    flex-shrink: 0;
-    min-height: 60px;
-    max-height: 60px;
+    min-height: 75px; /* antes: 60px */
+    max-height: 75px; /* ajusta al mismo valor */
     overflow-y: auto;
-    margin-bottom: 0.5rem;
-    scrollbar-width: thin;
 }
+
+
 
 .espacio-inferior {
     margin-top: auto;
