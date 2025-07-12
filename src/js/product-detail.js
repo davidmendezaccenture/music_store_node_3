@@ -53,10 +53,10 @@ async function loadProductDetail() {
         <span class="badge bg-secondary mb-2 text-capitalize">${product.category.replace(/-/g, " ")}</span>
         <h2 class="card-title text-center">${product.name}</h2>
         <h3 class="text-primary fw-bold mb-2 text-center text-md-start" style="font-size:2rem;">
-          <span class="fs-5 text-decoration-line-through text-muted ms-2">€${product.price.toFixed(2)}</span>
+          <span class="fs-5 text-decoration-line-through text-muted ms-2">${product.price.toFixed(2)} €</span>
           ${
             product.offerPrice && product.offerPrice !== product.price
-              ? "€" + product.offerPrice.toFixed(2)
+              ? product.offerPrice.toFixed(2) + " €"
               : ""
           }
         </h3>

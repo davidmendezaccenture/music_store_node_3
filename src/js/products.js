@@ -43,7 +43,9 @@ $(document).ready(function () {
 
     // Para "Todas" o "all", enviamos categoría vacía para que el backend no filtre por categoría
     const categoriaQuery = (categoriaSeleccionada === 'all') ? '' : categoriaSeleccionada;
-
+    //Almacenamos la altura para evitar que el footer suba al cambiar de categoría
+    const alturaActual = container.height();
+    container.css('min-height', `${alturaActual}px`);
     $.ajax({
       url: '/buscar',
       method: 'GET',
@@ -53,6 +55,8 @@ $(document).ready(function () {
         category: categoriaQuery
       },
       success: function (data) {
+        //Añadido para evitar el parpadeo en la zona de productos (sube y baja el footer)
+
         container.empty();
 
         // Aquí filtramos localmente por las categorías válidas para la página, en caso que backend no filtre
@@ -102,6 +106,10 @@ $(document).ready(function () {
 
           container.append($col);
           setTimeout(() => $col.addClass('visible'), 100 + i * 100); // animación progresiva
+          //Quitamos altura mínima
+          setTimeout(() => {
+          productosContainer.css('min-height', '');
+}, 300); // 
         });
       },
       error: function (xhr, status, error) {
