@@ -10,22 +10,31 @@
 </head>
 <body>
     <!-- Encabezado -->
-    <header class="sticky-top bg-light shadow-sm">
-    <!-- 1ª línea - logo centrado -->
-        <div class="border-bottom py-2 bg-light">
-            <div class="container d-flex justify-content-between align-items-center">
-            <!-- Logo -->
-                <a class="navbar-brand d-inline-flex align-items-center" href="/pages/index.html">
-                    <img src="../assets/images/FuzzerLogo_transparent.png" alt="RaiRock Logo" height="50" class="me-2">
-                </a>
-            <!-- Pago seguro -->
-                <div class="d-flex align-items-center text-secondary fs-5">
-                    <i class="bi bi-lock-fill me-2 fs-4"></i>
-                    <span class="fw-semibold">Pago seguro</span>
-                </div>
-            </div>
+<header class="sticky-top bg-light shadow-sm">
+  <!-- 1ª línea - logo centrado -->
+  <div class="border-bottom py-2 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Columna izquierda vacía para equilibrio -->
+        <div class="col-4 d-none d-md-block"></div>
+
+        <!-- Logo centrado -->
+        <div class="col-4 text-center">
+          <a class="navbar-brand d-inline-flex align-items-center" href="/pages/index.html">
+            <img src="../assets/images/FuzzerLogo_transparent.png" alt="RaiRock Logo" height="50" class="me-2">
+          </a>
         </div>
-    </header>
+
+        <!-- Pago seguro alineado a la derecha -->
+        <div class="col-4 d-flex justify-content-end align-items-center text-secondary fs-5">
+          <i class="bi bi-lock-fill me-2 fs-4"></i>
+          <span class="fw-semibold">Pago seguro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
 <main>
   <div class="container my-5 contenidoCheckout">
     <div class="row g-4">
