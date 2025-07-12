@@ -1,4 +1,17 @@
 {
-  "guest": [],
+  "guest": [
+    {
+      "id": 2,
+      "cantidad": 9
+    },
+    {
+      "id": 3,
+      "cantidad": 2
+    },
+    {
+      "id": 4,
+      "cantidad": 7
+    }
+  ],
   "David": []
 }
