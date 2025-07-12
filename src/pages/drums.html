@@ -98,16 +98,15 @@
       <section id="productosContainer" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3"></section>
     </div>
 
-    <!-- Notificación de producto añadido -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
-      <div id="toastAdd" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-          <div class="toast-body">Instrumento añadido al carrito</div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
-        </div>
-      </div>
+<!-- Toast de producto añadido -->
+<div class="position-fixed bottom-0 end-0" style="z-index: 1050; padding: 1rem 3.5rem;">
+  <div id="toastAdd" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true" style="min-width: auto; max-width: 241px;">
+    <div class="d-flex">
+      <div class="toast-body">Instrumento añadido al carrito</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
     </div>
-  </main>
+  </div>
+</div>
 
     <!-- Prefooter y footer dinámicos -->
     <div id="prefooter-container"></div>

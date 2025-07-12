@@ -169,9 +169,15 @@ a:hover .icono-nav {
 .carousel-item img {
     width: 100%;
     max-width: 900px;
-    height: auto;
+    height: 514px; /* fuerza la altura */
+    object-fit: cover; /* recorta manteniendo proporción sin deformar */
     margin: 0 auto;
+    
 }
+.carousel-item {
+  overflow: hidden; /* evita que el badge o cualquier overlay se salga */
+}
+
 /*Dejamos espacio para los controles*/
 .carousel {
     padding-left: 50px;
