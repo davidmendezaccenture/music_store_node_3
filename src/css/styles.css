@@ -411,13 +411,27 @@ footer a.hover-text-white:hover {
 }
 
 /* chatbot.css */
-.chatbot-toggle {
+#zonaHoverChatbot {
+  position: fixed;
   bottom: 20px;
-  right: 30px;
-  z-index: 1000;
-  padding: 12px 20px;
-  transition: all 0.3s ease;
+  right: 0;
+  width: 180px; /* define un área de hover más grande */
+  height: 60px; /* altura del botón */
+  z-index: 1050;
 }
+
+#chatbotToggle {
+    position: absolute;
+    right: -150px;
+    transition: right 0.3s ease;
+    z-index: 1051;
+}
+
+#zonaHoverChatbot:hover #chatbotToggle {
+    right: 20px;
+}
+
+
 
 .chatbot-container {
   width: 380px;

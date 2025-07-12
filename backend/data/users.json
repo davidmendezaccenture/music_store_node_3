@@ -1,3 +1,11 @@
 [
-
+  {
+    "username": "David",
+    "password": "$2b$10$E7uqhePqsYkVpccbk/5My.x7D/yEvfcYpQUbs9MN6zUqftY1J7qbC",
+    "email": "david@gmail.com",
+    "birthdate": "1980-06-14",
+    "phone": "653511423",
+    "postalcode": "41960",
+    "city": "Madrid"
+  }
 ]

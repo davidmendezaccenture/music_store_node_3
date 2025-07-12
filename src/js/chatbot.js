@@ -2,10 +2,11 @@
 
 // HTML del chatbot
 const chatbotHTML = `
-  <button id="chatbotToggle" class="btn btn-primary rounded-pill position-fixed shadow-lg chatbot-toggle" style="bottom: 20px; right: 20px; z-index: 1050;">
+<div id="zonaHoverChatbot">
+  <button id="chatbotToggle" class="btn btn-primary rounded-pill position-fixed shadow-lg chatbot-toggle">
     <i class="bi bi-chat-text fs-4 me-2"></i>¿Necesitas ayuda?
   </button>
-
+</div>
   <div id="chatbotContainer" class="position-fixed shadow-lg rounded-top-4 overflow-hidden chatbot-container" style="display:none; bottom: 70px; right: 20px; width: 320px; max-height: 500px; background: white; z-index: 1060; box-shadow: 0 4px 15px rgba(0,0,0,0.3); flex-direction: column; display: flex;">
     <div class="chatbot-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center">
