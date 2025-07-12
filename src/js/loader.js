@@ -30,6 +30,7 @@ $(function () {
           if (index >= scripts.length) {
             // ✅ Mostrar cookies solo al final, cuando ya está todo cargado
             $.getScript('../js/cookies.js');
+            document.body.style.opacity = "1";
 
             // ✅ Asegurar login UI
             /*

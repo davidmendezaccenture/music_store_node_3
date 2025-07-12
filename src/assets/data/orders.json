@@ -688,5 +688,34 @@
     },
     "status": "pendiente",
     "createdAt": "2025-07-11T03:50:14.017Z"
+  },
+  {
+    "id": 1752323423885,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "david@gmail.com",
+      "metodoPago": "transferencia"
+    },
+    "items": [
+      {
+        "id": "4",
+        "nombre": "Guitarra Flamenca",
+        "descripcion": "Guitarra flamenca con un diseño tradicional.",
+        "cantidad": 1,
+        "precioUnitario": 180,
+        "total": 180
+      }
+    ],
+    "precio": {
+      "subtotal": 180,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 180
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-12T12:30:23.885Z"
   }
 ]

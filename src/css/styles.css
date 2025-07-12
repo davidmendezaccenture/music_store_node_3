@@ -415,8 +415,8 @@ footer a.hover-text-white:hover {
   position: fixed;
   bottom: 20px;
   right: 0;
-  width: 180px; /* define un área de hover más grande */
-  height: 60px; /* altura del botón */
+  width: 60px; /* define un área de hover más grande */
+  height: 65px; /* altura del botón */
   z-index: 1050;
 }
 
@@ -661,6 +661,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    opacity: 0;
+    transition: opacity 0s; /*Podemos ponerlo que se carge rápido*/
+    overflow-x: hidden;
 }
 
 main {
