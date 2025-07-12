@@ -17,8 +17,15 @@ $(document).ready(function () {
             : '';
 
             indicadoresHTML += `
-            <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="${index}" class="${activo}" aria-current="${activo ? 'true' : 'false'}" aria-label="Slide ${index + 1}"></button>
+                <button type="button"
+                    data-bs-target="#carouselPrincipal"
+                    data-bs-slide-to="${index}"
+                    class="${activo} mx-1 p-1 rounded-circle small-indicator"
+                    aria-current="${activo ? 'true' : 'false'}"
+                    aria-label="Slide ${index + 1}">
+                </button>
             `;
+
 
             itemsHTML += `
                 <div class="carousel-item ${activo}">

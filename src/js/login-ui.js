@@ -28,23 +28,38 @@ function mostrarBotonLogout(username) {
     </button>
   `;
 
-  if (btnContainerMobile) {
-    btnContainerMobile.innerHTML = logoutHTML;
-    const logoutBtn = btnContainerMobile.querySelector('#logoutBtn');
-    logoutBtn.addEventListener('click', () => {
-      localStorage.removeItem('usuario');
-      location.reload();
-    });
-  }
+if (btnContainerMobile) {
+  btnContainerMobile.innerHTML = logoutHTML;
+  const logoutBtn = btnContainerMobile.querySelector('#logoutBtn');
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('usuario');
 
-  if (btnContainerDesktop) {
-    btnContainerDesktop.innerHTML = logoutHTML;
-    const logoutBtn = btnContainerDesktop.querySelector('#logoutBtn');
-    logoutBtn.addEventListener('click', () => {
-      localStorage.removeItem('usuario');
-      location.reload();
-    });
-  }
+    const modal = new bootstrap.Modal(document.getElementById('logoutModal'));
+    modal.show();
+
+    // Redirige o recarga después de 2 segundos
+    setTimeout(() => {
+      location.reload(); // o window.location.href = '/';
+    }, 2000);
+  });
+}
+
+if (btnContainerDesktop) {
+  btnContainerDesktop.innerHTML = logoutHTML;
+  const logoutBtn = btnContainerDesktop.querySelector('#logoutBtn');
+  logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('usuario');
+
+    const modal = new bootstrap.Modal(document.getElementById('logoutModal'));
+    modal.show();
+
+    // Redirige o recarga después de 2 segundos
+    setTimeout(() => {
+      location.reload(); // o window.location.href = '/';
+    }, 2000);
+  });
+}
+
 }
 
 function mostrarBotonLogin() {

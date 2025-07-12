@@ -138,14 +138,14 @@ function guardarCarrito() {
   const usuario = localStorage.getItem('usuario') || 'guest';
   localStorage.setItem('carrito', JSON.stringify(carrito));
 
-  $.ajax({
-    url: '/api/cart',
-    method: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({ user: usuario, items: carrito }),
-    success: () => console.log('Carrito guardado'),
-    error: () => alert('Error al guardar el carrito')
-  });
+$.ajax({
+  url: '/api/cart',
+  method: 'POST',
+  contentType: 'application/json',
+  data: JSON.stringify({ user: usuario, items: carrito }),
+  success: () => {},
+  error: () => alert('Error al guardar el carrito')
+});
 }
 //Función para mostrar el mensaje de carrito vacío
 function mostrarMensajeCarritoVacio() {
@@ -285,7 +285,7 @@ $(document).ready(() => {
   });
 });
 
-// Función de validación de cupones (con fetch, no jQuery)
+// Función de validación de cupones
 function validarCupon(codigoCupon, subtotal) {
   return new Promise((resolve, reject) => {
     $.get('/api/coupons')
@@ -432,7 +432,6 @@ $(document).on('click', '#btnConfirmarPago', function () {
     mostrarResumenPedido();
     limpiarFormularioPago();
     actualizarEstadoBotonCheckout();
-    console.log('Modal de pago cerrada, carrito actualizado.');
     window.location.href = 'factura.html';
   });
 });

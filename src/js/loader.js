@@ -87,9 +87,9 @@ if (
   window.location.pathname.includes('search.html') ||
   window.location.pathname.includes('guitar.html') ||
   window.location.pathname.includes('drums.html') ||
-  window.location.pathname.includes('keyboard.html')
+  window.location.pathname.includes('keyboard.html') ||
+  window.location.pathname.includes('index.html')
 ) {
   localStorage.setItem('paginaProducto', window.location.href);
 }
-
 });

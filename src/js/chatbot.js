@@ -3,7 +3,7 @@
 // HTML del chatbot
 const chatbotHTML = `
 <div id="zonaHoverChatbot">
-  <button id="chatbotToggle" class="btn btn-primary rounded-pill position-fixed shadow-lg chatbot-toggle">
+  <button id="chatbotToggle" class="btn btn-primary rounded-pill position-fixed shadow-lg chatbot-toggle d-flex align-items-center">
     <i class="bi bi-chat-text fs-4 me-2"></i>¿Necesitas ayuda?
   </button>
 </div>

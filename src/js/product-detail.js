@@ -92,7 +92,7 @@ async function loadProductDetail() {
     // ✅ Asignamos el enlace correcto al botón "Seguir comprando"
     const enlace = document.getElementById("seguir-comprando");
     if (enlace) {
-      const ultimaPagina = localStorage.getItem("ultimaPagina") || obtenerPaginaPorCategoria(product.category);
+      const ultimaPagina = localStorage.getItem("paginaProducto") || obtenerPaginaPorCategoria(product.category);
   
     // Reemplaza el comportamiento por navegación controlada
     enlace.addEventListener("click", (e) => {

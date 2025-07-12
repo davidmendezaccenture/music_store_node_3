@@ -805,5 +805,81 @@
     "localizador": "PED-OQ7UF6",
     "status": "pagado",
     "createdAt": "2025-07-12T17:21:27.930Z"
+  },
+  {
+    "id": 1752343862563,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos",
+      "metodoEnvio": "tienda",
+      "telefono": "666666666",
+      "email": "david@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 1,
+        "precioUnitario": 150,
+        "total": 150
+      },
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 1,
+        "precioUnitario": 250,
+        "total": 250
+      }
+    ],
+    "precio": {
+      "subtotal": 400,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 380
+    },
+    "localizador": "PED-MB3O6Q",
+    "status": "pagado",
+    "createdAt": "2025-07-12T18:11:02.563Z"
+  },
+  {
+    "id": 1752348311912,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 1,
+        "precioUnitario": 150,
+        "total": 150
+      },
+      {
+        "id": "14",
+        "nombre": "Pedal de Reverb",
+        "descripcion": "Pedal de efectos para un sonido ambiental.",
+        "cantidad": 1,
+        "precioUnitario": 130,
+        "total": 130
+      }
+    ],
+    "precio": {
+      "subtotal": 280,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 280
+    },
+    "localizador": "PED-JF5K9P",
+    "status": "pagado",
+    "createdAt": "2025-07-12T19:25:11.913Z"
   }
 ]
