@@ -285,7 +285,6 @@ function guardarCarrito() {
     contentType: 'application/json',
     data: JSON.stringify({ user: usuario, items: carrito }),
     success: function () {
-      console.log('Carrito guardado');
     },
     error: function () {
       alert('Error al guardar el carrito');
@@ -380,8 +379,12 @@ const toast = new bootstrap.Toast(toastElement, {
 function mostrarToastAgregar() {
   toast.show();
 }
-//Dirigir a checkout
-document.getElementById('hacer-checkout').addEventListener('click', function() {
-  window.location.href = '/pages/checkout.html';
-});
+//Dirigir a checkout. Comprobamos que exista primero
+const checkoutBtn = document.getElementById('hacer-checkout');
+if (checkoutBtn) {
+  checkoutBtn.addEventListener('click', function () {
+    window.location.href = '/pages/checkout.html';
+  });
+}
+
 

@@ -20,14 +20,12 @@
   <main class="container mt-4" role="main">
     <!-- cards detalle de producto contenedor dinámico para la card -->
     <div id="product-detail-container"></div>
-    <!--Notificacion de producto añadido-->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
-      <div id="toastAdd" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive"
-        aria-atomic="true">
+    <!-- Toast de producto añadido -->
+    <div class="position-fixed bottom-0 end-0" style="z-index: 1050; padding: 1rem 3.5rem;">
+      <div id="toastAdd" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true" style="min-width: auto; max-width: 241px;">
         <div class="d-flex">
           <div class="toast-body">Instrumento añadido al carrito</div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-            aria-label="Cerrar"></button>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
         </div>
       </div>
     </div>

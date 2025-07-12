@@ -132,8 +132,6 @@ $(document).on('submit', '#form-login', function(e) {
           loginErrorModal.show();
         }
       });
-
-
 });
 
 function mostrarErrorCampo(idInput, mensaje) {
@@ -434,7 +432,7 @@ if (invitadoAcepto === 'true') {
     });
 }
 
-function mostrarModalBienvenidaYRedirigir(mensaje, redireccionUrl = "index.html") {
+function mostrarModalBienvenidaYRedirigir(mensaje) {
 
   const modalElement = document.getElementById('modalBienvenidaRegistro');
   if (!modalElement) {
@@ -453,7 +451,8 @@ function mostrarModalBienvenidaYRedirigir(mensaje, redireccionUrl = "index.html"
 
   // Evento para redirigir al cerrar la modal (solo una vez)
   modalElement.addEventListener('hidden.bs.modal', () => {
-    window.location.href = redireccionUrl;
+    const ultimaPagina = localStorage.getItem('ultimaPagina');
+    window.location.href = ultimaPagina;
   }, { once: true });
   modal.show();
 }

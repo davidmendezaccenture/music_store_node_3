@@ -20,7 +20,6 @@ $(function () {
           '../js/index.js',
           '../js/products.js',
           '../js/category.js',
-          '../js/glide.js',
           '../js/search.js'
         ];
 
@@ -77,9 +76,20 @@ $(function () {
 
   // Guardar última página visitada (excepto product-detail.html)
   if (
-  !window.location.pathname.includes('product-detail.html') &&
-  !window.location.pathname.includes('cart.html')
+  !window.location.pathname.includes('product-detail.html'),
+  !window.location.pathname.includes('registro.html')
 ) {
     localStorage.setItem('ultimaPagina', window.location.href);
   }
+
+  // Añado paginaProducto ya que cart debe llevarte a una pagina de productos
+if (
+  window.location.pathname.includes('search.html') ||
+  window.location.pathname.includes('guitar.html') ||
+  window.location.pathname.includes('drums.html') ||
+  window.location.pathname.includes('keyboard.html')
+) {
+  localStorage.setItem('paginaProducto', window.location.href);
+}
+
 });

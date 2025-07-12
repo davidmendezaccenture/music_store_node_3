@@ -775,5 +775,35 @@
     },
     "status": "pendiente",
     "createdAt": "2025-07-12T12:43:41.619Z"
+  },
+  {
+    "id": 1752340887930,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "david@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 6,
+        "precioUnitario": 150,
+        "total": 900
+      }
+    ],
+    "precio": {
+      "subtotal": 900,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 855
+    },
+    "localizador": "PED-OQ7UF6",
+    "status": "pagado",
+    "createdAt": "2025-07-12T17:21:27.930Z"
   }
 ]
