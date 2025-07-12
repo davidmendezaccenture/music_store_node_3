@@ -1377,7 +1377,9 @@ header {
   animation: fadeSlideIn 0.6s ease-out;
 }
 
-
-
-
-
+@media (max-width: 767px) {
+  .product-card-image-container {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+}
