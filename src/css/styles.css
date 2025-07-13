@@ -19,9 +19,10 @@ h2 {
 }
 
 /* Estilos para el header unificado */
+/*
 header {
     background-color: #f8f9fa !important;
-}
+}*/
 
 .navbar-brand {
     transition: all 0.3s ease;
@@ -929,9 +930,10 @@ main {
     min-width: 120px;
 }
 /* ===== ESTILOS GENERALES ===== */
+/*
 header {
     background-color: #f8f9fa !important;
-}
+}*/
 
 .navbar-brand img {
     height: 70px;
@@ -1037,6 +1039,20 @@ header {
     transform: translateY(-2px);
 }
 
+/*estilo de botones de el carrito , favoritos y de buscador*/
+.btn-outline-dark.bg-light:hover {
+  background-color: #343a40 !important; /* fondo negro */
+  color: white !important;
+}
+
+.btn-outline-primary.bg-light:hover {
+  background-color: #0d6efd !important;
+  color: white !important;
+}
+
+.btn-outline-primary.bg-light:hover i {
+  color: white !important;
+}
 
 /* Estilos para la barra de búsqueda */
 
@@ -1383,3 +1399,41 @@ header {
     min-width: auto !important;
   }
 }
+
+header {
+    position: relative !important;
+    z-index: 1 !important;
+ 
+}
+
+/* Fondo con imagen y opacidad usando ::before */
+header::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-image: url('/assets/images/imagen2.png') !important; /* ajusta la ruta si es necesario */
+    background-size: cover !important;
+    background-position: center !important;
+    opacity: 0.8 !important; /* o el valor que quieras */
+    z-index: 0 !important;
+}
+
+/* Contenido del header por encima del fondo */
+header .container,
+header .navbar,
+header * {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Contenido del header por encima del fondo */
+header .container,
+header .navbar,
+header * {
+    position: relative;
+    z-index: 1;
+}
+

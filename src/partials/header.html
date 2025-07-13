@@ -1,21 +1,21 @@
 <!-- Encabezado -->
-<header class="sticky-top bg-light shadow-sm">
+<header class="sticky-top  shadow-sm">
     <!-- 1ª línea - logo centrado -->
-    <div class="py-2 bg-light">
+    <div class="py-2 ">
         <div class="text-center">
-            <a class="navbar-brand d-inline-flex align-items-center" href="/pages/index.html">
-                <img src="../assets/images/FuzzerLogo_transparent.png" alt="FUZZR Logo" height="500" class="me-2">
+            <a class="navbar-brand d-inline-flex align-items-center bg-light rounded shadow-sm"  href="/pages/index.html" style="margin-left: auto; margin-right: auto;">
+                <img src="../assets/images/FuzzerLogo_transparent.png" alt="FUZZR Logo" height="70" class="">
             </a>
         </div>
     </div>
 
     <!-- 2ª línea - navegación y acciones -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 px-3">
-        <div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-light  py-3 px-3">
+        <div class="container-fluid p-0 ">
             <!-- Versión mobile -->
             <div class="d-lg-none w-100">
                 <div class="mobile-top-bar">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Expandir y contraer menú">
+                    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Expandir y contraer menú">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="user-actions-mobile">
@@ -27,12 +27,12 @@
                             <i class="bi bi-cart3"></i>
                             <span id="cartCounterMobile" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                         </a>
-<div id="user-auth-mobile" class="d-flex align-items-center">
-  <span id="username-mobile" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
-  <div id="auth-button-mobile"></div>
-</div>
+                        <div id="user-auth-mobile" class="d-flex align-items-center">
+                            <span id="username-mobile" class="fw-bold user-name mx-3 text-truncate">Invitado</span>
+                        <div id="auth-button-mobile"></div>
                     </div>
-                </div>
+                    </div>
+            </div>
                 <div class="search-bar-mobile">
                     <form id="form-busqueda-mobile" class="d-flex me-3 mb-3 mb-lg-0 form-busqueda" action="/pages/search.html" method="GET" role="search">
                         <div class="input-group">
@@ -73,10 +73,10 @@
             <div class="d-none d-lg-flex desktop-nav-container">
                 <div class="nav-links-desktop">
                     <ul class="navbar-nav d-flex flex-row">
-                        <li class="nav-item me-3"><a class="nav-link" href="/pages/index.html" aria-label="Ir a inicio"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
-                        <li class="nav-item me-3"><a class="nav-link" href="/pages/services.html"><i class="bi bi-gear me-1" aria-label="IR a servicios"></i>Servicios</a></li>
-                        <li class="nav-item me-3"><a class="nav-link" href="/pages/sobre_nosotros.html" aria-label="Ir a sobre nosotros"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/pages/contact.html" aria-label="Ir a contacto"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
+                        <li class="nav-item me-3 "><a class="nav-link bg-light" href="/pages/index.html" aria-label="Ir a inicio"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                        <li class="nav-item me-3"><a class="nav-link bg-light" href="/pages/services.html"><i class="bi bi-gear me-1" aria-label="IR a servicios"></i>Servicios</a></li>
+                        <li class="nav-item me-3"><a class="nav-link bg-light" href="/pages/sobre_nosotros.html" aria-label="Ir a sobre nosotros"><i class="bi bi-people me-1"></i>Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link bg-light" href="/pages/contact.html" aria-label="Ir a contacto"><i class="bi bi-envelope me-1"></i>Contacto</a></li>
                     </ul>
                 </div>
                 <div class="search-bar-desktop">
@@ -98,7 +98,7 @@
                                 <option value="keyboards">Teclados</option>
                                 <option value="synthesizers">Sintetizadores</option>
                             </select>
-                            <button class="btn btn-outline-primary" type="submit" aria-label="Realizar búsqueda">
+                            <button class="btn btn-outline-primary bg-light" type="submit" aria-label="Realizar búsqueda">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
@@ -106,15 +106,15 @@
 
                 </div>
                 <div class="user-actions-desktop d-flex gap-2">
-                    <a href="#" class="btn btn-outline-dark position-relative" aria-label="Ir a favoritos">
+                    <a href="#" class="btn btn-outline-dark position-relative  bg-light" aria-label="Ir a favoritos">
                         <i class="bi bi-heart icono-contador"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                     </a>
-                    <a href="/pages/cart.html" class="btn btn-outline-dark position-relative" aria-label="Ir al carrito">
+                    <a href="/pages/cart.html" class="btn btn-outline-dark position-relative bg-light" aria-label="Ir al carrito">
                         <i class="bi bi-cart3 icono-contador"></i>
                         <span id="cartCounterDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
                     </a>
-                    <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate text-center">Invitado</span>
+                    <span id="username-desktop" class="fw-bold user-name mx-3 text-truncate text-center bg-light bg-light rounded shadow-sm">Invitado</span>
                     <div id="user-auth-desktop" class="d-flex align-items-center">
 
                         <div id="auth-button-desktop"></div>
