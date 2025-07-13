@@ -10,8 +10,22 @@ $(document).ready(function () {
     const $selectorPaginacion = $('#selector-paginacion');
     const $contenedor = $('#resultados');
     const $paginacion = $('#paginacion');
+    const $minValorSpan = $('#min-valor');
+    const $maxValorSpan = $('#max-valor');
 
-    let productosFiltradosGlobal = [];
+    $precioMinInput.on('input', function() {
+        $minValorSpan.text($(this).val());
+        filtrarYOrdenar();
+    });
+
+    $precioMaxInput.on('input', function() {
+        $maxValorSpan.text($(this).val());
+        filtrarYOrdenar();
+    });
+
+
+    let productosOriginales = []; // datos originales sin filtrar
+    let productosFiltradosGlobal = []; // datos filtrados y ordenados que se muestran
     let paginaActual = 1;
     let productosPorPagina = 6;
 
@@ -24,37 +38,47 @@ $(document).ready(function () {
         });
     }
 
+    // FILTRADO + ORDENACIÓN (cliente) sobre productosOriginales
+    function filtrarYOrdenar() {
+        const estrellasSeleccionadas = obtenerEstrellasSeleccionadas();
+        const minPrecio = parseFloat($precioMinInput.val());
+        const maxPrecio = parseFloat($precioMaxInput.val());
+        const soloEnOferta = $checkboxOferta.is(':checked');
+
+        let filtrados = productosOriginales.filter(producto => {
+            const ratingOk = estrellasSeleccionadas.length === 0 || estrellasSeleccionadas.includes(producto.rating);
+
+            const precio = producto.enOferta === "sí" ? parseFloat(producto.offerPrice) : parseFloat(producto.price);
+            const minPrecioOk = isNaN(minPrecio) || precio >= minPrecio;
+            const maxPrecioOk = isNaN(maxPrecio) || precio <= maxPrecio;
+
+            const ofertaOk = !soloEnOferta || producto.enOferta === "sí";
+            return ratingOk && minPrecioOk && maxPrecioOk && ofertaOk;
+        });
+
+        filtrados.sort((a, b) => {
+            const pA = Number(a.enOferta === 'sí' ? a.offerPrice : a.price) || 0;
+            const pB = Number(b.enOferta === 'sí' ? b.offerPrice : b.price) || 0;
+            const ordenPrecio = $ordenPrecioSelect.val() === 'asc' ? pA - pB : pB - pA;
+            const ordenValoracion = $ordenValoracionSelect.val() === 'asc' ? a.rating - b.rating : b.rating - a.rating;
+
+            if ($ordenPrioridadSelect.val() === 'precio') {
+                return ordenPrecio !== 0 ? ordenPrecio : ordenValoracion;
+            } else {
+                return ordenValoracion !== 0 ? ordenValoracion : ordenPrecio;
+            }
+        });
+
+        productosFiltradosGlobal = filtrados;
+        paginaActual = 1;
+        mostrarResultados(productosFiltradosGlobal);
+    }
+
     function buscarYMostrar(query, category) {
         $.getJSON(`/buscar`, { q: query, category: category })
             .done(function (productos) {
-                const estrellasSeleccionadas = obtenerEstrellasSeleccionadas();
-                const minPrecio = parseFloat($precioMinInput.val());
-                const maxPrecio = parseFloat($precioMaxInput.val());
-                const soloEnOferta = $checkboxOferta.is(':checked');
-
-                let productosFiltrados = productos.filter(producto => {
-                    const ratingOk = estrellasSeleccionadas.length === 0 || estrellasSeleccionadas.includes(producto.rating);
-                    const precio = producto.offerPrice ?? producto.price;
-                    const precioOk = precio >= minPrecio && precio <= maxPrecio;
-                    const ofertaOk = !soloEnOferta || producto.enOferta === "sí";
-                    return ratingOk && precioOk && ofertaOk;
-                });
-
-                productosFiltrados.sort((a, b) => {
-                    
-                    const pA = Number(a.enOferta === 'sí' ? a.offerPrice : a.price) || 0;
-                    const pB = Number(b.enOferta === 'sí' ? b.offerPrice : b.price) || 0;
-                    const ordenPrecio = $ordenPrecioSelect.val() === 'asc' ? pA - pB : pB - pA;
-                    const ordenValoracion = $ordenValoracionSelect.val() === 'asc' ? a.rating - b.rating : b.rating - a.rating;
-
-                    if ($ordenPrioridadSelect.val() === 'precio') {
-                        return ordenPrecio !== 0 ? ordenPrecio : ordenValoracion;
-                    } else {
-                        return ordenValoracion !== 0 ? ordenValoracion : ordenPrecio;
-                    }
-                });
-
-                mostrarResultados(productosFiltrados);
+                productosOriginales = productos; // guardamos los datos originales
+                filtrarYOrdenar(); // filtramos y ordenamos en cliente
             })
             .fail(function (err) {
                 console.error('Error al obtener productos:', err);
@@ -69,7 +93,6 @@ $(document).ready(function () {
     }
 
     function mostrarResultados(productos) {
-        productosFiltradosGlobal = productos;
         $contenedor.empty();
         $paginacion.empty();
 
@@ -102,17 +125,14 @@ $(document).ready(function () {
 
             const $col = $(`
                 <div class="col producto-animado" data-category="${producto.category}">
-                    <div class="card-product d-flex flex-column position-relative" role="article aria-label="${producto.name}">${ofertaBadge} 
+                    <div class="card-product d-flex flex-column position-relative" role="article" aria-label="${producto.name}">${ofertaBadge} 
                         <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="Imagen de ${producto.name}" style="height: 130px; object-fit: cover;">
                         <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
-                            <h2 class="card-title" style="font-size: 0.95rem; margin-bottom: 0.3rem; min-height: 2.5em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}
-                            </h2>
-                            <p class="card-text">${producto.description}
-                            </p>
+                            <h2 class="card-title" style="font-size: 0.95rem; margin-bottom: 0.3rem; min-height: 2.5em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}</h2>
+                            <p class="card-text">${producto.description}</p>
                             <div class="espacio-inferior mt-auto d-flex flex-column gap-1">
                                 <div class="precio fw-bold" aria-label="Precio del producto">${precioHTML}</div>
-                                <p class="valoracion" style="font-size: 0.8rem; margin: 0;" aria-label="Valoración del producto">${estrellas}
-                                </p>
+                                <p class="valoracion" style="font-size: 0.8rem; margin: 0;" aria-label="Valoración del producto">${estrellas}</p>
                                 <div class="d-flex gap-1 mt-2">
                                     <button class="btn btn-sm btn-primary agregar-carrito" data-id="${producto.id}" aria-label="Añadir ${producto.name} al carrito">Añadir</button>
                                     <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary d-flex justify-content-center align-items-center boton-detalle" aria-label="Ver detalle del producto ${producto.name}">Detalle</a>
@@ -123,38 +143,28 @@ $(document).ready(function () {
                 </div>
             `);
             $contenedor.append($col);
-            setTimeout(() => $col.addClass('visible'), 100 + i * 100); // animación progresiva
+            setTimeout(() => $col.addClass('visible'), 100 + i * 100);
         });
 
-// 🧹 Limpiar contenido y quitar clase si ya estaba
-$paginacion.removeClass('fade-in-paginacion').empty();
-
-// 🛠 Generar los botones
-for (let i = 1; i <= totalPaginas; i++) {
-  const $btn = $(`<button class="btn btn-sm mx-1 btn-outline-primary ${i === paginaActual ? 'pagina-activa' : ''}">${i}</button>`);
-  
-  $btn.on('click', () => {
-    paginaActual = i;
-    mostrarResultados(productosFiltradosGlobal);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  $paginacion.append($btn);
-}
-
-// 🌀 Forzar reflujo para reiniciar la animación
-void $paginacion[0].offsetWidth;
-
-// ✅ Añadir clase con animación suave
-$paginacion.addClass('fade-in-paginacion');
-
+        $paginacion.removeClass('fade-in-paginacion').empty();
+        for (let i = 1; i <= totalPaginas; i++) {
+            const $btn = $(`<button class="btn btn-sm mx-1 btn-outline-primary ${i === paginaActual ? 'pagina-activa' : ''}">${i}</button>`);
+            $btn.on('click', () => {
+                paginaActual = i;
+                mostrarResultados(productosFiltradosGlobal);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            $paginacion.append($btn);
+        }
+        void $paginacion[0].offsetWidth;
+        $paginacion.addClass('fade-in-paginacion');
     }
 
     if (esSearchPage) {
         $form.on('submit', function (e) {
             e.preventDefault();
-    const query = $(this).find('[name="q"]').val().trim();
-    const category = $(this).find('[name="category"]').val();
+            const query = $(this).find('[name="q"]').val().trim();
+            const category = $(this).find('[name="category"]').val();
             buscarYMostrar(query, category);
 
             const newUrl = `${window.location.pathname}?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`;
@@ -171,23 +181,13 @@ $paginacion.addClass('fade-in-paginacion');
     }
 
     $('#filtro-estrellas input[type="checkbox"]').on('change', () => {
-        const query = $form.find('[name="q"]').val().trim();
-        const category = $form.find('[name="category"]').val();
-        buscarYMostrar(query, category);
+        filtrarYOrdenar();
     });
 
-    $precioMinInput.on('input', actualizarYFiltrar);
-    $precioMaxInput.on('input', actualizarYFiltrar);
-    $ordenPrecioSelect.on('change', actualizarYFiltrar);
-    $ordenValoracionSelect.on('change', actualizarYFiltrar);
-    $ordenPrioridadSelect.on('change', actualizarYFiltrar);
-    $checkboxOferta.on('change', actualizarYFiltrar);
-
-    function actualizarYFiltrar() {
-        $('#min-valor').text($precioMinInput.val());
-        $('#max-valor').text($precioMaxInput.val());
-        const query = $form.find('[name="q"]').val().trim();
-        const category = $form.find('[name="category"]').val();
-        buscarYMostrar(query, category);
-    }
+    $precioMinInput.on('input', filtrarYOrdenar);
+    $precioMaxInput.on('input', filtrarYOrdenar);
+    $ordenPrecioSelect.on('change', filtrarYOrdenar);
+    $ordenValoracionSelect.on('change', filtrarYOrdenar);
+    $ordenPrioridadSelect.on('change', filtrarYOrdenar);
+    $checkboxOferta.on('change', filtrarYOrdenar);
 });
