@@ -126,15 +126,28 @@ $(document).ready(function () {
             setTimeout(() => $col.addClass('visible'), 100 + i * 100); // animación progresiva
         });
 
-        for (let i = 1; i <= totalPaginas; i++) {
-            const $btn = $(`<button class="btn btn-sm mx-1 btn-outline-primary ${i === paginaActual ? 'pagina-activa' : ''}">${i}</button>`);
-            $btn.on('click', () => {
-                paginaActual = i;
-                mostrarResultados(productosFiltradosGlobal);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            $paginacion.append($btn);
-        }
+// 🧹 Limpiar contenido y quitar clase si ya estaba
+$paginacion.removeClass('fade-in-paginacion').empty();
+
+// 🛠 Generar los botones
+for (let i = 1; i <= totalPaginas; i++) {
+  const $btn = $(`<button class="btn btn-sm mx-1 btn-outline-primary ${i === paginaActual ? 'pagina-activa' : ''}">${i}</button>`);
+  
+  $btn.on('click', () => {
+    paginaActual = i;
+    mostrarResultados(productosFiltradosGlobal);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  $paginacion.append($btn);
+}
+
+// 🌀 Forzar reflujo para reiniciar la animación
+void $paginacion[0].offsetWidth;
+
+// ✅ Añadir clase con animación suave
+$paginacion.addClass('fade-in-paginacion');
+
     }
 
     if (esSearchPage) {
