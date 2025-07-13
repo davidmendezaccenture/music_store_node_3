@@ -688,6 +688,19 @@ function obtenerDatosPedido(localizador = null) {
   }
     return pedido;
 }
+  window.addEventListener('load', function () {
+    const resumen = document.getElementById('contenedor-resumen');
+
+    if (resumen) {
+      // Establecer min-height temporal
+      resumen.style.minHeight = '334.67px';
+
+      // Esperar un tiempo y luego quitarlo
+      setTimeout(() => {
+        resumen.style.minHeight = '';
+      }, 500); // puedes ajustar el tiempo en milisegundos (aquí son 0.5 segundos)
+    }
+  });
 
 
 

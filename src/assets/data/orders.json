@@ -881,5 +881,39 @@
     "localizador": "PED-JF5K9P",
     "status": "pagado",
     "createdAt": "2025-07-12T19:25:11.913Z"
+  },
+  {
+    "id": 1752410511188,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "domicilio",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta",
+      "direccion": {
+        "calle": "C. Julio Romero de Torres, 49",
+        "ciudad": "Gines",
+        "cp": "41960"
+      }
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 10,
+      "total": 310
+    },
+    "status": "pagado",
+    "createdAt": "2025-07-13T12:41:51.188Z"
   }
 ]
