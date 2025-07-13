@@ -915,5 +915,178 @@
     },
     "status": "pagado",
     "createdAt": "2025-07-13T12:41:51.188Z"
+  },
+  {
+    "id": 1752412653395,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 1,
+        "precioUnitario": 250,
+        "total": 250
+      },
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 550,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 522.5
+    },
+    "localizador": "PED-W0HLRK",
+    "status": "pagado",
+    "createdAt": "2025-07-13T13:17:33.395Z"
+  },
+  {
+    "id": 1752412717998,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "19",
+        "nombre": "Pedal de Bombo",
+        "descripcion": "Pedal de bombo con acción suave y precisa.",
+        "cantidad": 1,
+        "precioUnitario": 130,
+        "total": 130
+      }
+    ],
+    "precio": {
+      "subtotal": 130,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 123.5
+    },
+    "localizador": "PED-91PHGG",
+    "status": "pagado",
+    "createdAt": "2025-07-13T13:18:37.998Z"
+  },
+  {
+    "id": 1752412808398,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      }
+    ],
+    "precio": {
+      "subtotal": 300,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 300
+    },
+    "localizador": "PED-QP5L91",
+    "status": "pagado",
+    "createdAt": "2025-07-13T13:20:08.398Z"
+  },
+  {
+    "id": 1752412890296,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "15",
+        "nombre": "Batería Acústica",
+        "descripcion": "Batería acústica de alta calidad.",
+        "cantidad": 1,
+        "precioUnitario": 750,
+        "total": 750
+      },
+      {
+        "id": "16",
+        "nombre": "Batería Electrónica",
+        "descripcion": "Batería electrónica compacta y versátil.",
+        "cantidad": 1,
+        "precioUnitario": 550,
+        "total": 550
+      }
+    ],
+    "precio": {
+      "subtotal": 1300,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 1235
+    },
+    "localizador": "PED-AJ9I56",
+    "status": "pagado",
+    "createdAt": "2025-07-13T13:21:30.296Z"
+  },
+  {
+    "id": 1752412993814,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "bizum"
+    },
+    "items": [
+      {
+        "id": "2",
+        "nombre": "Guitarra Eléctrica",
+        "descripcion": "Guitarra eléctrica para músicos avanzados.",
+        "cantidad": 1,
+        "precioUnitario": 300,
+        "total": 300
+      },
+      {
+        "id": "3",
+        "nombre": "Bajo Eléctrico",
+        "descripcion": "Bajo eléctrico con diseño ergonómico.",
+        "cantidad": 1,
+        "precioUnitario": 250,
+        "total": 250
+      }
+    ],
+    "precio": {
+      "subtotal": 550,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 550
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-13T13:23:13.814Z"
   }
 ]
