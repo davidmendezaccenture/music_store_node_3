@@ -1,5 +1,5 @@
-let productosDisponibles = [];
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+productosDisponibles = [];
+carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 let metodoEnvio = 'domicilio'; //Iniciamos en domicilio
 
 let descuentoAplicado = 0; // Porcentaje de descuento
@@ -50,8 +50,8 @@ function mostrarResumenPedido() {
   actualizarGastosYTotal();
 }
 //Variables para eliminar elementos con animación
-let itemPendienteEliminar = null;
-let posicionesAntesEliminar = [];
+itemPendienteEliminar = null;
+posicionesAntesEliminar = [];
 //Función para llamar a la modal previa a eliminar items
 $('#resumen-pedido').on('click', '.btn-eliminar-checkout', function () {
   const $li = $(this).closest('li');
