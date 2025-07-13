@@ -364,8 +364,15 @@ const reseñasPath = path.join(
 ); // <- tu archivo real
 
 app.get("/buscar", (req, res) => {
-  const query = req.query.q?.toLowerCase() || "";
-  const category = req.query.category?.toLowerCase() || "";
+  const query = req.query.q || "";
+  const category = req.query.category || "";
+
+  function normalizeText(text) {
+    return text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+  }
 
   fs.readFile(productosPath, "utf8", (errProductos, dataProductos) => {
     if (errProductos) return res.status(500).send("Error al leer productos");
@@ -402,11 +409,18 @@ app.get("/buscar", (req, res) => {
           }
         });
 
-        // Filtrar por búsqueda
+        // Filtrar por búsqueda con normalización
         const resultados = productos.filter((p) => {
-          const nombreIncluye = !query || p.name?.toLowerCase().includes(query);
+          const nombreNormalizado = normalizeText(p.name || "");
+          const queryNormalizada = normalizeText(query);
+          const categoryNormalizada = normalizeText(category);
+          const categoriaNormalizadaProducto = normalizeText(p.category || "");
+
+          const nombreIncluye =
+            !query || nombreNormalizado.includes(queryNormalizada);
           const categoriaCoincide =
-            !category || p.category?.toLowerCase() === category;
+            !category || categoriaNormalizadaProducto === categoryNormalizada;
+
           return nombreIncluye && categoriaCoincide;
         });
 
@@ -417,6 +431,7 @@ app.get("/buscar", (req, res) => {
     });
   });
 });
+
 //Endpoint de cupones de descuento
 app.get('/api/coupons', (req, res) => {
   const rutaCupones = path.join(__dirname, 'src', 'assets', 'data', 'coupons.json');
