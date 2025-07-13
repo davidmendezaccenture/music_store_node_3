@@ -169,7 +169,7 @@ $(document).ready(function () {
 
             const newUrl = `${window.location.pathname}?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}`;
             window.history.replaceState(null, '', newUrl);
-            localStorage.setItem('ultimaPagina', newUrl);
+            localStorage.setItem('paginaProducto', newUrl);
         });
 
         const params = new URLSearchParams(window.location.search);

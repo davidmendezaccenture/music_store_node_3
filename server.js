@@ -363,6 +363,7 @@ const reseñasPath = path.join(
   "clients.json"
 ); // <- tu archivo real
 
+//Endpoint para buscar productos. Devuelve también la media de estrellas
 app.get("/buscar", (req, res) => {
   const query = req.query.q || "";
   const category = req.query.category || "";
@@ -409,19 +410,23 @@ app.get("/buscar", (req, res) => {
           }
         });
 
-        // Filtrar por búsqueda con normalización
+        // Filtrar por búsqueda con normalización (nombre o descripción)
         const resultados = productos.filter((p) => {
           const nombreNormalizado = normalizeText(p.name || "");
+          const descripcionNormalizada = normalizeText(p.description || "");
           const queryNormalizada = normalizeText(query);
           const categoryNormalizada = normalizeText(category);
           const categoriaNormalizadaProducto = normalizeText(p.category || "");
 
-          const nombreIncluye =
-            !query || nombreNormalizado.includes(queryNormalizada);
+          const nombreODescIncluye =
+            !query ||
+            nombreNormalizado.includes(queryNormalizada) ||
+            descripcionNormalizada.includes(queryNormalizada);
+
           const categoriaCoincide =
             !category || categoriaNormalizadaProducto === categoryNormalizada;
 
-          return nombreIncluye && categoriaCoincide;
+          return nombreODescIncluye && categoriaCoincide;
         });
 
         res.json(resultados);
@@ -431,7 +436,6 @@ app.get("/buscar", (req, res) => {
     });
   });
 });
-
 //Endpoint de cupones de descuento
 app.get('/api/coupons', (req, res) => {
   const rutaCupones = path.join(__dirname, 'src', 'assets', 'data', 'coupons.json');
