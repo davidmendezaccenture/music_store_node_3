@@ -136,154 +136,175 @@ $(document).on('submit', '#form-login', function(e) {
 
 function mostrarErrorCampo(idInput, mensaje) {
   const input = document.getElementById(idInput);
-  const feedback = input.nextElementSibling;
+  let feedback;
+
+  if (idInput === "password") {
+    // Para password, buscar el div con id passwordError
+    feedback = document.getElementById("passwordError");
+  } else if (idInput === "confirmPassword") {
+    // Similar para confirmPassword
+    feedback = document.getElementById("confirmPasswordError");
+  } else {
+    feedback = input.nextElementSibling;
+  }
+
   input.classList.add("is-invalid");
-  if (feedback && feedback.classList.contains("invalid-feedback")) {
+  if (feedback) {
     feedback.textContent = mensaje;
     feedback.classList.remove("visually-hidden");
   }
 }
+
 function ocultarErrorCampo(idInput) {
   const input = document.getElementById(idInput);
-  const feedback = input.nextElementSibling;
+  let feedback;
+
+  if (idInput === "password") {
+    feedback = document.getElementById("passwordError");
+  } else if (idInput === "confirmPassword") {
+    feedback = document.getElementById("confirmPasswordError");
+  } else {
+    feedback = input.nextElementSibling;
+  }
+
   input.classList.remove("is-invalid");
-  if (feedback && feedback.classList.contains("invalid-feedback")) {
+  if (feedback) {
     feedback.classList.add("visually-hidden");
   }
 }
 
+
   // === REGISTRO ===
-  $('#form-registro').submit(function (e) {
-    e.preventDefault();
+$('#form-registro').submit(function (e) {
+  e.preventDefault();
 
-    const nuevoUsuario = {
-      username: $('#regUsername').val().trim(),
-      email: $('#email').val().trim(),
-      birthdate: $('#birthdate').val(),
-      phone: $('#phone').val().trim(),
-      postalcode: $('#postalcode').val().trim(),
-      city: $('#city').val().trim(),
-      password: $('#password').val()
-    };
+  const nuevoUsuario = {
+    username: $('#regUsername').val().trim(),
+    email: $('#email').val().trim(),
+    birthdate: $('#birthdate').val(),
+    phone: $('#phone').val().trim(),
+    postalcode: $('#postalcode').val().trim(),
+    city: $('#city').val().trim(),
+    password: $('#password').val()
+  };
 
-    const confirmPassword = $('#confirmPassword').val();
-    // Validación básica
-    const campos = [
-      {
-        id: "regUsername",
-        value: nuevoUsuario.username,
-        msg: "El nombre de usuario es obligatorio.",
-      },
-      {
-        id: "email",
-        value: nuevoUsuario.email,
-        msg: "El correo electrónico es obligatorio.",
-      },
-      {
-        id: "birthdate",
-        value: nuevoUsuario.birthdate,
-        msg: "La fecha de nacimiento es obligatoria.",
-      },
-      {
-        id: "phone",
-        value: nuevoUsuario.phone,
-        msg: "El teléfono es obligatorio.",
-      },
-      {
-        id: "postalcode",
-        value: nuevoUsuario.postalcode,
-        msg: "El código postal es obligatorio.",
-      },
-      {
-        id: "city",
-        value: nuevoUsuario.city,
-        msg: "La ciudad es obligatoria.",
-      },
-      {
-        id: "password",
-        value: nuevoUsuario.password,
-        msg: "La contraseña es obligatoria.",
-      },
-      {
-        id: "confirmPassword",
-        value: confirmPassword,
-        msg: "Debes confirmar la contraseña.",
-      },
-    ];
+  const confirmPassword = $('#confirmPassword').val();
+  // Validación básica
+  const campos = [
+    { id: "regUsername", value: nuevoUsuario.username, msg: "El nombre de usuario es obligatorio." },
+    { id: "email", value: nuevoUsuario.email, msg: "El correo electrónico es obligatorio." },
+    { id: "birthdate", value: nuevoUsuario.birthdate, msg: "La fecha de nacimiento es obligatoria." },
+    { id: "phone", value: nuevoUsuario.phone, msg: "El teléfono es obligatorio." },
+    { id: "postalcode", value: nuevoUsuario.postalcode, msg: "El código postal es obligatorio." },
+    { id: "city", value: nuevoUsuario.city, msg: "La ciudad es obligatoria." },
+    { id: "password", value: nuevoUsuario.password, msg: "La contraseña es obligatoria." },
+    { id: "confirmPassword", value: confirmPassword, msg: "Debes confirmar la contraseña." },
+  ];
 
-    let hayError = false;
-    campos.forEach((campo) => {
-      if (!campo.value) {
-        mostrarErrorCampo(campo.id, campo.msg);
-        hayError = true;
-      } else {
-        ocultarErrorCampo(campo.id);
-      }
-    });
-    if (hayError) return;
-
-    if (!validarUsername(nuevoUsuario.username)) {
-      alert('El nombre de usuario debe tener entre 3 y 20 caracteres, y solo letras, números, guiones o guiones bajos.');
-      return;
+  let hayError = false;
+  campos.forEach((campo) => {
+    if (!campo.value) {
+      mostrarErrorCampo(campo.id, campo.msg);
+      hayError = true;
+    } else {
+      ocultarErrorCampo(campo.id);
     }
-
-    if (!validarEmail(nuevoUsuario.email)) {
-      alert('El email no tiene un formato válido.');
-      return;
-    }
-
-    if (!/\d{4}-\d{2}-\d{2}/.test(nuevoUsuario.birthdate)) {
-      alert('La fecha de nacimiento no es válida.');
-      return;
-    }
-
-    if (!/^\d{9}$/.test(nuevoUsuario.phone)) {
-      alert('El teléfono debe tener 9 dígitos.');
-      return;
-    }
-
-    if (!/^\d{5}$/.test(nuevoUsuario.postalcode)) {
-      alert('El código postal debe tener 5 dígitos.');
-      return;
-    }
-
-    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$/.test(nuevoUsuario.city)) {
-      alert('La ciudad debe tener entre 2 y 40 letras.');
-      return;
-    }
-
-    if (!validarPassword(nuevoUsuario.password)) {
-      alert('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.');
-      return;
-    }
-
-    if (!compararPasswords(nuevoUsuario.password, confirmPassword)) {
-      alert('Las contraseñas no coinciden.');
-      return;
-    }
-    // ✅ Registro exitoso con delay antes de redirigir
-    $.ajax({
-      url: '/api/register',
-      method: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify(nuevoUsuario),
-      success: function (res) {
-        $('#form-registro')[0].reset();
-        localStorage.removeItem("usuario");
-        localStorage.removeItem("datosUsuario");
-        /*
-        localStorage.setItem("usuario", res.usuario.username);
-        localStorage.setItem("datosUsuario", JSON.stringify(res.usuario));
-        */
-       const username = nuevoUsuario.username;
-       const datosUsuario = res.usuario;
-        procesarPostLogin(username, datosUsuario);
-      },
-      error: function (xhr) {
-        alert(xhr.responseJSON?.error || 'Error al registrar usuario');
-      }
-    });
   });
+
+  if (hayError) return;
+
+  // Validaciones específicas
+  if (!validarUsername(nuevoUsuario.username)) {
+    mostrarErrorCampo("regUsername", "El nombre de usuario debe tener entre 3 y 20 caracteres, y solo letras, números, guiones o guiones bajos.");
+    return;
+  } else {
+    ocultarErrorCampo("regUsername");
+  }
+
+  if (!validarEmail(nuevoUsuario.email)) {
+    mostrarErrorCampo("email", "El correo electrónico no tiene un formato válido.");
+    return;
+  } else {
+    ocultarErrorCampo("email");
+  }
+
+  if (!/\d{4}-\d{2}-\d{2}/.test(nuevoUsuario.birthdate)) {
+    mostrarErrorCampo("birthdate", "La fecha de nacimiento no es válida.");
+    return;
+  } else {
+    ocultarErrorCampo("birthdate");
+  }
+
+  if (!/^\d{9}$/.test(nuevoUsuario.phone)) {
+    mostrarErrorCampo("phone", "El teléfono debe tener 9 dígitos.");
+    return;
+  } else {
+    ocultarErrorCampo("phone");
+  }
+
+  if (!/^\d{5}$/.test(nuevoUsuario.postalcode)) {
+    mostrarErrorCampo("postalcode", "El código postal debe tener 5 dígitos.");
+    return;
+  } else {
+    ocultarErrorCampo("postalcode");
+  }
+
+  if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$/.test(nuevoUsuario.city)) {
+    mostrarErrorCampo("city", "La ciudad debe tener entre 2 y 40 letras.");
+    return;
+  } else {
+    ocultarErrorCampo("city");
+  }
+
+  if (!validarPassword(nuevoUsuario.password)) {
+    mostrarErrorCampo("password", "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.");
+    return;
+  } else {
+    ocultarErrorCampo("password");
+  }
+
+  if (!compararPasswords(nuevoUsuario.password, confirmPassword)) {
+    mostrarErrorCampo("confirmPassword", "Las contraseñas no coinciden.");
+    return;
+  } else {
+  ocultarErrorCampo("confirmPassword");
+  }
+
+
+  // Enviar petición al servidor
+  $.ajax({
+    url: '/api/register',
+    method: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(nuevoUsuario),
+    success: function (res) {
+      $('#form-registro')[0].reset();
+      localStorage.removeItem("usuario");
+      localStorage.removeItem("datosUsuario");
+      const username = nuevoUsuario.username;
+      const datosUsuario = res.usuario;
+      procesarPostLogin(username, datosUsuario);
+    },
+    error: function (xhr) {
+      const errorMsg = xhr.responseJSON?.error || 'Error al registrar usuario';
+
+      // Limpiamos errores previos
+      ocultarErrorCampo('regUsername');
+      ocultarErrorCampo('email');
+
+      if (errorMsg.toLowerCase().includes('usuario')) {
+        mostrarErrorCampo('regUsername', errorMsg);
+      } else if (errorMsg.toLowerCase().includes('correo') || errorMsg.toLowerCase().includes('email')) {
+        mostrarErrorCampo('email', errorMsg);
+      } else {
+        // Puedes mostrar error general en un div o console
+        console.error('Error inesperado:', errorMsg);
+      }
+    }
+  });
+});
+
+
 
   $("#form-forgot-password").submit(function (e) {
     e.preventDefault();
