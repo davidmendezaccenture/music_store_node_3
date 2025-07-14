@@ -82,7 +82,7 @@ $(document).ready(function () {
 
           const $col = $(`
                 <div class="col producto-animado" data-category="${producto.category}">
-                    <div class="card h-100 d-flex flex-column position-relative" role="article aria-label="${producto.name}">${ofertaBadge} 
+                    <div class="card h-100 d-flex flex-column position-relative" role="article" aria-label="${producto.name}" style="max-width: 300px; margin: 0 auto;">${ofertaBadge} 
                         <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="Imagen de ${producto.name}" style="height: 130px; object-fit: cover;">
                         <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
                             <h2 class="card-title" style="font-size: 0.95rem; margin-bottom: 0.3rem; min-height: 2.5em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}
@@ -101,7 +101,6 @@ $(document).ready(function () {
                         </div>
                     </div>
                 </div>
-
           `);
 
           container.append($col);

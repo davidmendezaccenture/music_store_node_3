@@ -363,9 +363,17 @@ const reseñasPath = path.join(
   "clients.json"
 ); // <- tu archivo real
 
+//Endpoint para buscar productos. Devuelve también la media de estrellas
 app.get("/buscar", (req, res) => {
-  const query = req.query.q?.toLowerCase() || "";
-  const category = req.query.category?.toLowerCase() || "";
+  const query = req.query.q || "";
+  const category = req.query.category || "";
+
+  function normalizeText(text) {
+    return text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+  }
 
   fs.readFile(productosPath, "utf8", (errProductos, dataProductos) => {
     if (errProductos) return res.status(500).send("Error al leer productos");
@@ -402,12 +410,23 @@ app.get("/buscar", (req, res) => {
           }
         });
 
-        // Filtrar por búsqueda
+        // Filtrar por búsqueda con normalización (nombre o descripción)
         const resultados = productos.filter((p) => {
-          const nombreIncluye = !query || p.name?.toLowerCase().includes(query);
+          const nombreNormalizado = normalizeText(p.name || "");
+          const descripcionNormalizada = normalizeText(p.description || "");
+          const queryNormalizada = normalizeText(query);
+          const categoryNormalizada = normalizeText(category);
+          const categoriaNormalizadaProducto = normalizeText(p.category || "");
+
+          const nombreODescIncluye =
+            !query ||
+            nombreNormalizado.includes(queryNormalizada) ||
+            descripcionNormalizada.includes(queryNormalizada);
+
           const categoriaCoincide =
-            !category || p.category?.toLowerCase() === category;
-          return nombreIncluye && categoriaCoincide;
+            !category || categoriaNormalizadaProducto === categoryNormalizada;
+
+          return nombreODescIncluye && categoriaCoincide;
         });
 
         res.json(resultados);

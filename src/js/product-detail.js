@@ -88,6 +88,8 @@ async function loadProductDetail() {
     // Reemplaza el comportamiento por navegación controlada
     enlace.addEventListener("click", (e) => {
       e.preventDefault(); // Previene navegación por defecto del <a>
+      //Para indicar que venimos de product-details y recargar filtros en search
+      localStorage.setItem('mantenerFiltros', 'true');
       window.location.href = ultimaPagina; // Navega a la URL guardada
     });
   }
