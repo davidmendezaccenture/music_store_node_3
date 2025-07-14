@@ -1415,11 +1415,12 @@ header::before {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    background-image: url('/assets/images/imagen2.png') !important; /* ajusta la ruta si es necesario */
+    background-image: url('/assets/images/imagen1.png') !important; /* ajusta la ruta si es necesario */
     background-size: cover !important;
     background-position: center !important;
     opacity: 0.8 !important; /* o el valor que quieras */
     z-index: 0 !important;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.6);
 }
 
 /* Contenido del header por encima del fondo */
@@ -1428,13 +1429,5 @@ header .navbar,
 header * {
     position: relative !important;
     z-index: 1 !important;
-}
-
-/* Contenido del header por encima del fondo */
-header .container,
-header .navbar,
-header * {
-    position: relative;
-    z-index: 1;
 }
 
