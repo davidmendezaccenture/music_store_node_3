@@ -159,12 +159,9 @@ function initLoginUI() {
             if (loginModal) loginModal.hide();
           }
         })
-        .catch(err => {
-          mostrarErrorLoginPassword(err.message);
-          if (window.$ && $('#loginErrorModal').length) {
-            $('#loginErrorModal').modal('show');
-          }
-        });
+      .catch(err => {
+        mostrarErrorLoginPassword("Usuario o contraseña incorrectos");
+      });
     });
   }
 

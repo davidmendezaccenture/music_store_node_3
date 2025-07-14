@@ -124,14 +124,11 @@ $(document).on('submit', '#form-login', function(e) {
             });
           });
       })
-      .catch(err => {
-        console.error("Error en el proceso de login o carrito:", err);
-        const loginErrorModalEl = document.getElementById('loginErrorModal');
-        if (loginErrorModalEl) {
-          const loginErrorModal = new bootstrap.Modal(loginErrorModalEl);
-          loginErrorModal.show();
-        }
-      });
+    .catch(err => {
+    console.error("Error en el proceso de login o carrito:", err);
+    mostrarErrorLogin("password", "Usuario o contraseña incorrectos");
+  });
+
 });
 
 function mostrarErrorCampo(idInput, mensaje) {
