@@ -49,7 +49,7 @@ if (btnContainerDesktop) {
   const logoutBtn = btnContainerDesktop.querySelector('#logoutBtn');
   logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('usuario');
-
+    //Guardamos mantenerFiltros si estamos en search para que muestre los filtros cargados
     if (window.location.pathname.endsWith("/search.html")) {
       localStorage.setItem('mantenerFiltros', "true");
     }

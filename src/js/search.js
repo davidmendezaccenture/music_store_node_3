@@ -184,7 +184,6 @@ $(document).ready(function () {
     if (esSearchPage) {
         const mantenerFiltros = localStorage.getItem('mantenerFiltros');
         if (mantenerFiltros === 'true') {
-            localStorage.removeItem('mantenerFiltros');
             const paginaGuardada = localStorage.getItem('paginaProducto');
             if (paginaGuardada) {
                 const urlParams = new URLSearchParams(paginaGuardada.split('?')[1] || '');
@@ -218,31 +217,65 @@ $(document).ready(function () {
     }
 
     // Eventos de filtros dinámicos
-    $('#filtro-estrellas input[type="checkbox"]').on('change', filtrarYOrdenar);
-    $precioMinInput.on('input', function () {
-        $minValorSpan.text($(this).val());
-        filtrarYOrdenar();
+// Eventos de filtros dinámicos (actualizado para guardar filtros)
+$('#filtro-estrellas input[type="checkbox"]').on('change', function () {
+    filtrarYOrdenar();
+    guardarEstadoFiltros();
+});
+
+$precioMinInput.on('input', function () {
+    $minValorSpan.text($(this).val());
+    filtrarYOrdenar();
+    guardarEstadoFiltros();
+});
+
+$precioMaxInput.on('input', function () {
+    $maxValorSpan.text($(this).val());
+    filtrarYOrdenar();
+    guardarEstadoFiltros();
+});
+
+$ordenPrecioSelect.on('change', function () {
+    filtrarYOrdenar();
+    guardarEstadoFiltros();
+});
+
+$ordenValoracionSelect.on('change', function () {
+    filtrarYOrdenar();
+    guardarEstadoFiltros();
+});
+
+$ordenPrioridadSelect.on('change', function () {
+    filtrarYOrdenar();
+    guardarEstadoFiltros();
+});
+
+$checkboxOferta.on('change', function () {
+    filtrarYOrdenar();
+    guardarEstadoFiltros();
+});
+
+if ($selectorPaginacion.length) {
+    $selectorPaginacion.on('change', function () {
+        const valor = parseInt($(this).val());
+        productosPorPagina = valor === 0 ? productosFiltradosGlobal.length : valor;
+        paginaActual = 1;
+        mostrarResultados(productosFiltradosGlobal);
+        guardarEstadoFiltros();
     });
-    $precioMaxInput.on('input', function () {
-        $maxValorSpan.text($(this).val());
-        filtrarYOrdenar();
-    });
-    $ordenPrecioSelect.on('change', filtrarYOrdenar);
-    $ordenValoracionSelect.on('change', filtrarYOrdenar);
-    $ordenPrioridadSelect.on('change', filtrarYOrdenar);
-    $checkboxOferta.on('change', filtrarYOrdenar);
-    if ($selectorPaginacion.length) {
-        $selectorPaginacion.on('change', function () {
-            const valor = parseInt($(this).val());
-            productosPorPagina = valor === 0 ? productosFiltradosGlobal.length : valor;
-            paginaActual = 1;
-            mostrarResultados(productosFiltradosGlobal);
-        });
-    }
+}
+
 
     // Antes de ir al detalle, guardar estado
     $contenedor.on('click', '.boton-detalle', function () {
         guardarEstadoFiltros();
         localStorage.setItem('mantenerFiltros', "true");
     });
+    document.querySelector('a[aria-label="Ir al carrito"]')?.addEventListener('click', function () {
+    if (window.location.pathname.endsWith('/search.html')) {
+        guardarEstadoFiltros();
+        localStorage.setItem('mantenerFiltros', "true");
+    }
+});
+
 });

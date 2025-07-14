@@ -7,5 +7,23 @@
     "phone": "666666666",
     "postalcode": "66666",
     "city": "Madrid"
+  },
+  {
+    "username": "Prueba60",
+    "password": "$2b$10$3y/57yMGYjERva.Xwq5d5en8XOiGnT6x3y4YlceI0NlDCxE08gb1K",
+    "email": "prueba60@gmail.com",
+    "birthdate": "1111-11-11",
+    "phone": "666666666",
+    "postalcode": "66666",
+    "city": "Madrid"
+  },
+  {
+    "username": "Prueba70",
+    "password": "$2b$10$bFI9rpsrM2CMp/Ntcu7KaumefeYjM4bwYj2bCLmZF4G9q7EauyUT6",
+    "email": "prueba70@gmail.com",
+    "birthdate": "1111-11-11",
+    "phone": "111111111",
+    "postalcode": "66666",
+    "city": "Madrid"
   }
 ]
