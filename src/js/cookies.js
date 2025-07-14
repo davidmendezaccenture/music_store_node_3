@@ -1,4 +1,7 @@
-$(document).ready(function() {
+// cookies.js
+
+// ✅ Encapsulamos toda la lógica en una función global para poder llamarla tras cargar dinámicamente el modal
+window.inicializarModalCookies = function () {
   // 1. Detectamos si el usuario está logueado o no
   const usuario = localStorage.getItem('usuario') || null;
 
@@ -29,16 +32,15 @@ $(document).ready(function() {
   cookieModal.show();
 
   // 8. Acción al hacer clic en "Aceptar" cookies
-  $('#acceptCookiesBtn').on('click', function() {
+  $('#acceptCookiesBtn').off('click').on('click', function () {
     // Guardamos en localStorage que este usuario (o invitado) aceptó las cookies
     localStorage.setItem(claveCookiesAceptadas, 'true');
     cookieModal.hide(); // Ocultamos el modal
   });
 
   // 9. Acción al hacer clic en "Más adelante"
-  $('#postponeCookiesBtn').on('click', function() {
+  $('#postponeCookiesBtn').off('click').on('click', function () {
     // No guardamos nada → así el modal volverá a mostrarse en otras páginas
     cookieModal.hide(); // Solo cerramos el modal momentáneamente
   });
-});
-
+};
