@@ -177,6 +177,8 @@ function ocultarErrorCampo(idInput) {
   // === REGISTRO ===
 $('#form-registro').submit(function (e) {
   e.preventDefault();
+  //Si venimos de search, mantenemos los filtros
+  localStorage.setItem('mantenerFiltros', 'true');
 
   const nuevoUsuario = {
     username: $('#regUsername').val().trim(),

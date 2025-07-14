@@ -50,8 +50,14 @@ if (btnContainerDesktop) {
   logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('usuario');
 
+    if (window.location.pathname.endsWith("/search.html")) {
+      localStorage.setItem('mantenerFiltros', "true");
+    }
+    
+
     const modal = new bootstrap.Modal(document.getElementById('logoutModal'));
     modal.show();
+    
 
     // Redirige o recarga después de 2 segundos
     setTimeout(() => {
@@ -59,7 +65,6 @@ if (btnContainerDesktop) {
     }, 2000);
   });
 }
-
 }
 
 function mostrarBotonLogin() {

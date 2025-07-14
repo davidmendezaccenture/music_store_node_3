@@ -13,32 +13,77 @@ $(document).ready(function () {
     const $minValorSpan = $('#min-valor');
     const $maxValorSpan = $('#max-valor');
 
-    $precioMinInput.on('input', function() {
-        $minValorSpan.text($(this).val());
-        filtrarYOrdenar();
-    });
-
-    $precioMaxInput.on('input', function() {
-        $maxValorSpan.text($(this).val());
-        filtrarYOrdenar();
-    });
-
-
-    let productosOriginales = []; // datos originales sin filtrar
-    let productosFiltradosGlobal = []; // datos filtrados y ordenados que se muestran
+    let productosOriginales = [];
+    let productosFiltradosGlobal = [];
     let paginaActual = 1;
     let productosPorPagina = 6;
 
-    if ($selectorPaginacion.length) {
-        $selectorPaginacion.on('change', function () {
-            const valor = parseInt($(this).val());
-            productosPorPagina = valor === 0 ? productosFiltradosGlobal.length : valor;
-            paginaActual = 1;
-            mostrarResultados(productosFiltradosGlobal);
-        });
+    function guardarEstadoFiltros() {
+        const estado = {
+            q: $form.find('[name="q"]').val(),
+            category: $form.find('[name="category"]').val(),
+            precioMin: $precioMinInput.val(),
+            precioMax: $precioMaxInput.val(),
+            ordenPrecio: $ordenPrecioSelect.val(),
+            ordenValoracion: $ordenValoracionSelect.val(),
+            ordenPrioridad: $ordenPrioridadSelect.val(),
+            checkboxOferta: $checkboxOferta.is(':checked'),
+            estrellas: obtenerEstrellasSeleccionadas(),
+            productosPorPagina: productosPorPagina,
+            paginaActual: paginaActual
+        };
+        localStorage.setItem('estadoFiltros', JSON.stringify(estado));
     }
 
-    // FILTRADO + ORDENACIÓN (cliente) sobre productosOriginales
+    function restaurarEstadoFiltros() {
+        const estadoStr = localStorage.getItem('estadoFiltros');
+        if (!estadoStr) return false;
+        try {
+            const estado = JSON.parse(estadoStr);
+            $form.find('[name="q"]').val(estado.q || '');
+            $form.find('[name="category"]').val(estado.category || '');
+            $precioMinInput.val(estado.precioMin || '');
+            $minValorSpan.text(estado.precioMin || '');
+            $precioMaxInput.val(estado.precioMax || '');
+            $maxValorSpan.text(estado.precioMax || '');
+            $ordenPrecioSelect.val(estado.ordenPrecio || 'asc');
+            $ordenValoracionSelect.val(estado.ordenValoracion || 'asc');
+            $ordenPrioridadSelect.val(estado.ordenPrioridad || 'precio');
+            $checkboxOferta.prop('checked', estado.checkboxOferta || false);
+            productosPorPagina = estado.productosPorPagina || 6;
+            paginaActual = estado.paginaActual || 1;
+            if ($selectorPaginacion.length) {
+                $selectorPaginacion.val(productosPorPagina);
+            }
+            $('#filtro-estrellas input[type="checkbox"]').each(function () {
+                const val = parseInt($(this).val());
+                $(this).prop('checked', estado.estrellas.includes(val));
+            });
+            return true;
+        } catch (e) {
+            console.error('Error restaurando estadoFiltros:', e);
+            return false;
+        }
+    }
+
+    function obtenerEstrellasSeleccionadas() {
+        return $('#filtro-estrellas input[type="checkbox"]:checked')
+            .map(function () {
+                return parseInt(this.value);
+            }).get();
+    }
+
+    function buscarYMostrar(query, category) {
+        $.getJSON(`/buscar`, { q: query, category: category })
+            .done(function (productos) {
+                productosOriginales = productos;
+                filtrarYOrdenar();
+            })
+            .fail(function (err) {
+                console.error('Error al obtener productos:', err);
+            });
+    }
+
     function filtrarYOrdenar() {
         const estrellasSeleccionadas = obtenerEstrellasSeleccionadas();
         const minPrecio = parseFloat($precioMinInput.val());
@@ -47,11 +92,9 @@ $(document).ready(function () {
 
         let filtrados = productosOriginales.filter(producto => {
             const ratingOk = estrellasSeleccionadas.length === 0 || estrellasSeleccionadas.includes(producto.rating);
-
             const precio = producto.enOferta === "sí" ? parseFloat(producto.offerPrice) : parseFloat(producto.price);
             const minPrecioOk = isNaN(minPrecio) || precio >= minPrecio;
             const maxPrecioOk = isNaN(maxPrecio) || precio <= maxPrecio;
-
             const ofertaOk = !soloEnOferta || producto.enOferta === "sí";
             return ratingOk && minPrecioOk && maxPrecioOk && ofertaOk;
         });
@@ -61,7 +104,6 @@ $(document).ready(function () {
             const pB = Number(b.enOferta === 'sí' ? b.offerPrice : b.price) || 0;
             const ordenPrecio = $ordenPrecioSelect.val() === 'asc' ? pA - pB : pB - pA;
             const ordenValoracion = $ordenValoracionSelect.val() === 'asc' ? a.rating - b.rating : b.rating - a.rating;
-
             if ($ordenPrioridadSelect.val() === 'precio') {
                 return ordenPrecio !== 0 ? ordenPrecio : ordenValoracion;
             } else {
@@ -70,26 +112,7 @@ $(document).ready(function () {
         });
 
         productosFiltradosGlobal = filtrados;
-        paginaActual = 1;
         mostrarResultados(productosFiltradosGlobal);
-    }
-
-    function buscarYMostrar(query, category) {
-        $.getJSON(`/buscar`, { q: query, category: category })
-            .done(function (productos) {
-                productosOriginales = productos; // guardamos los datos originales
-                filtrarYOrdenar(); // filtramos y ordenamos en cliente
-            })
-            .fail(function (err) {
-                console.error('Error al obtener productos:', err);
-            });
-    }
-
-    function obtenerEstrellasSeleccionadas() {
-        return $('#filtro-estrellas input[type="checkbox"]:checked')
-            .map(function () {
-                return parseInt(this.value);
-            }).get();
     }
 
     function mostrarResultados(productos) {
@@ -114,14 +137,12 @@ $(document).ready(function () {
         productosPagina.forEach((producto, i) => {
             const estrellas = '⭐'.repeat(producto.rating) + '☆'.repeat(5 - producto.rating);
             const ofertaBadge = producto.enOferta === "sí"
-                ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>`
-                : "";
+                ? `<div class="badge bg-danger text-white position-absolute top-0 end-0 m-2">🔥 En oferta</div>` : "";
             const precioHTML = producto.enOferta === "sí"
                 ? `<span class="precio">
                         <span class="text-muted text-decoration-line-through">${producto.price}&nbsp;€</span>
                         <span class="fw-bold text-danger ms-2">${producto.offerPrice}&nbsp;€</span>
-                    </span>`
-                : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`;
+                    </span>` : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`;
 
             const $col = $(`
                 <div class="col producto-animado" data-category="${producto.category}">
@@ -140,8 +161,7 @@ $(document).ready(function () {
                             </div>
                         </div>
                     </div>
-                </div>
-            `);
+                </div>`);
             $contenedor.append($col);
             setTimeout(() => $col.addClass('visible'), 100 + i * 100);
         });
@@ -160,7 +180,31 @@ $(document).ready(function () {
         $paginacion.addClass('fade-in-paginacion');
     }
 
+    // === FORMULARIO DE BÚSQUEDA Y RESTAURACIÓN ===
     if (esSearchPage) {
+        const mantenerFiltros = localStorage.getItem('mantenerFiltros');
+        if (mantenerFiltros === 'true') {
+            localStorage.removeItem('mantenerFiltros');
+            const paginaGuardada = localStorage.getItem('paginaProducto');
+            if (paginaGuardada) {
+                const urlParams = new URLSearchParams(paginaGuardada.split('?')[1] || '');
+                const q = urlParams.get('q') || '';
+                const cat = urlParams.get('category') || '';
+                $form.find('[name="q"]').val(q);
+                $form.find('[name="category"]').val(cat);
+                restaurarEstadoFiltros();
+                buscarYMostrar(q, cat);
+            }
+            localStorage.removeItem('mantenerFiltros');
+        } else {
+            const params = new URLSearchParams(window.location.search);
+            const q = params.get('q') || '';
+            const cat = params.get('category') || '';
+            $form.find('[name="q"]').val(q);
+            $form.find('[name="category"]').val(cat);
+            buscarYMostrar(q, cat);
+        }
+
         $form.on('submit', function (e) {
             e.preventDefault();
             const query = $(this).find('[name="q"]').val().trim();
@@ -171,23 +215,34 @@ $(document).ready(function () {
             window.history.replaceState(null, '', newUrl);
             localStorage.setItem('paginaProducto', newUrl);
         });
-
-        const params = new URLSearchParams(window.location.search);
-        const q = params.get('q') || '';
-        const cat = params.get('category') || '';
-        $form.find('[name="q"]').val(q);
-        $form.find('[name="category"]').val(cat);
-        buscarYMostrar(q, cat);
     }
 
-    $('#filtro-estrellas input[type="checkbox"]').on('change', () => {
+    // Eventos de filtros dinámicos
+    $('#filtro-estrellas input[type="checkbox"]').on('change', filtrarYOrdenar);
+    $precioMinInput.on('input', function () {
+        $minValorSpan.text($(this).val());
         filtrarYOrdenar();
     });
-
-    $precioMinInput.on('input', filtrarYOrdenar);
-    $precioMaxInput.on('input', filtrarYOrdenar);
+    $precioMaxInput.on('input', function () {
+        $maxValorSpan.text($(this).val());
+        filtrarYOrdenar();
+    });
     $ordenPrecioSelect.on('change', filtrarYOrdenar);
     $ordenValoracionSelect.on('change', filtrarYOrdenar);
     $ordenPrioridadSelect.on('change', filtrarYOrdenar);
     $checkboxOferta.on('change', filtrarYOrdenar);
+    if ($selectorPaginacion.length) {
+        $selectorPaginacion.on('change', function () {
+            const valor = parseInt($(this).val());
+            productosPorPagina = valor === 0 ? productosFiltradosGlobal.length : valor;
+            paginaActual = 1;
+            mostrarResultados(productosFiltradosGlobal);
+        });
+    }
+
+    // Antes de ir al detalle, guardar estado
+    $contenedor.on('click', '.boton-detalle', function () {
+        guardarEstadoFiltros();
+        localStorage.setItem('mantenerFiltros', "true");
+    });
 });

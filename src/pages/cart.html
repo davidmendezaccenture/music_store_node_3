@@ -49,6 +49,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+        localStorage.setItem('mantenerFiltros', 'true');
         const regreso = localStorage.getItem('paginaProducto') || '/pages/index.html';
         document.getElementById('seguir-comprando').href = regreso;
         });
