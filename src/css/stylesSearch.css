@@ -139,13 +139,14 @@ header {
 }
 
 /* Efecto hover con zoom para los íconos de la barra de navegación secundaria */
-a {
+/*Cambiamos a por li >a */
+li > a {
     display: inline-block;
     transition: transform 0.3s ease;
     background-size: 24px 24px;
 }
 
-a:hover {
+li > a:hover {
     transform: scale(1.2);
 }
 
