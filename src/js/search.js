@@ -193,6 +193,8 @@ $(document).ready(function () {
                 $form.find('[name="category"]').val(cat);
                 restaurarEstadoFiltros();
                 buscarYMostrar(q, cat);
+                $('#categorySelectMobile').val(cat).trigger('change');
+                $('#categorySelect').val(cat).trigger('change');
             }
             localStorage.removeItem('mantenerFiltros');
         } else {
