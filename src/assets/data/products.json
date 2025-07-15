@@ -7,7 +7,8 @@
         "image": "../assets/images/guitar7.png",
         "description": "Guitarra acústica de alta calidad.",
         "category": "acoustic-guitars",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/guitar2.mp3"
     },
     {
         "id": 2,
@@ -17,7 +18,8 @@
         "image": "../assets/images/guitar3.png",
         "description": "Guitarra eléctrica para músicos avanzados.",
         "category": "electric-guitars",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/guitar1.mp3"
     },
     {
         "id": 3,
@@ -27,7 +29,8 @@
         "image": "../assets/images/bass5.png",
         "description": "Bajo eléctrico con diseño ergonómico.",
         "category": "basses",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/bass1.mp3"
     },
     {
         "id": 4,
@@ -37,7 +40,8 @@
         "image": "../assets/images/guitar12.png",
         "description": "Guitarra flamenca con un diseño tradicional.",
         "category": "classical-guitars",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/guitar2.mp3"
     },
     {
         "id": 5,
@@ -47,7 +51,8 @@
         "image": "../assets/images/guitar2.png",
         "description": "Guitarra eléctrica estilo Stratocaster.",
         "category": "electric-guitars",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/guitar3.mp3"
     },
     {
         "id": 6,
@@ -57,7 +62,8 @@
         "image": "../assets/images/bass3.png",
         "description": "Bajo eléctrico ideal para jazz y funk.",
         "category": "basses",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/bass3.mp3"
     },
     {
         "id": 7,
@@ -67,7 +73,8 @@
         "image": "../assets/images/guitar7.png",
         "description": "Guitarra acústica con acabados de lujo.",
         "category": "acoustic-guitars",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/guitar2.mp3"
     },
     {
         "id": 8,
@@ -77,7 +84,8 @@
         "image": "../assets/images/guitar1.png",
         "description": "Guitarra eléctrica estilo Les Paul.",
         "category": "electric-guitars",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/guitar1.mp3"
     },
     {
         "id": 9,
@@ -87,7 +95,8 @@
         "image": "../assets/images/guitar6.png",
         "description": "Guitarra clásica con acabados de lujo.",
         "category": "classical-guitars",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/guitar2.mp3"
     },
     {
         "id": 10,
@@ -97,7 +106,9 @@
         "image": "../assets/images/guitar13.jpg",
         "description": "Guitarra clásica con acabados de lujo.",
         "category": "electric-guitars",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/guitar3.mp3"
+
     },
     {
         "id": 11,
@@ -147,7 +158,8 @@
         "image": "../assets/images/drum1.png",
         "description": "Batería acústica de alta calidad.",
         "category": "acoustic-drums",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/drums1.mp3"
     },
     {
         "id": 16,
@@ -157,7 +169,8 @@
         "image": "../assets/images/drum5.png",
         "description": "Batería electrónica compacta y versátil.",
         "category": "electronic-drums",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/drums2.mp3"
     },
     {
         "id": 17,
@@ -167,7 +180,8 @@
         "image": "../assets/images/drum3.png",
         "description": "Set de platillos de alta calidad para bateristas profesionales.",
         "category": "set-platillos",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/drums2.mp3"
     },
     {
         "id": 18,
@@ -177,7 +191,8 @@
         "image": "../assets/images/drum4.png",
         "description": "Caja de madera con un sonido cálido y resonante.",
         "category": "acoustic-drums",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/drums3.mp3"
     },
     {
         "id": 19,
@@ -187,7 +202,8 @@
         "image": "../assets/images/drum5.png",
         "description": "Pedal de bombo con acción suave y precisa.",
         "category": "electronic-drums",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/drums1.mp3"
     },
     {
         "id": 20,
@@ -197,7 +213,8 @@
         "image": "../assets/images/drum5.png",
         "description": "Set completo de batería para principiantes y avanzados.",
         "category": "set-platillos",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/drums2.mp3"
     },
     {
         "id": 21,
@@ -207,7 +224,8 @@
         "image": "../assets/images/guitar4.png",
         "description": "Sonido potente, ideal para rock y metal.",
         "category": "electric-guitars",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/guitar1.mp3"
     },
     {
         "id": 22,
@@ -217,7 +235,8 @@
         "image": "../assets/images/guitar8.png",
         "description": "Sonido potente, ideal para rock y metal.",
         "category": "electric-guitars",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/guitar3.mp3"
     },
     {
         "id": 23,
@@ -227,7 +246,8 @@
         "image": "../assets/images/guitar11.png",
         "description": "Cuerpo de madera clara, cuerda de nylon. Ideal para principiantes.",
         "category": "classical-guitars",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/guitar2.mp3"
     },
 
     {
@@ -238,7 +258,8 @@
         "image": "../assets/images/key1.png",
         "description": "Teclado digital sonidos profesionales y y memoria de grabacion.",
         "category": "keyboards",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/keyboard1.mp3"
     },
 
     {
@@ -249,7 +270,8 @@
         "image": "../assets/images/key2.jpg",
         "description": "Teclado portátil con 61 teclas y funciones educativas.",
         "category": "keyboards",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/keyboard2.mp3"
     },
     {
         "id": 26,
@@ -259,7 +281,8 @@
         "image": "../assets/images/key3.jpg",
         "description": "Teclado digital con conectividad Bluetooth y sonidos profesionales.",
         "category": "keyboards",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/keyboard2.mp3"
     },
     {
         "id": 27,
@@ -269,7 +292,8 @@
         "image": "../assets/images/sintet2.png",
         "description": "Sintetizador analógico-polifónico con secuenciador integrado.",
         "category": "synthesizers",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/synthesizer1.mp3"
     },
     {
         "id": 28,
@@ -279,7 +303,8 @@
         "image": "../assets/images/sintet1.png",
         "description": "Sintetizador analógico compacto con gran potencia sonora.",
         "category": "synthesizers",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/synthesizer2.mp3"
     },
     {
         "id": 29,
@@ -289,6 +314,7 @@
         "image": "../assets/images/sintet3.png",
         "description": "Sintetizador digital experimental con teclado táctil.",
         "category": "synthesizers",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/synthesizer1.mp3"
     }
 ]
