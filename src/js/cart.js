@@ -95,36 +95,48 @@ function mostrarCarrito() {
       totalCarrito += subtotal;
 
       const itemHTML = `
-        <li class="item-carrito list-group-item border rounded-3 shadow-sm p-3 mb-3 d-flex align-items-center mx-auto"
-          style="max-width: 700px; width: 100%;" data-id="${item.id}">
-          <div style="width: 80px; flex-shrink: 0;">
-            <img src="${image}" alt="${name}" style="max-width: 100%; height: auto;">
-          </div>
-          <div class="flex-grow-1 d-flex justify-content-center">
-            <div class="d-flex gap-4 align-items-center" style="max-width: 400px;">
-              <div class="d-flex flex-column align-items-center gap-2" style="min-width: 150px;">
-                <strong class="text-center">${name}</strong> 
-                <div class="d-flex align-items-center gap-2">
-                  <button class="btn btn-outline-secondary btn-sm btn-restar">−</button>
-                  <span class="cantidad">${cantidad}</span>
-                  <button class="btn btn-outline-secondary btn-sm btn-sumar">+</button>
-                </div>
-              </div>
-              <div class="item-precio">
-                <div class="precio">
-                  <span>Precio:</span> ${offerPrice.toFixed(2)} €
-                </div>
-                <div id="subtotal" class="subtotal-container">
-                  <strong>Subtotal:</strong>
-                  <span class="subtotal-amount">${subtotal.toFixed(2)} €</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button class="btn btn-sm btn-outline-danger btn-eliminar ms-auto" title="Eliminar" style="font-size: 1.25rem; line-height: 1;">
-            <i class="bi bi-trash"></i>
-          </button>
-        </li>
+<li class="item-carrito list-group-item border rounded-3 shadow-sm p-3 mb-3 d-flex align-items-center mx-auto"
+    style="max-width: 700px; width: 100%;" data-id="${item.id}">
+  
+  <!-- Imagen con ancho fijo -->
+  <div style="width: 80px; flex-shrink: 0;">
+    <img src="${image}" alt="${name}" style="max-width: 100%; height: auto;">
+  </div>
+  
+  <!-- Contenido central: nombre, cantidad, precios -->
+  <div class="flex-grow-1 d-flex justify-content-center flex-wrap">
+    <div class="d-flex gap-3 align-items-center flex-wrap" style="max-width: 400px;">
+
+      <!-- Nombre y controles cantidad -->
+      <div class="d-flex flex-column align-items-center gap-1" style="min-width: 130px;">
+        <strong class="text-center mb-1">${name}</strong>
+        <div class="d-flex align-items-center gap-1">
+          <button class="btn btn-outline-secondary btn-sm btn-restar" style="padding: 0.25rem 0.4rem;">−</button>
+          <span class="cantidad">${cantidad}</span>
+          <button class="btn btn-outline-secondary btn-sm btn-sumar" style="padding: 0.25rem 0.4rem;">+</button>
+        </div>
+      </div>
+
+      <!-- Precios: precio y subtotal -->
+      <div class="item-precio text-end" style="min-width: 120px;">
+        <div class="precio mb-1" style="font-size: 0.9rem;">
+          <span>Precio:</span> ${offerPrice.toFixed(2)} €
+        </div>
+        <div id="subtotal" class="subtotal-container" style="justify-content: flex-end; font-size: 0.9rem;">
+          <strong>Subtotal:</strong>
+          <span class="subtotal-amount ms-1">${subtotal.toFixed(2)} €</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Botón eliminar más pegado -->
+  <button class="btn btn-sm btn-outline-danger btn-eliminar ms-2" title="Eliminar"
+          style="font-size: 1.1rem; line-height: 1; padding: 0.25rem 0.5rem;">
+    <i class="bi bi-trash"></i>
+  </button>
+</li>
       `;
       $contenedor.append(itemHTML);
     } else {
