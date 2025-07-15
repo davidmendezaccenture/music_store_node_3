@@ -190,6 +190,8 @@ $(document).ready(function () {
     if (esSearchPage) {
         const mantenerFiltros = localStorage.getItem('mantenerFiltros');
         if (mantenerFiltros === 'true') {
+            //Eliminamos por si vamos a otra página, que los filtros no se mantengan
+            localStorage.removeItem('mantenerFiltros');
             const paginaGuardada = localStorage.getItem('paginaProducto');
             if (paginaGuardada) {
                 const urlParams = new URLSearchParams(paginaGuardada.split('?')[1] || '');
