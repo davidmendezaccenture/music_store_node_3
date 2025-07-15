@@ -105,18 +105,6 @@ async function loadProductDetail() {
       });
     }
 
-    // ✅ Añadimos el event listener para agregar al carrito
-    const btn = document.getElementById("btnAgregarAlCarrito");
-    if (btn) {
-      btn.addEventListener("click", () => {
-        if (typeof addToCart === "function") {
-          addToCart(product.id);
-        } else {
-          console.error("❌ No se encontró la función global addToCart.");
-        }
-      });
-    }
-
     // ✅ Event listener para el botón de reproducción del clip
     const audioBtn = document.getElementById("btnAudio");
     if (audioBtn && product.audioClip) {
