@@ -2,8 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const pedidoJSON = localStorage.getItem('ultimoPedido');
     if (!pedidoJSON) {
         document.body.innerHTML = `
+        <div class="d-flex flex-column justify-content-center align-items-center vh-100 text-center p-3">
             <h2>❌ No se encontró ningún pedido reciente.</h2>
-            <a href="index.html">Volver a la tienda</a>
+            <a href="index.html" class="btn btn-primary mt-3">Volver a la tienda</a>
+        </div>
         `;
         return;
     }
@@ -203,8 +205,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Descargar el PDF
-        doc.save(`factura_${pedidoId}.pdf`);
-        spinner.style.display = 'none';
+        const pdfBlob = doc.output('blob');
+        const blobUrl = URL.createObjectURL(pdfBlob);
+        window.open(blobUrl, '_blank');
     });
 
 

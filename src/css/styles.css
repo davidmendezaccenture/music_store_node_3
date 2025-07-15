@@ -1367,6 +1367,7 @@ section.pre-footer .container {
 section.pre-footer .pre-footer {
   padding-top: 0.5rem !important;  /* Reduce espacio arriba */
   padding-bottom: 0.5rem !important; /* Reduce espacio abajo */
+  border:none;
 }
 
 
