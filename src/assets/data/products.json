@@ -118,7 +118,8 @@
         "image": "../assets/images/amp2.png",
         "description": "Amplificador de guitarra con sonido clásico.",
         "category": "amplifiers",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/guitar3.mp3"
     },
     {
         "id": 12,
@@ -128,7 +129,8 @@
         "image": "../assets/images/amp6.png",
         "description": "Amplificador versátil para todos los estilos.",
         "category": "amplifiers",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/guitar2.mp3"
     },
     {
         "id": 13,
@@ -138,7 +140,8 @@
         "image": "../assets/images/pedal1.png",
         "description": "Pedal de efectos para un sonido potente.",
         "category": "effect-pedals",
-        "enOferta": "sí"
+        "enOferta": "sí",
+        "audioClip": "../assets/audio/guitar1.mp3"
     },
     {
         "id": 14,
@@ -148,7 +151,8 @@
         "image": "../assets/images/pedal2.png",
         "description": "Pedal de efectos para un sonido ambiental.",
         "category": "effect-pedals",
-        "enOferta": "no"
+        "enOferta": "no",
+        "audioClip": "../assets/audio/guitar1.mp3"
     },
     {
         "id": 15,
