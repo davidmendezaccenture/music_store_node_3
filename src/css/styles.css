@@ -1338,3 +1338,7 @@ header * {
     z-index: 1 !important;
 }
 
+#categorySelectMobile,
+#categorySelect {
+  background-color: #ffffff !important;
+}
