@@ -157,6 +157,7 @@ function mostrarMensajeCarritoVacio() {
 
   $('#envio, #totalSinEnvio, #total').text('0.00 €');
   descuentoAplicado = 0;
+  $('#contenedor-resumen').css('min-height', '');
 }
 //Función para actualizar subtotal, descuento, gastos de envío y total
 function actualizarGastosYTotal() {
