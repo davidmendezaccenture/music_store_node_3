@@ -1,3 +1,12 @@
 {
-  "guest": []
+  "guest": [],
+  "prueba50": [],
+  "David": [
+    {
+      "id": 6,
+      "cantidad": 3
+    }
+  ],
+  "Prueba60": [],
+  "Prueba70": []
 }

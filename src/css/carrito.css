@@ -1,0 +1,128 @@
+/* Contenedor carrito */
+#contenedor-carrito {
+  min-height: 166px !important;
+  margin-bottom: 0;
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ítems del carrito */
+.item-carrito {
+  margin-bottom: 8px !important;
+  padding-top: 15.5px !important;
+  padding-bottom: 15.5px !important;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los bloques bajen si no caben */
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  max-height: 200px !important;
+}
+
+.item-carrito img {
+  border-radius: 3px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 60px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.item-carrito img:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Cantidad */
+.item-carrito .cantidad {
+  display: inline-block;
+  width: 2.5ch; /* ancho para 2-3 dígitos */
+  text-align: center;
+}
+
+/* Botones restar y sumar cantidad */
+.btn-restar, .btn-sumar {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Contenedor precios */
+.item-precio {
+  flex: 0 0 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-family: inherit;
+}
+
+.item-precio .precio {
+  padding: 5px 8px;
+  font-weight: normal;
+}
+
+.subtotal-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 6px;
+}
+
+/* Animación para subtotal */
+.subtotal-anim {
+  animation: scaleSubtotal 0.3s ease;
+}
+@media (max-width: 576px) {
+  .item-carrito {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 1rem !important;
+    max-height: none !important;
+  }
+
+  .item-carrito > div,
+  .item-carrito .item-precio {
+    width: 100%;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .item-carrito .item-precio {
+    flex: unset;
+    margin-top: 0.5rem;
+  }
+
+  .item-carrito .btn-eliminar {
+    align-self: center;
+    margin-top: 0.5rem;
+    margin-left: 0;
+  }
+
+  .item-carrito img {
+    margin: 0 auto;
+  }
+    .item-carrito .flex-grow-1 > .d-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+    .item-carrito .cantidad,
+  .item-carrito .btn-restar,
+  .item-carrito .btn-sumar {
+    font-size: 1rem;
+  }
+
+  .item-carrito strong {
+    font-size: 1rem;
+  }
+}
