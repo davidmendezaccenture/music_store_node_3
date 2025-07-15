@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Revisa los productos que has añadido a tu carrito de compras. Ajusta cantidades, elimina artículos y procede al pago de forma segura y rápida.">
+    <title>Carrito - Fuzzr Music Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/stylesSearch.css">
+    <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="../css/favorites.css">
+</head>
+<body>
+    <!-- Header dinámico -->
+    <div id="header-container"></div>
+
+
+<main class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4"><i class="bi bi-heart-fill text-danger me-2"></i>Mis Favoritos</h1>
+                
+                <div id="favoritesContainer" class="row row-cols-1 row-cols-md-3 g-4">
+                    <!-- Los productos favoritos se cargarán aquí -->
+                </div>
+                
+                <div id="emptyFavorites" class="text-center py-5 d-none">
+                    <i class="bi bi-heart text-muted" style="font-size: 3rem;"></i>
+                    <h3 class="mt-3">No tienes productos favoritos</h3>
+                    <p class="text-muted">Explora nuestro catálogo y guarda tus productos favoritos</p>
+                    <a href="/pages/guitar.html" class="btn btn-primary mt-3">Ver productos</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Prefooter y footer dinámicos -->
+    <div id="prefooter-container"></div>
+    <div id="footer-container"></div>
+
+    <!-- Modales -->
+    <div id="modals-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="../js/loader.js"></script>
+    <script src="../js/import-modals.js"></script>
+    <script src="../js/chatbot.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        localStorage.setItem('mantenerFiltros', 'true');
+        const regreso = localStorage.getItem('paginaProducto') || '/pages/index.html';
+        document.getElementById('seguir-comprando').href = regreso;
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Cargar favoritos al abrir la página
+        $(function() {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const container = $('#favoritesContainer');
+            const emptyMessage = $('#emptyFavorites');
+
+            if (favorites.length === 0) {
+                container.hide();
+                emptyMessage.removeClass('d-none');
+            } else {
+                emptyMessage.addClass('d-none');
+                
+                favorites.forEach(product => {
+                    const productCard = `
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="${product.image}" class="card-img-top" alt="${product.name}" style="height: 180px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title">${product.name}</h5>
+                                    <p class="card-text text-primary fw-bold">${product.price} €</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex gap-2">
+                                    <button class="btn btn-outline-danger flex-grow-1 remove-favorite" data-product-id="${product.id}">
+                                        <i class="bi bi-trash me-2"></i>Eliminar
+                                    </button>
+                                    <a href="/pages/product-detail.html?productId=${product.id}" class="btn btn-primary flex-grow-1">
+                                        <i class="bi bi-eye me-2"></i>Ver
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.append(productCard);
+                });
+
+                // Evento para eliminar favoritos
+                $('.remove-favorite').click(function() {
+                    const productId = $(this).data('product-id');
+                    const favorites = JSON.parse(localStorage.getItem('favorites'));
+                    const updatedFavorites = favorites.filter(item => item.id !== productId);
+                    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+                    updateFavoritesCounter();
+                    $(this).closest('.col').fadeOut(300, function() {
+                        $(this).remove();
+                        if ($('#favoritesContainer').children().length === 0) {
+                            emptyMessage.removeClass('d-none');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

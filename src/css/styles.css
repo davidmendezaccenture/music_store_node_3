@@ -1424,3 +1424,81 @@ section.pre-footer .pre-footer {
         flex-shrink: 0;
     }
 }
+/* Estilos para favoritos */
+.favorite-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    z-index: 1100;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+.favorite-notification.added {
+    background-color: #28a745;
+}
+
+.favorite-notification.removed {
+    background-color: #dc3545;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(20px); }
+}
+
+/* Estilos para la página de favoritos */
+#favoritesContainer .card {
+    transition: transform 0.3s ease;
+}
+
+#favoritesContainer .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.remove-favorite {
+    transition: all 0.3s ease;
+}
+
+.remove-favorite:hover {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.add-to-favorites {
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.add-to-favorites:hover {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.bi-heart-fill {
+    color: #dc3545;
+}
+
+/* Página de favoritos */
+#favoritesContainer .card {
+    transition: transform 0.3s ease;
+}
+
+#favoritesContainer .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.remove-favorite {
+    transition: all 0.3s ease;
+}
+
+.remove-favorite:hover {
+    background-color: #dc3545 !important;
+    color: white !important;
+}

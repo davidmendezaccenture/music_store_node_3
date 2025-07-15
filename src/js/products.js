@@ -86,28 +86,32 @@ $(document).ready(function () {
 
           const $col = $(`
             <div class="col producto-animado" data-category="${producto.category}">
-              <div class="card h-100 d-flex flex-column position-relative" role="article" aria-label="${producto.name}" style="max-width: 300px; margin: 0 auto;">
-                ${ofertaBadge}
-                <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="Imagen de ${producto.name}" style="height: 130px; object-fit: cover;">
-                <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
-                  <h2 class="card-title fw-bold" style="font-size: 0.95rem; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}</h2>
-                  <p class="card-text" style="font-size: 0.85rem; min-height: 75px; max-height: 75px; overflow-y: auto; margin-bottom: 2px; scrollbar-width: thin;">${producto.description}</p>
-                  <div class="espacio-inferior mt-auto d-flex flex-column gap-1">
-                    <div class="precio fw-bold" aria-label="Precio del producto">${precioHTML}</div>
-                    <p class="valoracion" style="font-size: 0.8rem; margin: 0;" aria-label="Valoración del producto">${estrellas}</p>
-                    ${audioControls}
-                    <div class="d-flex gap-1 mt-2">
-                      <button class="btn btn-sm btn-primary flex-fill d-flex justify-content-center align-items-center agregar-carrito" data-id="${producto.id}" aria-label="Añadir ${producto.name} al carrito">
-                        <i class="bi bi-cart me-2"></i>Añadir
+                  <div class="card h-100 d-flex flex-column position-relative" role="article" aria-label="${producto.name}" style="max-width: 300px; margin: 0 auto;">
+                      ${ofertaBadge}
+                      <button class="btn btn-sm btn-outline-danger position-absolute top-0 start-0 m-2 p-1 add-to-favorites" 
+                              data-product-id="${producto.id}"
+                              data-product-name="${producto.name}"
+                              data-product-price="${producto.enOferta === "sí" ? producto.offerPrice : producto.price}"
+                              data-product-image="${producto.image.replace('..', '')}"
+                              aria-label="Añadir a favoritos">
+                          <i class="bi bi-heart${isInFavorites(producto.id) ? '-fill' : ''}"></i>
                       </button>
-                      <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary flex-fill d-flex justify-content-center align-items-center boton-detalle" aria-label="Ver detalle del producto ${producto.name}">
-                        <i class="bi bi-eye"></i>Detalle
-                      </a>
-                    </div>
+                      <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="Imagen de ${producto.name}" style="height: 130px; object-fit: cover;">
+                      <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
+                          <h2 class="card-title fw-bold" style="font-size: 0.95rem; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}</h2>
+                          <p class="card-text" style="font-size: 0.85rem; min-height: 75px; max-height: 75px; overflow-y: auto; margin-bottom: 2px; scrollbar-width: thin;">${producto.description}</p>
+                          <div class="espacio-inferior mt-auto d-flex flex-column gap-1">
+                              <div class="precio fw-bold" aria-label="Precio del producto">${precioHTML}</div>
+                              <p class="valoracion" style="font-size: 0.8rem; margin: 0;" aria-label="Valoración del producto">${estrellas}</p>
+                              ${audioControls}
+                              <div class="d-flex gap-1 mt-2">
+                                  <button class="btn btn-sm btn-primary flex-fill d-flex justify-content-center align-items-center agregar-carrito" data-id="${producto.id}" aria-label="Añadir ${producto.name} al carrito"><i class="bi bi-cart me-2"></i>Añadir</button>
+                                  <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary flex-fill d-flex justify-content-center align-items-center boton-detalle" aria-label="Ver detalle del producto ${producto.name}"><i class="bi bi-eye"></i>Detalle</a>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
               </div>
-            </div>
           `);
 
           container.append($col);
@@ -148,4 +152,40 @@ $(document).ready(function () {
     const filtro = $(this).val();
     mostrarProductos(filtro);
   });
+  // Función para verificar si un producto está en favoritos
+    function isInFavorites(productId) {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        return favorites.some(item => item.id === productId);
+    }
+
+    // Manejador de clic para favoritos
+    $(document).on('click', '.add-to-favorites', function() {
+        const $btn = $(this);
+        const productId = $btn.data('product-id');
+        const productName = $btn.data('product-name');
+        const productPrice = $btn.data('product-price');
+        const productImage = $btn.data('product-image');
+        
+        const wasAdded = addToFavorites(productId, productName, productPrice, productImage);
+        $btn.find('i').toggleClass('bi-heart bi-heart-fill');
+        showFavoriteNotification(wasAdded);
+    });
+
+    function showFavoriteNotification(added) {
+        const toast = $(`
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+                <div class="toast align-items-center text-white ${added ? 'bg-success' : 'bg-danger'} border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            ${added ? 'Añadido a favoritos' : 'Eliminado de favoritos'}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        `);
+        
+        $('body').append(toast);
+        setTimeout(() => toast.remove(), 2000);
+    }
 });

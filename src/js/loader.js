@@ -19,6 +19,7 @@ $(function () {
         '../js/app.js',
         '../js/login-ui.js',
         '../js/index.js',
+        '../js/favorites.js',
         '../js/products.js',
         '../js/category.js',
         '../js/search.js'
@@ -62,7 +63,8 @@ $(function () {
     'product-detail.html', 'services.html', 'sobre_nosotros.html',
     'search.html', 'registro.html', 'payment-methods.html', 'newsletter.html',
     'media.html', 'faq.html', 'contact.html', 'cart.html', 'politica-cookies.html',
-    'privacy-policy.html'
+    'privacy-policy.html', 'blog.html', 'clasificados.html', 'devoluciones.html', 'favorites.html',
+    'shipping.html', 'terms.html', 'garantia.html', 'legal.html'
   ];
   if (paginasConPrefooter.includes(paginaActual)) {
     $('#prefooter-container').load('../partials/prefooter.html');
@@ -86,4 +88,6 @@ $(function () {
   ) {
     localStorage.setItem('paginaProducto', window.location.href);
   }
+  // Para cargar favoritos
+
 });
