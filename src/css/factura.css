@@ -17,6 +17,9 @@ header {
     gap: 15px;
 }
 
+header img {
+    height: 70px;
+}
 header h1 {
     font-size: 2.75rem;
     color: #0d6efd;
@@ -165,18 +168,4 @@ button:active {
     opacity: 1;
     transform: none;
   }
-}
-@keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-slide-in {
-  animation: fadeSlideIn 0.6s ease-out;
 }

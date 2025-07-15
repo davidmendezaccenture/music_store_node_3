@@ -3,41 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Completa tu compra de forma rápida y segura en nuestro proceso de pago. Revisa tu pedido, ingresa tus datos y confirma tu compra.">
-    <title>Checkout - Fuzzr Music Store</title>
+    <title>Guitarras y Bajos - Fuzzr Music Store</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/stylesSearch.css">
-    <link rel="stylesheet" href="../css/styles.css">
+
 </head>
 <body>
     <!-- Encabezado -->
 <header class="sticky-top bg-light shadow-sm">
-  <!-- 1ª línea - logo centrado -->
-  <div class="border-bottom py-2 bg-light">
-    <div class="container">
-      <div class="row align-items-center">
-        <!-- Columna izquierda vacía para equilibrio -->
-        <div class="col-4 d-none d-md-block"></div>
+  <div class="d-flex align-items-center justify-content-between py-2 px-3">
+    <!-- Logo centrado -->
+    <a class="navbar-brand mx-auto d-flex align-items-center bg-light rounded shadow-sm" href="/pages/index.html" style="height: 70px;">
+      <img src="../assets/images/FuzzerLogo_transparent.png" alt="FUZZR Logo" height="70" />
+    </a>
 
-        <!-- Logo centrado -->
-        <div class="col-4 text-center">
-          <a class="navbar-brand d-inline-flex align-items-center" href="/pages/index.html">
-            <img src="../assets/images/FuzzerLogo_transparent.png" alt="Fuzzr Logo" height="50" class="me-2">
-          </a>
-        </div>
-
-        <!-- Pago seguro alineado a la derecha -->
-        <div class="col-4 d-flex justify-content-end align-items-center text-secondary fs-5">
-          <i class="bi bi-lock-fill me-2 fs-4"></i>
-          <span class="fw-semibold">Pago seguro</span>
-        </div>
-      </div>
+    <!-- Pago seguro al final (derecha) -->
+    <div class="d-flex align-items-center text-secondary fs-5">
+      <i class="bi bi-lock-fill me-2 fs-4"></i>
+      <span class="fw-semibold">Pago seguro</span>
     </div>
   </div>
 </header>
 
-<main class="fade-slide-in">
+<main class ="fade-slide-in">
   <div class="container my-5 contenidoCheckout">
     <div class="row g-4">
       <!-- Columna izquierda: formulario de datos -->
@@ -187,7 +176,7 @@
       <!-- Columna 2: Ventajas -->
       <div class="col-md-4 mb-4 mb-md-0">
         <div class="pre-footer-card h-100 p-4">
-          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Ventajas Fuzzr</h3>
+          <h3 class="h5 mb-4 text-uppercase fw-bold border-bottom pb-2">Ventajas RaiRock</h3>
           <ul class="list-unstyled">
             <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Garantía de 2 años</li>
             <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Devoluciones fáciles</li>
@@ -224,7 +213,7 @@
     <!-- Footer -->
     <footer class="bg-dark text-white py-3 pie-de-pagina">
         <div class="container text-center ">
-            <p class="mb-0">&copy; <span id="currentYear"></span> Fuzzr Music Store. Todos los derechos reservados.</p>
+            <p class="mb-0">&copy; <span id="currentYear"></span> RaiRock Music Store. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -235,9 +224,12 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Modales de login y error importados dinámicamente -->
     <div id="modals-container"></div>
-    <script src="../js/loader.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/login-ui.js"></script>
+    <script src="../js/search.js"></script>
     <script src="../js/checkout.js"></script>
     <script src="../js/import-modals.js"></script>
     <!-- Eliminada lógica duplicada de apertura automática del modal de login, ahora centralizada en login-ui.js -->
