@@ -2,17 +2,14 @@ $(document).ready(function () {
   const container = $('#productosContainer');
   const paginaActual = window.location.pathname.split('/').pop();
 
-  // Categorías permitidas por página
   const categoriasPorPagina = {
     'guitar.html': ['acoustic-guitars', 'classical-guitars', 'electric-guitars', 'basses'],
     'drums.html': ['acoustic-drums', 'electronic-drums', 'set-platillos'],
     'keyboard.html': ['keyboards', 'synthesizers']
   };
 
-  // Categorías válidas para esta página
   const categoriasValidas = categoriasPorPagina[paginaActual] || [];
 
-  // Mapeo de filtros según página actual
   const mapasPorPagina = {
     'guitar.html': {
       "Acústica": "acoustic-guitars",
@@ -36,30 +33,26 @@ $(document).ready(function () {
 
   const categoriaMap = mapasPorPagina[paginaActual] || {};
 
-  // Mostrar productos según filtro
-  function mostrarProductos(filtro = "Todas") {
-    // Obtenemos la categoría para el filtro
-    const categoriaSeleccionada = categoriaMap[filtro];
+  let currentAudio = null;
 
-    // Para "Todas" o "all", enviamos categoría vacía para que el backend no filtre por categoría
+  function mostrarProductos(filtro = "Todas") {
+    const categoriaSeleccionada = categoriaMap[filtro];
     const categoriaQuery = (categoriaSeleccionada === 'all') ? '' : categoriaSeleccionada;
-    //Almacenamos la altura para evitar que el footer suba al cambiar de categoría
+
     const alturaActual = container.height();
     container.css('min-height', `${alturaActual}px`);
+
     $.ajax({
       url: '/buscar',
       method: 'GET',
       dataType: 'json',
       data: {
-        q: '', // si quieres que haya búsqueda por texto, ajusta aquí
+        q: '',
         category: categoriaQuery
       },
       success: function (data) {
-        //Añadido para evitar el parpadeo en la zona de productos (sube y baja el footer)
-
         container.empty();
 
-        // Aquí filtramos localmente por las categorías válidas para la página, en caso que backend no filtre
         const productosFiltrados = data.filter(p => {
           if (categoriaSeleccionada === 'all' || categoriaSeleccionada === '') {
             return categoriasValidas.includes(p.category);
@@ -80,34 +73,47 @@ $(document).ready(function () {
                </span>`
             : `<span class="fw-bold precio">${producto.price}&nbsp;€</span>`;
 
+          const audioControls = producto.audioClip ? `
+            <div class="audio-controls d-flex gap-2 mt-2">
+              <button class="btn btn-outline-primary btn-sm play-audio" data-audio="${producto.audioClip}" aria-label="Reproducir clip de ${producto.name}">
+                <i class="bi bi-play-fill"></i>
+              </button>
+              <button class="btn btn-outline-secondary btn-sm stop-audio" aria-label="Detener clip de ${producto.name}">
+                <i class="bi bi-stop-fill"></i>
+              </button>
+            </div>
+          ` : '';
+
           const $col = $(`
-                <div class="col producto-animado" data-category="${producto.category}">
-                    <div class="card h-100 d-flex flex-column position-relative" role="article" aria-label="${producto.name}" style="max-width: 300px; margin: 0 auto;">${ofertaBadge} 
-                        <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="Imagen de ${producto.name}" style="height: 130px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
-                            <h2 class="card-title fw-bold" style="font-size: 0.95rem; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}
-                            </h2>
-                            <p class="card-text" style="font-size: 0.85rem; min-height: 75px; max-height: 75px; overflow-y: auto; margin-bottom: 2px; scrollbar-width: thin;">${producto.description}
-                            </p>
-                            <div class="espacio-inferior mt-auto d-flex flex-column gap-1">
-                                <div class="precio fw-bold" aria-label="Precio del producto">${precioHTML}</div>
-                                <p class="valoracion" style="font-size: 0.8rem; margin: 0;" aria-label="Valoración del producto">${estrellas}
-                                </p>
-                                <div class="d-flex gap-1 mt-2">
-                                    <button class="btn btn-sm btn-primary flex-fill d-flex justify-content-center align-items-center agregar-carrito" data-id="${producto.id}" aria-label="Añadir ${producto.name} al carrito"><i class="bi bi-cart me-2"></i>Añadir</button>
-                                    <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary flex-fill d-flex justify-content-center align-items-center boton-detalle" aria-label="Ver detalle del producto ${producto.name}"><i class="bi bi-eye "></i>Detalle</a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col producto-animado" data-category="${producto.category}">
+              <div class="card h-100 d-flex flex-column position-relative" role="article" aria-label="${producto.name}" style="max-width: 300px; margin: 0 auto;">
+                ${ofertaBadge}
+                <img src="${producto.image.replace('..', '')}" class="card-img-top img-fluid" alt="Imagen de ${producto.name}" style="height: 130px; object-fit: cover;">
+                <div class="card-body d-flex flex-column" style="padding: 0.5rem;">
+                  <h2 class="card-title fw-bold" style="font-size: 0.95rem; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${producto.name}</h2>
+                  <p class="card-text" style="font-size: 0.85rem; min-height: 75px; max-height: 75px; overflow-y: auto; margin-bottom: 2px; scrollbar-width: thin;">${producto.description}</p>
+                  <div class="espacio-inferior mt-auto d-flex flex-column gap-1">
+                    <div class="precio fw-bold" aria-label="Precio del producto">${precioHTML}</div>
+                    <p class="valoracion" style="font-size: 0.8rem; margin: 0;" aria-label="Valoración del producto">${estrellas}</p>
+                    ${audioControls}
+                    <div class="d-flex gap-1 mt-2">
+                      <button class="btn btn-sm btn-primary flex-fill d-flex justify-content-center align-items-center agregar-carrito" data-id="${producto.id}" aria-label="Añadir ${producto.name} al carrito">
+                        <i class="bi bi-cart me-2"></i>Añadir
+                      </button>
+                      <a href="/pages/product-detail.html?productId=${producto.id}" class="btn btn-sm btn-outline-secondary flex-fill d-flex justify-content-center align-items-center boton-detalle" aria-label="Ver detalle del producto ${producto.name}">
+                        <i class="bi bi-eye"></i>Detalle
+                      </a>
                     </div>
+                  </div>
                 </div>
+              </div>
+            </div>
           `);
 
           container.append($col);
-          setTimeout(() => $col.addClass('visible'), 100 + i * 100); // animación progresiva
-          //Quitamos altura mínima
+          setTimeout(() => $col.addClass('visible'), 100 + i * 100);
           setTimeout(() => {
-          productosContainer.css('min-height', '');
+          $(productosContainer).css('min-height', '');
 }, 300); // 
         });
       },
@@ -118,13 +124,28 @@ $(document).ready(function () {
     });
   }
 
-  // Carga inicial de productos al abrir la página
+  // Eventos para reproducir o detener clips de audio
+  $(document).on('click', '.play-audio', function () {
+    const audioSrc = $(this).data('audio');
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+    currentAudio = new Audio(audioSrc);
+    currentAudio.play();
+  });
+
+  $(document).on('click', '.stop-audio', function () {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+  });
+
   mostrarProductos();
 
-  // Al cambiar filtro de categoría
   $('#categoria').on('change', function () {
     const filtro = $(this).val();
     mostrarProductos(filtro);
   });
-
 });
