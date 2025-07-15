@@ -1627,5 +1627,51 @@
     "localizador": "PED-4MJICE",
     "status": "pagado",
     "createdAt": "2025-07-15T23:23:53.648Z"
+  },
+  {
+    "id": 1752622449992,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "23",
+        "nombre": "Guitarra Clásica Clara",
+        "descripcion": "Cuerpo de madera clara, cuerda de nylon. Ideal para principiantes.",
+        "cantidad": 1,
+        "precioUnitario": 150,
+        "total": 150
+      },
+      {
+        "id": "19",
+        "nombre": "Pedal de Bombo",
+        "descripcion": "Pedal de bombo con acción suave y precisa.",
+        "cantidad": 1,
+        "precioUnitario": 130,
+        "total": 130
+      },
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 1,
+        "precioUnitario": 150,
+        "total": 150
+      }
+    ],
+    "precio": {
+      "subtotal": 430,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 408.5
+    },
+    "localizador": "PED-USZ0CP",
+    "status": "pagado",
+    "createdAt": "2025-07-15T23:34:09.992Z"
   }
 ]
