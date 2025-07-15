@@ -35,17 +35,23 @@
   justify-content: space-between;
 }
 
+#team-cards .card-text {
+  flex-grow: 1; /* el texto ocupa el espacio disponible */
+  overflow: visible; /* evita el scroll interno */
+}
+
+/* Asegura que el botón queda pegado abajo */
+.btn-ver-mas {
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+}
+
 #team-cards .card-title {
   font-size: 1.1rem;
   font-weight: bold;
   color: #222;
 }
 
-#team-cards .card-text {
-  font-size: 0.95rem;
-  color: #444;
-  flex-grow: 1;
-}
 
 /* Responsivo: altura menor en móviles */
 @media (max-width: 576px) {
@@ -64,6 +70,9 @@
   #team-cards .card-text {
     font-size: 0.85rem;
   }
+  #team-cards .btn-ver-mas {
+  margin-top: auto; /* lo empuja al fondo si sobra espacio */
+}
 }
 
 /* Estilo para mejorar el modal */
@@ -91,4 +100,26 @@ main p.lead {
   object-fit: contain;
   display: block;
   margin: 0 auto;
+}
+
+/* Aumentar altura mínima de las cards para evitar scroll visual */
+#team-cards .card {
+  min-height: 450px; /* Puedes ajustar a 400 o 440 si lo prefieres */
+}
+
+/* Estilo del botón “Ver más” igual al botón azul de guitar.html */
+.btn-ver-mas {
+  background-color: #0d6efd;  /* Azul Bootstrap */
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+  width: 100%;  
+}
+
+.btn-ver-mas:hover {
+  background-color: #0b5ed7;
 }
