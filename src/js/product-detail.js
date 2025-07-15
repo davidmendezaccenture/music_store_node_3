@@ -41,7 +41,7 @@ async function loadProductDetail() {
 
     // ✅ Renderizado del detalle del producto
     document.getElementById("product-detail-container").innerHTML = `
-  <div class="card d-flex flex-column flex-md-row shadow-lg align-items-center align-md-items-start" style="max-width:900px;margin:auto;">
+  <div class="card d-flex flex-column flex-md-row shadow-lg align-items-center align-md-items-start" style="max-width:900px;margin:auto; mb-5;">
     <div class="d-flex align-items-stretch position-relative p-2" style="width:100%; max-width:300px; min-width:auto;">
       <img src="${product.image}" alt="${product.name}" class="img-fluid rounded" style="object-fit:cover; height:100%; max-width:300px; width:100%;">
       <button type="button" class="btn btn-light btn-sm position-absolute top-0 end-0 m-3" id="btnZoomImg" aria-label="Ampliar imagen">
@@ -69,7 +69,7 @@ async function loadProductDetail() {
             Añadir a la cesta
           </button>
           <a href="#" class="btn btn-outline-secondary boton-detalle" id="seguir-comprando"><i class="bi bi-bag"></i>
- Seguir comprando</a>
+            Seguir comprando</a>
         </div>
         <div class="d-flex gap-4 mt-2 align-items-center justify-content-center justify-content-md-start">
           <span class="d-flex align-items-center gap-2"><i class="bi bi-truck fs-4 text-primary"></i><small>Envío gratuito</small></span>
@@ -85,7 +85,7 @@ async function loadProductDetail() {
     const enlace = document.getElementById("seguir-comprando");
     if (enlace) {
       const ultimaPagina = localStorage.getItem("paginaProducto") || obtenerPaginaPorCategoria(product.category);
-  
+
     // Reemplaza el comportamiento por navegación controlada
     enlace.addEventListener("click", (e) => {
       e.preventDefault(); // Previene navegación por defecto del <a>
