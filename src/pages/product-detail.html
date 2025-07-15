@@ -17,6 +17,48 @@
     <!-- HEADER DINÁMICO -->
   <div id="header-container"></div>
 
+
+<!-- Botón para activar el offcanvas -->
+<button class="chatbot-like-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#servicesOffcanvas">
+    <div class="chatbot-button-content">
+        <i class="bi bi-compass-fill"></i>
+        <span>Conéctate</span>
+    </div>
+</button>
+
+<!-- Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="servicesOffcanvas">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Ponte en contacto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="contact.html">
+                    <i class="bi bi-envelope me-2"></i> Contacto
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="newsletter.html">
+                    <i class="bi bi-mailbox me-2"></i> Newsletter
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="media.html">
+                    <i class="bi bi-camera-reels me-2"></i> Media
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="faq.html">
+                    <i class="bi bi-question-circle me-2"></i> FAQ
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
   <!-- Contenido principal -->
   <main class="container mt-4 fade-slide-in" role="main">
     <!-- cards detalle de producto contenedor dinámico para la card -->

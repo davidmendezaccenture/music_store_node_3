@@ -21,6 +21,9 @@ function obtenerPaginaPorCategoria(categoria) {
   return '/pages/index.html'; // Fallback
 }
 
+// ✅ Variable para mantener referencia al audio en reproducción
+let currentAudio = null;
+
 // ✅ Carga y muestra el detalle del producto dinámicamente
 async function loadProductDetail() {
   const id = getProductIdFromUrl();
@@ -38,6 +41,13 @@ async function loadProductDetail() {
       `;
       return;
     }
+
+    // ✅ Botón de reproducción/pausa del clip si existe audioClip
+    const audioButtonHTML = product.audioClip ? `
+      <button id="btnAudio" class="btn btn-outline-primary d-flex align-items-center gap-2">
+        <i class="bi bi-play-fill" id="iconAudio"></i>Clip musical
+      </button>
+    ` : '';
 
     // ✅ Renderizado del detalle del producto
     document.getElementById("product-detail-container").innerHTML = `
@@ -64,12 +74,13 @@ async function loadProductDetail() {
         <p class="card-text text-center text-md-start">${product.description}</p>
       </div>
       <div>
-        <div class="d-flex gap-2 mb-3 justify-content-center justify-content-md-start">
+        <div class="d-flex gap-2 mb-3 justify-content-center justify-content-md-start flex-wrap">
           <button id="btnAgregarAlCarrito" class="btn btn-primary agregar-carrito" aria-label="Añadir ${product.name} a la cesta" data-id="${product.id}"><i class="bi bi-cart"></i>
             Añadir a la cesta
           </button>
           <a href="#" class="btn btn-outline-secondary boton-detalle" id="seguir-comprando"><i class="bi bi-bag"></i>
             Seguir comprando</a>
+          ${audioButtonHTML}
         </div>
         <div class="d-flex gap-4 mt-2 align-items-center justify-content-center justify-content-md-start">
           <span class="d-flex align-items-center gap-2"><i class="bi bi-truck fs-4 text-primary"></i><small>Envío gratuito</small></span>
@@ -86,15 +97,13 @@ async function loadProductDetail() {
     if (enlace) {
       const ultimaPagina = localStorage.getItem("paginaProducto") || obtenerPaginaPorCategoria(product.category);
 
-    // Reemplaza el comportamiento por navegación controlada
-    enlace.addEventListener("click", (e) => {
-      e.preventDefault(); // Previene navegación por defecto del <a>
-      //Para indicar que venimos de product-details y recargar filtros en search
-      localStorage.setItem('mantenerFiltros', 'true');
-      window.location.href = ultimaPagina; // Navega a la URL guardada
-    });
-  }
-
+      // Reemplaza el comportamiento por navegación controlada
+      enlace.addEventListener("click", (e) => {
+        e.preventDefault(); // Previene navegación por defecto del <a>
+        localStorage.setItem('mantenerFiltros', 'true');
+        window.location.href = ultimaPagina; // Navega a la URL guardada
+      });
+    }
 
     // ✅ Añadimos el event listener para agregar al carrito
     const btn = document.getElementById("btnAgregarAlCarrito");
@@ -107,6 +116,27 @@ async function loadProductDetail() {
         }
       });
     }
+
+    // ✅ Event listener para el botón de reproducción del clip
+    const audioBtn = document.getElementById("btnAudio");
+    if (audioBtn && product.audioClip) {
+      const icon = document.getElementById("iconAudio");
+      audioBtn.addEventListener("click", () => {
+        if (!currentAudio) {
+          currentAudio = new Audio(product.audioClip);
+          currentAudio.play();
+          icon.classList.remove("bi-play-fill");
+          icon.classList.add("bi-stop-fill");
+        } else {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+          currentAudio = null;
+          icon.classList.remove("bi-stop-fill");
+          icon.classList.add("bi-play-fill");
+        }
+      });
+    }
+
   } catch (error) {
     console.error("❌ Error cargando producto:", error);
     document.getElementById("product-detail-container").innerHTML = `
@@ -115,23 +145,22 @@ async function loadProductDetail() {
   }
 
   // ✅ Añado modal para ampliar imagen
-    document.addEventListener("click", function (e) {
-      // Detecta clic en el botón de la lupa
-      if (e.target.closest("#btnZoomImg")) {
-        // Obtiene la ruta de la imagen mostrada en la card
-        const imgSrc = document.querySelector(
-          "#product-detail-container img"
-        ).src;
-        // Asigna la ruta al modal
-        document.getElementById("imgZoomModal").src = imgSrc;
-        // Muestra el modal usando Bootstrap
-        const modal = new bootstrap.Modal(
-          document.getElementById("modalZoomImg")
-        );
-        modal.show();
-      }
-    });
-
+  document.addEventListener("click", function (e) {
+    // Detecta clic en el botón de la lupa
+    if (e.target.closest("#btnZoomImg")) {
+      // Obtiene la ruta de la imagen mostrada en la card
+      const imgSrc = document.querySelector(
+        "#product-detail-container img"
+      ).src;
+      // Asigna la ruta al modal
+      document.getElementById("imgZoomModal").src = imgSrc;
+      // Muestra el modal usando Bootstrap
+      const modal = new bootstrap.Modal(
+        document.getElementById("modalZoomImg")
+      );
+      modal.show();
+    }
+  });
 }
 
 // ✅ Ejecutamos al cargar la página
