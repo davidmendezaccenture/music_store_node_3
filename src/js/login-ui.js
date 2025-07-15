@@ -33,6 +33,7 @@ if (btnContainerMobile) {
   const logoutBtn = btnContainerMobile.querySelector('#logoutBtn');
   logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('usuario');
+    localStorage.removeItem('mantenerFiltros');
 
     const modal = new bootstrap.Modal(document.getElementById('logoutModal'));
     modal.show();

@@ -1581,5 +1581,51 @@
     },
     "status": "pendiente",
     "createdAt": "2025-07-15T20:20:58.469Z"
+  },
+  {
+    "id": 1752621833648,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "12",
+        "nombre": "Amplificador Fender",
+        "descripcion": "Amplificador versátil para todos los estilos.",
+        "cantidad": 1,
+        "precioUnitario": 550,
+        "total": 550
+      },
+      {
+        "id": "14",
+        "nombre": "Pedal de Reverb",
+        "descripcion": "Pedal de efectos para un sonido ambiental.",
+        "cantidad": 1,
+        "precioUnitario": 130,
+        "total": 130
+      },
+      {
+        "id": "5",
+        "nombre": "Guitarra Stratocaster",
+        "descripcion": "Guitarra eléctrica estilo Stratocaster.",
+        "cantidad": 1,
+        "precioUnitario": 550,
+        "total": 550
+      }
+    ],
+    "precio": {
+      "subtotal": 1230,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 1230
+    },
+    "localizador": "PED-4MJICE",
+    "status": "pagado",
+    "createdAt": "2025-07-15T23:23:53.648Z"
   }
 ]

@@ -398,6 +398,10 @@ function mostrarToastAgregar() {
 const checkoutBtn = document.getElementById('hacer-checkout');
 if (checkoutBtn) {
   checkoutBtn.addEventListener('click', function () {
+    if (!estaLogueado()) {
+    mostrarModalLogin();
+    return;
+  }
     window.location.href = '/pages/checkout.html';
   });
 }
