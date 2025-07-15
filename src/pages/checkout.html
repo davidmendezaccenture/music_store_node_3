@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="cp" class="form-label">Código Postal</label>
-                  <input type="text" class="form-control" id="cp" name="cp" pattern="\d{5}" title="Debe contener 5 dígitos">
+                  <input type="text" class="form-control" id="cp" name="cp" pattern="\d{5}" maxlength="5" title="Debe contener 5 dígitos">
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@
             <!-- Teléfono -->
             <div class="mb-3">
               <label for="telefono" class="form-label">Teléfono</label>
-              <input type="tel" class="form-control" id="telefono" name="telefono" pattern="\d{9}" required title="Debe contener 9 dígitos">
+              <input type="tel" class="form-control" id="telefono" name="telefono" pattern="\d{9}" maxlength="9" title="Debe contener 9 dígitos">
             </div>
 
             <!-- Email -->
