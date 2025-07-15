@@ -577,6 +577,7 @@ footer a.hover-text-white:hover {
 .card-title {
     font-size: 0.95rem;
     margin-bottom: 0.3rem;
+    /*Quito para mantener 1 linea
     min-height: 2.5em; /* fuerza que todos tengan 1 línea o 2 */
 }
 
@@ -1241,7 +1242,7 @@ header {
 }
 
 /*Boton detalle*/
-.boton-detalle {
+.boton-detalle{
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -1254,7 +1255,7 @@ header {
     background-color: #e2e6ea !important;
     color: #343a40 !important;
     text-decoration: none;
-    transform: translateY(-2px);
+    transform: translateY(-2px) !important;
 }
 
 .pagina-activa {
