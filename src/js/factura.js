@@ -239,4 +239,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     //Limpiamos localstorage
     localStorage.removeItem('ultimoPedido');
+    localStorage.removeItem('mantenerFiltros');
 });

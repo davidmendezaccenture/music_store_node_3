@@ -1454,5 +1454,132 @@
     "localizador": "PED-QIXGHN",
     "status": "pagado",
     "createdAt": "2025-07-15T18:37:16.662Z"
+  },
+  {
+    "id": 1752609310320,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "11",
+        "nombre": "Amplificador Marshall",
+        "descripcion": "Amplificador de guitarra con sonido clásico.",
+        "cantidad": 1,
+        "precioUnitario": 450,
+        "total": 450
+      }
+    ],
+    "precio": {
+      "subtotal": 450,
+      "descuentoAplicado": 15,
+      "gastosEnvio": 0,
+      "total": 382.5
+    },
+    "localizador": "PED-QCY5KJ",
+    "status": "pagado",
+    "createdAt": "2025-07-15T19:55:10.320Z"
+  },
+  {
+    "id": 1752610146286,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "tarjeta"
+    },
+    "items": [
+      {
+        "id": "4",
+        "nombre": "Guitarra Flamenca",
+        "descripcion": "Guitarra flamenca con un diseño tradicional.",
+        "cantidad": 1,
+        "precioUnitario": 180,
+        "total": 180
+      }
+    ],
+    "precio": {
+      "subtotal": 180,
+      "descuentoAplicado": 15,
+      "gastosEnvio": 0,
+      "total": 153
+    },
+    "localizador": "PED-RLPDH1",
+    "status": "pagado",
+    "createdAt": "2025-07-15T20:09:06.286Z"
+  },
+  {
+    "id": 1752610738792,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "13",
+        "nombre": "Pedal de Distorsión",
+        "descripcion": "Pedal de efectos para un sonido potente.",
+        "cantidad": 1,
+        "precioUnitario": 100,
+        "total": 100
+      },
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 1,
+        "precioUnitario": 150,
+        "total": 150
+      }
+    ],
+    "precio": {
+      "subtotal": 250,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 250
+    },
+    "localizador": "PED-7R6E11",
+    "status": "pagado",
+    "createdAt": "2025-07-15T20:18:58.792Z"
+  },
+  {
+    "id": 1752610858469,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "transferencia"
+    },
+    "items": [
+      {
+        "id": "5",
+        "nombre": "Guitarra Stratocaster",
+        "descripcion": "Guitarra eléctrica estilo Stratocaster.",
+        "cantidad": 1,
+        "precioUnitario": 550,
+        "total": 550
+      }
+    ],
+    "precio": {
+      "subtotal": 550,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 550
+    },
+    "status": "pendiente",
+    "createdAt": "2025-07-15T20:20:58.469Z"
   }
 ]
