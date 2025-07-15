@@ -44,10 +44,7 @@ $(document).ready(function () {
 
         $('#carouselPrincipal .carousel-indicators').html(indicadoresHTML);
         $('#carouselPrincipal .carousel-inner').html(itemsHTML);
-        new bootstrap.Carousel(document.getElementById('carouselPrincipal'), {
-            interval: 4000,
-            ride: 'carousel'
-        });
+
     });
 
     function seleccionarProductosAleatorios(lista, cantidad) {
