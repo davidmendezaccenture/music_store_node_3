@@ -1425,3 +1425,17 @@ section.pre-footer .pre-footer {
         flex-shrink: 0;
     }
 }
+
+
+/*botones volver en politica-cookies y privacy-policy*/
+/* Botón volver azul con hover más oscuro */
+.btn.volver {
+  background-color: #0d6efd; /* Azul Bootstrap */
+  border-color: #0d6efd;
+}
+
+.btn.volver:hover {
+  background-color: #0b5ed7; /* Más oscuro al pasar el ratón */
+  border-color: #0a58ca;
+}
+
