@@ -627,7 +627,7 @@ body {
 
 main {
     flex: 1;
-}
+    }
 /* Estilos para caja de filtros */
 
 .busquedas {
@@ -1336,25 +1336,34 @@ header * {
     position: relative !important;
     z-index: 1 !important;
 }
-/*Prefooter , sin lineas y con degradado para trandicion suave aon el main*/
+/* Pre-footer que se pega después del main */
 section.pre-footer {
   position: relative;
-  z-index: 0;
-  background-color: #f8f9fa; /* o el fondo que uses */
+  background-color: #f8f9fa;
   border-top: none;
- 
+  margin-top: 32px; /* Añade espacio entre main y pre-footer */
+  z-index: 1;
+  overflow: visible;
 }
 
-section.pre-footer::before {    
+/* Degradado de abajo hacia arriba, dentro del pre-footer */
+section.pre-footer::before {
   content: '';
-  position: absolute;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100%;
+  display: block;
   height: 24px;
-  /* Sombra invertida: va de abajo hacia arriba */
+  width: 100%;
+  margin-top: -24px; /* se solapa suavemente con el main */
   box-shadow: 0 -4px 8px -2px rgba(0, 0, 0, 0.4);
-  z-index: 1;
+}
+
+/* Asegura que el container no tenga padding extra */
+section.pre-footer .container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Ajusta los paddings internos para que los h3 estén más arriba y más pegados abajo */
+section.pre-footer .pre-footer {
+  padding-top: 0.5rem !important;  /* Reduce espacio arriba */
+  padding-bottom: 0.5rem !important; /* Reduce espacio abajo */
 }

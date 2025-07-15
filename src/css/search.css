@@ -350,3 +350,7 @@
     font-size: 0.8rem;         /* texto un poco más pequeño */
   }
 }
+
+#categorySelect {
+  background-color: #ffffff !important;
+}
