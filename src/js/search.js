@@ -67,11 +67,13 @@ $(document).ready(function () {
     }
 
     function obtenerEstrellasSeleccionadas() {
-        return $('#filtro-estrellas input[type="checkbox"]:checked')
-            .map(function () {
-                return parseInt(this.value);
-            }).get();
-    }
+    return $('#filtro-estrellas input[type="checkbox"]:checked')
+        .map(function () {
+            const val = parseInt(this.value);
+            return isNaN(val) ? null : val;
+        }).get()
+        .filter(v => v !== null);
+}
 
     function buscarYMostrar(query, category) {
         $.getJSON(`/buscar`, { q: query, category: category })

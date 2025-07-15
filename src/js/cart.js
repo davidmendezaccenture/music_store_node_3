@@ -109,7 +109,10 @@ function mostrarCarrito() {
 
       <!-- Nombre y controles cantidad -->
       <div class="d-flex flex-column align-items-center gap-1" style="min-width: 130px;">
-        <strong class="text-center mb-1">${name}</strong>
+        <strong class="text-center mb-1"
+        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px; display: inline-block;">
+        ${name}
+        </strong>
         <div class="d-flex align-items-center gap-1">
           <button class="btn btn-outline-secondary btn-sm btn-restar" style="padding: 0.25rem 0.4rem;">−</button>
           <span class="cantidad">${cantidad}</span>

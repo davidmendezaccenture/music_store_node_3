@@ -1424,5 +1424,35 @@
     "localizador": "PED-3ZRNDD",
     "status": "pagado",
     "createdAt": "2025-07-15T17:30:11.627Z"
+  },
+  {
+    "id": 1752604636662,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "24",
+        "nombre": "Teclado",
+        "descripcion": "Teclado digital sonidos profesionales y y memoria de grabacion.",
+        "cantidad": 1,
+        "precioUnitario": 899,
+        "total": 899
+      }
+    ],
+    "precio": {
+      "subtotal": 899,
+      "descuentoAplicado": 5,
+      "gastosEnvio": 0,
+      "total": 854.05
+    },
+    "localizador": "PED-QIXGHN",
+    "status": "pagado",
+    "createdAt": "2025-07-15T18:37:16.662Z"
   }
 ]
