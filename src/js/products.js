@@ -107,7 +107,7 @@ $(document).ready(function () {
           setTimeout(() => $col.addClass('visible'), 100 + i * 100); // animación progresiva
           //Quitamos altura mínima
           setTimeout(() => {
-          productosContainer.css('min-height', '');
+          $(productosContainer).css('min-height', '');
 }, 300); // 
         });
       },

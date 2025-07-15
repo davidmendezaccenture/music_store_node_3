@@ -853,7 +853,6 @@ header {
 }
 
 .navbar-brand img {
-    height: 50px;
     transition: transform 0.3s ease;
 }
 
