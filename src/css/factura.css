@@ -169,3 +169,38 @@ button:active {
     transform: none;
   }
 }
+#seguir-comprando{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: auto;
+    padding: 0.375rem 0.75rem; 
+    transition: all 0.2s ease;
+    justify-content: center;
+    text-align: center;
+
+}
+#seguir-comprando:hover{
+    background-color: #e2e6ea !important;
+    color: #343a40 !important;
+    text-decoration: none;
+    transform: translateY(-2px) !important;
+}
+#btn-descargar-pdf:hover {
+  transform: translateY(-2px) !important;
+  transition: all 0.2s ease-in-out;
+}
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-slide-in {
+  animation: fadeSlideIn 0.6s ease-out;
+}

@@ -1364,5 +1364,65 @@
     "localizador": "PED-GN5LHZ",
     "status": "pagado",
     "createdAt": "2025-07-15T12:47:10.817Z"
+  },
+  {
+    "id": 1752598872434,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "1",
+        "nombre": "Guitarra Acústica",
+        "descripcion": "Guitarra acústica de alta calidad.",
+        "cantidad": 1,
+        "precioUnitario": 150,
+        "total": 150
+      }
+    ],
+    "precio": {
+      "subtotal": 150,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 150
+    },
+    "localizador": "PED-E1I773",
+    "status": "pagado",
+    "createdAt": "2025-07-15T17:01:12.434Z"
+  },
+  {
+    "id": 1752600611627,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "25",
+        "nombre": "Teclado Yamaha PSR-E373",
+        "descripcion": "Teclado portátil con 61 teclas y funciones educativas.",
+        "cantidad": 1,
+        "precioUnitario": 299,
+        "total": 299
+      }
+    ],
+    "precio": {
+      "subtotal": 299,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 299
+    },
+    "localizador": "PED-3ZRNDD",
+    "status": "pagado",
+    "createdAt": "2025-07-15T17:30:11.627Z"
   }
 ]
