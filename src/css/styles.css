@@ -1382,3 +1382,45 @@ section.pre-footer .pre-footer {
 #categorySelect {
   background-color: #ffffff !important;
 }
+/*Para evitar username expandido en pantallas medianass*/
+#username-desktop,
+#username-mobile {
+    width: 70px;
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    align-items: center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .desktop-nav-container {
+        display: flex;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .nav-links-desktop {
+        flex-shrink: 0;
+    }
+    
+    .search-bar-desktop {
+        flex: 0 1 500px;
+        margin: 0 auto;
+        /*Estas propiedades descuadran la barra
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        */
+    }
+
+    .user-actions-desktop {
+        margin-left: auto;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+    }
+}

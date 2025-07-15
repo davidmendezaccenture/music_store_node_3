@@ -113,8 +113,8 @@ $(document).ready(function () {
           container.append($col);
           setTimeout(() => $col.addClass('visible'), 100 + i * 100);
           setTimeout(() => {
-            container.css('min-height', '');
-          }, 300);
+          $(productosContainer).css('min-height', '');
+}, 300); // 
         });
       },
       error: function (xhr, status, error) {
