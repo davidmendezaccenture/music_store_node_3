@@ -97,7 +97,7 @@ window.initMap = function () {
   // Contenido de la ventana emergente
   const infoContent = `
     <div style="max-width: 250px;">
-      <h6 class="mb-1">FUZZR Music Store </h6>
+      <h6 class="mb-1">Fuzzr Music Store</h6>
       <p class="mb-0"><strong>Dirección:</strong> Calle ACDC, Leganés<br>
       <strong>Horario:</strong> Lunes a Sábado, 10:00 - 20:00<br>
       <strong>Tel:</strong> 911 123 456</p>
@@ -112,7 +112,7 @@ window.initMap = function () {
   const marker = new google.maps.Marker({
     position: rairockLocation,
     map: map,
-    title: "FUZZR Alternative Music Store - Calle ACDC, Leganés",
+    title: "Fuzzr Music Store - Calle ACDC, Leganés",
     animation: google.maps.Animation.DROP
   });
 

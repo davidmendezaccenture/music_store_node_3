@@ -545,6 +545,7 @@ footer {
 .card-product {
     width: 100%;
     max-width: 250px;
+    height: auto !important;
     box-sizing: border-box;
     border: solid 1px;
     border-color: rgba(0, 0, 0, 0.176);
@@ -601,13 +602,14 @@ footer {
 .card-title {
     font-size: 0.95rem;
     margin-bottom: 0.3rem;
-    min-height: 3em;
+    /*Quito min-height para que no ocupen tanto
+    min-height: 3em; */
 }
 
 .card-text {
     font-size: 1rem !important;
-    min-height: 75px; /* antes: 60px */
-    max-height: 75px; /* ajusta al mismo valor */
+    min-height: 100px; /* antes: 60px */
+    max-height: 100px; /* ajusta al mismo valor */
     overflow-y: auto;
 }
 
