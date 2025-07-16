@@ -1673,5 +1673,35 @@
     "localizador": "PED-USZ0CP",
     "status": "pagado",
     "createdAt": "2025-07-15T23:34:09.992Z"
+  },
+  {
+    "id": 1752652670945,
+    "user": {
+      "nombre": "David",
+      "apellidos": "Santos Belmonte",
+      "metodoEnvio": "tienda",
+      "telefono": "653511423",
+      "email": "davidsantosbelmonte@gmail.com",
+      "metodoPago": "paypal"
+    },
+    "items": [
+      {
+        "id": "12",
+        "nombre": "Amplificador Fender",
+        "descripcion": "Amplificador versátil para todos los estilos.",
+        "cantidad": 1,
+        "precioUnitario": 550,
+        "total": 550
+      }
+    ],
+    "precio": {
+      "subtotal": 550,
+      "descuentoAplicado": 0,
+      "gastosEnvio": 0,
+      "total": 550
+    },
+    "localizador": "PED-ZUSJP8",
+    "status": "pagado",
+    "createdAt": "2025-07-16T07:57:50.945Z"
   }
 ]
