@@ -27,10 +27,14 @@ header {
 .navbar-brand {
     transition: all 0.3s ease;
     padding: 0.5rem 0;
+    
 }
 
 .navbar-brand:hover {
     transform: scale(1.03);
+}
+.cabecera {
+    background-image: url('/assets/images/imagen1.png') !important; /* ajusta la ruta si es necesario */
 }
 
 /* Barra de búsqueda mejorada */
@@ -1322,7 +1326,7 @@ header::before {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    background-image: url('/assets/images/imagen1.png') !important; /* ajusta la ruta si es necesario */
+    
     background-size: cover !important;
     background-position: center !important;
     opacity: 0.8 !important; /* o el valor que quieras */

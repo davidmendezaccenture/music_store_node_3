@@ -7,5 +7,14 @@
     "phone": "666666666",
     "postalcode": "66666",
     "city": "Madrid"
+  },
+  {
+    "username": "Prueba5",
+    "password": "$2b$10$wxaNR2No/WZvGkygxgJ66e/GiO4DHKUtPXFiuHTbAP51Wa0Y/4hGa",
+    "email": "prueba5@gmail.com",
+    "birthdate": "1212-12-12",
+    "phone": "666666666",
+    "postalcode": "66666",
+    "city": "Madrid"
   }
 ]
