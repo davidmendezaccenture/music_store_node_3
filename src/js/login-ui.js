@@ -52,6 +52,7 @@ if (btnContainerDesktop) {
     localStorage.removeItem('usuario');
     //Guardamos mantenerFiltros si estamos en search para que muestre los filtros cargados
     if (window.location.pathname.endsWith("/search.html")) {
+      //Corregir esto, hay que borrarlo
       localStorage.setItem('mantenerFiltros', "true");
     }
     
