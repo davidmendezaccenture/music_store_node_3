@@ -304,7 +304,7 @@ $('#form-registro').submit(function (e) {
 });
 
 
-
+// === Recuperación de contraseña ===
     $("#form-forgot-password").submit(function (e) {
       e.preventDefault();
       const email = $("#forgotEmail").val().trim();
@@ -330,6 +330,17 @@ $('#form-registro').submit(function (e) {
             .text(
               "Si el correo existe, recibirás un enlace para restablecer tu contraseña."
             );
+          // Espera 2 segundos y cierra la modal
+          setTimeout(function () {
+            // Cerrar la modal correctamente con Bootstrap
+            const forgotModalEl = document.getElementById(
+              "forgotPasswordModal"
+            );
+            const forgotModal =
+              bootstrap.Modal.getInstance(forgotModalEl) ||
+              new bootstrap.Modal(forgotModalEl);
+            forgotModal.hide();
+          }, 2000);
         },
         error: function () {
           $("#forgotEmail").addClass("is-invalid");
@@ -337,6 +348,7 @@ $('#form-registro').submit(function (e) {
             "No se pudo enviar el correo. Inténtalo más tarde."
           );
         },
+
       });
     });
 });
