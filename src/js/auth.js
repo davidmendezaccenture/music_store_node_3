@@ -303,54 +303,57 @@ $('#form-registro').submit(function (e) {
   });
 });
 
+  // Cuando haces clic en el enlace "¿Has olvidado tu contraseña?"
+  $('#forgotPasswordLink').on('click', function (e) {
+    e.preventDefault();
 
-// === Recuperación de contraseña ===
-    $("#form-forgot-password").submit(function (e) {
-      e.preventDefault();
-      const email = $("#forgotEmail").val().trim();
-      $("#forgotEmail").removeClass("is-invalid");
-      $("#forgotEmailError").text("");
-      $("#forgotPasswordSuccess").addClass("visually-hidden").text("");
+    // Cierra la modal de login
+    $('#loginModal').modal('hide');
 
-      if (!email) {
-        $("#forgotEmail").addClass("is-invalid");
-        $("#forgotEmailError").text("El correo es obligatorio");
-        return;
-      }
-
-      // Aquí iría la llamada AJAX real al backend
-      $.ajax({
-        url: "/api/forgot-password",
-        method: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({ email }),
-        success: function () {
-          $("#forgotPasswordSuccess")
-            .removeClass("visually-hidden")
-            .text(
-              "Si el correo existe, recibirás un enlace para restablecer tu contraseña."
-            );
-          // Espera 2 segundos y cierra la modal
-          setTimeout(function () {
-            // Cerrar la modal correctamente con Bootstrap
-            const forgotModalEl = document.getElementById(
-              "forgotPasswordModal"
-            );
-            const forgotModal =
-              bootstrap.Modal.getInstance(forgotModalEl) ||
-              new bootstrap.Modal(forgotModalEl);
-            forgotModal.hide();
-          }, 2000);
-        },
-        error: function () {
-          $("#forgotEmail").addClass("is-invalid");
-          $("#forgotEmailError").text(
-            "No se pudo enviar el correo. Inténtalo más tarde."
-          );
-        },
-
-      });
+    // Cuando la modal login esté oculta, abre la modal de recuperar contraseña
+    $('#loginModal').one('hidden.bs.modal', function () {
+      $('#forgotPasswordModal').modal('show');
     });
+  });
+
+  // Opcional: si quieres que al cerrar la modal de recuperación se vuelva a abrir login:
+  /*
+  $('#forgotPasswordModal').on('hidden.bs.modal', function () {
+    $('#loginModal').modal('show');
+  });
+  */
+
+  // Manejo del submit del formulario recuperación
+  $("#form-forgot-password").submit(function (e) {
+    e.preventDefault();
+
+    const email = $("#forgotEmail").val().trim();
+    $("#forgotEmail").removeClass("is-invalid");
+    $("#forgotEmailError").text("");
+    $("#forgotPasswordSuccess").addClass("visually-hidden").text("");
+
+    if (!email) {
+      $("#forgotEmail").addClass("is-invalid");
+      $("#forgotEmailError").text("El correo es obligatorio");
+      return;
+    }
+
+    $.ajax({
+      url: "/api/forgot-password",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ email }),
+      success: function () {
+        $("#forgotPasswordSuccess")
+          .removeClass("visually-hidden")
+          .text("Si el correo existe, recibirás un enlace para restablecer tu contraseña.");
+      },
+      error: function () {
+        $("#forgotEmail").addClass("is-invalid");
+        $("#forgotEmailError").text("No se pudo enviar el correo. Inténtalo más tarde.");
+      },
+    });
+  });
 });
 
 /* ================================================
